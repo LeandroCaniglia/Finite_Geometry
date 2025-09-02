@@ -1,0 +1,445 @@
+\chapter{Coordinatization}
+
+\section{Ternary Operations}
+
+Let $\Pi=\igeo$ be a projective plane of order $n$. Fix in $\Pi$ a quad $O,X,Y,E$. Let $\ter$ be a set of $n$ elements, containing $0$ and $1$, and not $\infty$.
+
+Using these elements, we introduce coordinates as follows
+$$
+    O\colon(0,0),\quad Y\colon(\infty),\quad E\colon(1,1).
+$$
+In addition, we label the points of $\tr(OE)\setminus\set{O,E,Z}$, where $Z=OE\wedge XY$, according to an arbitrary bijection
+\[
+    \tr(OE)\setminus\set{O,E,Z}
+        \to\set{(\zeta,\zeta)\mid\zeta\ne0,1}.
+\]
+To label a point $P$ not on $OE$ and $XY$ with $(a,b)$, we define $a$ and~$b$ by
+\begin{equation}\label{eq:P-coordinates}
+    OE\wedge YP\colon(a,a)
+    \quad\text{and}\quad
+    OE\wedge XP\colon(b,b),
+\end{equation}
+as illustrated here
+$$
+    \begin{tikzpicture}[
+        scale=1.20,
+        point/.style={
+            draw,
+            circle,
+            color=black,
+            fill=black,
+            inner sep=1.2pt},
+            every node/.style={font=\footnotesize},
+        ]
+        \pgfmathsetmacro{\u}{1.7};
+        
+        % Points
+        \coordinate (xstart) at (0.0,0.0);
+        \coordinate (xend) at (2*\u,0.0);
+        \coordinate (ystart) at (0.0,0.0);
+        \coordinate (yend) at (0.0,2*\u);
+        \coordinate (E) at (\u,\u*0.8);
+        \coordinate (P) at (\u*1.7,\u*1.1);
+        
+        % Axis
+        \draw[name path=xaxis,
+            color=orange,
+            thick
+        ] (xstart) -- (xend)
+            node[point,
+                pos=0.0,
+                label={[xshift=2.5mm,yshift=-7mm]:
+                    \textcolor{black}{$O\colon(0,0)$}}
+            ] (O) {}
+            node[point,
+                pos=0.5,
+                label={[text=black,xshift=2.5mm,yshift=-7mm]:
+                    $X\colon(0)$}
+            ] (X) {};
+        \draw[name path=yaxis,
+            color=orange,
+            thick
+        ] (ystart) -- (yend)
+            node[point,
+                pos=0.95,
+                label={[text=black,left]:
+                    $Y\colon(\infty)$}
+            ] (Y) {};
+        \node[point,
+            label={[xshift=0.0mm,yshift=-10mm]:
+                $\begin{array}{c}E\colon\\(1,1)\end{array}$}
+        ] at (E) {};
+        \draw[name path=OE] (O) -- ($(O)!2.2!(E)$);
+        \draw[name path=YP] (Y) -- ($(Y)!1.1!(P)$);
+        \path[name intersections={of=OE and YP, by=aa}];
+        \node[point,
+            fill=green,
+            label={[yshift=0.8mm,xshift=-0.4mm]:
+                $(a,a)$}
+        ] at (aa) {};
+        \draw[name path=XP] (X) -- ($(X)!1.7!(P)$);
+        \path[name intersections={of=OE and XP, by=bb}];
+        \node[point,
+            fill=green,
+            label={[yshift=-4mm,xshift=5mm]:
+                $(b,b)$}
+        ] at (bb) {};
+        \draw[name path=XY] (X) -- (Y)
+            node[pos=0.42,
+                label={[xshift=-6.3mm,yshift=-3.5mm]:
+                $M\colon(m)$}
+            ] (M) {};
+        \path[name intersections={of=OE and XY, by=zz}];
+        \node[point,
+            fill=white,
+            label={[xshift=-0.7mm,yshift=-10mm]:
+                {$\begin{array}{c}Z\colon\\(1)\end{array}$}}
+        ] at (zz) {};
+        \node[point,
+            fill=green
+        ] at (P) {};
+        \node[label={[yshift=-3.5mm,xshift=8mm]:
+            $P\colon(a,b)$}
+        ] at (\u*1.3,\u*0.7) at (P) {};
+        \draw[name path=YE] (Y) -- ($(Y)!1.8!(E)$);
+        \path[name intersections={of=YE and xaxis,by=Q}];
+        \node[point,
+            fill=green,
+            label={[xshift=4mm]:
+                $Q\colon(1,0)$}
+        ] at (Q) {};
+        \draw[name path=OM] (O) -- ($(O)!1.4!(M)$);
+        \path[name intersections={of=YE and OM, by=oneM}];
+        \node[point,
+            fill=lightblue,
+            label={right:$(1,m)$}
+        ] at (oneM) {};
+        \node[point,
+            fill=lightblue,
+            ] at (M) {};
+        \coordinate (zeroC) at (0,\u*0.4);
+        \draw[name path=CX] (zeroC) -- (X);
+        \path[name intersections={of=CX and OE,by=cc}];
+        \node[point,
+            fill=green,
+            label={left: $(0,c)$}
+        ] at (zeroC) {};
+        \node[point,
+            fill=green,
+            label={[xshift=1mm,yshift=-6.6mm]: $(c,c)$}
+        ] at (cc) {};
+    \end{tikzpicture}
+$$
+If $Q=OX\wedge EY$, then $OE\wedge YQ=E\colon(1,1)$ and $OE\wedge XQ\colon(0,0)$. Hence, according to \eqref{eq:P-coordinates}, $Q\colon(1,0)$.
+
+Note, in particular, that when the point $P\ne Y$ is on the line $EY$, it gets asigned the coordinates $(1,m)$ for some $m$. This is so because the first coordinate, that we called $a$ for the general case, comes from the coordinates of $PY\wedge OE$, which in the special case we are analyzing coincides with $E$, whose corrdinates are $(1,1)$.
+
+The observation we just made allows us to extend the assignment of coordinates to any point $M$ on $XY$. Since the coordinates of $OM\wedge EY$ have the form $(1,m)$, we assign the coordinate $(m)$ to $M$. In particular, $Z\colon(1)$ and $X\colon(0)$.
+
+Observe that points on $OY$, have coordinates $(0,c)$. Similarly, points on $OX$ have coordinates $(a,0)$.
+
+Here is an algorithmic description of the definition:
+    \vspace{-1\parskip}
+     {\small\alg
+    \begin{enumerate}[itemsep=1.5pt, parsep=0pt]
+        \item Complete the set $\set{0,1,\infty}$ with $n-2$ symbols $\set{a,b,c,\dots}$.
+        \item Choose a quad $O,X,Y,E$.
+        \item Define $Z=OE\wedge XY$.
+        \item Label $O\colon(0,0)$, $Y\colon(\infty)$, $E\colon(1,1)$.
+        \item For every point on $OE$, distinct from $Z$, choose a label $(\zeta,\zeta)$.
+        \item For $P\nincidence XY$
+        \begin{enumerate}[-]
+            \item Let $(b,b)$ be the label assigned to $XP\wedge OE$.
+            \item Let $(a,a)$ be the label assigned to $YP\wedge OE$.
+        \end{enumerate}
+        Label $P\colon(a,b)$.
+        \item For $M$ on $XY$, let $OM\wedge YE\colon(1,m)$. Label $M\colon(m)$.
+    \end{enumerate}
+    }
+
+Coordinates are further extended to lines. Here we will use squared brackets to distinguish them from point coordinates. Given $\block a\in\blocks$, we define
+\begin{equation}\label{eq:line-coordinates}
+    \block a\colon
+        \begin{cases}
+            [\infty]    &\text{if }\block a=XY,\\
+            [x]   &\text{if }\block a\ne XY,
+                \ Y\incidence\block a,\
+                \block a\wedge OX=(x,0),\\
+            [m,b]   &\text{if }
+            \ Y\nincidence \block a,
+            \ \block a\wedge XY\colon(m),
+            \ \block a\wedge OY=(0,b),
+        \end{cases} 
+\end{equation}
+$$
+    \begin{tikzpicture}[
+        scale=1.2,
+        point/.style={
+            draw,
+            circle,
+            color=black,
+            fill=black,
+            inner sep=1.2pt},
+            every node/.style={font=\footnotesize},
+        ]
+        \pgfmathsetmacro{\u}{1.7};
+        
+        % Points
+        \coordinate (xstart) at (0.0,0.0);
+        \coordinate (xend) at (2*\u,0.0);
+        \coordinate (ystart) at (0.0,0.0);
+        \coordinate (yend) at (0.0,2*\u);
+        \coordinate (E) at (\u,\u*0.8);
+        \coordinate (P) at (\u*0.4,\u*0.0);
+        
+        % Axis
+        \draw[name path=xaxis,
+            color=orange,
+            thick
+        ] (xstart) -- (xend)
+            node[right,text=black] {$[0,0]$}
+            node[point,
+            pos=0.0,
+            label={[yshift=-5mm,xshift=-2mm]:
+                \textcolor{black}{$O$}}] (O) {}
+            node[point,
+                pos=0.5,
+                label={[text=black,xshift=-1mm,yshift=-6mm]:
+                    $X$}
+            ] (X) {};
+
+        \draw[name path=yaxis,
+            color=orange,
+            thick
+        ] (ystart) -- (yend)
+            node[above,text=black] {$[0]$}
+            node[point,
+            pos=0.95,
+            label={[text=black,left,yshift=-1mm]:
+                $Y$}
+            ] (Y) {};
+        \node[point,
+            label={[yshift=-6mm]:
+                $E$}
+        ] at (E) {};
+        \draw[name path=OE] (O) -- ($(O)!1.5!(E)$)
+            node[right] {$[1,0]$};
+        \draw[name path=YP] (Y) -- ($(Y)!1.1!(P)$)
+            node[xshift=2mm,yshift=-2mm] {$[x]$};
+        \node[point,
+            fill=green,
+            label={[xshift=4mm,yshift=-1mm]:
+                $(x,0)$}
+        ] at (P) {};
+        \draw[name path=OM] (O) -- ($(O)!1.6!(M)$)
+            node[right] {$[m,0]$};
+        \draw[name path=XY] ($(X)!-0.1!(Y)$) -- (Y)
+            node[pos=0,xshift=2.7mm,yshift=-2mm] {$[\infty]$}
+            node[pos=0.48,
+                label={[left,yshift=-1.5mm]:
+                    $(m)$}
+            ] (M) {};
+        \path[name intersections={of=OE and XY, by=zz}];
+        \node[point,
+            fill=white,
+            label={[xshift=-0.9mm,yshift=-6mm]:
+                $Z$}
+        ] at (zz) {};
+        \draw[name path=YE] (Y) -- ($(Y)!1.2!(E)$)
+            node[right] {$[1]$};
+        \coordinate (Q) at (0,\u*1.3);
+        \draw[name path=QM] (Q) -- ($(Q)!2.1!(M)$)
+            node[right] {$[m,b]$};
+        \node[point,
+            fill=green,
+            label={[left]: $(0,b)$}
+        ] at (Q) {};
+        \path[name intersections={of=OM and YE,by=oneM}];
+        \node[point,
+            fill=green,
+            label={[right,yshift=-0.7mm]:$(1,m)$}
+        ] at (oneM) {};
+        \node[point,
+            fill=lightblue
+        ] at (M) {};
+    \end{tikzpicture}
+$$
+\begin{rem}
+    The interpretation is clear. The line\/ $XY$ is the line at infinity. The slope\/ $m$ of a line\/ $y=mx+b$ is determined by the point where it intersects the line\/ $XY$. The\/ $Y$-intercept\/ $b$ is determined by the line's intersection with the\/ $OY$ axis. Lines with infinite slope (vertical lines) have the form\/ $x=c$ and are assigned the coordinate\/ $[c]$. Every line passing through the origin\/ $O$ has coordinates of the form\/ $[m,0]$ (for finite slopes) or\/ $[0]$ (for the line\/ $OY$ which has infinite slope).
+\end{rem}
+
+\begin{prop}
+    The homogeneous coordinates of $\PG(2,q)$ are compatible with the coordinates introduced above for the abstract finite projective plane with $\ter=\Fq$.
+\end{prop}
+
+\begin{proof}
+    Take $O=[0:0:1]$, $X=[1:0:0]$, $Y=[0:1:0]$ and $E=[1:1:1]$. Then
+    \[
+        OX\equiv y=0,\quad OY\equiv x=0,\quad
+        OE\equiv x=y,\quad XY\equiv z=0,\quad
+        EY\equiv x=z.
+    \]
+    It follows that $Z=XY\wedge OE=[1:1:0]$.
+    We have the following cases
+    \begin{enumerate}[-]
+        \item Points on $OE$ other than $Z$ have coordinates $[a:a:1]$.
+
+        \item If $P\nincidence OE$, then $P=[a:b:1]$ and so
+        \begin{align*}
+            YP\wedge OE\equiv(x=az)\wedge(x=y)
+                &\implies YP\wedge OE=[a:a:1]\\
+            XP\wedge OE\equiv(y=bz)\wedge(x=y)
+                &\implies XP\wedge OE=[b:b:1].
+        \end{align*}
+    
+        \item If $P\incidence XY$, $P\ne Y$, then $P=[1:m:0]$. Hence,
+        \[
+        EY\wedge OP\equiv(x=z)\wedge(y=m x)
+        \]
+        Thus, $EY\wedge OP=[1:m:1]$.
+    
+        \item If $P\incidence OY$, $P\ne Y$, then $P=[0:c:1]$
+        \[
+            XP\wedge OE\equiv(y=cz)\wedge(x=y),
+        \]
+        which implies $XP\wedge OE=[c:c:1]$.
+
+        \item If $P\incidence OX$, $P\ne X$, then $P=[a:0:1]$.
+    \end{enumerate}
+    In conclusion, we have the following bijection between homogeneous and abstract coordinates:
+    \begin{align*}
+        [x:y:1] &\mapsto (x,y)\\
+        [x:y:0] &\mapsto (y/x)
+    \end{align*}
+    with the convention $1/0=\infty$.
+
+    The same idea works for lines:
+    \begin{align*}
+        (m:-1:b) &\mapsto[m,b]\\
+        (u:0:v) &\mapsto[-v/u]
+    \end{align*}
+    In particular,
+    \[
+        \begin{array}{c|clc}
+            {\text{line}} & \text{equation} & \text{homogeneous} &\text{coordinates}\\
+            \hline\rule{0pt}{10pt}
+            OX &  y=0 & (0:1:0) & [0,0]\\
+            OY &  x=0 & (1:0:0) & [0]\\
+            OE &  x=y & (1:-1:0) & [1,0]\\
+            XY &  z=0 & (0:0:1) & [\infty]\\
+            EY &  x=z & (1:0:-1) & [1]\\
+        \end{array}
+    \]
+\end{proof}
+
+\begin{test}
+    Consider the Fano plane
+    $$
+    \begin{tikzpicture}[
+        scale=1.3,
+        font=\small,
+        point/.style={draw, circle, fill=black, inner sep=1.5pt, minimum size=4pt}
+        ]
+     
+        % Points
+        \coordinate (X) at (90:1.5);
+        \coordinate (Y) at (210:1.5);
+        \coordinate (O) at (330:1.5);
+        \coordinate (P3) at ($(X)!0.5!(Y)$);
+        \coordinate (P1) at ($(Y)!0.5!(O)$);
+        \coordinate (P2) at ($(O)!0.5!(X)$);
+        
+        % Center
+        \coordinate (E) at (0,0);
+        
+        % Lines
+        \draw (X) -- (P3) -- (Y);
+        \draw (Y) -- (P1) -- (O);
+        \draw (O) -- (P2) -- (X);
+        \draw (X) -- (E) -- (P1);
+        \draw (Y) -- (E) -- (P2);
+        \draw (O) -- (E) -- (P3);
+        
+        \draw (E) circle (0.75cm);
+        
+        % Point labels
+        \node[point, label=above:$X$] at (X) {};
+        \node[point, label=left:$Y$] at (Y) {};
+        \node[point, label=right:$O$] at (O) {};
+        \node[point, label=left:$3$] at (P3) {};
+        \node[point, label=below:$1$] at (P1) {};
+        \node[point, label=right:$2$] at (P2) {};
+        \node[point, label={[label distance=2pt]left:$E$}] at (E) {};
+    \end{tikzpicture}
+    $$
+    Following the algorithm of coordinatization, we get
+    \begin{enumerate}[\alg 1.]
+        \item Symbols: $\set{0,1,\infty}$.
+        \item Quad: $O,X,Y,E$.
+        \item Define $Z=OE\wedge XY=3$.
+        \item Assign $O\colon(0,0)$, $Y\colon(\infty)$, $E\colon(1,1)$.
+        \item Empty for $n=2$.
+        \item Compute
+            \begin{enumerate}[-]
+                \item $X1\wedge OE=E\colon(1,1)$ and $Y1\wedge OE=O\colon(0,0)$ and label $1\colon(0,1)$
+                \item $X2\wedge OE=O\colon(0,0)$ and $Y2\wedge OE=E\colon(1,1)$ and label $2\colon(1,0)$.
+            \end{enumerate}
+        \item\begin{enumerate}[-]
+            \item For $M=3$ let $OM\wedge YE=E\colon(1,1)$, label $3\colon(1)$.
+            \item For $M=X$ let $OX\wedge YE=2\colon(1,0)$, label $X\colon(0)$.
+        \end{enumerate}
+    \end{enumerate}
+    We can now compare with the homogenous coordinates of Proposition~\ref{prop:Fano=PG(2,2)} that would have assigned
+    \begin{align*}
+        X&=[1:0:0]  &Y&=[0:1:0] &O&=[0:0:1] &E&=[1:1:1]\\
+        3&=[1:1:0]  &2&=[1:0:1] &1&=[0:1:1]
+    \end{align*}
+\end{test}
+
+\begin{lem}\label{lem:ternary-full-domain}
+    Let\/ $\Pi$ be a projective plane of order\/ $n$ with coordinatization based on the quad\/ $O,X,Y,E$ and the set of symbols~$\ter$. Then
+    \begin{enumerate}[a),font=\upshape]
+        \item Every point on\/ $[x]$ has coordinates\/ $(x,y)$ for some\/ $y\in\ter$.
+        \item Given\/ $x,m,b\in\ter$, there unique\/ $y$ such that\/ $(x,y)\incidence{[m,b]}$ is the second coordinate of\/ $[m,b]\wedge[x]$.
+    \end{enumerate}
+\end{lem}
+
+\begin{proof}${}$
+    \begin{enumerate}[a)]
+        \item By \eqref{eq:line-coordinates} we have ${(\infty)}\incidence{[x]}$ and $(x,0)\incidence{[x]}$. Thus, $[x]=(x,0)(\infty)$. Since the definition of $(x,0)$ implies $(x,0)(\infty)\wedge[1,0]=(x,x)$, we deduce that $[x]\wedge[1,0]=(x,x)$. The conclusion follows from~\eqref{eq:P-coordinates}.
+
+        \item By part a) we have $[m,b]\wedge[x]=(x,y)$ for some $y$, which must be unique because both lines are distinct.
+    \end{enumerate}
+    %
+    
+\end{proof}
+
+\begin{defn}
+    A \textsl{ternary operation}\/ $T(x,m,k)$ on the set\/ $\ter$ is defined as:
+    \[
+        T(x,m,b)=y \iff (x,y)\incidence {[m, b]}.
+    \]
+\end{defn}
+
+\begin{prop}\label{prop:ternary-properties} The ternary operation\/ $T(x,m,b)$ defined above has the following properties:
+    \begin{enumerate}[a), font=\upshape]
+        \item For every\/ $x,m,b \in \ter$, we have
+        \[
+            T(x,0,b) = T(0,m,b) =b
+            \quad\text{and}\quad
+            T(1,x,0) = T(x,1,0) =x.
+        \]
+        
+        \item If\/ $x,y,x',y' \in \ter$ are given and\/ $x\ne x'$, then there exists a unique pair\/ $(m,b) \in \ter \times \ter$ for which\/ $T(x,m,b)=y$ and\/ $T(x',m,b)=y'$.
+        
+        \item For every\/ $x,y,m\in\ter$ there is a unique\/ $y\in\ter$ for which\/ $y=T(x,m,b)$.
+        
+        \item If\/ $m,b,m',b'\in\ter$ are given and\/ $m\ne m'$, then there is a unique\/ $x\in\ter$ for which\/ $T(x,m,b) = T(x,m',b')$.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}${}$
+    \begin{enumerate}[a)]
+        \item By \eqref{eq:line-coordinates}, $[0,b]\wedge[\infty]=(0)$ and $[0,b]\wedge[0,0]=(0,b)$.
+    \end{enumerate}
+\end{proof}

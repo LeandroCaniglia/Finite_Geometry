@@ -1,0 +1,104 @@
+\chapter{A note on set functions}
+
+Let $f\colon A\to B$ be a function. Let $f_*\colon\mathcal P(A)\to\mathcal P(B)$ denote the direct set-image map induced by $f$. Since $f$ is a subset of $A\times B$, the set of parts of $f$ is, by definition,
+$$
+    \mathcal P(f) = \set{U\in\mathcal P(A\times B)\mid U\subseteq f}.
+$$
+More precisely, an element of $\mathcal P(f)$ is a subset $U$ of $A\times B$ populated by certain pairs of the form $(x,f(x))$.
+
+As a map, $f_*$ can be expressed as
+$$
+    f_* = \set{(X,f_*(X))\mid X\subseteq A}.
+$$
+The question is, how do $\mathcal P(f)$ and $f_*$ compare?
+
+For one thing, the elements of $f_*$ belong to $\mathcal P(A)\times\mathcal P(B)$. Consider the map
+\begin{align*}
+    \sigma\colon\mathcal P(f)&\to f_*\\
+    U&\mapsto (\pi_1(U),f_*(\pi_1(U))),
+\end{align*}
+where $\pi_1\colon A\times B\to A$ is the projection onto the first coordinate.
+
+We claim that $\sigma$ is onto. To verify this, take $(X,f_*(X))\in f_*$, where $X\subseteq A$. The set $U=\set{(x,f(x))\mid x\in X}$ is clearly a part of $f$. Moreover, $\pi_1(U)=X$ and so $f_*(\pi_1(U))=f_*(X)$ ---i.e., $\sigma(U)=(X,f_*(X))$.
+
+To verify the injectivity of $\sigma$ suppose that $\sigma(U)=\sigma(V)$ for two sets $U,V\subseteq f$. Then $\pi_1(U)=\pi_1(V)$. Take $u\in U$. Since the elements of $U$ are pairs of the form $(x,f(x))$, we must have $u=(x,f(x))$ for some $x\in\pi_1(U)=\pi_1(V)$. Thus, there is some $v\in V$ such that $v=(x,y)$, and \textit{a fortiori}, $v=(x,f(x))$ because the elements of $V$ are of such form. Therefore $u=v\in V$. It follows that $U\subseteq V$, and by symmetry, $V\subseteq U$.
+
+In conclusion, $\sigma$ is a bijection.
+
+%\newpage
+
+Let's now analyze the functorial character of both operations. As a functor, $(\,\cdot\,)_*$ operates in the category whose objects are functions and whose arrows are commutative squares. Symbolically,
+\begin{description}
+    \item[\rm\textsc{Objects:}] $f\mapsto f_*$
+    \item[\rm\textsc{Arrows:}] $(\varphi_A,\varphi_B)\mapsto((\varphi_A)_*,(\varphi_B)_*)$, where
+    $$
+        \begin{tikzcd}[row sep=0.3cm, column sep={0.4cm,0.6cm}]
+            A
+                    \arrow[dd,"f"']
+                    \arrow[r,"\varphi_A"]
+                &A'
+                    \arrow[dd,"f'"]
+                &\mathcal P(A)
+                    \arrow[r,"(\varphi_A)_*"]
+                    \arrow[dd,"f_*"']
+                &\mathcal P(A')
+                    \arrow[dd,"f'_*"]\\
+                &{}
+                    \arrow[r,mapsto,shorten >= 0.5cm, shorten <= 0.5cm]
+                &{}\\
+            B
+                    \arrow[r,"\varphi_B"']
+                &B'
+                &\mathcal P(B)
+                    \arrow[r,"(\varphi_B)_*"']
+                &\mathcal P(B')
+        \end{tikzcd}
+    $$
+\end{description}
+When looking at $\mathcal P$ as a functor, we have to restrict it from $\cat{Set}$ to the subcategory of functions and commutative squares mentioned above. In that case we have
+\begin{description}
+    \item[\rm\textsc{Objects:}] $f\mapsto\mathcal P(f)=\set{U\in\mathcal P(A\times B)\mid U\subseteq f}$
+    \item[\rm\textsc{Arrows:}] $(\varphi_A,\varphi_B)\mapsto\mathcal P(\varphi_A,\varphi_B)
+    = \set{(U,U')\mid U\in\mathcal P(f)}$, where
+    $$
+        U' = \set{(\varphi_A(\pi_1(u)),\varphi_B(\pi_2(u)))\mid u\in U},
+    $$
+    which is well-defined because, given $u\in U$, we can write $u=(x,f(x))$ and get
+    $$
+        (\varphi_A(\pi_1(u)),\varphi_B(\pi_2(u)))
+        = (\varphi_A(x),\varphi_B(f(x)))
+        = (\varphi_A(x),f'(\varphi_A(x)))\in f'.
+    $$
+\end{description}
+It remains to be seen that $f\mapsto\sigma$ is a natural transformation from $\mathcal P$ to $(\,\cdot\,)_*$. Consider the following diagram
+$$
+    \begin{tikzcd}[column sep={1.5cm}]
+        \mathcal P(f)
+                \arrow[r,"{\mathcal P(\varphi_A,\varphi_B)}"]
+                \arrow[d,"\sigma"']
+            &\mathcal P(f')
+                \arrow[d,"\sigma'"]\\
+        f_*
+                \arrow[r,"{((\varphi_A)_*,(\varphi_B)_*)}"']
+            &f'_*
+    \end{tikzcd}
+$$
+which acts on a set $U\in\mathcal P(f)$ as depicted below
+$$
+    \begin{tikzcd}
+        U
+                \arrow[r,mapsto]
+                \arrow[d,mapsto]
+            &U'
+                \arrow[d,mapsto]\\
+        {(\pi_1(U),f_*(\pi_1(U)))}
+                \arrow[r,mapsto,end anchor={[yshift=-4pt]west}]
+            &\substack{(\pi_1(U'),f'_*(\pi_1(U')))
+            \\\\
+            ((\varphi_A)_*(\pi_1(U)),(\varphi_B)_*(f_*(\pi_1(U)))))}
+    \end{tikzcd}
+$$
+To complete the proof we need to verify the equality between the two expressions in the right-bottom corner. But this is a direct consequence of what we have seen above, i.e.,
+$$
+    u=(x,f(x))\in U \implies (\varphi_A(x),\varphi_B(f(x)))\in U'.
+$$

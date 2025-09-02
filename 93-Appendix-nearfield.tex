@@ -1,0 +1,43 @@
+\chapter{Nearfields}
+
+\section{The Hall Nearfield}
+
+\begin{defn}
+    A \textsl{nearfield} is an algebraic structure $(N,+,\cdot)$, similar to a field, but with one key axiom weakened:
+    \begin{enumerate}[a)]
+        \item $(N, +)$ is an abelian group (the addtivive group of the nearfield).
+        \item $(N \setminus\set0,\cdot)$ is a group (the \textsl{multiplicative} group of the nearfield).
+        \item The zero element acts trivially for multiplication: $0\cdot x=0$.
+        \item Right distributivity holds: $(a+b)\cdot c= a\cdot c + b\cdot c$ for all $a,b,c\in N$.
+    \end{enumerate}
+\end{defn}
+
+\begin{rem}
+    Note that in a nearfield left distributivity does \textit{not} necessarily hold: $a\cdot(b+c)$ is not necessarily equal to $a\cdot b + a\cdot c$. This is the defining difference from a division ring or field.
+\end{rem}
+
+\begin{xmpl}\label{The Hall Nearfield} \citep[Example 11.1.4.iv, pp.~317]{Stevenson1992}
+    Let $\Fq$ denote, as usual, the finite field with $q$ elements. Fix $f(x)=x^2-rx-s$ irreducible in $\Fq{[x]}$, and let $\omega$ be a root of~$f$ in~$\Fq[q^2]$. Then
+    $$
+        \omega^2=s+r\omega.
+    $$
+    The \textsl{Hall nearfield} $H(q^2)$ is defined using the elements and addition of the field $\Fq[q^2]$, and changing the multiplication as follows: Given $a=a_0+a_1\omega$ and $b=b_0+b_1\omega$, their Hall product is defined by twisting the first coordinate of the regular product $a\cdot b$ in $\Fq[q^2]$ in the following way: the equality
+        \begin{align*}
+            a\cdot b &= (a_0+a_1\omega)(b_0+b_1\omega)\\
+                &= a_0b_0+(a_0b_1+a_1b_0)\omega + a_1b_1(s+r\omega)\\
+                &= a_0b_0\underline{{}+a_1b_1s}
+                    +(a_0b_1\overline{{}+a_1b_0}+a_1b_1r)\omega,
+        \intertext{becomes}
+            (a_0+a_1\omega)\circ(b_0+b_1\omega)
+                &= \begin{cases}
+                    a_0b_0+a_1b_0\omega
+                        &b_1=0,\\
+                    a_0b_0\underline{{}-a_1b_1^{-1}f(b_0)}
+                        +(a_0b_1\overline{{}-a_1b_0}+a_1r)\omega
+                        &b_1\ne0
+            \end{cases}
+        \end{align*}
+    \textbf{Right distribution:} is satisfied since the multiplication is clearly bilinear in the first operand.
+    
+    \textbf{Left distribution:} is not generally satisfied because the multiplication is not bilinear in second operand (it is not linear in any of the components of the second operand).
+\end{xmpl}

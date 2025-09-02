@@ -1,0 +1,300 @@
+\chapter{Convex Functions}
+
+\newcommand{\DD}{\mathbb{D}}
+\section{Definitions \& Basic Properties}
+
+
+Let $C$ be a nonempty subset of $\Rd$. We say that a nonempty set $A$ is \textsl{$C$-convex\/} if
+$$
+    \theta\vect x+(1-\theta)\vect y\in A
+$$
+for all $\theta\in C\cap[0,1]$, and $\vect x,\vect y\in A$.
+
+
+A $\set{\frac12}$-convex set is called a \textsl{Jensen} set, $J$-set for short. An $\R$-convex set is simply called \textsl{convex}.
+
+Recall that the set of \textsl{diadic} numbers is
+$$
+    \DD = \Big\{\frac k{2^n}\mid k\in\Z,\; n\in\N_0\Big\}.
+$$
+
+\begin{lem}
+    A set is $\DD$-convex if, and only if, it is $J$-convex.
+\end{lem}
+
+\begin{proof}
+    The \textit{only if} direction is immediate. For the converse, suppose that $A$ is $J$-convex.
+    
+    Fix $\vect x, \vect y \in A$, and let $n \in \N_0$ and $\theta = \frac{k}{2^n} \in [0,1]$. We want to show that
+    \[
+        \theta\vect x + (1-\theta)\vect y \in A.
+    \]
+    The case $n = 0$ is trivial. Suppose $n \ge 1$. If $k = 2^{n-1}$, then $\theta = \frac{1}{2}$ and the conclusion follows directly from the hypothesis.
+    
+    Otherwise, after interchanging $\vect x$ and $\vect y$ if needed, we may assume that $k < 2^{n-1}$. Then we can write:
+    \[
+        \theta\vect x + (1-\theta)\vect y
+            = \frac{1}{2} \left( \frac{k}{2^{n-1}} \vect x
+            + \frac{2^{n-1}-k}{2^{n-1}} \vect y \right)
+            + \frac{1}{2} \vect y.
+    \]
+    By induction on $n$, the vector inside the parentheses belongs to~$A$. Since~$A$ is $J$-convex, the full expression also belongs to $A$.
+\end{proof}
+
+\begin{lem}
+    Suppose we are given\/ $n+1$ nonnegative real numbers\/ $\theta$ and $\theta_1,\dots,\theta_n$, with\/ $n \ge 2$, such that\/ $\theta\ge\theta_i$\/ for $i=1,\dots,n$, and
+    \[
+        \sum_{i=1}^n \theta_i + \theta = 1.
+    \]
+    Then\/ $(\theta_1,\dots,\theta_n)$ can be partitioned into two nonempty, disjoint subsequences such that the sum of each of them does not exceed\/~$\frac{1}{2}$.
+\end{lem}
+
+\begin{proof}
+    If $n = 2$, then we have $\theta_1 + \theta_2 + \theta = 1$. In this case, the conclusion is immediate, since we cannot have both $\theta_1 > \frac{1}{2}$ and $\theta_2 > \frac{1}{2}$.
+
+    Suppose $n > 2$. After reindexing if necessary, we may assume that $\theta_n \ge \theta_i$ for all $1 \le i < n$. By the induction hypothesis with $\theta$ replaced by $\theta+\theta_n$, the sequence $(\theta_1, \dots, \theta_{n-1})$ can be partitioned into two nonempty disjoint subsequences whose sums are both at most $\frac{1}{2}$. Again, after reordering if needed, let these subsequences be $(\theta_1, \dots, \theta_{k-1})$ and $(\theta_k, \dots, \theta_{n-1})$.
+
+    We now consider adding $\theta_n$ to one of these two subsequences. If at least one of the resulting sums remains at most $\frac{1}{2}$, the conclusion follows. Suppose instead that both sums exceed $\frac{1}{2}$,
+    \[
+        \theta_1 + \cdots + \theta_{k-1} + \theta_n > \frac{1}{2}
+        \quad\text{and}\quad
+        \theta_k + \cdots + \theta_{n-1} + \theta_n > \frac{1}{2}.
+    \]
+    Adding these inequalities gives
+    \[
+        1 - \theta + \theta_n = 
+        \theta_1 + \cdots + \theta_{n-1} + 2\theta_n > 1,
+    \]
+    that is, $\theta_n > \theta$, contradicting the hypothesis that $\theta \ge \theta_i$ for all $i$. 
+    
+\end{proof}
+
+    A linear combination
+    $$
+        \theta_1\vect x_1+\cdots+\theta_n\vect x_n
+    $$
+    of vectors\/ $(\vect x_1,\dots,\vect x_n)$ in\/ $\Rd$ is called a \textsl{convex combination} if its coefficients satisfy\/ $\theta_i \in [0,1]$ for all\/ $i=1,\dots,n$, and
+    $$
+        \sum_{i=1}^n\theta_i=1.
+    $$
+
+\begin{thm}\label{thm:convex-combinations}
+    Let\/ $C$ be an additive subgroup or $(\R,+)$ such that\/ $\frac12 \in C$, and let\/ $A \subset \Rd$ be $C$-convex. Then every convex combination of elements of $A$, with coefficients in $C\cap[0,1]$, belongs to\/~$A$.
+\end{thm}
+
+\begin{proof}
+    Consider a convex combination $\sum_{i=1}^n\theta_i\vect x_i$, where every $\theta_i\in C$. We have to show that the combination is an element of $A$.
+
+    The proof works by induction on $n$. The cases $n=1$ and $n=2$ are immediate.
+
+    Suppose $n>2$. After a change of indexes, we may assume that $\theta_n\ge\theta_i$ for $1\le i<n$. By the previous lemma, we can further reorder the indexes $1,\dots,n-1$ and obtain
+    \[
+        s=\theta_1+\cdots+\theta_{k-1}\le\frac12
+        \quad\text{and}\quad
+        t=\theta_k+\cdots+\theta_{n-1}\le\frac12,
+    \]
+    for some $k>1$. Introduce
+    \begin{align*}
+        \vect u &= \theta_1\vect x_1+\cdots
+            +\theta_{k-1}\vect x_{k-1}+(\tfrac12-s)\vect x_n,\\
+        \vect v &= \theta_k\vect x_k+\cdots
+            +\theta_{n-1}\vect x_{n-1}+(\tfrac12-t)\vect x_n.
+    \end{align*}
+    By the inductive hypothesis, $2\vect u$ and $2\vect v$ belong to $A$. Since $\frac12\in C$, this implies that $\vect u+\vect v=\frac12(2\vect u+2\vect v)\in A$. The conclusion follows because
+    \[
+        (\tfrac12-s)+(\tfrac12-t)=\theta_n.
+    \]
+\end{proof}
+
+\begin{cor}
+    Let\/ $A \subseteq \R^N$ be an arbitrary set, $A \ne \emptyset$, and let\/ $C \subseteq \R$ be a subring containing $\frac12$. Then the $C$-convex hull\/ $C(A)$ of\/ $A$ is the set of all convex combinations of elements of\/~$A$.
+\end{cor}
+
+\begin{proof}
+    Using that $C$ is a ring, it is easy to verify that the set of $C$-convex combinations is $C$-convex. Since ---in addition--- it includes $A$, it must include~$C(A)$. The other inclusion is a direct consequence of the previous lemma.
+    
+\end{proof}
+
+Let $D$ be an open and convex subset of $\Rd$. A function $f\colon D\to\R$ is (\textsl{midpoint}) \textsl{convex} if
+$$
+    f\Big(\frac{\vect x+\vect y}2\Big)
+        \le \frac{f(\vect x)+f(\vect y)}2
+$$
+for $\vect x,\vect y\in D$. The convex function $f$ is \textsl{strictly convex} when equality is never attained.
+
+\begin{rem}
+    Since the product of a convex function by a nonnegative real number is convex, and the sum of convex functions is convex, the linear combination, with non-negative real coefficients, of convex functions is a convex function.
+\end{rem}
+
+\begin{thm}
+    The square of a nonnegative convex function is a convex function.
+\end{thm}
+
+\begin{proof}
+    Let $f\ge0$ be convex. Then
+    \begin{align*}
+        f\Big(\frac{\vect x+\vect y}2\Big)^2
+            &\le \frac{f(\vect x)^2+f(\vect y)^2
+                +2f(\vect x)f(\vect y)}4\\
+            &= \frac{f(\vect x)^2+f(\vect y)^2}2
+                - \frac14\big(f(\vect x)^2+f(\vect y)^2-2f(\vect x)f(\vect y)\big)\\
+            &= \frac{f(\vect x)^2+f(\vect y)^2}2
+                - \frac14\big(f(\vect x)-f(\vect y)\big)^2\\
+            &\le \frac{f(\vect x)^2+f(\vect y)^2}2.
+    \end{align*}
+\end{proof}
+
+\begin{rem}
+    The limit of a convergent sequence of convex functions is a convex function.
+    
+    In particular, the sum of a convergent series of convex functions is a convex function.
+
+    The maximum $\max(f,g)$ of two convex functions is a convex function
+\end{rem}
+
+\begin{thm}
+    Let\/ $D \subseteq \Rd$ be a convex and open set. If\/ $f : D \to \R$ is a convex function, then for every\/ $n \in \mathbb{N}$ and for every\/ $x_1,\dots,x_n \in D$
+    \[
+        f\Big(\frac{x_1 + \cdots + x_n}{n}\Big)
+            \le \frac{f(x_1) + \cdots + f(x_n)}{n}.
+    \]
+\end{thm}
+
+\begin{proof}
+    By Theorem~\ref{thm:convex-combinations}, the \lhs of the inequality makes sense because the average of $x_1,\dots,x_n$ does, indeed, belong to $D$.
+    
+    Let's first consider the special case where $n=2^k$. By induction on $k$, the initial step $k=1$ is immediate. Suppose that $k>1$. Put
+    $$
+        x = \frac{x_1+\cdots+x_{2^{k-1}}}{2^{k-1}}
+        \quad\text{and}\quad
+        y = \frac{x_{2^{k-1}+1}+\cdots
+            +x_{2^{k-1}+2^{k-1}}}{2^{k-1}}.
+    $$
+    Then,
+    
+    \vspace{-2\parskip}
+    \small
+    \begin{align*}
+        f\Big(\frac{x_1+\cdots+x_{2^k}}{2^k}\Big)
+            &= f\Big(\frac x2+\frac y2\Big)\\
+            &\le \frac12\big(f(x)+f(y)\big)\\
+            &\stackrel{\text{I.H.}}\le \frac12
+                \Big(
+                \frac{f(x_1)+\cdots+f(x_{2^{k-1}})}{2^{k-1}}
+                +\frac{f(x_{2^{k-1}+1})+\cdots
+                    +f(x_{2^k})}{2^{k-1}}
+                \Big)\\
+            &= \frac{f(x_1)+\cdots+f(x_{2^k})}{2^k}.
+    \end{align*}
+    \normalsize
+    For the general case pick $k$ so that $n\le 2^k$ and introduce
+    \[
+        s=\sum_{i=1}^nx_i,\quad x_j=\frac sn,\qquad n+1\le j\le 2^k.
+    \]
+    Then,
+    \begin{align*}
+        \frac1{2^k}\sum_{i=1}^{2^k}x_i
+            &= \frac1{2^k}\sum_{i=1}^nx_i
+                +\frac1{n2^k}\sum_{i=n+1}^{2^k}s\\
+            &= \frac1{2^k}s
+                +\frac1{n2^k}(2^k-n)s\\
+            &= \frac1n\sum_{i=1}^nx_i.
+    \end{align*}
+    In consequence,
+    \begin{align*}
+        f\Big(\frac1n\sum_{i=1}^nx_i\Big)
+            &\le \frac1{2^k}\sum_{i=1}^{2^k}f(x_i)\\
+            &= \frac1{2^k}\sum_{i=1}^nf(x_i)
+                + \frac1{2^k}\sum_{j=n+1}^{2^k}f\Big(\frac sn\Big)\\
+            &= \frac1{2^k}\sum_{i=1}^nf(x_i)
+                + \frac1{2^k}(2^k-n)
+                    f\Big(\frac1n\sum_{i=1}^nx_i\Big).
+    \end{align*}
+    Hence,
+    \begin{align*}
+        0 \le \frac1{2^k}\sum_{i=1}^nf(x_i)
+                - \frac n{2^k}
+                    f\Big(\frac1n\sum_{i=1}^nx_i\Big),
+    \end{align*}
+    and the conclusion follows.
+    %
+\end{proof}
+
+\begin{cor}\label{cor:rational-convexity}
+    Let\/ $D \subset \Rd$ be a convex and open set. If\/ $f\colon D \to \R$ is a convex function, then for every\/ $x, y \in D$ and for every\/ $\theta \in \mathbb{Q} \cap [0, 1]$ we have
+    \[
+        f(\theta x + (1 - \theta)y)
+            \le \theta f(x) + (1 - \theta)f(y).
+    \]
+\end{cor}
+
+\begin{proof}
+    Write $\theta=\frac kn$ for some $0\le k\le n$ and we have
+    \begin{align*}
+        f(\theta x+(1-\theta)y)
+            &= f\bigg(
+                \frac{\sum_{i=1}^kx + \sum_{i=k+1}^ny}n
+                \bigg)\\
+            &\stackrel{\mathrm{thm}}\le
+                \frac{kf(x)+(n-k)f(y)}n\\
+            &= \theta f(x)+(1-\theta)f(y).
+    \end{align*}
+\end{proof}
+
+\begin{rem}
+    In the case were $f$ is convex and continuous, the inequality of Corollary~\ref{cor:rational-convexity} holds for $\theta\in\R\cap[0,1]$. Note however that this can be derived directly as follows:
+
+    Fix $\theta\in(0,1)$ and $\vect x,\vect y$ in the domain of $f$. Inductive, define the sequences $(a_i)_i$, $(b_i)_i$ and $(\theta_i)_i$ as
+    \begin{align*}
+        a_1 &= 0,\quad b_1=1.\\
+        \theta_i &= \frac12(a_i+b_i)\\
+        a_{i+1} &= \begin{cases}
+            \theta_i    &\text{if }\theta_i<\theta,\\
+            a_i &\text{otherwise}
+        \end{cases}\\
+        b_{i+1} &= \begin{cases}
+            b_i    &\text{if }\theta_i<\theta,\\
+            \theta_i &\text{otherwise}.
+        \end{cases}
+    \end{align*}
+    Then
+    \begin{align*}
+        \theta_{i+1} &= \begin{cases}
+            \dfrac{\theta_i+b_i}2
+                &\text{if }\theta_i<\theta,\\[0.1in]
+            \dfrac{a_i+\theta_i}2
+                &\text{otherwise}.
+        \end{cases}\\[0.1in]
+        1-\theta_{i+1} &= \begin{cases}
+            \dfrac{1-\theta_i+1-b_i}2
+                &\text{if }\theta_i<\theta,\\[0.1in]
+            \dfrac{1-a_i+1-\theta_i}2
+                &\text{otherwise}.
+        \end{cases}.
+    \end{align*}
+    Hence, in the case $\theta_i<\theta$, we have
+    \begin{align*}
+        f\big((1-\theta_{i+1})\vect x
+                +\theta_{i+1}\vect y\big)
+            &= f\Big(\dfrac{(1-\theta_i)\vect x
+                    + \theta_i\vect y}2
+                    + \dfrac{(1-b_i)\vect x+b_i\vect y}2
+                \Big)\\
+            &\stackrel{\mathrm{J}}\le
+                \dfrac{f\big((1-\theta_i)\vect x
+                        + \theta_i\vect y\big)}2
+                        + \dfrac{f\big((1-b_i)\vect x
+                        + b_i\vect y\big)}2
+                \\
+            &\stackrel{\mathclap{\mathrm{I.H.}}}\le
+                \dfrac{(1-\theta_i)f(\vect x)
+                        + \theta_if(\vect y)}2
+                        + \dfrac{(1-b_i)f(\vect x)
+                        + b_if(\vect y)}2\\
+            &= (1-\theta_{i+1})f(\vect x)
+                + \theta_{i+1}f(\vect y).
+    \end{align*}
+    The case where $\theta_i\ge\theta$ is similar. The inductive argument is complete because $a_i$ and $b_i$ are respectively $0$ or $1$, or equal some $\theta_j$ with $j< i$.
+
+    Since $\lim\theta_i=\theta$, the conclusion follows by the continuity of $f$.
+\end{rem}

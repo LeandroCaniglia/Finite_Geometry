@@ -1,0 +1,38 @@
+\documentclass{book}
+
+\title{Finite Geometry}
+\author{Leandro Caniglia}
+\date{April 2025}
+
+\input preamble
+
+\begin{document}
+
+\frontmatter
+\thispagestyle{empty} % Removes page number from the title page
+\maketitle
+
+\thispagestyle{empty} % Removes page number from the table of contents page
+\tableofcontents
+
+\mainmatter
+
+\setlength{\parindent}{0pt}
+
+\include{1-Projective_Planes}
+\include{2-Collineations}
+\include{3-Coordinatization}
+\appendix
+\include{91-Appendix-functions}
+\include{92-Appendix-convex}
+\include{93-Appendix-nearfield}
+
+
+
+
+\bibliographystyle{natbib/plainnat}  % Choose a bibliography style
+\bibliography{bibliography}     % Specify your .bib file without the extension
+
+\end{document}
+
+
