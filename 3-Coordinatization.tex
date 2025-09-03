@@ -164,14 +164,15 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             [\infty]    &\text{if }\block a=XY,\\
             [x]   &\text{if }\block a\ne XY,
                 \ Y\incidence\block a,\
-                \block a\wedge OX=(x,0),\\
+                \block a\wedge OX\colon(x,0),\\
             [m,b]   &\text{if }
             \ Y\nincidence \block a,
             \ \block a\wedge XY\colon(m),
-            \ \block a\wedge OY=(0,b),
+            \ \block a\wedge OY\colon(0,b),
         \end{cases} 
 \end{equation}
-$$
+\begin{equation}\label{tik:line-coordinates}
+    \vcenter{\hbox{
     \begin{tikzpicture}[
         scale=1.2,
         point/.style={
@@ -263,10 +264,72 @@ $$
             fill=lightblue
         ] at (M) {};
     \end{tikzpicture}
-$$
+    }}
+\end{equation}
+
 \begin{rem}
     The interpretation is clear. The line\/ $XY$ is the line at infinity. The slope\/ $m$ of a line\/ $y=mx+b$ is determined by the point where it intersects the line\/ $XY$. The\/ $Y$-intercept\/ $b$ is determined by the line's intersection with the\/ $OY$ axis. Lines with infinite slope (vertical lines) have the form\/ $x=c$ and are assigned the coordinate\/ $[c]$. Every line passing through the origin\/ $O$ has coordinates of the form\/ $[m,0]$ (for finite slopes) or\/ $[0]$ (for the line\/ $OY$ which has infinite slope).
 \end{rem}
+
+\begin{prop}
+    The maps defined above
+    \begin{align*}
+        \begin{aligned}
+            \gamma\colon\pts
+                &\to\set{(\infty)}\cup\ter\cup(\ter\times\ter)\\
+            P&\mapsto\begin{cases}
+                (\infty)    &\text{\upshape if }P=Y,\\
+                (m)     &\text{\upshape if }P\incidence XY,\;P\ne Y,\\
+                (a,b)   &\text{\upshape if }P\nincidence XY
+            \end{cases}
+        \end{aligned}
+        &&\begin{aligned}
+            \delta\colon\blocks
+                &\to\set{[\infty]}\cup\ter\cup(\ter\times\ter)\\
+            \block a&\mapsto\begin{cases}
+                [\infty]    &\text{\upshape if }\block a=XY,\\
+                [x]         &\text{\upshape if }Y\incidence\block a,\\
+                [m,b]       &\text{\upshape if }Y\nincidence\block a
+            \end{cases}
+        \end{aligned}
+    \end{align*}
+    are bijective.
+\end{prop}
+
+\begin{proof}
+    Suppose that $\gamma(P)=\gamma(Q)$. Let $\gamma$ be the common value. There are four cases:
+    \begin{enumerate}[1.]
+        \item If $\gamma=\infty$, then $P=Y=Q$.
+        
+        \item If $\gamma=(a,a)$, then $P=Q$ because, by construction, there is a bijection between these pairs and the points incident with $OE$.
+        
+        \item If $\gamma=(a,b)$, then $PY\wedge OE=QY\wedge OE$ and $PX\wedge OE=QX\wedge OE$. Let $A$ be the first of these two points and $B$ the second. By the \rr\ $P,Q\incidence Y\!A$ and $P,Q\incidence XB$. Hence, $P=Y\!A\wedge XB=Q$.
+        
+        \item If $\gamma=(m)$, then $P,Q\incidence XY$ and $\gamma(OP\wedge Y\!E)=(1,m)=\gamma(OQ\wedge Y\!E)$. By the previous case, $OP\wedge Y\!E=OQ\wedge Y\!E$. Let $C$ denote this common value. By the \rr\ $P,Q\incidence OC$. Hence, $P=OC\wedge XY=Q$.
+    \end{enumerate}
+    It follows that $\gamma$ is injective. Since domain and codomain have the same number of elements, the map is bijective.
+
+    To verify that $\delta$ is bijective suppose $\delta(\block a)=\delta(\block b)$. Let $\delta$ be the common value. There are three cases:
+    \begin{enumerate}[1.]
+        \item If $\delta=[\infty]$, then $\block a=XY=\block b$.
+
+        \item If $\delta=(m,b)$, then
+        \begin{align*}
+            \gamma(\block a\wedge XY)&=(m)=\gamma(\block b\wedge XY)\\
+            \gamma(\block a\wedge OY)&=(0,b)=\gamma(\block b\wedge OY).
+        \end{align*}
+        By the injectivity of $\gamma$, we deduce that
+        \begin{align*}
+            \block a\wedge XY=\block b\wedge XY
+            \quad\text{and}\quad
+            \block a\wedge OY=\block b\wedge OY.
+        \end{align*}
+        Let $P$ and $Q$ denote the common values of these expressions. Since $Y\nincidence\block a,\block b$, we deduce that $P\ne Q$ and so $\block a=PQ=\block b$.
+        
+        \item If $\delta=[x]$, then $Y\incidence\block a,\block b$ and $\gamma(\block a\wedge OX)=(x,0)=\gamma(\block b\wedge OX)$. Hence, $\block a\wedge OX=\block b\wedge OX$. Thus, if $C$ is the common value of these two expressions, then $C\ne Y$ since $X,Y,O$ are not collinear, and so $\block a=YC=\block b$.
+    \end{enumerate}
+    Thus, $\delta$ is injective and, \textit{a fortiori}, bijective because domain and codomain are equipotent.
+\end{proof}
 
 \begin{prop}
     The homogeneous coordinates of $\PG(2,q)$ are compatible with the coordinates introduced above for the abstract finite projective plane with $\ter=\Fq$.
@@ -336,7 +399,7 @@ $$
     Consider the Fano plane
     $$
     \begin{tikzpicture}[
-        scale=1.3,
+        scale=1.1,
         font=\small,
         point/.style={draw, circle, fill=black, inner sep=1.5pt, minimum size=4pt}
         ]
@@ -366,33 +429,36 @@ $$
         \node[point, label=above:$X$] at (X) {};
         \node[point, label=left:$Y$] at (Y) {};
         \node[point, label=right:$O$] at (O) {};
-        \node[point, label=left:$3$] at (P3) {};
-        \node[point, label=below:$1$] at (P1) {};
-        \node[point, label=right:$2$] at (P2) {};
+        \node[point, fill=white, label=left:$3$] at (P3) {};
+        \node[point, fill=green, label=below:$1$] at (P1) {};
+        \node[point, fill=green, label=right:$2$] at (P2) {};
         \node[point, label={[label distance=2pt]left:$E$}] at (E) {};
     \end{tikzpicture}
     $$
     Following the algorithm of coordinatization, we get
-    \begin{enumerate}[\alg 1.]
+    
+    \vspace{-0.5\parskip}
+     {\small\alg
+    \begin{enumerate}[itemsep=1.8pt, parsep=0pt]
         \item Symbols: $\set{0,1,\infty}$.
         \item Quad: $O,X,Y,E$.
         \item Define $Z=OE\wedge XY=3$.
         \item Assign $O\colon(0,0)$, $Y\colon(\infty)$, $E\colon(1,1)$.
         \item Empty for $n=2$.
-        \item Compute
-            \begin{enumerate}[-]
+        \item \begin{enumerate}[-,itemsep=1.8pt, parsep=0pt]
                 \item $X1\wedge OE=E\colon(1,1)$ and $Y1\wedge OE=O\colon(0,0)$ and label $1\colon(0,1)$
                 \item $X2\wedge OE=O\colon(0,0)$ and $Y2\wedge OE=E\colon(1,1)$ and label $2\colon(1,0)$.
             \end{enumerate}
-        \item\begin{enumerate}[-]
-            \item For $M=3$ let $OM\wedge YE=E\colon(1,1)$, label $3\colon(1)$.
-            \item For $M=X$ let $OX\wedge YE=2\colon(1,0)$, label $X\colon(0)$.
-        \end{enumerate}
+        \item \begin{enumerate}[-,itemsep=1.8pt, parsep=0pt]
+                \item For $M=3$ let $OM\wedge YE=E\colon(1,1)$, label $3\colon(1)$.
+                \item For $M=X$ let $OX\wedge YE=2\colon(1,0)$, label $X\colon(0)$.
+            \end{enumerate}
     \end{enumerate}
+    }
     We can now compare with the homogenous coordinates of Proposition~\ref{prop:Fano=PG(2,2)} that would have assigned
     \begin{align*}
         X&=[1:0:0]  &Y&=[0:1:0] &O&=[0:0:1] &E&=[1:1:1]\\
-        3&=[1:1:0]  &2&=[1:0:1] &1&=[0:1:1]
+        3&=[1:1:0]  &2&=[1:0:1] &1&=[0:1:1].
     \end{align*}
 \end{test}
 
@@ -408,10 +474,8 @@ $$
     \begin{enumerate}[a)]
         \item By \eqref{eq:line-coordinates} we have ${(\infty)}\incidence{[x]}$ and $(x,0)\incidence{[x]}$. Thus, $[x]=(x,0)(\infty)$. Since the definition of $(x,0)$ implies $(x,0)(\infty)\wedge[1,0]=(x,x)$, we deduce that $[x]\wedge[1,0]=(x,x)$. The conclusion follows from~\eqref{eq:P-coordinates}.
 
-        \item By part a) we have $[m,b]\wedge[x]=(x,y)$ for some $y$, which must be unique because both lines are distinct.
+        \item By part a) we have $[m,b]\wedge[x]=(x,y)$ for some $y$, which must be unique because both lines are distinct. \qedhere
     \end{enumerate}
-    %
-    
 \end{proof}
 
 \begin{defn}
@@ -440,6 +504,114 @@ $$
 
 \begin{proof}${}$
     \begin{enumerate}[a)]
-        \item By \eqref{eq:line-coordinates}, $[0,b]\wedge[\infty]=(0)$ and $[0,b]\wedge[0,0]=(0,b)$.
+        \item From \eqref{eq:line-coordinates} we obtain $[0,b]\wedge[\infty]=(0,b)$ and $[0,b]\wedge[0,0]=(0)$. In particular, $(0,b)\incidence{[0,b]}$. Then $[0,b]=(0,b)(0)$ and so $(x,b)\incidence{[0,b]}$. By definition, it follows that $T(x,0,b)=b$.
+        $$
+            \begin{tikzpicture}[
+                scale=1.0,
+                font=\small,
+                point/.style={
+                    draw,
+                    circle,
+                    color=black,
+                    fill=green,
+                    inner sep=1.2pt},
+                    every node/.style={font=\footnotesize},
+                ]
+                \pgfmathsetmacro{\u}{1.7};
+                
+                % Points
+                \coordinate (xstart) at (0.0,0.0);
+                \coordinate (xend) at (2*\u,0.0);
+                \coordinate (ystart) at (0.0,0.0);
+                \coordinate (yend) at (0.0,2*\u);
+                \coordinate (E) at (\u,\u*0.8);
+                \coordinate (0b) at (0,\u*0.6);
+                \coordinate (x0) at (\u*0.3,0);
+                \coordinate (O) at (0.0,0.0);
+                
+                % Axes
+                \draw[name path=xaxis,
+                    color=orange,
+                    thick
+                ] (xstart) -- (xend)
+                    node[right,text=black] {$[0,0]$}
+                    node[point,
+                        fill=black,
+                        pos=0.5,
+                        label={[text=black,xshift=0mm,yshift=-7mm]:
+                            $(0)$}
+                    ] (X) {};
+                \draw[name path=yaxis,
+                    color=orange,
+                    thick
+                ] (ystart) -- (yend)
+                    node[above,text=black] {$[0]$}
+                    node[point,
+                    pos=0.95,
+                    fill=black,
+                    label={[text=black,left,yshift=-1mm]:
+                        $(\infty)$}
+                    ] (Y) {};
+                \node[point,
+                    fill=black,
+                    label={[yshift=-5mm,xshift=5mm]:
+                        $(1,1)$}
+                ] at (E) {};
+                \draw[name path=xY] (Y) -- ($(Y)!1.1!(x0)$)
+                    node[below] {$[x]$};
+                \draw[name path=OE] (O) -- ($(O)!1.4!(E)$)
+                    node[right] {$[1,0]$};
+                \draw[name path=Xb,thick] (0b) -- ($(0b)!1.4!(X)$)
+                    node[right] {$[0,b]$};
+                
+                \path[name intersections={of=xY and Xb,
+                    by=Pxb}];
+                \path[name intersections={of=xY and OE,
+                    by=xx}];
+                \path[name intersections={of=Xb and OE,
+                    by=bb}];
+                \node[point,
+                    label={[xshift=3.3mm,yshift=-1mm]:$(x,b)$}
+                ] at (Pxb) {};
+                \node[point,
+                    label={[xshift=4mm,yshift=-5mm]:$(x,x)$}
+                ] at (xx) {};
+                \node[point,
+                    label={[xshift=5mm,yshift=-3mm]:$(b,b)$}
+                ] at (bb) {};
+                \node[point,
+                    label={[left]:$(0,b)$}
+                ] at (0b) {};
+                \node[point,
+                    fill=black,
+                    label={[yshift=-7mm,xshift=-2mm,text=black]:
+                        $(0,0)$}
+                ] at (O) {};
+            \end{tikzpicture}
+        $$
+        The equation $T(0,m,b)=b$ follows from ~\eqref{eq:line-coordinates}, which implies $(0,b)\incidence{[m,b]}$.
+
+        To see that $T(1,x,0)=x$ it is enough to observe that $(1,x)\incidence{[x,0]}$, which is easily verified as depicted in~\eqref{tik:line-coordinates} for $x=m$.
+
+        In the case of $T(x,1,0)=x$ it suffices to recall that $(x,x)\incidence{[1,0]}$.
+
+        \item Let $P$ and $P'$ be points of the plane such that $P\colon(x,y)$ and $P'\colon(x',y')$. Since $x\ne x'$, it follows that $P\ne P'$, so the line $\block a=PP'$ is well-defined. Moreover, $Y\nincidence\block a'$, for otherwise we would have $PY=P'Y$, which is impossible because $PY\colon[x]$, $P'Y\colon[x']$, and $[x]\ne[x']$. Then, by~\eqref{eq:line-coordinates}, we have $\block a\colon[m,b]$, and the conclusion follows.
+
+        \item This is equivalent to part~b) of Lemma~\ref{lem:ternary-full-domain}.
+
+        \item Let $\block a$ and $\block a'$ be two lines such that $\block a\colon[m,b]$ and $\block b\colon[m',b']$. Since $m\ne m'$, it follows that $\block a\ne\block a'$, so the point $P=\block a\wedge\block a'$ is well-defined. Let $P\colon(x,y)$. Then, $P\incidence\block a$ and $P\incidence\block a'$ translate into $(x,y)\incidence{[m,b]}$ and $(x,y)\incidence{[m',b']}$, as desired.
+
     \end{enumerate}
+\end{proof}
+
+\begin{defn}
+    The algebraic structure $(\ter,T)$ is called a \textsl{ternary ring} if~$T$ satisfies properties (a)--(d) of the previous proposition.
+\end{defn}
+
+\begin{prop}
+    Every ternary ring coordinatizes some projective plane.  
+\end{prop}
+
+\begin{proof}
+    
 \end{proof}
