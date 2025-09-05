@@ -336,7 +336,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{prop}
 
 \begin{proof}
-    Take $O=[0:0:1]$, $X=[1:0:0]$, $Y=[0:1:0]$ and $E=[1:1:1]$. Then
+    Take $O=[0:0:1]$, $X=[1:0:0]$, $Y=[0:1:0]$, $E=[1:1:1]$. Then
     \[
         OX\equiv y=0,\quad OY\equiv x=0,\quad
         OE\equiv x=y,\quad XY\equiv z=0,\quad
@@ -371,17 +371,20 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \end{enumerate}
     In conclusion, we have the following bijection between homogeneous and abstract coordinates:
     \begin{align*}
-        [x:y:1] &\mapsto (x,y)\\
-        [x:y:0] &\mapsto (y/x)
+        \gamma\colon[x:y:1] &\mapsto (x,y)\\
+        \gamma\colon[x:y:0] &\mapsto (y/x)
     \end{align*}
     with the convention $1/0=\infty$.
 
     The same idea works for lines:
     \begin{align*}
-        (m:-1:b) &\mapsto[m,b]\\
-        (u:0:v) &\mapsto[-v/u]
+        \delta\colon(m:-1:b) &\mapsto[m,b]\\
+        \delta\colon(u:0:v) &\mapsto[-v/u]
     \end{align*}
     In particular,
+
+    \vspace{-1.5\parskip}
+    {\small
     \[
         \begin{array}{c|clc}
             {\text{line}} & \text{equation} & \text{homogeneous} &\text{coordinates}\\
@@ -392,11 +395,13 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             XY &  z=0 & (0:0:1) & [\infty]\\
             EY &  x=z & (1:0:-1) & [1]\\
         \end{array}
-    \]
+    \]}
 \end{proof}
 
 \begin{test}
     Consider the Fano plane
+
+    \vspace{-2\parskip}
     $$
     \begin{tikzpicture}[
         scale=1.1,
@@ -455,6 +460,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             \end{enumerate}
     \end{enumerate}
     }
+    \vspace{-1\parskip}
     We can now compare with the homogenous coordinates of Proposition~\ref{prop:Fano=PG(2,2)} that would have assigned
     \begin{align*}
         X&=[1:0:0]  &Y&=[0:1:0] &O&=[0:0:1] &E&=[1:1:1]\\
@@ -466,7 +472,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     Let\/ $\Pi$ be a projective plane of order\/ $n$ with coordinatization based on the quad\/ $O,X,Y,E$ and the set of symbols~$\ter$. Then
     \begin{enumerate}[a),font=\upshape]
         \item Every point on\/ $[x]$ has coordinates\/ $(x,y)$ for some\/ $y\in\ter$.
-        \item Given\/ $x,m,b\in\ter$, there unique\/ $y$ such that\/ $(x,y)\incidence{[m,b]}$ is the second coordinate of\/ $[m,b]\wedge[x]$.
+        \item Given\/ $x,y,m\in\ter$, there unique\/ $b$ such that\/ $(x,y)\incidence{[m,b]}$.
     \end{enumerate}
 \end{lem}
 
@@ -474,36 +480,47 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \begin{enumerate}[a)]
         \item By \eqref{eq:line-coordinates} we have ${(\infty)}\incidence{[x]}$ and $(x,0)\incidence{[x]}$. Thus, $[x]=(x,0)(\infty)$. Since the definition of $(x,0)$ implies $(x,0)(\infty)\wedge[1,0]=(x,x)$, we deduce that $[x]\wedge[1,0]=(x,x)$. The conclusion follows from~\eqref{eq:P-coordinates}.
 
-        \item By part a) we have $[m,b]\wedge[x]=(x,y)$ for some $y$, which must be unique because both lines are distinct. \qedhere
+        \item As we have already observed, the points on the line $[0]$ have $0$ as their first coordinate. Thus, $(m)(x,y)\wedge[0]=(0,b)$ for some $b\in\ter$. In particular, $(0,b)\incidence(m)(x,y)$. By the \rr\ $(x,y)\incidence(m)(0,b)$. The conclusion follows because $(m)(0,b)=[m,b]$ by \eqref{eq:line-coordinates}.  %\qedhere
     \end{enumerate}
 \end{proof}
 
 \begin{defn}
-    A \textsl{ternary operation}\/ $T(x,m,k)$ on the set\/ $\ter$ is defined as:
-    \[
-        T(x,m,b)=y \iff (x,y)\incidence {[m, b]}.
-    \]
+    Let A \textsl{ternary operation} on the set\/ $\ter$ is a map
+    \begin{align*}
+        T\colon\ter\times\ter\times\ter&\to\ter\\
+        (x,m,b)&\mapsto T(x,m,b).
+    \end{align*}
 \end{defn}
 
-\begin{prop}\label{prop:ternary-properties} The ternary operation\/ $T(x,m,b)$ defined above has the following properties:
-    \begin{enumerate}[a), font=\upshape]
-        \item For every\/ $x,m,b \in \ter$, we have
+\begin{defn}
+    The algebraic structure $(\ter,T)$, where $T$ is a ternary operation, is called a \textsl{ternary ring} if satisfies following properties:
+    \begin{enumerate}[label=TR\arabic*,font=\small]
+        \item\label{TR1} For every\/ $x,m,b \in \ter$, we have
         \[
             T(x,0,b) = T(0,m,b) =b
             \quad\text{and}\quad
             T(1,x,0) = T(x,1,0) =x.
         \]
         
-        \item If\/ $x,y,x',y' \in \ter$ are given and\/ $x\ne x'$, then there exists a unique pair\/ $(m,b) \in \ter \times \ter$ for which\/ $T(x,m,b)=y$ and\/ $T(x',m,b)=y'$.
+        \item\label{TR2} If\/ $x,y,x',y' \in \ter$ are given and\/ $x\ne x'$, then there exists a unique pair\/ $(m,b) \in \ter \times \ter$ for which\/ $T(x,m,b)=y$ and\/ $T(x',m,b)=y'$.
         
-        \item For every\/ $x,y,m\in\ter$ there is a unique\/ $y\in\ter$ for which\/ $y=T(x,m,b)$.
+        \item\label{TR3} For every\/ $x,y,m\in\ter$ there is a unique\/ $b\in\ter$ for which\/ $y=T(x,m,b)$.
         
-        \item If\/ $m,b,m',b'\in\ter$ are given and\/ $m\ne m'$, then there is a unique\/ $x\in\ter$ for which\/ $T(x,m,b) = T(x,m',b')$.
+        \item\label{TR4} If\/ $m,b,m',b'\in\ter$ are given and\/ $m\ne m'$, then there is a unique\/ $x\in\ter$ for which\/ $T(x,m,b) = T(x,m',b')$.
     \end{enumerate}
+\end{defn}
+
+
+\begin{prop}\label{prop:ternary-properties}
+    The ternary operation of a projective plane given by
+        \[
+            T(x,m,b)=y \iff (x,y)\incidence {[m, b]}
+        \]
+    defines a ternary ring.
 \end{prop}
 
 \begin{proof}${}$
-    \begin{enumerate}[a)]
+    \begin{enumerate}[TR\arabic*.,font=\small]
         \item From \eqref{eq:line-coordinates} we obtain $[0,b]\wedge[\infty]=(0,b)$ and $[0,b]\wedge[0,0]=(0)$. In particular, $(0,b)\incidence{[0,b]}$. Then $[0,b]=(0,b)(0)$ and so $(x,b)\incidence{[0,b]}$. By definition, it follows that $T(x,0,b)=b$.
         $$
             \begin{tikzpicture}[
@@ -604,14 +621,92 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \end{enumerate}
 \end{proof}
 
-\begin{defn}
-    The algebraic structure $(\ter,T)$ is called a \textsl{ternary ring} if~$T$ satisfies properties (a)--(d) of the previous proposition.
-\end{defn}
-
 \begin{prop}
     Every ternary ring coordinatizes some projective plane.  
 \end{prop}
 
-\begin{proof}
-    
+\begin{proof} Introduce
+    \begin{align*}
+        \pts &= \set{(\infty)}\cup\set{(c)\mid c\in\ter}
+                \cup\set{(a,b)\mid a,b\in\ter}\\
+        \blocks &= \set{[\infty]}\cup\set{[x]\mid x\in\ter}
+                \cup\set{[m,b]\mid m,b\in\ter}
+    \end{align*}
+    The incidence relation is defined in the following table, where $\textsc t$ and $\textsc f$ stand for true and false, and $x,y,c,m,b$ are elements of $\ter$,
+    \begin{equation}\label{tbl:incidence}
+        \begin{array}{c|ccc}
+            \incidence& {[\infty]} & {[c]} & {[m,b]}\\
+            \hline\rule{0pt}{10pt}
+            {(\infty)} &\textsc t &\textsc t &\textsc f \\
+            {(x)} &\textsc t &\textsc f &x=m \\
+            {(x,y)} &\textsc f &x=c &y=T(x,m,b)
+        \end{array}        
+    \end{equation}
+    To verify axioms \ref{P1}, \ref{P2} and \hyperref[lem:alternative-projective-axiom]{P3'}, we proceed as follows:
+    \begin{description}
+        \item[\small\sc Axiom P1:]
+        $$
+            \begin{array}{c|ccc}
+                & {(\infty)} & {(c')} & {(x',y')}\\
+                \hline\rule{0pt}{10pt}
+                {(\infty)} &&{[\infty]}&{[x']} \\
+                {(c)} &{[\infty]} &{[\infty]}&(1)\\
+                {(x,y)} &{[x]} &(1) &(2)
+            \end{array}
+        $$
+        \needspace{2\baselineskip}
+        where
+        \begin{enumerate}
+            \item By table \eqref{tbl:incidence}, the line $[m,b]$ passes through the points $(c)$ and $(x,y)$ if, and only if, $c=m$ and $y=T(x,m,b)$. Thus, we have to show that there exists $b$ satisfying $y=T(x,c,b)$. But this follows from {\small\ref{TR3}}.
+
+            \item This is property~b) of Proposition~\ref{prop:ternary-properties}.
+        \end{enumerate}
+
+        \item[\small\sc Axiom P2:]
+        $$
+            \begin{array}{c|ccc}
+                \wedge& {[\infty]} & {[c']} & {[m',b']}\\
+                \hline\rule{0pt}{10pt}
+                {[\infty]} &&{(\infty)}&{(m')} \\
+                {[c]} &{(\infty)} &{(\infty)}&(3)\\
+                {[m,b]} &{(m)} &(3) &(4)
+            \end{array}
+        $$
+        where
+        \begin{enumerate}
+            \item[3.] By Table~\eqref{tbl:incidence}, the point $(x,y)$ lies on both $[c]$ and $[m,b]$ if, and only if, $x=c$ and $y=T[c,m,b]$.
+
+            \item[4.] If $m\ne m'$, then {\small\ref{TR4}} there exists a unique pair $(x,y)$ incident with both $[m,b]$ and $[m',b']$. If $m=m'$ and $b\ne b'$, the two lines intersect at $(\infty)$.  
+
+        \item[\small\sc Axiom P3':] We claim that the points
+        \[
+            O=(0,0),\quad X=(0),
+                \quad Y=(\infty),\quad E=(1,1)
+        \]
+        are in general position. To see this, it is enough to prove the following equations
+        \[
+            OX=[0,0],\quad OE=[1,0],\quad XY=[\infty]
+        \]
+        and verify the \qr:
+        {\small
+        $$
+            \begin{array}{cccc}
+                 O&X&Y&E\\
+                 \mbf\cdot&\mbf\cdot&\mbf\cdot\\
+                 \mbf\cdot&\mbf\cdot&&\mbf\cdot\\
+                 \mbf\cdot&&\mbf\cdot&\mbf\cdot\\
+                 &\mbf\cdot&\mbf\cdot&\mbf\cdot
+            \end{array}
+        $$}
+        \begin{enumerate}[-]
+            \item $OX=[0,0]$ by property~a) and axiom P1.
+                \begin{enumerate}[$\to$]
+                    \item $(\infty)\nincidence{[0,0]}$ by table \eqref{tbl:incidence}.
+                    \item $(1,1)\nincidence{[0,0]}$ because $T(1,0,0)=0\ne1$ by {\small\ref{TR1}}
+                \end{enumerate}
+            \item $OE=[1,0]$ since property a) implies that $T(0,1,0)=0$ and $T(1,1,0)=1$. Moreover, $(\infty)\nincidence{[1,0]}$ by \eqref{tbl:incidence}.
+            \item $XY=[\infty]$ since \eqref{tbl:incidence} implies $(0)\incidence{[\infty]}$ and $(\infty)\incidence{[\infty]}$. Furthermore, $(1,1)\nincidence{[\infty]}$ by \eqref{tbl:incidence}.
+        \end{enumerate}
+        \end{enumerate}
+    \end{description}
 \end{proof}

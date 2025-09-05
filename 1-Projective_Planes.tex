@@ -187,6 +187,22 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
     We will refer to these equivalences as the \textsl{rotation rule}.
 \end{rem}
 
+\begin{rem}\label{rem:quad-rule} [Quad Rule]
+    From a set of four points $\set{A,B,C,D}$ we can form $\binom{4}{3}=4$ distinct triads, namely
+    \[
+    \begin{array}{cccc}
+        A & B & C & D\\
+        \hline
+        \textcolor{red}{\mbf\cdot} & \textcolor{red}{\mbf\cdot} & \mbf\cdot \\
+        \textcolor{red}{\mbf\cdot} & \textcolor{red}{\mbf\cdot} & & \mbf\cdot \\
+        \mbf\cdot & & \textcolor{red}{\mbf\cdot} & \textcolor{red}{\mbf\cdot} \\
+        & \mbf\cdot & \textcolor{red}{\mbf\cdot} & \textcolor{red}{\mbf\cdot}
+    \end{array}
+    \]
+    Therefore, to show that these four points form a quad, it suffices to check that none of the triads is collinear. For instance, $C,D\nincidence AB$ and $A,B\nincidence CD$.
+\end{rem}
+
+
 \begin{lem}\label{lem:alternative-projective-axiom}
     An incidence geometry\/ $\igeo$ is a projective plane if, and only if, it satisfies properties\/ {\upshape\ref{P1}} and\/ {\upshape\ref{P2}}, and one of the following two conditions:
     \begin{enumerate}
@@ -293,33 +309,33 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
             \node[point, label={above right:$C$}] at (C) {};
         \end{tikzpicture}
     $$
-    There are two cases: (1)~$E\incidence\block b$ and (2)~$E\nincidence\block b$. In case (1) $A,C,D,E$ are in general position. To see this let's rule out each of the four possible alignments that would prove us wrong:
+    There are two cases: (1)~$E\incidence\block b$ and (2)~$E\nincidence\block b$. In case (1) $A,C,D,E$ form a quad. To see this we can use the \qr:
     %\small
-    \begin{center}
-        \begin{tabular}{cccc|l}
-             $A$&$C$&$D$&$E$\\
+    \[
+        \begin{array}{cccc|l}
+             A&C&D&E\\
              \hline
-             &$\bullet$&$\bullet$&$\bullet$&$\leftarrow E\notin\block c=CD$\\
-             $\bullet$&&$\bullet$&$\bullet$&$\leftarrow D\notin\block b=AE$\\
-             $\bullet$&$\bullet$&&$\bullet$&$\leftarrow E\notin\block a=AC$\\
-             $\bullet$&$\bullet$&$\bullet$& &$\leftarrow D\notin\block a=AC$\\
-        \end{tabular}
-    \end{center}
+             \mbf\cdot&\mbf\cdot&\mbf\cdot& &\leftarrow D\notin\block a=AC\\
+             \mbf\cdot&\mbf\cdot&&\mbf\cdot&\leftarrow E\notin\block a=AC\\
+             \mbf\cdot&&\mbf\cdot&\mbf\cdot&\leftarrow D\notin\block b=AE\\
+             &\mbf\cdot&\mbf\cdot&\mbf\cdot&\leftarrow E\notin\block c=CD
+        \end{array}
+    \]
     \normalsize
     Note that $\block b=AE$ because $E\incidence\block b$ and $E\nincidence\block a$.
     \needspace{2\baselineskip}
     In case (2) $A,C,E,B$ are in general position:
     %\small
-    \begin{center}
-        \begin{tabular}{cccc|l}
-             $A$&$C$&$E$&$B$\\
+    \[
+        \begin{array}{cccc|l}
+             A&C&E&B\\
              \hline
-             &$\bullet$&$\bullet$&$\bullet$&$\leftarrow E\notin\block c=CB$\\
-             $\bullet$&&$\bullet$&$\bullet$&$\leftarrow E\notin\block b=AB$\\
-             $\bullet$&$\bullet$&&$\bullet$&$\leftarrow B\notin\block a=AC$\\
-             $\bullet$&$\bullet$&$\bullet$& &$\leftarrow E\notin\block a=AC$\\
-        \end{tabular}
-    \end{center}
+             \mbf\cdot&\mbf\cdot&\mbf\cdot& &\leftarrow E\notin\block a=AC\\
+             \mbf\cdot&\mbf\cdot&&\mbf\cdot&\leftarrow B\notin\block a=AC\\
+             \mbf\cdot&&\mbf\cdot&\mbf\cdot&\leftarrow E\notin\block b=AB\\
+             &\mbf\cdot&\mbf\cdot&\mbf\cdot&\leftarrow E\notin\block c=CB
+        \end{array}
+    \]
     \normalsize
 \end{proof}
 
