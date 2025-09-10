@@ -271,11 +271,11 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     The interpretation is clear. The line\/ $XY$ is the line at infinity. The slope\/ $m$ of a line\/ $y=mx+b$ is determined by the point where it intersects the line\/ $XY$. The\/ $Y$-intercept\/ $b$ is determined by the line's intersection with the\/ $OY$ axis. Lines with infinite slope (vertical lines) have the form\/ $x=c$ and are assigned the coordinate\/ $[c]$. Every line passing through the origin\/ $O$ has coordinates of the form\/ $[m,0]$ (for finite slopes) or\/ $[0]$ (for the line\/ $OY$ which has infinite slope).
 \end{rem}
 
-\begin{prop}
+\begin{prop}\label{prop:coodinatization-maps}
     The maps defined above
     \begin{align*}
         \begin{aligned}
-            \gamma\colon\pts
+            \sigma\colon\pts
                 &\to\set{(\infty)}\cup\ter\cup(\ter\times\ter)\\
             P&\mapsto\begin{cases}
                 (\infty)    &\text{\upshape if }P=Y,\\
@@ -284,7 +284,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             \end{cases}
         \end{aligned}
         &&\begin{aligned}
-            \delta\colon\blocks
+            \gamma\colon\blocks
                 &\to\set{[\infty]}\cup\ter\cup(\ter\times\ter)\\
             \block a&\mapsto\begin{cases}
                 [\infty]    &\text{\upshape if }\block a=XY,\\
@@ -293,32 +293,32 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             \end{cases}
         \end{aligned}
     \end{align*}
-    are bijective.
+    are bijective.\footnote{We use $\sigma$ after the Greek word \foreignlanguage{greek}{σημείο} (point) and $\gamma$ after \foreignlanguage{greek}{γραμμή} (line).}
 \end{prop}
 
 \begin{proof}
-    Suppose that $\gamma(P)=\gamma(Q)$. Let $\gamma$ be the common value. There are four cases:
+    Suppose that $\sigma(P)=\sigma(Q)$. Let $\sigma$ be the common value. There are four cases:
     \begin{enumerate}[1.]
-        \item If $\gamma=\infty$, then $P=Y=Q$.
+        \item If $\sigma=\infty$, then $P=Y=Q$.
         
-        \item If $\gamma=(a,a)$, then $P=Q$ because, by construction, there is a bijection between these pairs and the points incident with $OE$.
+        \item If $\sigma=(a,a)$, then $P=Q$ because, by construction, there is a bijection between these pairs and the points incident with $OE$.
         
-        \item If $\gamma=(a,b)$, then $PY\wedge OE=QY\wedge OE$ and $PX\wedge OE=QX\wedge OE$. Let $A$ be the first of these two points and $B$ the second. By the \rr\ $P,Q\incidence Y\!A$ and $P,Q\incidence XB$. Hence, $P=Y\!A\wedge XB=Q$.
+        \item If $\sigma=(a,b)$, then $PY\wedge OE=QY\wedge OE$ and $PX\wedge OE=QX\wedge OE$. Let $A$ be the first of these two points and $B$ the second. By the \rr\ $P,Q\incidence Y\!A$ and $P,Q\incidence XB$. Hence, $P=Y\!A\wedge XB=Q$.
         
-        \item If $\gamma=(m)$, then $P,Q\incidence XY$ and $\gamma(OP\wedge Y\!E)=(1,m)=\gamma(OQ\wedge Y\!E)$. By the previous case, $OP\wedge Y\!E=OQ\wedge Y\!E$. Let $C$ denote this common value. By the \rr\ $P,Q\incidence OC$. Hence, $P=OC\wedge XY=Q$.
+        \item If $\sigma=(m)$, then $P,Q\incidence XY$ and $\sigma(OP\wedge Y\!E)=(1,m)=\sigma(OQ\wedge Y\!E)$. By the previous case, $OP\wedge Y\!E=OQ\wedge Y\!E$. Let $C$ denote this common value. By the \rr\ $P,Q\incidence OC$. Hence, $P=OC\wedge XY=Q$.
     \end{enumerate}
-    It follows that $\gamma$ is injective. Since domain and codomain have the same number of elements, the map is bijective.
+    It follows that $\sigma$ is injective. Since domain and codomain have the same number of elements, the map is bijective.
 
-    To verify that $\delta$ is bijective suppose $\delta(\block a)=\delta(\block b)$. Let $\delta$ be the common value. There are three cases:
+    To verify that $\gamma$ is bijective suppose $\gamma(\block a)=\gamma(\block b)$. Let $\gamma$ be the common value. There are three cases:
     \begin{enumerate}[1.]
-        \item If $\delta=[\infty]$, then $\block a=XY=\block b$.
+        \item If $\gamma=[\infty]$, then $\block a=XY=\block b$.
 
-        \item If $\delta=(m,b)$, then
+        \item If $\gamma=(m,b)$, then
         \begin{align*}
-            \gamma(\block a\wedge XY)&=(m)=\gamma(\block b\wedge XY)\\
-            \gamma(\block a\wedge OY)&=(0,b)=\gamma(\block b\wedge OY).
+            \sigma(\block a\wedge XY)&=(m)=\sigma(\block b\wedge XY)\\
+            \sigma(\block a\wedge OY)&=(0,b)=\sigma(\block b\wedge OY).
         \end{align*}
-        By the injectivity of $\gamma$, we deduce that
+        By the injectivity of $\sigma$, we deduce that
         \begin{align*}
             \block a\wedge XY=\block b\wedge XY
             \quad\text{and}\quad
@@ -326,9 +326,9 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \end{align*}
         Let $P$ and $Q$ denote the common values of these expressions. Since $Y\nincidence\block a,\block b$, we deduce that $P\ne Q$ and so $\block a=PQ=\block b$.
         
-        \item If $\delta=[x]$, then $Y\incidence\block a,\block b$ and $\gamma(\block a\wedge OX)=(x,0)=\gamma(\block b\wedge OX)$. Hence, $\block a\wedge OX=\block b\wedge OX$. Thus, if $C$ is the common value of these two expressions, then $C\ne Y$ since $X,Y,O$ are not collinear, and so $\block a=YC=\block b$.
+        \item If $\gamma=[x]$, then $Y\incidence\block a,\block b$ and $\sigma(\block a\wedge OX)=(x,0)=\sigma(\block b\wedge OX)$. Hence, $\block a\wedge OX=\block b\wedge OX$. Thus, if $C$ is the common value of these two expressions, then $C\ne Y$ since $X,Y,O$ are not collinear, and so $\block a=YC=\block b$.
     \end{enumerate}
-    Thus, $\delta$ is injective and, \textit{a fortiori}, bijective because domain and codomain are equipotent.
+    Thus, $\gamma$ is injective and, \textit{a fortiori}, bijective because domain and codomain are equipotent.
 \end{proof}
 
 \begin{prop}
@@ -371,15 +371,15 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \end{enumerate}
     In conclusion, we have the following bijection between homogeneous and abstract coordinates:
     \begin{align*}
-        \gamma\colon[x:y:1] &\mapsto (x,y)\\
-        \gamma\colon[x:y:0] &\mapsto (y/x)
+        \sigma\colon[x:y:1] &\mapsto (x,y)\\
+        \sigma\colon[x:y:0] &\mapsto (y/x)
     \end{align*}
     with the convention $1/0=\infty$.
 
     The same idea works for lines:
     \begin{align*}
-        \delta\colon(m:-1:b) &\mapsto[m,b]\\
-        \delta\colon(u:0:v) &\mapsto[-v/u]
+        \gamma\colon(m:-1:b) &\mapsto[m,b]\\
+        \gamma\colon(u:0:v) &\mapsto[-v/u]
     \end{align*}
     In particular,
 
@@ -493,7 +493,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{defn}
 
 \begin{defn}
-    The algebraic structure $(\ter,T)$, where $T$ is a ternary operation, is called a \textsl{ternary ring} if satisfies following properties:
+    The algebraic structure $(\ter,T)$, where $T$ is a ternary operation, is called a \textsl{ternary ring of order}~$n$ if $\ter$ has $n$ elements and the following axioms hold:
     \begin{enumerate}[label=TR\arabic*,font=\small]
         \item\label{TR1} For every\/ $x,m,b \in \ter$, we have
         \[
@@ -521,7 +521,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 
 \begin{proof}${}$
     \begin{enumerate}[TR\arabic*.,font=\small]
-        \item From \eqref{eq:line-coordinates} we obtain $[0,b]\wedge[\infty]=(0,b)$ and $[0,b]\wedge[0,0]=(0)$. In particular, $(0,b)\incidence{[0,b]}$. Then $[0,b]=(0,b)(0)$ and so $(x,b)\incidence{[0,b]}$. By definition, it follows that $T(x,0,b)=b$.
+        \item From \eqref{eq:line-coordinates} we obtain $[0,b]\wedge[\infty]=(0,b)$ and $[0,b]\wedge[0,0]=(0)$. In particular, $(0,b),(0)\incidence{[0,b]}$. Then $[0,b]=(0,b)(0)$ and so $(x,b)\incidence{[0,b]}$, as illustrated below. Hence, the definition of $T$ implies $T(x,0,b)=b$.
         $$
             \begin{tikzpicture}[
                 scale=1.0,
@@ -606,11 +606,11 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
                 ] at (O) {};
             \end{tikzpicture}
         $$
-        The equation $T(0,m,b)=b$ follows from ~\eqref{eq:line-coordinates}, which implies $(0,b)\incidence{[m,b]}$.
+        Equality $T(0,m,b)=b$ follows at it simply means $(0,b)\incidence{[m,b]}$.
 
         To see that $T(1,x,0)=x$ it is enough to observe that $(1,x)\incidence{[x,0]}$, which is easily verified as depicted in~\eqref{tik:line-coordinates} for $x=m$.
 
-        In the case of $T(x,1,0)=x$ it suffices to recall that $(x,x)\incidence{[1,0]}$.
+        For $T(x,1,0)=x$ it suffices to recall that, by definition, $(x,x)\incidence{[1,0]}$.
 
         \item Let $P$ and $P'$ be points of the plane such that $P\colon(x,y)$ and $P'\colon(x',y')$. Since $x\ne x'$, it follows that $P\ne P'$, so the line $\block a=PP'$ is well-defined. Moreover, $Y\nincidence\block a'$, for otherwise we would have $PY=P'Y$, which is impossible because $PY\colon[x]$, $P'Y\colon[x']$, and $[x]\ne[x']$. Then, by~\eqref{eq:line-coordinates}, we have $\block a\colon[m,b]$, and the conclusion follows.
 
@@ -621,7 +621,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \end{enumerate}
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{prop:projective-plane-of-ternary-ring}
     Every ternary ring coordinatizes some projective plane.  
 \end{prop}
 
@@ -650,8 +650,8 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
                 & {(\infty)} & {(c')} & {(x',y')}\\
                 \hline\rule{0pt}{10pt}
                 {(\infty)} &&{[\infty]}&{[x']} \\
-                {(c)} &{[\infty]} &{[\infty]}&(1)\\
-                {(x,y)} &{[x]} &(1) &(2)
+                {(c)} &{[\infty]} &{[\infty]}&1\\
+                {(x,y)} &{[x]} &1 &2
             \end{array}
         $$
         \needspace{2\baselineskip}
@@ -659,7 +659,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \begin{enumerate}
             \item By table \eqref{tbl:incidence}, the line $[m,b]$ passes through the points $(c)$ and $(x,y)$ if, and only if, $c=m$ and $y=T(x,m,b)$. Thus, we have to show that there exists $b$ satisfying $y=T(x,c,b)$. But this follows from {\small\ref{TR3}}.
 
-            \item This is property~b) of Proposition~\ref{prop:ternary-properties}.
+            \item This is Axiom {\small\ref{TR2}}.
         \end{enumerate}
 
         \item[\small\sc Axiom P2:]
@@ -668,8 +668,8 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
                 \wedge& {[\infty]} & {[c']} & {[m',b']}\\
                 \hline\rule{0pt}{10pt}
                 {[\infty]} &&{(\infty)}&{(m')} \\
-                {[c]} &{(\infty)} &{(\infty)}&(3)\\
-                {[m,b]} &{(m)} &(3) &(4)
+                {[c]} &{(\infty)} &{(\infty)}&3\\
+                {[m,b]} &{(m)} &3 &4
             \end{array}
         $$
         where
@@ -709,4 +709,289 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \end{enumerate}
         \end{enumerate}
     \end{description}
+\end{proof}
+
+\begin{rem}\label{rem:plane-assciated-to-ternary-ring}
+    Let $(\ter,T)$ be a ternary ring. The previous proposition maps $(\ter,T)$ to an \textsl{associated} projective plane $\Pi_{(\ter,T)}=(\pts_{(\ter,T)},\blocks_{(\ter,T)},\incidence_{(\ter,T)})$ with the same order of $\Pi$. Moreover, the bijections $\sigma$ and $\gamma$ of Proposition~\ref{prop:coodinatization-maps} for $\Pi_{(\ter,T)}$ are both the identity.
+\end{rem}
+
+\begin{lem}\label{lem:isomorphic-coordinatized-projective-plane}
+    Let\/ $\Pi=\igeo$ be a projective plane of order\/~$n$, and let\/ $\ter$ be a set of\/~$n$ elements containing\/ $0,1$ but not\/~$\infty$. Then the coordinatization of\/~$\Pi$ based on\/ $\ter$ and on a quad\/ $O,X,Y,E$ yields a ternary ring\/ $(\ter,T)$ whose associated projective plane is isomorphic to\/~$\Pi$. Moreover, the collineation between both projective planes maps\/ $(O,X,Y,E)$ to\/ $((0,0),(0),(\infty),(1,1))$.
+\end{lem}
+
+
+\begin{proof}
+    Let $\Pi_{(\ter,T)}=(\pts_{(\ter,T)},\blocks_{(\ter,T)},\incidence_{(\ter,T)})$ be the projective plane associated to $(\ter,T)$. Consider the bijections
+    \begin{align*}
+        \sigma\colon\pts&\to\pts_{(\ter,T)}\\
+        \gamma\colon\blocks&\to\blocks_{(\ter,T)} 
+    \end{align*}
+    defined in Proposition~\ref{prop:coodinatization-maps}.      We claim that $(\sigma,\gamma)$ is a collineation. To prove this, we have to show that if $P\incidence\block a$, then $\sigma(P)\incidence_{(\ter,T)}\lambda(\block a)$. We will say that the flag $(P,\block a)$ is \textsl{good} if the coordinates satisfy the incidence relation. There are several cases for $\sigma(P)$ and $\gamma(\block a)$, namely
+    \[
+        \begin{array}{c|ccc}
+            &{[\infty]}&{[a]}&{[m,b]}\\
+            \hline\rule{0pt}{10pt}
+            (\infty)&\checkmark&\checkmark&\text-\\
+            (c)&\checkmark&\text-&1\\
+            (x,y)&\text-&2&3
+        \end{array}
+    \]
+    The check mark stands for cases where the flag is clearly good; the dash for impossible cases. Let's analyze the three possibilities left
+    \begin{enumerate}
+        \item Here $P\ne Y$, $P\incidence XY$, $Y\nincidence\block a$, $\block a\wedge XY\colon(m)$, and $\block a\wedge OY\colon(0,b)$. It follows that $P=\block a\wedge XY\colon(m)$. Hence, $c=m$, and since $(m)$ is on $[m,b]$, the flag is good.
+        
+        \item In this case, $P\nincidence XY$, $PY\wedge OE\colon(x,x)$, $PX\wedge OE\colon(y,y)$, $Y\incidence\block a$, $\block a\ne XY$, and $\block a\wedge OX\colon(a,0)$. Then $PY=\block a$ and so $x=a$. Thus, $(x,y)=(a,y)$ which is on $[a]$, i.e., the flag is good.
+
+        \item As before, $P\nincidence XY$, $PY\wedge OE\colon(x,x)$, $PX\wedge OE\colon(y,y)$. Let $B=\block a\wedge OY$. Then $B\colon(0,b)$. By \eqref{eq:line-coordinates} we have $PY\colon[x]$. Therefore, $[x]\wedge[m,b]=(x,y)$, which implies that the flag is good:
+        $$
+            \begin{tikzpicture}[
+                scale=1.2,
+                point/.style={
+                    draw,
+                    circle,
+                    color=black,
+                    fill=black,
+                    inner sep=1.2pt},
+                    every node/.style={font=\footnotesize},
+                ]
+                \pgfmathsetmacro{\u}{1.7};
+                
+                % Points
+                \coordinate (xstart) at (0.0,0.0);
+                \coordinate (xend) at (2*\u,0.0);
+                \coordinate (ystart) at (0.0,0.0);
+                \coordinate (yend) at (0.0,2*\u);
+                \coordinate (E) at (\u,\u*0.8);
+                \coordinate (Q) at (\u*0.3,\u*0.0);
+                
+                % Axis
+                \draw[name path=xaxis,
+                    color=orange,
+                    thick
+                ] (xstart) -- (xend)
+                    node[right,text=black] {$[0,0]$}
+                    node[point,
+                    pos=0.0,
+                    label={[yshift=-5mm,xshift=-2mm]:
+                        \textcolor{black}{$O$}}] (O) {}
+                    node[point,
+                        pos=0.5,
+                        label={[text=black,xshift=-1mm,yshift=-6mm]:
+                            $X$}
+                    ] (X) {};
+        
+                \draw[name path=yaxis,
+                    color=orange,
+                    thick
+                ] (ystart) -- (yend)
+                    node[above,text=black] {$[0]$}
+                    node[point,
+                    pos=0.95,
+                    label={[text=black,left,yshift=-1mm]:
+                        $Y$}
+                    ] (Y) {};
+                \node[point,
+                    label={[xshift=3mm,yshift=-3mm]:
+                        $E$}
+                ] at (E) {};
+                \draw[name path=OE] (O) -- ($(O)!1.5!(E)$)
+                    node[right] {$[1,0]$};
+                \draw[name path=YQ] (Y) -- ($(Y)!1.1!(Q)$)
+                    node[xshift=2mm,yshift=-2mm] {$[x]$};
+                \draw[name path=XY] ($(X)!-0.1!(Y)$) -- (Y)
+                    node[pos=0,xshift=2.7mm,yshift=-2mm] {$[\infty]$}
+                    node[pos=0.48,
+                        label={[xshift=4mm,yshift=-3mm]:
+                            $(m)$}
+                    ] (M) {};
+                \path[name intersections={of=OE and XY, by=zz}];
+                \draw[name path=YE] (Y) -- ($(Y)!1.2!(E)$)
+                    node[right] {$[1]$};
+                \coordinate (L) at (0,\u*1.2);
+                \draw[name path=blocka] (L) -- ($(L)!2.1!(M)$)
+                    node[
+                        label={[xshift=4mm,yshift=-6mm]:$[m,b]$}
+                    ] {};
+                \node[point,
+                    fill=green,
+                    label={[left]: $(0,b)$}
+                ] at (L) {};
+                \node[point,
+                    fill=lightblue
+                ] at (M) {};
+                \path[name intersections={of=YQ and blocka,by=P}];
+                \node[point,
+                    fill=orange,
+                    label={[xshift=2mm,yshift=-1.5mm]:$P$}
+                ] at (P) {};
+                \draw[name path=XP] (X) -- (P);
+                \path[name intersections={of=XP and OE, by=yy}];
+                \node[point,
+                    label={[xshift=-4.3mm,yshift=-3.1mm]:$(y,y)$}
+                ] at (yy) {};
+            \end{tikzpicture}
+        $$
+    \end{enumerate}
+\end{proof}
+
+\begin{defn}
+    The ternary rings $(\ter,T)$ and $(\ter',T')$ are isomorphic, if there is a map $\theta\colon\ter\to\ter'$ for which $\theta(T(x,m,b))=T'(\theta(x),\theta(m),\theta(b))$ holds for every $x,m,b\in\ter$.
+\end{defn}
+
+\begin{lem}
+    Let\/ $(\ter,T)$ be a ternary ring. Given\/ $m,b\in\ter$, with\/ $m\ne0$, the map
+    \begin{align*}
+        \ter&\to\ter\\
+        x&\mapsto T(x,m,b)
+    \end{align*}
+    is a bijection.
+\end{lem}
+
+\begin{proof}
+    Since $\ter$ is a finite set, it suffices to show that the map is injective. Suppose that $T(x,m,b)=T(x',m,b)$ for some $x\ne x'$, and let $y$ denote the common value. By {\small\ref{TR1}},
+    \begin{align*}
+        T(x,0,y) &= y, &T(x',0,y) &= y,\\
+        T(x,m,b) &= y, &T(x',m,b) &= y.
+    \end{align*}
+    By {\small\ref{TR2}}, we must have $(m,b)=(0,y)$, which is impossible because $m\ne0$.
+\end{proof}
+
+\begin{lem}
+    If\/ $\theta\colon(\ter,T)\to(\ter',T')$ is an isomorphism, then\/ $\theta(0)=0'$ and\/ $\theta(1)=1'$.
+\end{lem}
+
+\begin{proof}
+    Given a pair $(m,b)$, we have
+    \begin{align*}
+        T'(\theta(0),\theta(m),\theta(b)) &= \theta(T(0,m,b))\\
+            &=\theta(b) 
+                &&\text{; {\small\ref{TR1}}}\\
+            &= T'(0',\theta(m),\theta(b)).
+    \end{align*}
+    Hence, by the previous lemma, $\theta(0)=0'$, as wanted.
+
+    On the other hand, given $x\in\ter$, by {\small\ref{TR1}}, we have
+    \begin{align*}
+        T'(1',\theta(x),0') &= \theta(x)\\
+            &= \theta(T(1,x,0))\\
+            &= T'(\theta(1),\theta(x),0')
+                &&;\ \theta(0)=0'
+    \end{align*}
+    which, according to the previous lemma, implies that $\theta(1)=1'$.
+\end{proof}
+
+\begin{prop}\label{prop:coorinatized-isomorphism}
+    Let\/ $\theta\colon (\ter,T)\to(\ter',T')$ be an isomorphism of ternary rings. Then\/ $\theta$ induces a collineation between the associated projective planes.\footnote{See {\upshape Proposition~\ref{prop:projective-plane-of-ternary-ring}} for the construction of a projective plane from a ternary ring.} Moreover, this collineation maps the base quad\/ $((0,0),(0),(\infty),(1,1))$ of\/ $\Pi$ onto the base quad\/ $((0',0'),(0'),(\infty'),(1',1'))$ of\/ $\Pi'$.
+\end{prop}
+
+
+\begin{proof}
+   Let\/ $\Pi=\igeo$ and\/ $\Pi'=(\pts',\blocks',\incidence')$ be the projective planes associated with the ternary rings. Define
+    \begin{align*}
+        \begin{aligned}
+            \theta_{\pts}\colon\pts&\to\pts'\\
+            (\infty)&\mapsto(\infty')\\
+            (x)&\mapsto(\theta(x))\\
+            (x,y)&\mapsto(\theta(x),\theta(y))
+        \end{aligned}
+        &&
+        \begin{aligned}
+            \theta_{\blocks}\colon\blocks&\to\blocks'\\
+            [\infty]&\mapsto[\infty']\\
+            [x]&\mapsto[\theta(x)]\\
+            [m,b]&\mapsto[\theta(m),\theta(b)]
+        \end{aligned}
+    \end{align*}
+    Both\/ $\theta_{\pts}$ and\/ $\theta_{\blocks}$ are bijections, since\/ $\theta$ is a bijection. By table\/ \eqref{tbl:incidence}, the pair\/ $(\theta_{\pts},\theta_{\blocks})$ preserves incidences, and therefore defines a collineation. The correspondence of base quads is a direct consequence of the previous lemma.
+\end{proof}
+
+
+\begin{rem}
+    The correspondence
+    \begin{align*}
+        (\ter,T)\mapsto\Pi_{(\ter,T)},\qquad 
+        \theta\mapsto(\theta_{\pts},\theta_{\blocks})
+    \end{align*}
+    is functorial, that is, it preserves both identities and compositions.
+\end{rem}
+
+\begin{thm}\label{thm:coordinatization-consistency}
+    Let\/ $(\ter,T)$ and\/ $(\ter',T')$ be two ternary rings coordinatizing the projective plane\/ $\Pi$, with respective base points\/ $O,X,Y,E$ and\/ $O',X',Y',E'$. Then $(\ter,T)$ and\/ $(\ter',T')$ are isomorphic if, and only if, there exists a collineation of\/ $\Pi$ mapping the quad\/ $(O,X,Y,E)$ onto\/ $(O',X',Y',E')$.
+\end{thm}
+
+\begin{proof}
+    Let $\Pi=\igeo$. To prove the \textit{only if\/} part, suppose that\/ $\theta\colon\ter\to\ter'$ is an isomorphism of ternary rings. With the notation of Lemma~\ref{lem:isomorphic-coordinatized-projective-plane} and Proposition~\ref{prop:coorinatized-isomorphism}, we obtain the diagram
+    \[
+        \begin{tikzcd}
+            \Pi
+                \arrow[d,"{(\sigma,\gamma)}"']
+                \arrow[r,"{(\phi_{\pts},\phi_{\blocks})}",dashed]
+            & \Pi
+                \arrow[d,"{(\sigma',\gamma')}"]\\
+            {\Pi_{(\ter,T)}}
+                \arrow[r,"{(\theta_{\pts},\theta_{\blocks})}"']
+            & {\Pi_{(\ter',T')}}
+        \end{tikzcd}
+    \]
+    where the top horizontal collineation ensures commutativity. The conclusion of this part follows directly from the cited lemma and proposition.
+
+    Conversely. If a collineation $(\phi_{\pts},\phi_{\blocks})$ is given that maps $(O,X,Y,E)$ onto $(O',X',Y',E')$, to complete the proof we have to show that there exists an isomorphism $\theta\colon(\ter,T)\to(\ter',T')$ such that
+    \begin{equation}\label{eq:theta-equation}
+        (\sigma',\gamma')
+            \circ(\phi_{\pts},\phi_{\blocks})
+            \circ(\sigma,\gamma)^{-1}=(\theta_{\pts},\theta_{\blocks}).
+    \end{equation}
+    Let $(\varphi,\psi)$ be the correlation on the \lhs\ of~\eqref{eq:theta-equation}. By Lemma~\ref{lem:isomorphic-coordinatized-projective-plane}, we have
+    \[
+        \varphi(0,0)=(0',0'),\quad\varphi(0)=(0'),
+        \quad\varphi(1,1)=(1',1'),\quad\varphi(\infty)=(\infty').
+    \]
+    Furthermore, since $Z=XY\wedge OE$ and $Z'=X'Y'\wedge O'E'$, we get $\varphi(1)=(1')$. Similarly,
+    \[
+        \psi[0,0]=[0',0'],\quad\psi[0]=[0'],
+        \quad\psi[1,0]=[1',0'],\quad\psi[\infty]=[\infty'].
+    \]
+    In consequence,
+    \begin{equation}\label{eq:OE-and-YE}
+        \psi[1]=[1'],\quad\varphi(1,0)=(1',0')
+    \end{equation}
+    Consider the bijection
+    \begin{align*}
+        \theta\colon(\ter,T)&\to(\ter',T')\\
+        x&\mapsto x',
+    \end{align*}
+    where $(x')=\varphi((x))$. In particular $\theta(0)=0'$ and $\theta(1)=1'$. To see that $\theta$ is an isomorphism of ternary rings we have to show that
+    \begin{equation}\label{eq:to-be-proven}
+        (x,y)\incidence{[m,b]}
+            \implies
+            (\theta(x),\theta(y))
+                \incidence{[\theta(m),\theta(b)]},
+    \end{equation}
+    where, for the sake of simplicity, we have used $\incidence$ instead of $\incidence_{(\ter,T)}$. By definition, $(\theta(m))=\varphi((m))$. Thus, from \eqref{eq:OE-and-YE}, we deduce
+    \begin{align*}
+        \varphi((1,m)) &= \varphi((0,0))\varphi((m))\wedge[1']\\
+            &= (0',0')(\theta(m))\wedge[1']\\
+            &= (1',\theta(m)).
+    \end{align*}
+    Since $(c,c)\incidence{[1,0]}$, we have $\varphi((c,c))=(c',c')$, for some $c'\in\ter'$. In addition, from $(1,c)=[1]\wedge(0)(c,c)$, we deduce
+    \begin{align*}
+        (1',\theta(c)) &= \varphi((1,c))\\
+            &=[1']\wedge(0')(c',c')\\
+            &= (1',c'),
+    \end{align*}
+    which implies $c'=\theta(c)$. Hence, $\varphi((c,c))=(\theta(c),\theta(c))$. This has two consequences. First, we have\/ $\varphi(x,y)=(\theta(x),\theta(y))$. Indeed,\/ $x$ is determined by the relation\/ $(x,y)(\infty)\wedge[1,0]=(x,x)$, and\/ $y$ by\/ $(x,y)(0)\wedge[1,0]=(y,y)$. 
+
+    Second, using that\/ $[m,b]=(m)(0,b)$, we deduce
+    \begin{align*}
+        \psi[m,b] 
+            &= \varphi((m))\varphi((0,b))\\
+            &= (\theta(m))(0',\theta(b))\\
+            &= [\theta(m),\theta(b)].
+    \end{align*}
+    Hence, \eqref{eq:to-be-proven} follows directly from
+    \[
+        (x,y)\incidence{[m,b]}\implies
+            \varphi(x,y)\incidence\psi[m,b].
+    \]
+
 \end{proof}
