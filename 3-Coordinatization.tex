@@ -494,7 +494,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 
 \begin{defn}
     The algebraic structure $(\ter,T)$, where $T$ is a ternary operation, is called a \textsl{ternary ring of order}~$n$ if $\ter$ has $n$ elements and the following axioms hold:
-    \begin{enumerate}[label=TR\arabic*,font=\small]
+    \begin{enumerate}[label=tr\arabic*,font=\scshape]
         \item\label{TR1} For every\/ $x,m,b \in \ter$, we have
         \[
             T(x,0,b) = T(0,m,b) =b
@@ -520,7 +520,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{prop}
 
 \begin{proof}${}$
-    \begin{enumerate}[TR\arabic*.,font=\small]
+    \begin{enumerate}[tr\arabic*.,font=\scshape]
         \item From \eqref{eq:line-coordinates} we obtain $[0,b]\wedge[\infty]=(0,b)$ and $[0,b]\wedge[0,0]=(0)$. In particular, $(0,b),(0)\incidence{[0,b]}$. Then $[0,b]=(0,b)(0)$ and so $(x,b)\incidence{[0,b]}$, as illustrated below. Hence, the definition of $T$ implies $T(x,0,b)=b$.
         $$
             \begin{tikzpicture}[
@@ -621,9 +621,9 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \end{enumerate}
 \end{proof}
 
-\begin{prop}\label{prop:projective-plane-of-ternary-ring}
+\begin{thm}\label{thm:projective-plane-of-ternary-ring}
     Every ternary ring coordinatizes some projective plane.  
-\end{prop}
+\end{thm}
 
 \begin{proof} Introduce
     \begin{align*}
@@ -657,9 +657,9 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \needspace{2\baselineskip}
         where
         \begin{enumerate}
-            \item By table \eqref{tbl:incidence}, the line $[m,b]$ passes through the points $(c)$ and $(x,y)$ if, and only if, $c=m$ and $y=T(x,m,b)$. Thus, we have to show that there exists $b$ satisfying $y=T(x,c,b)$. But this follows from {\small\ref{TR3}}.
+            \item By table \eqref{tbl:incidence}, the line $[m,b]$ passes through the points $(c)$ and $(x,y)$ if, and only if, $c=m$ and $y=T(x,m,b)$. Thus, we have to show that there exists $b$ satisfying $y=T(x,c,b)$. But this follows from \textsc{\ref{TR3}}.
 
-            \item This is Axiom {\small\ref{TR2}}.
+            \item This is Axiom \textsc{\ref{TR2}}.
         \end{enumerate}
 
         \item[\small\sc Axiom P2:]
@@ -676,7 +676,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \begin{enumerate}
             \item[3.] By Table~\eqref{tbl:incidence}, the point $(x,y)$ lies on both $[c]$ and $[m,b]$ if, and only if, $x=c$ and $y=T[c,m,b]$.
 
-            \item[4.] If $m\ne m'$, then {\small\ref{TR4}} there exists a unique pair $(x,y)$ incident with both $[m,b]$ and $[m',b']$. If $m=m'$ and $b\ne b'$, the two lines intersect at $(\infty)$.  
+            \item[4.] If $m\ne m'$, then \textsc{\ref{TR4}} there exists a unique pair $(x,y)$ incident with both $[m,b]$ and $[m',b']$. If $m=m'$ and $b\ne b'$, the two lines intersect at $(\infty)$.  
 
         \item[\small\sc Axiom P3':] We claim that the points
         \[
@@ -702,7 +702,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             \item $OX=[0,0]$ by property~a) and axiom P1.
                 \begin{enumerate}[$\to$]
                     \item $(\infty)\nincidence{[0,0]}$ by table \eqref{tbl:incidence}.
-                    \item $(1,1)\nincidence{[0,0]}$ because $T(1,0,0)=0\ne1$ by {\small\ref{TR1}}
+                    \item $(1,1)\nincidence{[0,0]}$ because $T(1,0,0)=0\ne1$ by \textsc{\ref{TR1}}
                 \end{enumerate}
             \item $OE=[1,0]$ since property a) implies that $T(0,1,0)=0$ and $T(1,1,0)=1$. Moreover, $(\infty)\nincidence{[1,0]}$ by \eqref{tbl:incidence}.
             \item $XY=[\infty]$ since \eqref{tbl:incidence} implies $(0)\incidence{[\infty]}$ and $(\infty)\incidence{[\infty]}$. Furthermore, $(1,1)\nincidence{[\infty]}$ by \eqref{tbl:incidence}.
@@ -711,9 +711,14 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \end{description}
 \end{proof}
 
-\begin{rem}\label{rem:plane-assciated-to-ternary-ring}
-    Let $(\ter,T)$ be a ternary ring. The previous proposition maps $(\ter,T)$ to an \textsl{associated} projective plane $\Pi_{(\ter,T)}=(\pts_{(\ter,T)},\blocks_{(\ter,T)},\incidence_{(\ter,T)})$ with the same order of $\Pi$. Moreover, the bijections $\sigma$ and $\gamma$ of Proposition~\ref{prop:coodinatization-maps} for $\Pi_{(\ter,T)}$ are both the identity.
-\end{rem}
+\begin{ntn}\label{ntn:plane-assciated-to-ternary-ring}
+    The projective plane associated by {\upshape Theorem~\ref{thm:projective-plane-of-ternary-ring}} to the ternary ring\/ $(\ter,T)$ will be denoted by
+    \[
+        \Pi_{(\ter,T)}=(\pts_{(\ter,T)},\blocks_{(\ter,T)},\incidence_{(\ter,T)}).
+    \]
+    This projective plane is of the same order as\/~$\ter$. Furthermore, for\/ $\Pi_{(\ter,T)}$ the bijections\/ $\sigma$ and\/ $\gamma$ of\/ {\upshape Proposition~\ref{prop:coodinatization-maps}} are both the identity.
+\end{ntn}
+
 
 \begin{lem}\label{lem:isomorphic-coordinatized-projective-plane}
     Let\/ $\Pi=\igeo$ be a projective plane of order\/~$n$, and let\/ $\ter$ be a set of\/~$n$ elements containing\/ $0,1$ but not\/~$\infty$. Then the coordinatization of\/~$\Pi$ based on\/ $\ter$ and on a quad\/ $O,X,Y,E$ yields a ternary ring\/ $(\ter,T)$ whose associated projective plane is isomorphic to\/~$\Pi$. Moreover, the collineation between both projective planes maps\/ $(O,X,Y,E)$ to\/ $((0,0),(0),(\infty),(1,1))$.
@@ -838,7 +843,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     The ternary rings $(\ter,T)$ and $(\ter',T')$ are isomorphic, if there is a map $\theta\colon\ter\to\ter'$ for which $\theta(T(x,m,b))=T'(\theta(x),\theta(m),\theta(b))$ holds for every $x,m,b\in\ter$.
 \end{defn}
 
-\begin{lem}
+\begin{lem}\label{lem:left-solution-of-sum}
     Let\/ $(\ter,T)$ be a ternary ring. Given\/ $m,b\in\ter$, with\/ $m\ne0$, the map
     \begin{align*}
         \ter&\to\ter\\
@@ -848,12 +853,29 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{lem}
 
 \begin{proof}
-    Since $\ter$ is a finite set, it suffices to show that the map is injective. Suppose that $T(x,m,b)=T(x',m,b)$ for some $x\ne x'$, and let $y$ denote the common value. By {\small\ref{TR1}},
+    Since $\ter$ is a finite set, it suffices to show that the map is injective. Suppose that $T(x,m,b)=T(x',m,b)$ for some $x\ne x'$, and let $y$ denote the common value. By \textsc{\ref{TR1}},
     \begin{align*}
         T(x,0,y) &= y, &T(x',0,y) &= y,\\
         T(x,m,b) &= y, &T(x',m,b) &= y.
     \end{align*}
-    By {\small\ref{TR2}}, we must have $(m,b)=(0,y)$, which is impossible because $m\ne0$.
+    By \textsc{\ref{TR2}}, we must have $(m,b)=(0,y)$, which is impossible because $m\ne0$.
+\end{proof}
+
+\begin{lem}\label{lem:right-solution-of-product}
+    Let\/ $(\ter,T)$ be a ternary ring. Given $a,b\in\ter$, with $a\ne0$, the map
+    \begin{align*}
+        \ter&\to\ter\\
+        x&\mapsto T(a,x,0)
+    \end{align*}
+    is a bijection.
+\end{lem}
+
+\begin{proof}
+    It is enough to prove the injectivity of the map. Suppose that $T(a,x,0)=T(a,x',0)$ for some $x'\ne x$. Then, both $m=x$ and $m=x'$ satisfy the equations
+    \begin{align*}
+        T(a,m,0)&=b &T(0,m,0)&=0.
+    \end{align*}
+    However, since $a\ne0$, according to \textsc{\ref{TR2}}, there should be a unique pair $(m,0)$ satisfying these equations.
 \end{proof}
 
 \begin{lem}
@@ -865,12 +887,12 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \begin{align*}
         T'(\theta(0),\theta(m),\theta(b)) &= \theta(T(0,m,b))\\
             &=\theta(b) 
-                &&\text{; {\small\ref{TR1}}}\\
+                &&\text{; \textsc{\ref{TR1}}}\\
             &= T'(0',\theta(m),\theta(b)).
     \end{align*}
     Hence, by the previous lemma, $\theta(0)=0'$, as wanted.
 
-    On the other hand, given $x\in\ter$, by {\small\ref{TR1}}, we have
+    On the other hand, given $x\in\ter$, by \textsc{\ref{TR1}}, we have
     \begin{align*}
         T'(1',\theta(x),0') &= \theta(x)\\
             &= \theta(T(1,x,0))\\
@@ -881,7 +903,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{proof}
 
 \begin{prop}\label{prop:coorinatized-isomorphism}
-    Let\/ $\theta\colon (\ter,T)\to(\ter',T')$ be an isomorphism of ternary rings. Then\/ $\theta$ induces a collineation between the associated projective planes.\footnote{See {\upshape Proposition~\ref{prop:projective-plane-of-ternary-ring}} for the construction of a projective plane from a ternary ring.} Moreover, this collineation maps the base quad\/ $((0,0),(0),(\infty),(1,1))$ of\/ $\Pi$ onto the base quad\/ $((0',0'),(0'),(\infty'),(1',1'))$ of\/ $\Pi'$.
+    Let\/ $\theta\colon (\ter,T)\to(\ter',T')$ be an isomorphism of ternary rings. Then\/ $\theta$ induces a collineation between the associated projective planes.\footnote{See {\upshape Theorem~\ref{thm:projective-plane-of-ternary-ring}} for the construction of a projective plane from a ternary ring.} Moreover, this collineation maps the base quad\/ $((0,0),(0),(\infty),(1,1))$ of\/ $\Pi$ onto the base quad\/ $((0',0'),(0'),(\infty'),(1',1'))$ of\/ $\Pi'$.
 \end{prop}
 
 
@@ -993,5 +1015,285 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         (x,y)\incidence{[m,b]}\implies
             \varphi(x,y)\incidence\psi[m,b].
     \]
-
 \end{proof}
+
+\begin{defn}
+    In the ternary ring\/ $(\ter,T)$ the \textsl{sum} of two elements $a,b\in\ter$ are defined by
+    \[
+        a\+b = T(a,1,b).
+    \]
+    Equivalently, $a\+b$ is the unique element of $\ter$ satisfying $(a,a\+b)\incidence{[1,b]}$.
+    $$
+        \begin{minipage}[c]{0.45\textwidth}
+        \begin{tikzpicture}[
+            baseline=(current bounding box.north),
+            scale=1.0,
+            font=\small,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=green,
+                inner sep=1.2pt},
+                every node/.style={font=\footnotesize},
+            ]
+            \pgfmathsetmacro{\u}{1.7};
+            
+            % Points
+            \coordinate (xstart) at (0.0,0.0);
+            \coordinate (xend) at (2*\u,0.0);
+            \coordinate (ystart) at (0.0,0.0);
+            \coordinate (yend) at (0.0,2*\u);
+            \coordinate (E) at (\u*1.2,\u*1.0);
+            \coordinate (0b) at (0,\u*0.9);
+            \coordinate (a0) at (\u*0.6,0);
+            \coordinate (O) at (0.0,0.0);
+            
+            % Axes
+            \draw[name path=xaxis,
+                color=orange,
+                thick
+            ] (xstart) -- (xend)
+                node[right,text=black] {$[0,0]$}
+                node[point,
+                    fill=black,
+                    pos=0.8,
+                    label={[text=black,xshift=0mm,yshift=-7mm]:
+                        $X$}
+                ] (X) {};
+            \draw[name path=yaxis,
+                color=orange,
+                thick
+            ] (ystart) -- (yend)
+                node[above,text=black] {$[0]$}
+                node[point,
+                pos=0.95,
+                fill=black,
+                label={[text=black,left,yshift=-1mm]:
+                    $Y$}
+                ] (Y) {};
+            \draw[name path=aY] (Y) -- (a0);
+            \draw[name path=OE] (O) -- ($(O)!1.4!(E)$)
+                node[right] {$[1,0]$};
+            \path[name path=XY] (X) -- (Y);
+            \path[name intersections={of=XY and OE,by=Z}];
+            \draw[name path=b1,red] (0b) -- ($(0b)!1.6!(Z)$)
+                node[right,text=black] {$[1,b]$};
+            \node[point,
+                fill=white,
+                label={[xshift=0mm,yshift=-5mm]:
+                    $Z$}
+            ] at (Z) {};
+            \draw[name path=Xb] (0b) -- (X);
+  
+            \path[name intersections={of=aY and b1,
+                by=Pab}];
+            \path[name intersections={of=aY and OE,
+                by=aa}];
+            \path[name intersections={of=Xb and OE,
+                by=bb}];
+            \node[point,
+                fill=red,
+                label={[text=black,
+                    xshift=6mm,yshift=-1mm]:$(a,a\+b)$}
+            ] at (Pab) {};
+            \node[point,
+                label={[xshift=0mm,yshift=-7mm]:$(a,0)$}
+            ] at (a0) {};
+            \node[point,
+                label={[xshift=1mm,yshift=-7mm]:$(b,b)$}
+            ] at (bb) {};
+            \node[point,
+                label={[left]:$(0,b)$}
+            ] at (0b) {};
+            \node[point,
+                fill=black,
+                label={[yshift=-6mm,xshift=-2mm,text=black]:
+                    $O$}
+            ] at (O) {};
+            \node[point,
+                fill=black,
+                label={[yshift=-3.5mm,xshift=2mm,text=black]:
+                    $E$}
+            ] at (E) {};
+            \node[point,
+                label={[xshift=-4.5mm,yshift=-3mm,text=black]:
+                    $(a,a)$}
+            ] at (aa) {};
+        \end{tikzpicture}
+        \hfill
+        \end{minipage}
+        \begin{minipage}[c]{0.5\textwidth}
+        \small\alg
+            \begin{enumerate}[itemsep=1.8pt, parsep=0pt]
+                \item Locate $(a,a)$ and $(b,b)$ on $OE$
+                \item Draw the line $[a]=(a,a)Y$
+                \item Draw the line $\block b=X(b,b)$
+                \item Locate $(0,b)=OY\wedge\block b$
+                \item Draw the line $[1,b]=(0,b)Z$
+                \item Get $(a,a\+b)=[a]\wedge[1,b]$
+            \end{enumerate}
+    \end{minipage}
+    $$
+    For the \textsl{product}, we have
+    \[
+        a\cdot m = T(a,m,0).
+    \]
+    Thus, $a\cdot m$ is the unique element of $\ter$ such that $(a,a\cdot m)\incidence{[m,0]}$. As usual, $a\cdot m$ often will be written as\/ $am$.
+    $$
+        \begin{minipage}[c]{0.45\textwidth}
+        \begin{tikzpicture}[
+            baseline=(current bounding box.north),
+            scale=1.0,
+            font=\small,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=green,
+                inner sep=1.2pt},
+                every node/.style={font=\footnotesize},
+            ]
+            \pgfmathsetmacro{\u}{1.7};
+            
+            % Points
+            \coordinate (xstart) at (0.0,0.0);
+            \coordinate (xend) at (2*\u,0.0);
+            \coordinate (ystart) at (0.0,0.0);
+            \coordinate (yend) at (0.0,2*\u);
+            \coordinate (E) at (\u*1.65,\u*1.3);
+            \coordinate (a0) at (\u*1.3,0);
+            \coordinate (O) at (0.0,0.0);
+            
+            % Axes
+            \draw[name path=xaxis,
+                color=orange,
+                thick
+            ] (xstart) -- (xend)
+                node[right,text=black] {$[0,0]$}
+                node[point,
+                    fill=black,
+                    pos=0.9,
+                    label={[text=black,xshift=0mm,yshift=-6mm]:
+                        $X$}
+                ] (X) {};
+            \draw[name path=yaxis,
+                color=orange,
+                thick
+            ] (ystart) -- (yend)
+                node[above,text=black] {$[0]$}
+                node[point,
+                pos=0.95,
+                fill=black,
+                label={[text=black,left,yshift=-1mm]:
+                    $Y$}
+                ] (Y) {};
+            \draw[name path=aY] (Y) -- (a0);
+            \draw[name path=OE] (O) -- ($(O)!1.2!(E)$)
+                node[right] {$[1,0]$};
+            \draw[name path=XY] (X) -- (Y);
+            \draw[name path=YE] (Y) -- (E)
+                node[pos=0.7] (1m) {};
+            \draw[name path=X1m] (X) -- ($(X)!1.01!(1m)$);
+            \draw[name path=O1m,
+                red,
+                text=black] (O) -- ($(O)!1.2!(1m)$)
+                node[above] {$[m,0]$};
+            \path[name intersections={of=O1m and XY,by=m}];
+            \path[name intersections={of=X1m and OE,by=mm}];
+            \draw[name intersections={of=XY and OE,by=Z}];
+            \node[point,
+                fill=white,
+            ] at (Z) {};
+  
+            \path[name intersections={of=aY and OE,
+                by=aa}];
+            \path[name intersections={of=aY and O1m,by=am}];
+            \node[point,
+                label={[xshift=0mm,yshift=-7mm]:$(a,0)$}
+            ] at (a0) {};
+            \node[point,
+                label={[xshift=6mm,yshift=-3.7mm]:$(m,m)$}
+            ] at (mm) {};
+            \node[point,
+                fill=black,
+                label={[yshift=-6mm,xshift=-2mm,text=black]:
+                    $O$}
+            ] at (O) {};
+            \node[point,
+                fill=black,
+                label={[yshift=-3.5mm,xshift=7mm]:
+                    $E\colon(1,1)$}
+            ] at (E) {};
+            \node[point,
+                label={[xshift=-0.9mm,yshift=-8mm,text=black]:
+                    $(a,a)$}
+            ] at (aa) {};
+            \node[point,
+                label={[xshift=3.5mm,yshift=-3.2mm,text=black]:
+                    $(m)$}
+            ] at (m) {};
+            ] at (aa) {};
+            \node[point,
+                label={[xshift=5.5mm,yshift=-2.5mm,text=black]:
+                    $(1,m)$}
+            ] at (1m) {};
+            \node[point,
+                fill=red,
+                label={[xshift=-5.7mm,yshift=-3.2mm,text=black]:
+                    $(a,am)$}
+            ] at (am) {};
+        \end{tikzpicture}
+        \hfill
+        \end{minipage}
+        \begin{minipage}[c]{0.5\textwidth}
+        \small\alg
+            \begin{enumerate}[itemsep=1.8pt, parsep=0pt]
+                \item Locate $(a,a)$ and $(m,m)$ on $OE$
+                \item Draw the line $[a]=(a,a)Y$
+                \item Draw the line $\block b=X(m,m)$
+                \item Locate $(1,m)=YE\wedge\block b$
+                \item Locate $(m)=O(1,m)\wedge XY$
+                \item Draw the line $[m,0]=O(m)$
+                \item Get $(a,am)=[a]\wedge[m,0]$
+            \end{enumerate}
+    \end{minipage}
+    $$
+\end{defn}
+
+\section{Linear Ternary Rings and Quasifields}
+
+\begin{defn}
+    A \textsl{magma} is a set equipped with an operation. A \textsl{quasigroup} is a magma $(Q,{}\cdot{})$, where, for any two elements $a,b\in Q$, the equations $a\cdot x=b$ and $x\cdot a=b$ have unique solutions. A \textsl{loop} is a quasigroup with an identity element. A \textsl{group} is an associative loop.
+\end{defn}
+
+\begin{lem}
+    If\/ $(\ter, T)$ is a ternary ring and\/ $\ter^* = \ter \setminus \{0\}$, then\/ $(\ter, \+)$ and\/ $(\ter^*,\,\cdot\,)$ are loops with unit elements\/ $0$ and\/ $1$, respectively.
+\end{lem}
+
+\begin{proof}
+    To verify that $(\ter^*,\,\cdot\,)$ is a magma, we have to show that $a\cdot m=0$ implies $a=0$ or $m=0$. But $a\cdot m=0$, means $(a,0)\incidence{[m,0]}=(m)(0,0)$. If $a=0$ we are done. Otherwise, $(m)\incidence(a,0)(0,0)$ by the \rr. Since $(a,0)(0,0)=[0,0]$, we deduce $(m)\incidence{[0,0]}\wedge[\infty]=(0)$, which implies that $m=0$.
+
+    The equation $a\+x=b$ is equivalent to $T(a,1,x)=b$, which has a unique solution by \textsc{\ref{TR3}}.
+
+    The equation $x\+a=b$ is equivalent to $T(x,1,a)=b$, which has a unique solution by Lemma~\ref{lem:left-solution-of-sum}.
+
+    The equations $a\+0=a$ and $0\+a=a$ are equivalent to $T(a,1,0)=a$ and $T(0,1,a)=a$, which hold by \textsc{\ref{TR1}}.
+
+    The equation $a\cdot x=b$ is equivalent to $T(a,x,0)=b$, which has a unique solution when $a\ne0$ by Lemma~\ref{lem:right-solution-of-product}.
+
+    The equation $x\cdot a=b$ is equivalent to $T(x,a,0)=b$, which has a unique solution when $a\ne0$ by Lemma~\ref{lem:left-solution-of-sum}.
+
+    The equations $a\cdot1=a$ and $1\cdot a=a$ are equivalent to $T(a,1,0)=a$ and $T(1,a,0)=a$, which hold by \textsc{\ref{TR1}}.
+\end{proof}
+
+\begin{defn}
+    A triple\/ $(Q, +, \cdot)$, where\/ $Q$ is a set and\/ $+$ and\/ $\cdot$ are binary operations on\/ $Q$, is called a \textsl{right quasifield} if the following conditions hold:
+    \begin{enumerate}[a), font=\upshape]
+        \item $(Q, +)$ is an abelian group with identity\/ $0$;
+        \item $(Q \setminus \{0\}, \cdot)$ is a group with identity\/ $1$;
+        \item $(a+b) \cdot c = a \cdot c + b \cdot c$ for every\/ $a,b,c \in Q$ (right distributivity);
+        \item For every\/ $a, b, c \in Q$ with\/ $a \ne b$, there is a unique\/ $x \in Q$ satisfying the equation\/ $x \cdot a - x \cdot b = c$.
+    \end{enumerate}
+\end{defn}
+

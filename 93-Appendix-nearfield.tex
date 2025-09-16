@@ -1,43 +1,147 @@
 \chapter{Nearfields}
 
-\section{The Hall Nearfield}
+\section{The Hall Quasifield}
 
 \begin{defn}
-    A \textsl{nearfield} is an algebraic structure $(N,+,\cdot)$, similar to a field, but with one key axiom weakened:
+    A triad $(R,+,{}\cdot{})$ is a \textsl{neardomain} if, and only, if the following six conditions are satisfied:
+    \begin{enumerate}[label=qf\arabic*,font=\scshape]
+        \item\label{QF1} $(R,+)$ is a group.
+        \item\label{QF2} The equations $a\cdot x = b$ and $x\cdot a = b$ have a unique solution for all $a,b \in R \setminus \{0\}$.
+        \item\label{QF3} There exists an element $1 \in R$ such that $1\cdot x = x\cdot 1 = x$ for all $x \in R$.
+        \item\label{QF4} Let $0$ denote the additive identity; then $0\cdot x = x\cdot 0 = 0$ for all $x \in R$.
+        \item\label{QF5} Given $a,b,c,d \in R$ with $a \ne c$, there exists a unique $x \in R$ such that $x\cdot a + b = x\cdot c + d$.
+        \item\label{QF6} Given $a,b,c,d \in R$ with $a \ne c$, there exists a unique pair $(x,y) \in R \times R$ such that $a\cdot x+y = b$ and $c\cdot x + y = d$.
+        \item[]A \textsl{quasifield} is a neardomain that satisfies right distributivity:
+        \item\label{QF7} $(a+b)\cdot c=a\cdot c + b\cdot c$.
+    \end{enumerate}
+\end{defn}
+
+\begin{xmpl}\label{xmpl:hall-quasified} {\upshape[The Hall quasifield]} \citep[Example 11.1.4.iv, pp.~317]{Stevenson1992}
+    Let $\Fq$ denote, as usual, the finite field with $q$ elements. Fix $f(x)=x^2-rx-s$ irreducible in $\Fq{[x]}$, and let $\omega$ be a root of~$f$ in~$\Fq[q^2]$. Then
+    $$
+        \omega^2=s+r\omega.
+    $$
+    The \textsl{Hall quasifield} $H(q^2)$ is defined using the elements and addition of the field $\Fq[q^2]$, and changing the multiplication as follows: Given $a=a_0+a_1\omega$ and $b=b_0+b_1\omega$, their Hall product is defined by twisting the first coordinate of the regular product $a\cdot b$ in $\Fq[q^2]$ in the following way: the equality
+        \begin{align*}
+            a\cdot b &= (a_0+a_1\omega)(b_0+b_1\omega)\\
+                &= a_0b_0+(a_0b_1+a_1b_0)\omega + a_1b_1(s+r\omega)\\
+                &= a_0b_0\ulcolor{blue}{{}+a_1b_1s}
+                    +(a_0b_1\ulcolor{teal}{{}+a_1b_0}+a_1b_1r)\omega,
+        \intertext{becomes}
+            a\circ b
+                &= \begin{cases}
+                    a_0b_0+a_1b_0\omega
+                        &b_1=0,\\
+                    a_0b_0
+                        \ulcolor{blue}{{}-a_1b_1^{-1}f(b_0)}
+                        +(a_0b_1\ulcolor{teal}{{}-a_1b_0}+a_1r)\omega
+                        &b_1\ne0
+            \end{cases}
+        \end{align*}
+    \textit{Right distribution.} It is satisfied since the multiplication is clearly bilinear in the first operand.
+    
+    \textit{Left distribution.} It is not generally satisfied because the multiplication defined is not bilinear in second operand (it is not linear in any of the components of the second operand).
+
+    \textit{Associativity} is never satisfied. To see this it is enough to consider the case $b_1\ne0$ and $c_1=0$. Here we have $c_0=c$ and
+    \begin{align*}
+        (a\circ b)\circ c
+            &= a_0b_0c - a_1b_1^{-1}cf(b_0)
+                +(a_0b_1c-a_1b_0c+a_1cr)\omega\\
+        a\circ(b\circ c)
+            &= a_0b_0c-a_1b_1^{-1}c^{-1}f(b_0c)
+                + (a_0b_1c-a_1b_0c+a_1r)\omega.
+    \end{align*}
+    Thus, associativity holds only if $r=0$ and $cf(b_0) = c^{-1}f(b_0c)$. Now,
+    \begin{align*}
+        cf(b_0) = c^{-1}f(b_0c) &\iff
+        c^2(b_0^2-s) = b_0^2c^2-s\\
+        &\iff c^2s = s\\
+        &\iff c^2=1,
+    \end{align*}
+    which implies $q=2$. However, $x^2-s$ is not irreducible in $\Fq[2][x]$.
+\end{xmpl}
+
+\begin{xmpl}
+    Consider $\Fq[3^2]$ as the quotient $\Fq[3][x]/\gen{x^2+1}$ and change the multiplication to
+    \[
+        a\circ b=\begin{cases}
+            ab      &\text{if $b$ is a square in $\Fq[3^2]$},\\
+            a^3b    &\text{otherwise}.
+        \end{cases}
+    \]
+    Then $(N_{3^2},+,\circ)$ whose the underlying set is $\Fq[3^2]$ with the sum of $\Fq[3^2]$ and the multiplication defined above, is a right quasifield, and not a nearfield.
+
+    Let $i$ denote a root of $x^2+1$. Then
+    \[
+        N_{3^2}=\set{a_0+a_1i\mid a_0,a_1\in\Fq[3]}
+            =\set{0,1,2,i,1+i,2+i,2i,1+2i,2+2i}.
+    \]
+    The squares in $\Fq[3^2]$ are $\set{a_0+a_1i\mid a_0a_1=0}$. Indeed,
+    \[
+        \begin{array}{c|ccccccccc}
+            a&0&1&2&i&1+i&2+i&2i&1+2i&2+2i\\
+            \hline\rule{0pt}{12pt}
+            a^2&0&1&1&-1&-i&i&-1&i&-i\\
+            %a^3&0&1&2&2i&1+2i&2+2i&i&1+i&2+i
+        \end{array}
+    \]
+    Since
+    \[
+        (a_0+a_1i)^3= a_0^3+a_1^3i^3=a_0-a_1i,
+    \]
+    we obtain
+    \begin{align*}
+        (a_0+a_1i)\circ b &= a_0b + a_1bi\\
+        (a_0+a_1i)\circ bi &= -a_1b+a_0bi\\
+        (a_0+a_1i)\circ(b_0+b_1i) &= (a_0-a_1i)(b_0+b_1i)
+                &&;\ b_0,b_1\in\set{1,-1}\\
+            &= a_0b_0+a_1b_1+(a_0b_1-a_1b_0)i.
+    \end{align*}
+    If we define $f(x)=x^2+1$, the last expression can be rewritten as
+    \[
+        a_0b_0-a_1b_1^{-1}f(b_0)+(a_0b_1-a_1b_0)i,
+    \]
+    because $f(b_0)=f(\pm1)=-1$ and $b_1^{-1}=b_1$. On the other hand, when $b_0=0$ and $b_1=b=\pm1$, the \rhs\ of the second equality above becomes
+    \[
+        -a_1b_1+a_0b_1i,
+    \]
+    which we can also rewrite it as
+    \[
+        a_0b_0-a_1b_1^{-1}f(b_0)+(a_0b_1-a_1b_0)i.
+    \]
+    Therefore, this quasifield is actually $H(3^2)$. As we have seen in Example~\ref{xmpl:hall-quasified}, multiplication associativity does not hold. In fact, if $c$ is not a square in $\Fq[3^2]$, we have
+    \[
+        (a\circ b)\circ c = a^3b^3c
+        \quad\text{and}\quad
+        a\circ(b\circ c)=a\circ(b^3c).
+    \]
+    Choose $b=c$. Then $b^3c=(c^2)^2$ and so
+    \[
+        (a\circ b)\circ c = a^3c^4
+        \quad\text{and}\quad
+        a\circ(b\circ c) = ac^4,
+    \]
+    which are distinct for $c\ne0$ and $a^3\ne a$.
+\end{xmpl}
+
+\begin{defn}
+    A \textsl{nearfield} is a quasifield whose first operation is commutative and its second operation is associative.    
+\end{defn}
+    
+\begin{rem}
+    A \textsl{nearfield} $(N,+,\cdot)$ is an algebraic structure, similar to a field, but with one key axiom weakened:
     \begin{enumerate}[a)]
         \item $(N, +)$ is an abelian group (the addtivive group of the nearfield).
         \item $(N \setminus\set0,\cdot)$ is a group (the \textsl{multiplicative} group of the nearfield).
         \item The zero element acts trivially for multiplication: $0\cdot x=0$.
         \item Right distributivity holds: $(a+b)\cdot c= a\cdot c + b\cdot c$ for all $a,b,c\in N$.
     \end{enumerate}
-\end{defn}
+\end{rem}
 
 \begin{rem}
     Note that in a nearfield left distributivity does \textit{not} necessarily hold: $a\cdot(b+c)$ is not necessarily equal to $a\cdot b + a\cdot c$. This is the defining difference from a division ring or field.
 \end{rem}
 
-\begin{xmpl}\label{The Hall Nearfield} \citep[Example 11.1.4.iv, pp.~317]{Stevenson1992}
-    Let $\Fq$ denote, as usual, the finite field with $q$ elements. Fix $f(x)=x^2-rx-s$ irreducible in $\Fq{[x]}$, and let $\omega$ be a root of~$f$ in~$\Fq[q^2]$. Then
-    $$
-        \omega^2=s+r\omega.
-    $$
-    The \textsl{Hall nearfield} $H(q^2)$ is defined using the elements and addition of the field $\Fq[q^2]$, and changing the multiplication as follows: Given $a=a_0+a_1\omega$ and $b=b_0+b_1\omega$, their Hall product is defined by twisting the first coordinate of the regular product $a\cdot b$ in $\Fq[q^2]$ in the following way: the equality
-        \begin{align*}
-            a\cdot b &= (a_0+a_1\omega)(b_0+b_1\omega)\\
-                &= a_0b_0+(a_0b_1+a_1b_0)\omega + a_1b_1(s+r\omega)\\
-                &= a_0b_0\underline{{}+a_1b_1s}
-                    +(a_0b_1\overline{{}+a_1b_0}+a_1b_1r)\omega,
-        \intertext{becomes}
-            (a_0+a_1\omega)\circ(b_0+b_1\omega)
-                &= \begin{cases}
-                    a_0b_0+a_1b_0\omega
-                        &b_1=0,\\
-                    a_0b_0\underline{{}-a_1b_1^{-1}f(b_0)}
-                        +(a_0b_1\overline{{}-a_1b_0}+a_1r)\omega
-                        &b_1\ne0
-            \end{cases}
-        \end{align*}
-    \textbf{Right distribution:} is satisfied since the multiplication is clearly bilinear in the first operand.
-    
-    \textbf{Left distribution:} is not generally satisfied because the multiplication is not bilinear in second operand (it is not linear in any of the components of the second operand).
+\begin{xmpl}
+        Algebras $M$ and $A$, which follow, are examples of neardomains.
 \end{xmpl}

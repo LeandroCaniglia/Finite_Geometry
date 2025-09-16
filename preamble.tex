@@ -410,3 +410,18 @@
 \newcommand{\qr}{\hyperref[rem:quad-rule]{quad rule}}
 \newcommand{\ter}[1][R]{\block #1}
 \definecolor{lightblue}{RGB}{120, 220, 255}
+
+\newcommand{\+}{\dotplus}
+
+\newcommand{\ulcolor}[2]{%
+    \begingroup
+    \colorlet{saved@color}{.}%
+    \textcolor{#1}{\underline{\textcolor{saved@color}{#2}}}%
+    \endgroup
+}
+\newcommand{\olcolor}[2]{%
+    \begingroup
+    \colorlet{saved@color}{.}%
+    \textcolor{#1}{\overline{\textcolor{saved@color}{#2}}}%
+    \endgroup
+}
