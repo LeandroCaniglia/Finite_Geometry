@@ -1,23 +1,90 @@
 \chapter{Nearfields}
+\label{ch:nearfields}
 
-\section{The Hall Quasifield}
+\section{Quasifields}
 
-\begin{defn}
-    A triad $(R,+,{}\cdot{})$ is a \textsl{neardomain} if, and only, if the following six conditions are satisfied:
-    \begin{enumerate}[label=qf\arabic*,font=\scshape]
-        \item\label{QF1} $(R,+)$ is a group.
-        \item\label{QF2} The equations $a\cdot x = b$ and $x\cdot a = b$ have a unique solution for all $a,b \in R \setminus \{0\}$.
-        \item\label{QF3} There exists an element $1 \in R$ such that $1\cdot x = x\cdot 1 = x$ for all $x \in R$.
-        \item\label{QF4} Let $0$ denote the additive identity; then $0\cdot x = x\cdot 0 = 0$ for all $x \in R$.
-        \item\label{QF5} Given $a,b,c,d \in R$ with $a \ne c$, there exists a unique $x \in R$ such that $x\cdot a + b = x\cdot c + d$.
-        \item\label{QF6} Given $a,b,c,d \in R$ with $a \ne c$, there exists a unique pair $(x,y) \in R \times R$ such that $a\cdot x+y = b$ and $c\cdot x + y = d$.
-        \item[]A \textsl{quasifield} is a neardomain that satisfies right distributivity:
-        \item\label{QF7} $(a+b)\cdot c=a\cdot c + b\cdot c$.
+\begin{defn}\label{defn:quasifield}
+    A triple $(R,{}\+{},\cdot)$ is called a \textsl{quasifield} if the following axioms hold:
+    \begin{enumerate}[label=qf$_{\arabic*}$,font=\scshape]
+        \item\label{QF1} $(R,\+)$ is a group with identity element $0$.
+        \item\label{QF2} For every $a,b\in R\setminus\{0\}$, the equations
+            \[
+                a\cdot x = b
+                \qquad\text{and}\qquad
+                x\cdot a = b
+            \]
+            admit unique solutions $x\in R\setminus\{0\}$.
+        \item\label{QF3} There exists an element $1\in R$ such that $1\cdot x = x\cdot 1 = x$ for all $x\in R$.
+        \item\label{QF4} $0\cdot x = x\cdot 0 = 0$ for all $x\in R$.
+        \item\label{QF5} For all $a,b,c,d\in R$ with $a\ne c$, there exists a unique $x\in R$ such that
+            \[
+                x\cdot a \+ b = x\cdot c \+ d.
+            \]
+        \item\label{QF6} For all $a,b,c,d\in R$ with $a\ne c$, there exists a unique pair $(x,y)\in R\times R$ such that
+            \[
+                a\cdot x \+ y = b,
+                \qquad
+                c\cdot x \+ y = d.
+            \]
+        \item\label{QF7} \textsl{Right distributivity}: For all $a,b,c\in R$,
+            \[
+                (a\+ b)\cdot c = a\cdot c \+ b\cdot c.
+            \]
     \end{enumerate}
+    If condition~\textsc{\ref{QF7}} is omitted, $(R,\+,{}\cdot{})$ is called a \textsl{neardomain}.
 \end{defn}
 
+\begin{xmpl}{\upshape[Moulton Neardomain]}
+    Define in the reals the operation
+    \[
+        x\circ y=\begin{cases}
+            xy  &\text{if }x\ge0\text{ or }y\ge0,\\[1mm]
+            \dfrac{xy}2    &\text{if }x,y<0.
+        \end{cases}
+    \]
+    The triple $(\R,+,\circ)$ is a neardomain and not a quasifield.
+
+    Axiom \textsc{\ref{QF1}} is trivial.
+
+    For axiom \textsc{\ref{QF2}}, since the multiplication is commutative, we only need to consider the equations $a\circ x=b$. Its solutions are
+    \[
+        \begin{array}{c|cc}
+            a\circ x=b&b>0 &b<0\\
+            \hline\rule{0mm}{3.5mm}
+            a>0&ba^{-1}&ba^{-1}\\
+            a<0&ba^{-1}&2ba^{-1}
+        \end{array}
+    \]
+
+    Axioms \textsc{\ref{QF3}} and \textsc{\ref{QF4}} are trivial.
+
+    For axiom \textsc{\ref{QF5}}, it suffices to consider the equation $x\circ a=x\circ b+c$ with $a>b$. By \textsc{\ref{QF2}} we may assume that $a,b\ne0$. Then,
+    \[
+        \begin{array}{c|cc}
+            &c>0 &c<0\\
+            \hline\rule{0mm}{3.5mm}
+            b>0&c(a-b)^{-1}&c(a-b)^{-1}\\
+            a<0&c(a-b)^{-1}&2c(a-b)^{-1}\\
+            b<0<a&c(a-b)^{-1}&c(a-b/2)^{-1}
+        \end{array}
+    \]
+
+    In axiom \textsc{\ref{QF6}}, after replacing $y$ with $y-d$, we may assume that $a>c$ and $d=0$. This leaves us with
+    \[
+        y = -(c\circ x)\quad\text{and}\quad
+        a\circ x- c\circ x=b
+    \]
+    which is equivalent to \textsc{\ref{QF5}} because the multiplication is commutative.
+
+    Finally, note that \textsc{\ref{QF7}} does not hold: right distributivity fails, for instance, when $c<0$ and $-a<b<0<a$.
+\end{xmpl}
+
+\begin{rem}\label{rem:qf7-implies-qf6}
+    If \textsc{\ref{QF7}} is satisfied and $(R,\+)$ is abelian, axiom \textsc{\ref{QF6}} is a direct consequence of \textsc{\ref{QF2}} because the equation $(a\+ c^-)\cdot x=b\+ d^-$, where the superscript `${}^-$' denotes the inverse in $(R,\+)$, can be solved for $x$ and then, substitution into the first equation, would give~$y$.
+\end{rem}
+
 \begin{xmpl}\label{xmpl:hall-quasified} {\upshape[The Hall quasifield]} \citep[Example 11.1.4.iv, pp.~317]{Stevenson1992}
-    Let $\Fq$ denote, as usual, the finite field with $q$ elements. Fix $f(x)=x^2-rx-s$ irreducible in $\Fq{[x]}$, and let $\omega$ be a root of~$f$ in~$\Fq[q^2]$. Then
+    Let $\Fq$ denote, as usual, the finite field with $q$ elements. Fix a polynomial $f(x)=x^2-rx-s$ irreducible in $\Fq{[x]}$, and let $\omega$ be a root of~$f$ in~$\Fq[q^2]$. Then
     $$
         \omega^2=s+r\omega.
     $$
@@ -38,9 +105,92 @@
                         &b_1\ne0
             \end{cases}
         \end{align*}
-    \textit{Right distribution.} It is satisfied since the multiplication is clearly bilinear in the first operand.
+    Axiom \textsc{\ref{QF1}} is trivially satisfied.
+
+    For axiom~\textsc{\ref{QF2}}, consider the equation $a\circ x = b$, which can be written as
+    \[
+        \left\{\begin{aligned}
+            x_1 &= 0,\\
+            b_0 &= a_0x_0,\\
+            b_1 &= a_1x_0
+        \end{aligned}\right.
+        \qquad\text{or}\qquad
+        \left\{\begin{aligned}
+            b_0 &= a_0x_0 - a_1x_1^{-1}f(x_0),\\
+            b_1 &= a_0x_1 - a_1x_0 + a_1r.
+        \end{aligned}\right.
+    \]
+    The first system admits a necessarily unique solution precisely when $a_0b_1 = a_1b_0$.
     
-    \textit{Left distribution.} It is not generally satisfied because the multiplication defined is not bilinear in second operand (it is not linear in any of the components of the second operand).
+    Assume now that $a_0b_1 \ne a_1b_0$ and let's show that the second system has a unique solution:
+    \begin{itemize}
+        \item If $a_1 \ne 0$, we first solve the second equation for $x_0$ and substitute into the first, obtaining $x_1$.
+        \item If $a_1 = 0$, we solve the first equation for $x_0$ and then determine $x_1$ from the second.
+    \end{itemize}
+    In either case, uniqueness follows immediately from the form of the equations.
+
+    To prove that $x\circ a=b$ also admits a unique solution, we must analyze these two possibilities:
+    \[
+        \left\{\begin{aligned}
+            a_1 &= 0,\\
+            b_0 &= a_0x_0,\\
+            b_1 &= a_0x_1
+        \end{aligned}\right.
+        \qquad\text{or}\qquad
+        \left\{\begin{aligned}
+            a_1 &\ne 0,\\
+            b_0 &= a_0x_0 - a_1^{-1}x_1f(a_0),\\
+            b_1 &= a_1x_0 - a_0x_1 + x_1r.
+        \end{aligned}\right.
+    \]
+    The first system has a necessarily unique solution precisely when $a_1=0$. If $a_1\ne0$, we can solve the last equation of the second system for $x_0$ obtaining
+    \[
+        x_0=a_1^{-1}b_1+a_1^{-1}(a_0-r)x_1.
+    \]
+    Substituting into the first equation,
+    \[
+        b_0=a_0a_1^{-1}+\big(a_0a_1^{-1}(a_0-r)-a_1^{-1}f(a_0)\big)x_1,
+    \]
+    which can be solved for $x_1$ provided that
+    \[
+        \bcancel{a_0^2}-\cancel{a_0r}-\bcancel{a_0^2}+\cancel{ra_0}
+            +s\ne0,
+    \]
+    which does hold because $x^2-rx-s$ is irreducible.
+
+    Axioms \textsc{\ref{QF3}} and \textsc{\ref{QF4}} are clearly satisfied.
+
+    To verify axiom \textsc{\ref{QF5}} consider the equation
+    \[
+        x\circ a+ b=x\circ c+d
+    \]
+    where $a\ne c$. The conclusion is clear if $a_1=0$ and $c_1=0$. Since the sum is associative we may assume that $d=0$. There are (essentially) two cases:
+    \begin{itemize}
+        \item $a_1\ne0$ and $c_1=0$. Here, we have
+        \begin{align*}
+            a_0x_0-a_1^{-1}x_1f(a_0)+b_0 &= c_0x_0\\
+            a_1x_0-a_0x_1+x_1r+b_1 &= c_0x_1.
+        \end{align*}
+        Solving the second equation for $x_0$ and substituting into the first equation, we can then solve for $x_1$.
+        \item $a_1\ne0$ and $c_1\ne0$. In this case we have
+        \begin{align*}
+            a_0x_0-a_1^{-1}x_1f(a_0)+b_0
+                &= c_0x_0-c_1^{-1}x_1f(c_0)\\
+            a_1x_0-a_0x_1+\cancel{x_1r}+b_1
+                &= c_1x_0-c_0x_1+\cancel{x_1r}.
+        \end{align*}
+        If $a_0\ne c_0$, we can solve the second equation for $x_1$ and substitute it into the first, obtaining $x_0$.
+
+        If $a_0=c_0$, the system reduces to
+        \begin{align*}
+            -a_1^{-1}x_1f(a_0)+b_0 &= -c_1^{-1}x_1f(a_0)\\
+            a_1x_0+b_1 &= c_1x_0.
+        \end{align*}
+        We can solve the second for $x_0$ and then use the first to obtain~$x_1$.
+    \end{itemize}
+    Axiom \textsc{\ref{QF7}} is satisfied since the multiplication is clearly bilinear in the first operand. By Remark~\ref{rem:qf7-implies-qf6}, \textsc{\ref{QF6}} is also satisfied.
+    
+    Note that \textit{left distribution} is not generally satisfied because the multiplication defined is not bilinear in the second operand (it is not even linear in any of the components of the second operand).
 
     \textit{Associativity} is never satisfied. To see this it is enough to consider the case $b_1\ne0$ and $c_1=0$. Here we have $c_0=c$ and
     \begin{align*}
@@ -123,6 +273,8 @@
     \]
     which are distinct for $c\ne0$ and $a^3\ne a$.
 \end{xmpl}
+
+\section{Nearfields}
 
 \begin{defn}
     A \textsl{nearfield} is a quasifield whose first operation is commutative and its second operation is associative.    

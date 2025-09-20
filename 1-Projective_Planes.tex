@@ -159,7 +159,10 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
 
 \begin{defn}
     An incidence geometry $\igeo$ is a \textsl{projective plane} if it satisfies:
-    \begin{enumerate}[P1]
+    \begin{enumerate}[
+        p$_{\arabic*}$,
+        ref=\textsc{p$_\arabic*$},
+        font=\scshape]
         \item \label{P1}Every pair of distinct points of $\pts$ is incident with one, and only one, block in~$\blocks$.
         
         \item \label{P2}For every pair of distinct blocks in $\blocks$ there exists one, and only one, point in $\pts$ incident with them.
@@ -170,12 +173,15 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
     \end{enumerate}
 \end{defn}
 
+%\newcommand{\PP}[1]{{\upshape{\textsc{\ref{P#1}}}}}
+\newcommand{\PP}[1]{{\upshape\ref{P#1}}}
+
 \begin{rem}
     The dual of a projective plane is a projective plane.
 \end{rem}
 
 \begin{ntn}
-    Blocks in a projective plane are called \textsl{lines}. Properties\/ {\upshape\ref{P1}} and\/ {\upshape\ref{P2}} allow us to introduce the notation\/ $AB$ to refer to the line incident with the points\/ $A$ and\/ $B$ whenever\/ $A\ne B$. Similarly, given two lines\/ $\block b\ne\block c$ the point incident with both of them will be denoted\/ $\block b\wedge\block c$.
+    Blocks in a projective plane are called \textsl{lines}. Axioms\/ \PP1 and\/ \PP2 allow us to introduce the notation\/ $AB$ to refer to the line incident with the points\/ $A$ and\/ $B$ whenever\/ $A\ne B$. Similarly, given two lines\/ $\block b\ne\block c$ the point incident with both of them will be denoted\/ $\block b\wedge\block c$.
 \end{ntn}
 
 \begin{rem}\label{rem:rotation-rule} [Rotation Rule]
@@ -202,21 +208,38 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
     Therefore, to show that these four points form a quad, it suffices to check that none of the triads is collinear. For instance, $C,D\nincidence AB$ and $A,B\nincidence CD$.
 \end{rem}
 
+\makeatletter
+% page 18
+\newcommand\apostrophes[1]{\expandafter\@apostrophes\csname c@#1\endcsname}
+\newcommand{\@apostrophes}[1]{%
+  \ifcase\numexpr#1\relax
+    \or '\hphantom' \or '' \or ''' \or '''' \or '''''%
+  \else '''''%
+  \fi
+}
+\makeatother
+\AddEnumerateCounter*{\apostrophes}{\@apostrophes}{6}
+
 
 \begin{lem}\label{lem:alternative-projective-axiom}
-    An incidence geometry\/ $\igeo$ is a projective plane if, and only if, it satisfies properties\/ {\upshape\ref{P1}} and\/ {\upshape\ref{P2}}, and one of the following two conditions:
-    \begin{enumerate}
-        \item[\ \upshape P3'\hphantom{'}]\label{P3'} There are four points in general position.
-        \item[\ \upshape P3'']\label{P3''} ${\incidence}\ne\emptyset$ and given two lines, there is always a point not incident with either of them.
+    An incidence geometry\/ $\igeo$ is a projective plane if, and only if, it satisfies properties\/ \PP1 and\/ \PP2, and one of the following two conditions:
+    \begin{enumerate}[font=\scshape]
+        \item[p$_3$\!'\hphantom'] There are four points in general position.
+        \item[p$_3$\!''] ${\incidence}\ne\emptyset$ and given two lines, there is always a point not incident with either of them.
     \end{enumerate}
 \end{lem}
 
-\begin{proof}
-    Let $\Gamma$ denote the geometry and suppose that $\Gamma$ conforms to axioms~\ref{P1}, \ref{P2} and P3'. To verify \ref{P3} take a line $\ell$. Let $A,B,C,D$ be $4$ points in general position. Without loss of generality, we may assume that $A\nincidence\ell$. Using \ref{P2}, define $P_X=XA\wedge\ell$ for $X=B,C,D$. Since $P_X=P_Y$ would imply that $A,X,Y$ are collinear, we see that $P_B,P_C,P_D$ are distinct and incident with~$\ell$. Thus, $\Gamma$ satisfies \ref{P3}.
-    
-    Note that the dual $\Gamma^*$ satisfies \ref{P1}, and \ref{P2}. To verify P3' take four points $A$, $B$, $C$, $D$ in general position in $\Gamma$. Then the lines $AB$, $BC$, $CD$ and $CA$ define four points in general position in~$\Gamma^*$. Otherwise we would have, say, $AB$, $BC$ and $CD$ concur at a point $O$. Since $O=B$ implies $B\incidence CD$, which is impossible, we deduce that $O\ne B$. Then $B\incidence OB$, and the \rr\ implies that $A\incidence OB$, and $C\incidence OB$, in contradiction with our hypothesis. Hence, $\Gamma^*$ satisfies P3' and we can apply what we showed before, i.e., that $\Gamma^*$ satisfies \ref{P3}. This means that $\Gamma$ satisfies~\ref{P4}. Hence, $\Gamma$ is a projective plane.
+  
+\newcommand{\Ptprime}{{\upshape\textsc{\hyperref[lem:alternative-projective-axiom]{p$_3$\!'}}}}
 
-    Now assume that $\Gamma$ is a projective plane. Pick a point $O$. By \ref{P4} there are two (actually three) distinct lines $\block a,\block b$ incident with $O$. According to \ref{P3} we can pick two points $A$ and $A'$ incident with $\block a$ and $B$ and $B'$ incident with $\block b$, all of which are pairwise distinct and distinct from~$O$.
+\newcommand{\Ptdprime}{{\upshape\textsc{\hyperref[lem:alternative-projective-axiom]{p$_3$\!''}}}}
+
+\begin{proof}
+    Let $\Gamma$ denote the geometry and suppose that $\Gamma$ conforms to axioms~\PP1, \PP2 and \Ptprime. To verify \PP3 take a line $\ell$. Let $A,B,C,D$ be $4$ points in general position. Without loss of generality, we may assume that $A\nincidence\ell$. Using \PP2, define $P_X=XA\wedge\ell$ for $X=B,C,D$. Since $P_X=P_Y$ would imply that $A,X,Y$ are collinear, we see that $P_B,P_C,P_D$ are distinct and incident with~$\ell$. Thus, $\Gamma$ satisfies \PP3.
+    
+    Note that the dual $\Gamma^*$ satisfies \PP1, and \PP2. To verify \Ptprime\ take four points $A$, $B$, $C$, $D$ in general position in $\Gamma$. Then the lines $AB$, $BC$, $CD$ and $CA$ define four points in general position in~$\Gamma^*$. Otherwise we would have, say, $AB$, $BC$ and $CD$ concur at a point $O$. Since $O=B$ implies $B\incidence CD$, which is impossible, we deduce that $O\ne B$. Then $B\incidence OB$, and the \rr\ implies that $A\incidence OB$, and $C\incidence OB$, in contradiction with our hypothesis. Hence, $\Gamma^*$ satisfies \Ptprime\ and we can apply what we showed before, i.e., that $\Gamma^*$ satisfies \PP3. This means that $\Gamma$ satisfies~\PP4. Hence, $\Gamma$ is a projective plane.
+
+    Now assume that $\Gamma$ is a projective plane. Pick a point $O$. By \PP4 there are two (actually three) distinct lines $\block a,\block b$ incident with $O$. According to \PP3 we can pick two points $A$ and $A'$ incident with $\block a$ and $B$ and $B'$ incident with $\block b$, all of which are pairwise distinct and distinct from~$O$.
     $$
         \begin{tikzpicture}[scale=0.45,
             dot/.style={circle, fill=black, inner sep=1.5pt} % Style for points
@@ -256,11 +279,11 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
         
         \end{tikzpicture}
     $$
-    Let's see that $A,A',B,B'$ are in general position. Otherwise, say $A$, $A'$, and $B$ were collinear. Then $O,B\incidence AA'$ and so $OB=AA'$. Since $O\incidence BB'$, by the \rr\ $B'\incidence OB$. Hence, $\block b=BB'=OB=AA'=\block a$, which isn't the case. It follows that $\Gamma$ satisfies~P3'.
+    Let's see that $A,A',B,B'$ are in general position. Otherwise, say $A$, $A'$, and $B$ were collinear. Then $O,B\incidence AA'$ and so $OB=AA'$. Since $O\incidence BB'$, by the \rr\ $B'\incidence OB$. Hence, $\block b=BB'=OB=AA'=\block a$, which isn't the case. It follows that $\Gamma$ satisfies~\Ptprime.
 
-    To see that P3'' also holds true when $\Gamma$ is a projective plane, take two distinct lines $\block a$ and $\block b$. By \ref{P3} there are two points $A\incidence\block a$ and $B\incidence\block b$, both distinct from $O=\block a\wedge\block b$. Then, $OA=\block a$ and $OB=\block b$. Furthermore, by the same axiom there is a third point $C$ on $AB$, distinct from $A$ and $B$. Thus, $C$ cannot be incident with $\block a$ because that would imply $C=\block a\wedge\block c=OA\wedge\block c=A$, which is not. Similarly, $C$ cannot be incident with $\block b$, proving P3''.
+    To see that \Ptdprime\ also holds true when $\Gamma$ is a projective plane, take two distinct lines $\block a$ and $\block b$. By \PP3 there are two points $A\incidence\block a$ and $B\incidence\block b$, both distinct from $O=\block a\wedge\block b$. Then, $OA=\block a$ and $OB=\block b$. Furthermore, by the same axiom there is a third point $C$ on $AB$, distinct from $A$ and $B$. Thus, $C$ cannot be incident with $\block a$ because that would imply $C=\block a\wedge\block c=OA\wedge\block c=A$, which is not. Similarly, $C$ cannot be incident with $\block b$, proving \Ptdprime.
 
-    It remains to be seen that \ref{P1}, \ref{P2} and P3'' imply P3'. According to P3'' we can pick two points $A$ and $B$ and a line $\block a$ with $A\incidence\block a$ and $B\nincidence\block a$. Let $\block b=AB$. Then $\block a\ne\block b$ and there exists $D$ not incident with either $\block a$ or $\block b$. Let $\block c=BD$ and $C=\block a\wedge\block c$. Pick $E$ not incident with either $\block a$ or $\block c$.
+    It remains to be seen that \PP1, \PP2 and P3'' imply P3'. According to P3'' we can pick two points $A$ and $B$ and a line $\block a$ with $A\incidence\block a$ and $B\nincidence\block a$. Let $\block b=AB$. Then $\block a\ne\block b$ and there exists $D$ not incident with either $\block a$ or $\block b$. Let $\block c=BD$ and $C=\block a\wedge\block c$. Pick $E$ not incident with either $\block a$ or $\block c$.
     $$
         \begin{tikzpicture}[
                 scale=0.7,
@@ -340,11 +363,11 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
 \end{proof}
 
 \begin{rem}\label{rem:point-identification-from-blocks}
-    It follows from the lemma that the duals of P3' and P3'' also hold in a projective plane. These are:
-    \begin{description}
-        \item[\ \upshape Q3'] \textit{There are four lines, no three of which are concurrent.}
-        \item[\ \upshape Q3''] \textit{Given two points, there is always a line not incident with either of them.}
-    \end{description} 
+    It follows from the lemma that the duals of \Ptprime\ and \Ptdprime\ also hold in a projective plane. These are:
+    \begin{enumerate}[font=\upshape\scshape]
+        \item[q$_3$\!'\hphantom'] \textit{There are four lines, no three of which are concurrent.}
+        \item[q$_3$\!''] \textit{Given two points, there is always a line not incident with either of them.}
+    \end{enumerate} 
 \end{rem}
 
 \begin{xmpl}${}$\label{xmpl:Fano}
@@ -418,7 +441,7 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
 
 \begin{proof}${}$
     \begin{enumerate}[a),font=\upshape]
-        \item Let $\ell$ be a line incident with $n+1$ points, labeled $A_0,\dots,A_n$. Take a point $P$ not incident with $\ell$. The $n+1$ lines $PA_i$ for $0\le i\le n$ are distinct and no other line is incident with $P$ because such a line must intersect $\ell$ at some of the $A_i$. This means that every point not incident with a line incident with $n+1$ points in a projective plane is incident with $n+1$ lines. Since $\Pi^*$ satisfies this condition for the line $P$, any point $\block c$ not incident with $P$ in $\Pi^*$ is incident with $n+1$ lines. Translating to $\Pi$ this shows that any line not incident with $P$ is incident with $n+1$ points. To see that any given line $\block a$ that is incident with $P$ has the same property it suffices to apply this partial result to any point $Q$ not incident with either $\block a$ or $\ell$. Note that such a point exists by \ref{P4} (applied to $A_j=\block a\wedge\ell$) and by \ref{P3}.
+        \item Let $\ell$ be a line incident with $n+1$ points, labeled $A_0,\dots,A_n$. Take a point $P$ not incident with $\ell$. The $n+1$ lines $PA_i$ for $0\le i\le n$ are distinct and no other line is incident with $P$ because such a line must intersect $\ell$ at some of the $A_i$. This means that every point not incident with a line incident with $n+1$ points in a projective plane is incident with $n+1$ lines. Since $\Pi^*$ satisfies this condition for the line $P$, any point $\block c$ not incident with $P$ in $\Pi^*$ is incident with $n+1$ lines. Translating to $\Pi$ this shows that any line not incident with $P$ is incident with $n+1$ points. To see that any given line $\block a$ that is incident with $P$ has the same property it suffices to apply this partial result to any point $Q$ not incident with either $\block a$ or $\ell$. Note that such a point exists by \PP4 (applied to $A_j=\block a\wedge\ell$) and by \PP3.
         $$
         \begin{tikzpicture}[scale=0.8,font=\small,
             dot/.style={circle, fill=black, inner sep=1.5pt} % Style for points
@@ -485,7 +508,7 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
 \begin{rem}
     Theorem~\ref{thm:order-is-well-defined} shows that the notion of order is well-defined. In addition, the order of $\Pi$ equals the order of $\Pi^*$.
 
-    According to \ref{P3} (and \ref{P4}) the order is always at least $2$. The Fano plane has order $2$.
+    According to \PP3 (and \PP4) the order is always at least $2$. The Fano plane has order $2$.
 \end{rem}
 
 \begin{cor}\label{cor:non-incident-lines-at-P}
@@ -1248,18 +1271,18 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 \begin{xmpl}\label{xmpl:hall-plane} {\upshape[Hall's Free Extension Process]}
     This process is constructive. It begins with a partial projective plane, which is a set of points and lines with an incidence relation that satisfies some, but not all, axioms of a projective plane. The goal is to extend this partial structure to a complete projective plane by freely adding new elements (points and lines) in such a way that the extended structure satisfies all the axioms of a projective plane.
 
-    In describing this process, we will rely on weaker versions of axioms~\ref{P1} and \ref{P2}, stated as follows:
+    In describing this process, we will rely on weaker versions of axioms~\PP1 and \PP2, stated as follows:
     \begin{enumerate}
         \item[P1'.] Any pair of points lies on \emph{at most} one line.
         \item[P2'.] Any pair of lines meets in \emph{at most} one point.
     \end{enumerate}
-    These weaker versions ensure that in the process we don't violate \ref{P1} and \ref{P2} by an excess of incidences. The idea is to add new incidences, in an attempt to fulfill \ref{P1} or \ref{P2} at every step.
+    These weaker versions ensure that in the process we don't violate \PP1 and \PP2 by an excess of incidences. The idea is to add new incidences, in an attempt to fulfill \PP1 or \PP2 at every step.
 
     What follows is an algorithmic description of the process:
     \begin{enumerate}[1.]
         \item \textbf{Identify Incomplete Configurations:} \textit{Determine pairs of points not yet connected by a line and pairs of lines not yet intersecting at a point.}
 
-        Start with an incidence matrix in which the rows index lines and columns index points. This matrix must satisfy P1' and P2', although it may fail to satisfy \ref{P1} or \ref{P2}. For example, start with
+        Start with an incidence matrix in which the rows index lines and columns index points. This matrix must satisfy P1' and P2', although it may fail to satisfy \PP1 or \PP2. For example, start with
 
         \vspace{-2\parskip}
         \small
@@ -1276,11 +1299,11 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
             \end{array}            
         \end{equation}
         \normalsize
-        Here, \ref{P1} and P2' are satisfied but not \ref{P2}: $\ell_1\cap\ell_6=\ell_2\cap\ell_5=\ell_3\cap\ell_4=\emptyset$. 
+        Here, \PP1 and P2' are satisfied but not \PP2: $\ell_1\cap\ell_6=\ell_2\cap\ell_5=\ell_3\cap\ell_4=\emptyset$. 
 
-        \item \textbf{Add New Elements:} \textit{For each pair of points or lines, add a new line or point to establish the incidence required by\/ {\upshape \ref{P1}} or\/ {\upshape \ref{P2}}, ensuring that the addition still satisfies\/ {\upshape P1'} and\/ {\upshape P2'}.}
+        \item \textbf{Add New Elements:} \textit{For each pair of points or lines, add a new line or point to establish the incidence required by\/ \PP1 or\/ \PP2, ensuring that the addition still satisfies\/ {\upshape P1'} and\/ {\upshape P2'}.}
         
-        In the table we are building, we add more points so that \ref{P2} is satisfied:
+        In the table we are building, we add more points so that \PP2 is satisfied:
         \small
         \setlength{\tabcolsep}{3pt}
         \begin{align}\label{eq:T2}
@@ -1296,7 +1319,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
             \end{array}            
         \end{align}
         \normalsize
-        Our table satisfies P1' and \ref{P2} but not \ref{P1} (no line joins the new points).
+        Our table satisfies P1' and \PP2 but not \PP1 (no line joins the new points).
 
         \item \textbf{Iterate:} \textit{Repeat the process iteratively, each time by extending the partial plane by adding new elements to resolve remaining incomplete configurations.}
 
@@ -1349,7 +1372,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 
         \item \textbf{Complete:} \textit{Continue the process (possibly \textsl{ad infinitum}) until all pairs of distinct points are connected by a unique line, and all pairs of distinct lines intersect at a unique point, resulting in a complete projective plane.}
 
-        This construction continues for a countable number of steps. The infinite incidence matrix satisfies axioms~\ref{P1} and \ref{P2}, because it does from a certain step on. More precisely, if points $A$ and $B$ have been defined in step $i$, then the line $AB$ is also defined in step~$i$ or it will be in step $i+1$. Axiom~\hyperref[lem:alternative-projective-axiom]{P3'} is satisfied by \hyperref[eq:T1]{$T_1$}, and preserved in all subsequent tables. Note also that if we transpose \hyperref[eq:T1]{$T_1$}, the incidence geometry it induces satisfies~\hyperref[lem:alternative-projective-axiom]{P3''}.
+        This construction continues for a countable number of steps. The infinite incidence matrix satisfies axioms~\PP1 and \PP2, because it does from a certain step on. More precisely, if points $A$ and $B$ have been defined in step $i$, then the line $AB$ is also defined in step~$i$ or it will be in step $i+1$. Axiom~\hyperref[lem:alternative-projective-axiom]{P3'} is satisfied by \hyperref[eq:T1]{$T_1$}, and preserved in all subsequent tables. Note also that if we transpose \hyperref[eq:T1]{$T_1$}, the incidence geometry it induces satisfies~\hyperref[lem:alternative-projective-axiom]{P3''}.
     \end{enumerate}
 \end{xmpl}
 
@@ -1421,9 +1444,9 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
     $$
     We claim that the incidence geometry $\igeo$, where $\pts$ is the set of vertices of the $v$-gon and $\incidence$ is the membership relation, defines a projective plane.
     
-    To verify axiom~\ref{P1}, take any two distinct points $i$ and $j$. Without loss of generality, we may assume that $\delta(i,j)=j-i$. The definition of $R$ implies that there exist $i', j'\in R$ with $j'-i'=j-i$. Let $R'=R+i-i'$. Since $i'\in R$, $0\in R-i'$ and so $i\in R+i-i'=R'$. Similarly, $j\in R+j-j'=R'$ and so $i,j\in R'$. Now suppose that $i,j\in R'+k$ for some $k$. Since $i$ and $j$ are the only vertices in $R'$ whose distance is $j-i$, and $i+k$ and $j+k$ are at the same distance and belong to $R'+k$, we deduce that $k=0\pmod v$.
+    To verify axiom~\PP1, take any two distinct points $i$ and $j$. Without loss of generality, we may assume that $\delta(i,j)=j-i$. The definition of $R$ implies that there exist $i', j'\in R$ with $j'-i'=j-i$. Let $R'=R+i-i'$. Since $i'\in R$, $0\in R-i'$ and so $i\in R+i-i'=R'$. Similarly, $j\in R+j-j'=R'$ and so $i,j\in R'$. Now suppose that $i,j\in R'+k$ for some $k$. Since $i$ and $j$ are the only vertices in $R'$ whose distance is $j-i$, and $i+k$ and $j+k$ are at the same distance and belong to $R'+k$, we deduce that $k=0\pmod v$.
 
-    For axiom~\ref{P2}, take any two distinct blocks $R+i$ and $R+j$. Without loss of generality we may assume that $\delta(i,j)=j-i$. Since the vertices of $R$ realize all possible distances between vertices in the $v$-gon, there exist $i',j'\in R$ with $j'-i'=j-i$. Therefore, $j'+i=i'+j\in(R+i)\cap(R+j)$. Now suppose that $k\in(R+i)\cap(R+j)$. We can write $k=k_1+i=k_2+j$ for $k_1,k_2\in R$. Then $k_1-k_2=j-i=j'-i'$, which implies that $k_1=j'$ (and $k_2=i'$). Hence, $k=j'+i$ is the same point we identified before.
+    For axiom~\PP2, take any two distinct blocks $R+i$ and $R+j$. Without loss of generality we may assume that $\delta(i,j)=j-i$. Since the vertices of $R$ realize all possible distances between vertices in the $v$-gon, there exist $i',j'\in R$ with $j'-i'=j-i$. Therefore, $j'+i=i'+j\in(R+i)\cap(R+j)$. Now suppose that $k\in(R+i)\cap(R+j)$. We can write $k=k_1+i=k_2+j$ for $k_1,k_2\in R$. Then $k_1-k_2=j-i=j'-i'$, which implies that $k_1=j'$ (and $k_2=i'$). Hence, $k=j'+i$ is the same point we identified before.
 
     The proof follows from Lemma~\ref{lem:alternative-projective-axiom} because $n+1<n^2+n+1=v$ and so~\hyperref[lem:alternative-projective-axiom]{P3'} is trivially satisfied.
 \end{xmpl}
@@ -1432,7 +1455,8 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
     Consider the representation of the Fano plane [cf.~Example~\ref{xmpl:Fano}], and a variant of it, where $\blocks=\set{T+i\mid i\in\Z_7}$, with $T=\set{0,1,3}$.
     $$
         \begin{tikzpicture}[
-            scale=1.15,
+            scale=0.9,
+            every node/.style={font=\small},
             point/.style={draw, circle, fill=black, inner sep=1.5pt, minimum size=4pt},
             line_style/.style={opacity=0.8, color=teal}
           ]
@@ -1475,11 +1499,12 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
         \qquad
         %
         \begin{tikzpicture}[
-            scale=0.7,
+            scale=0.6,
+            every node/.style={font=\small},
             point/.style={circle, fill=black, inner sep=1.5pt, draw=black},
             line_style/.style={opacity=0.8, color=teal}
         ]
-        \def\r{2};
+        \def\r{1.9};
         \draw[gray] (0,0) circle (\r);
         
         % --- Define the 7 points on a circle ---
@@ -1516,7 +1541,10 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 
 \begin{defn}
     An incidence geometry $\igeo$ is an \textsl{affine plane} if it satisfies the following properties
-    \begin{enumerate}[label=A\arabic*, ref=A\arabic*, font=\upshape]
+    \begin{enumerate}[
+        {a}$_\arabic*$,
+        ref=\textsc{a$_\arabic*$},
+        font=\upshape\scshape]
         \item\label{A1} Every pair of distinct points of $\pts$ is incident with one, and only one, block in~$\blocks$.
         
         \item\label{A2} If $P\nincidence\ell$ for some $P\in\pts$ and $\ell\in\blocks$, then there is a unique $\ell'\in\blocks$ such that $P\incidence\ell'$, and $Q\nincidence\ell'$ whenever $Q\incidence\ell$. 
@@ -1526,6 +1554,8 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
         \item\label{A4} Every point in $\pts$ is incident with, at least, $3$ distinct blocks in~$\blocks$.
     \end{enumerate}
 \end{defn}
+
+
 
 \begin{rem}\label{rem:projective-line=affine}
     An affine plane can be obtained from a projective plane by removing one line and all the points incident with that line and restricting the incidence relation accordingly.
@@ -1562,17 +1592,17 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 \begin{proof}
     In what follows we will use the notation of the definition of projective closure.
     \begin{description}
-        \item[\rm\textit{$\bar\Lambda$ satisfies} \ref{P1}:] Take two distinct points $A$ and $B$ in $\bar\pts$. If both points are in $\pts$, by \ref{A1}, there is only one line in $\blocks$ incident with both of them. Moreover, $\ell_\infty$ cannot be incident with any of them because it is exclusively incident with points in $\pts_\infty$.
+        \item[\rm\textit{$\bar\Lambda$ satisfies} \PP1:] Take two distinct points $A$ and $B$ in $\bar\pts$. If both points are in $\pts$, by \ref{A1}, there is only one line in $\blocks$ incident with both of them. Moreover, $\ell_\infty$ cannot be incident with any of them because it is exclusively incident with points in $\pts_\infty$.
 
         If $A\in\pts$ and $B\in\pts_\infty$, then \ref{A2} implies that there is precisely one line $\block b$ incident with $A$ in the equivalence class $B$, i.e., such that $A\mathrel{\bar\incidence}b$ and $B\mathrel{\bar\incidence}b$.
 
-        \item[\rm\textit{$\bar\Lambda$ satisfies} \ref{P2}:] Take two distinct lines $\block a$ and $\block b$ in $\bar\blocks$. First consider the case where both lines are in $\blocks$. If there is a point $A$ incident with both of them, no other point $B\ne A$ can be incident with $\block a$ and $\block b$ because of~\ref{P1}. If $\block a\parallel b$, then both define the very same point in $\pts_\infty$. Again, \ref{P1} ensures that no other point might be in $\block a$ and $\block b$.
+        \item[\rm\textit{$\bar\Lambda$ satisfies} \PP2:] Take two distinct lines $\block a$ and $\block b$ in $\bar\blocks$. First consider the case where both lines are in $\blocks$. If there is a point $A$ incident with both of them, no other point $B\ne A$ can be incident with $\block a$ and $\block b$ because of~\PP1. If $\block a\parallel b$, then both define the very same point in $\pts_\infty$. Again, \PP1 ensures that no other point might be in $\block a$ and $\block b$.
 
-        In the case where $\block b=\ell_\infty$, the class of $\block a$ in $\blocks/{\parallel}$ is incident with $\block a$ and with~$\ell_\infty$. Because of \ref{P1}, no other point is incident with both lines.
+        In the case where $\block b=\ell_\infty$, the class of $\block a$ in $\blocks/{\parallel}$ is incident with $\block a$ and with~$\ell_\infty$. Because of \PP1, no other point is incident with both lines.
 
-        \item[\rm\textit{$\bar\Lambda$ satisfies} \ref{P3}:] To see that $\ell_\infty$ is incident with at least $3$ points, it is enough to take $A\in\pts$ and use \ref{P4} to obtain $3$ incident lines $\block a$, $\block b$ and $\block c$. These lines define three different points in $\pts_\infty$. For a line $\block a\ne\ell_\infty$, take two points incident with $\block a$, as provided by axiom~\ref{A2} and add to them the class of $\block a$ in $\blocks/{\parallel}$.
+        \item[\rm\textit{$\bar\Lambda$ satisfies} \PP3:] To see that $\ell_\infty$ is incident with at least $3$ points, it is enough to take $A\in\pts$ and use \PP4 to obtain $3$ incident lines $\block a$, $\block b$ and $\block c$. These lines define three different points in $\pts_\infty$. For a line $\block a\ne\ell_\infty$, take two points incident with $\block a$, as provided by axiom~\ref{A2} and add to them the class of $\block a$ in $\blocks/{\parallel}$.
 
-        \item[\rm\textit{$\bar\Lambda$ satisfies} \ref{P4}:] By \ref{A4}, we only have to consider points in $\pts_\infty$. Let $\block a$ be a line and let $\block a_\infty$ denote its equivalence class in $\blocks/{\parallel}$. Pick a point $A\in\pts$ incident with $\block a$. Let $\block t\in\blocks$ be another line incident with $A$, distinct from~$\block a$. Use axiom~\ref{A3} to pick another point $B\ne A$, incident with $\block t$. By axiom~\ref{A2}, there is a line $\block b\ne\block a$, incident with $B$ and parallel to $\block a$. Then $\block a$, $\block b$, and $\ell_\infty$ are incident with $\block a_\infty$.  
+        \item[\rm\textit{$\bar\Lambda$ satisfies} \PP4:] By \ref{A4}, we only have to consider points in $\pts_\infty$. Let $\block a$ be a line and let $\block a_\infty$ denote its equivalence class in $\blocks/{\parallel}$. Pick a point $A\in\pts$ incident with $\block a$. Let $\block t\in\blocks$ be another line incident with $A$, distinct from~$\block a$. Use axiom~\ref{A3} to pick another point $B\ne A$, incident with $\block t$. By axiom~\ref{A2}, there is a line $\block b\ne\block a$, incident with $B$ and parallel to $\block a$. Then $\block a$, $\block b$, and $\ell_\infty$ are incident with $\block a_\infty$.  
     \end{description}
 \end{proof}
 
@@ -1588,7 +1618,6 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 
 \begin{proof}
     This is a direct consequence of the theorem and Theorem \ref{thm:order-is-well-defined} applied to the projective closure of~$\Lambda$.
-    
 \end{proof}
 
 \begin{thm}
@@ -2078,7 +2107,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
     \end{enumerate}
     \normalsize
 
-    Let's now prove that $\Pi$ satisfies axioms~\ref{P1}, \ref{P2} and \hyperref[lem:alternative-projective-axiom]{P3'}.
+    Let's now prove that $\Pi$ satisfies axioms~\PP1, \PP2 and \hyperref[lem:alternative-projective-axiom]{P3'}.
 
     \begin{description}
         \item[\rm P1.] Take two distinct points $P\ne Q$. There are several cases.
@@ -2656,9 +2685,9 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 \end{exr}
 
 \begin{solution}
-    Since $\lambda=1$, axiom~\ref{P1} is automatically met.
+    Since $\lambda=1$, axiom~\PP1 is automatically met.
     
-    For axiom~\ref{P2}, suppose, for a contradiction, that $\block a\ne\block b\in\blocks$, don't satisfy it. There are two cases (i)~$\block a\cap\block b=\emptyset$ and (ii)~$A\ne B\in\block a\cap\block b$.
+    For axiom~\PP2, suppose, for a contradiction, that $\block a\ne\block b\in\blocks$, don't satisfy it. There are two cases (i)~$\block a\cap\block b=\emptyset$ and (ii)~$A\ne B\in\block a\cap\block b$.
 
     In case (i) let $\block a=\set{A_1,\dots,A_k}$ and $\block b=\set{B_1,\dots,B_k}$. The blocks $A_iB_j$ are distinct. Indeed, if $\block c=A_iB_j=A_{i'}B_{j'}$ with $j\ne j'$, then $\block c=B_jB_{j'}=\block b$ and $A_i\in\block b$, which is not the case. Thus $\block c=A_iB_j=A_{i'}B_j$ and the same argument shows that $i=i'$. This shows that there are at least $k^2+2$ blocks in the design, i.e.,
     \begin{align*}
@@ -2670,7 +2699,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
     \end{align*}
     which is impossible.
 
-    Case (ii) is also impossible because it violates~\ref{P1}.
+    Case (ii) is also impossible because it violates~\PP1.
 
     To complete the proof, it suffices to show condition P3' from Lemma~\ref{lem:alternative-projective-axiom}, namely that given two lines $\block a\ne\block b$, there is always a point not incident with either of them. Suppose the contrary. Then we would have $v=2k-1$, which is impossible when $n\ge2$ because it translates into $n^2+n+1=2(n+1)-1$ or $n(n-1)=0$. Since the order $n$ is assumed to be at least $2$, this is a contradiction.
 
@@ -2720,28 +2749,28 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 
 \begin{solution}
     Suppose that $\Pi=\igeo$ is an incidence geometry satisfying
-   \begin{enumerate}[Q1,font=\upshape]
+   \begin{enumerate}[q$_1$,font=\upshape\scshape]
         \item Every pair of distinct points is incident with exactly one block.
         \item Every block of\/ $\Pi$ is incident with\/ $n+1$ points.
         \item Every point of\/ $\Pi$ is incident with\/ $n+1$ blocks.
     \end{enumerate}
-    Conditions Q1 and Q2 imply that $\Pi$ is a $2$-$(v,n+1,1)$ design. Thus, according to Exercise~\ref{exr:design-basic-combinatory},
+    Conditions \textsc{q$_1$} and \textsc{q$_2$} imply that $\Pi$ is a $2$-$(v,n+1,1)$ design. Thus, according to Exercise~\ref{exr:design-basic-combinatory},
     $$
         r=\frac{v-1}n.
     $$
-    Since $r=n+1$ by Q3, we have $v=n^2+n+1$. Then $\Pi$ is a $2$-$(n^2+n+1,n+1,1)$ design, hence a projective plane by Exercise~\ref{exr:design-projective-plane}, provided that $n\ge2$.
+    Since $r=n+1$ by \textsc{q$_3$}, we have $v=n^2+n+1$. Then $\Pi$ is a $2$-$(n^2+n+1,n+1,1)$ design, hence a projective plane by Exercise~\ref{exr:design-projective-plane}, provided that $n\ge2$.
 
     For the affine plane suppose that $n\ge2$ and consider
-    \begin{enumerate}[B1,font=\upshape]
+    \begin{enumerate}[b$_1$,font=\upshape\scshape]
         \item Every pair of distinct points is incident with exactly one block.
         \item Every block of\/ $\Pi$ is incident with\/ $n$ points.
         \item Every point of\/ $\Pi$ is incident with\/ $n+1$ blocks.
     \end{enumerate}
-    Conditions B1 and B2 imply that $\Pi$ is a $2$-$(v,n,1)$ design. Thus, according to Exercise~\ref{exr:design-basic-combinatory},
+    Conditions \textsc{b$_1$} and \textsc{b$_2$} imply that $\Pi$ is a $2$-$(v,n,1)$ design. Thus, according to Exercise~\ref{exr:design-basic-combinatory},
     $$
         r=\frac{v-1}{n-1}.
     $$
-    Since $r=n+1$ by B3, we have $v=n^2$. Then $\Pi$ is a $2$-$(n^2,n,1)$ design, hence a projective plane by Exercise~\ref{exr:design-affine-plane}, provided that $n\ge2$.
+    Since $r=n+1$ by \textsc{b$_3$}, we have $v=n^2$. Then $\Pi$ is a $2$-$(n^2,n,1)$ design, hence a projective plane by Exercise~\ref{exr:design-affine-plane}, provided that $n\ge2$.
 
 \end{solution}
 
@@ -3451,15 +3480,15 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 \begin{solution}
     We start by being more precise about the inductive construction given in Example~\ref{xmpl:hall-plane}.
     
-    Let $\Pi_n=(\pts_n,\blocks_n,\incidence_n)$ be the incidence geometry induced by the incidence table $T_n$, as defined in Example~\ref{xmpl:hall-plane}. Since $T_n$ is a block inside $T_{n+1}$, $\Pi_n$ is an incidence subgeometry of $\Pi_{n+1}$. The first table $T1$ corresponds to an incidence geometry $\Pi_1$ that satisfies P1 and P3' (or \ref{P2} and P3'' if transposed). As we observed in the example, P3' (respectively, P3'') is satisfied by all subsequent geometries.
+    Let $\Pi_n=(\pts_n,\blocks_n,\incidence_n)$ be the incidence geometry induced by the incidence table $T_n$, as defined in Example~\ref{xmpl:hall-plane}. Since $T_n$ is a block inside $T_{n+1}$, $\Pi_n$ is an incidence subgeometry of $\Pi_{n+1}$. The first table $T1$ corresponds to an incidence geometry $\Pi_1$ that satisfies P1 and P3' (or \PP2 and P3'' if transposed). As we observed in the example, P3' (respectively, P3'') is satisfied by all subsequent geometries.
 
     \textbf{Claim 1.} \textit{Every $\Pi_n$ is a partial projective plane, i.e., it satisfies axioms\/~{\upshape P1'} and\/~{\upshape P2'}.}
 
     By induction on $n$. The case $n=1$ is actually a requirement to start the process. For $n>1$, suppose that $\Pi_{n-1}$ is a partial projective plane. There are three possibilities
     \begin{enumerate}[a),font=\upshape]
         \item \textit{$\Pi_n$ is a projective plane}. In this case, the process would make $\Pi_{n+1}=\Pi_n$, which is a projective plane, in particular a partial one.
-        \item \textit{$\Pi_n$ does not satisfy} \ref{P2}. In this case, $T_{n+1}$ adds to $T_n$ new columns that correspond to the intersections of existing lines that had no point in common in $\Pi_n$. This addition preserves P1' and P2' because no lines are added.
-        \item \textit{$\Pi_n$ does not satisfy} \ref{P1}. Then its dual does not satisfy \ref{P2} and the conclusion follows from the previous possibility.
+        \item \textit{$\Pi_n$ does not satisfy} \PP2. In this case, $T_{n+1}$ adds to $T_n$ new columns that correspond to the intersections of existing lines that had no point in common in $\Pi_n$. This addition preserves P1' and P2' because no lines are added.
+        \item \textit{$\Pi_n$ does not satisfy} \PP1. Then its dual does not satisfy \PP2 and the conclusion follows from the previous possibility.
     \end{enumerate}
 
     \bigskip
@@ -3469,12 +3498,12 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
     We proceed by induction on\/ $n$.
     
     \begin{enumerate}[a),font=\upshape]
-    \item \textit{Base case.} For $n=1$, the claim is clear: $\Pi_1$ trivially fails to satisfy at least one of the axioms~\ref{P1} and \ref{P2}.
+    \item \textit{Base case.} For $n=1$, the claim is clear: $\Pi_1$ trivially fails to satisfy at least one of the axioms~\PP1 and \PP2.
     \item \textit{Inductive step.} Suppose that $\Pi_n$ is not a projective plane. We consider the two possible reasons:
       \begin{enumerate}[i),font=\upshape]
-          \item If\/ $\Pi_n$ fails axiom~\ref{P2}, then the table $T_{n+1}$ adds new columns to $T_n$, each of which represents a point in $\pts_{n+1}\setminus\pts_n$. By construction, these new points are incident with exactly two lines already present in $\blocks_n$ that had no intersection in $\Pi_n$. As a result, these new points are incident with only two lines, so certainly not with at least three, violating axiom~\ref{P1}. Therefore, $\Pi_{n+1}$ is not a projective plane.
+          \item If\/ $\Pi_n$ fails axiom~\PP2, then the table $T_{n+1}$ adds new columns to $T_n$, each of which represents a point in $\pts_{n+1}\setminus\pts_n$. By construction, these new points are incident with exactly two lines already present in $\blocks_n$ that had no intersection in $\Pi_n$. As a result, these new points are incident with only two lines, so certainly not with at least three, violating axiom~\PP1. Therefore, $\Pi_{n+1}$ is not a projective plane.
         
-          \item If\/ $\Pi_n$ fails axiom~\ref{P1}, the conclusion follows from part~(i), but applied to the sequence of transposed incidence tables, which defines the dual geometries.
+          \item If\/ $\Pi_n$ fails axiom~\PP1, the conclusion follows from part~(i), but applied to the sequence of transposed incidence tables, which defines the dual geometries.
       \end{enumerate}
     \end{enumerate}
 
@@ -3482,11 +3511,11 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 
     \textbf{Claim 3.} \textit{The union\/ $\Pi=\bigcup\set{\Pi_n\mid n\ge1}$ is a projective plane.}
 
-    As we mentioned above, $\Pi$ satisfies P3' or P3''. In consequence, we must show that it also satisfies \ref{P1} and \ref{P2}. To see $P_1$, take two points $A$ and $B$ in $\Pi$. Let 
+    As we mentioned above, $\Pi$ satisfies P3' or P3''. In consequence, we must show that it also satisfies \PP1 and \PP2. To see $P_1$, take two points $A$ and $B$ in $\Pi$. Let 
     $$
         n=\max\set{k\mid A,B\in\pts_k}.
     $$
-    By construction, $\Pi_n$ satisfies P1' and P2', as defined in \ref{xmpl:hall-plane}. Therefore, if~$A$ and $B$ violate P1, then $T_{n+1}$ will add one, and only one, row to $T_n$ representing a line in~$\blocks_{n+1}$, incident with $A$ and with $B$. Thus, $A$ and $B$ define a unique line in $\Pi_{n+1}$ and, \textit{a fortiori}, in $\Pi$ by virtue of~P1'. Thus, $\Pi$ satisfies \ref{P1}. The dual construction shows that $\Pi$ also satisfies~\ref{P2}.
+    By construction, $\Pi_n$ satisfies P1' and P2', as defined in \ref{xmpl:hall-plane}. Therefore, if~$A$ and $B$ violate P1, then $T_{n+1}$ will add one, and only one, row to $T_n$ representing a line in~$\blocks_{n+1}$, incident with $A$ and with $B$. Thus, $A$ and $B$ define a unique line in $\Pi_{n+1}$ and, \textit{a fortiori}, in $\Pi$ by virtue of~P1'. Thus, $\Pi$ satisfies \PP1. The dual construction shows that $\Pi$ also satisfies~\PP2.
 
     \bigskip
 

@@ -494,14 +494,13 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 
 \begin{defn}
     The algebraic structure $(\ter,T)$, where $T$ is a ternary operation, is called a \textsl{ternary ring of order}~$n$ if $\ter$ has $n$ elements and the following axioms hold:
-    \begin{enumerate}[label=tr\arabic*,font=\scshape]
+    \begin{enumerate}[label=tr$_\arabic*$,font=\scshape]
         \item\label{TR1} For every\/ $x,m,b \in \ter$, we have
         \[
             T(x,0,b) = T(0,m,b) =b
             \quad\text{and}\quad
             T(1,x,0) = T(x,1,0) =x.
         \]
-        
         \item\label{TR2} If\/ $x,y,x',y' \in \ter$ are given and\/ $x\ne x'$, then there exists a unique pair\/ $(m,b) \in \ter \times \ter$ for which\/ $T(x,m,b)=y$ and\/ $T(x',m,b)=y'$.
         
         \item\label{TR3} For every\/ $x,y,m\in\ter$ there is a unique\/ $b\in\ter$ for which\/ $y=T(x,m,b)$.
@@ -520,7 +519,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{prop}
 
 \begin{proof}${}$
-    \begin{enumerate}[tr\arabic*.,font=\scshape]
+    \begin{enumerate}[tr$_\arabic*$,font=\scshape]
         \item From \eqref{eq:line-coordinates} we obtain $[0,b]\wedge[\infty]=(0,b)$ and $[0,b]\wedge[0,0]=(0)$. In particular, $(0,b),(0)\incidence{[0,b]}$. Then $[0,b]=(0,b)(0)$ and so $(x,b)\incidence{[0,b]}$, as illustrated below. Hence, the definition of $T$ implies $T(x,0,b)=b$.
         $$
             \begin{tikzpicture}[
@@ -1135,7 +1134,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             \end{enumerate}
     \end{minipage}
     $$
-    For the \textsl{product}, we have
+    The \textsl{multiplication} is defined by
     \[
         a\cdot m = T(a,m,0).
     \]
@@ -1288,12 +1287,246 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{proof}
 
 \begin{defn}
-    A triple\/ $(Q, +, \cdot)$, where\/ $Q$ is a set and\/ $+$ and\/ $\cdot$ are binary operations on\/ $Q$, is called a \textsl{right quasifield} if the following conditions hold:
-    \begin{enumerate}[a), font=\upshape]
-        \item $(Q, +)$ is an abelian group with identity\/ $0$;
-        \item $(Q \setminus \{0\}, \cdot)$ is a group with identity\/ $1$;
-        \item $(a+b) \cdot c = a \cdot c + b \cdot c$ for every\/ $a,b,c \in Q$ (right distributivity);
-        \item For every\/ $a, b, c \in Q$ with\/ $a \ne b$, there is a unique\/ $x \in Q$ satisfying the equation\/ $x \cdot a - x \cdot b = c$.
+    As introduced in Appendix~\nameref{ch:nearfields}, Definition~\ref{defn:quasifield}, a triple\/ $(Q, +,{}\cdot{})$, where\/ $Q$ is a set and\/ $+$ and\/ $\cdot$ are binary operations on\/ $Q$, is called a \textsl{right quasifield} if the following conditions hold:
+    \begin{enumerate}[\roman*,
+        ref=\upshape(\scshape\roman*),
+        font=\upshape\scshape]
+        \item\label{qf-i} $(Q, +)$ is an abelian group with identity\/ $0$;
+        \item\label{qf-ii} $(Q \setminus \{0\}, {}\cdot{})$ is a group with identity\/ $1\ne0$;
+        \item\label{qf-iii} $(a+b) \cdot c = a \cdot c + b \cdot c$ for every\/ $a,b,c \in Q$ (right distributivity);
+        \item\label{qf-iv} For every\/ $a, b, c \in Q$ with\/ $a \ne b$, there is a unique\/ $x \in Q$ satisfying the equation\/ $x \cdot a - x \cdot b = c$.
     \end{enumerate}
 \end{defn}
 
+\begin{rem}
+    Even though the commutativity of the group $(Q,+)$ is not required \ref{defn:quasifield}, here we will restrict to that case.
+\end{rem}
+
+\begin{prop}
+    Let\/ $(Q, +, {}\cdot{})$ satisfy axioms\/ \ref{qf-i}, \ref{qf-ii}, and\/ \ref{qf-iii} of the definition of quasifield. Then, for every\/ $u, v \in Q$, we have
+    \begin{enumerate}[a),font=\upshape]
+        \item $0\cdot u=0$,
+        \item $-u = (-1) \cdot u$,
+        \item $u\cdot(-1)=-u$ and
+        \item $u \cdot (-v) = (-u) \cdot v = -(u \cdot v)$
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}${}$
+    \begin{enumerate}[a)]
+        \item
+        $0\cdot u+0\cdot u\stackrel{\text{\ref{qf-iii}}}=
+                (0+0)\cdot u \stackrel{\text{\ref{qf-i}}}= 0\cdot u
+        $.
+        \item $u + (-1)\cdot u=1\cdot u+(-1)\cdot u=(1+(-1))\cdot u
+            = 0\cdot u = 0$.
+        \item Put $s=u+u\cdot(-1)$ and let's show that $s=0$. By part b)
+        \[
+            1=-(-1)=(-1)\cdot(-1).
+        \]
+        Then
+        \begin{align*}
+            s\cdot1 &= s\\
+                &= u\cdot(-1)+u\cdot(-1)\cdot(-1)\\
+                &= (u+u\cdot(-1))\cdot(-1)\\
+                &= s\cdot(-1).
+        \end{align*}
+        If $s\ne0$, by \ref{qf-ii} we would have $1=-1$. Hence, by part~b) $-u=u$ for all $u\in Q$, and so c) is trivial. Otherwise, $s=0$, as wanted.
+        \item By the associativity of the multiplication, we have
+        \begin{align*}
+            u\cdot(-v)+u\cdot v &= u\cdot(-1)\cdot v+u\cdot v
+                    &&\text{; part b)}\\
+                &= (u\cdot(-1)+u)\cdot v
+                    &&\text{; axiom~\ref{qf-iii}}\\
+                &= 0\cdot v
+                    &&\text{; part c)}\\
+                &= 0
+                    &&\text{; part a)}
+        \end{align*}
+        Moreover, $(-u)\cdot v\stackrel{\text{c)}}=u\cdot(-1)\cdot v
+        \stackrel{\text{b)}}= u\cdot(-v)$.
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{prop}
+    If\/ $Q$ is finite, property\/~\ref{qf-iv} is a consequence of\/~\ref{qf-i}, \ref{qf-ii}, and\/~\ref{qf-iii}.
+\end{prop}
+
+\begin{proof}
+    Fix $a\ne b\in Q$ and consider the map
+    \begin{align*}
+        \delta\colon Q&\to Q\\
+        x&\mapsto x\cdot a-x\cdot b.
+    \end{align*}
+    To prove the lemma it suffices to show that $\delta$ is injective. Suppose $\delta(x)=\delta(y)$. Then
+    \[
+        x\cdot a-y\cdot a=x\cdot b-y\cdot b.
+    \]
+    Then the lemma and \ref{qf-iii} imply
+    \[
+        (x-y)\cdot a=(x-y)\cdot b.
+    \]
+    If $x\ne y$, axiom~\ref{qf-ii} allows us to cancel the nonzero factor $x-y$ on both sides, yielding $a=b$, which contradicts our assumption that $a\ne b$. Hence $x=y$, and $\delta$ is injective, as claimed.
+\end{proof}
+
+\begin{defn}
+    The ternary ring $(\ter,T)$ is \textsl{linear} if $T(a,m,b)=a\cdot m\+b$ for every $a,m,b\in\ter$.
+\end{defn}
+
+\begin{rem}\label{rem:linear-ternary-ring}
+    Equivalently, $(\ter,T)$ is linear when
+    \[
+        T(a,m,b)=T(a\cdot m,1,b)=T(T(a,m,0),1,b)
+    \]
+\end{rem}
+
+\begin{rem}\label{rem:ternary-sum-group}
+    The loop $(\ter,\+)$ is a group if, and only if,
+    \[
+        T(T(a,1,b),1,c) = T(a,1,T(b,1,c)).
+    \]
+    The commutativity of the sum is equivalent to
+    \[
+        T(a,1,b)=T(b,1,a).
+    \]
+\end{rem}
+
+\begin{thm}
+    Let\/ $\Pi$ be a projective plane with ternary ring\/ $(\ter,T)$ based on\/ $O,X,Y,E$. Then\/ $\Pi$ is\/ $(Y,XY)$-transitive if, and only if, $(\ter,T)$ is linear and\/ $(\ter,\+)$ is a group.
+\end{thm}
+
+\needspace{2\baselineskip}
+\proof${}$
+\begin{description}
+    \item[\rm\textit{if\/} part:] Take two distinct points $P$ and $P'$, not on $XY$, distinct from $Y$ and collinear with it. According to Definition~\ref{defn:(C,a)-transitive}, we have to show that there is a $(Y,XY)$-collineation $\alpha$ satisfying $\alpha(P)=P'$. 
+    
+    We have $P\colon(a,b)$, $P'\colon(a,b')$, and $PP'\colon[a]$, with $b\ne b'$.
+    $$
+        \begin{tikzpicture}[
+            scale=1.0,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=black,
+                inner sep=1.2pt},
+                every node/.style={font=\footnotesize},
+            ]
+            \pgfmathsetmacro{\s}{1.7};
+            
+            % Points
+            \coordinate (xstart) at (0.0,0.0);
+            \coordinate (xend) at (2.5*\s,0.0);
+            \coordinate (ystart) at (0.0,0.0);
+            \coordinate (yend) at (0.0,2*\s);
+            \coordinate (E) at (\s*1.5,\s*1.0);
+            \coordinate (A) at (\s*0.5,\s*0.0);
+            \coordinate (Q) at (\s*1.2,\s*0.0);
+            
+            % Axis
+            \draw[name path=xaxis,
+                color=orange,
+                thick
+            ] (xstart) -- (xend)
+                node[right,text=black] {$[0,0]$}
+                node[point,
+                pos=0.0,
+                label={[yshift=-5mm,xshift=-2mm]:
+                    \textcolor{black}{$O$}}] (O) {}
+                node[point,
+                    pos=0.92,
+                    label={[text=black,xshift=0mm,yshift=-6mm]:
+                        $X$}
+                ] (X) {};
+    
+            \draw[name path=yaxis,
+                color=orange,
+                thick
+            ] (ystart) -- (yend)
+                node[above,text=black] {$[0]$}
+                node[point,
+                pos=0.95,
+                label={[text=black,left,yshift=-1mm]:
+                    $Y$}
+                ] (Y) {};
+            \node[point,
+                label={[xshift=2mm,yshift=-4mm]:
+                    $E$}
+            ] at (E) {};
+            \draw[name path=OE] (O) -- ($(O)!1.2!(E)$)
+                node[right] {$[1,0]$};
+            \draw[name path=YA] (Y) -- ($(Y)!1.1!(A)$)
+                node[xshift=2mm,yshift=-2mm] {$[a]$}
+                node[point,
+                    fill=orange,
+                    pos=0.60,
+                    label={[text=black,xshift=-3mm,yshift=-3mm]:
+                        $P'$}
+                ] (P') {}
+                node[point,
+                    fill=orange,
+                    pos=0.40,
+                    label={[text=black,xshift=-2.5mm,yshift=-2mm]:
+                        $P$}
+                ] (P) {};;
+
+            \draw[name path=YQ] (Y) -- ($(Y)!1.1!(Q)$)
+                node[xshift=2mm,yshift=-2mm] {$[x]$}
+                node[pos=0.38] (Q) {};
+
+            \draw[name path=XY] (X) -- (Y);
+            \path[name path=YE] (Y) -- ($(Y)!1.2!(E)$);
+            \draw[dashed,name path=PQ] (P) -- ($(P)!2.4!(Q)$);
+            \path[name intersections={of=XY and PQ,by=M}];
+            \node[point,
+                fill=yellow,
+                label={[xshift=2mm,yshift=-1mm,text=black]:
+                    $M$}
+            ] at (M) {};
+            \draw[dashed,name path=MP'] (M) -- (P');
+            \path[name intersections={of=MP' and YQ,by=Q'}];
+            \node[point,
+                fill=green,
+                label={[xshift=3mm,yshift=-3.5mm,text=black]:
+                    $Q'$}
+            ] at (Q') {};
+            \node[point,
+                fill=green,
+                label={[text=black,xshift=1.3mm,yshift=-1mm]:
+                    $Q$}
+            ] at (Q) {};
+        \end{tikzpicture}
+    $$
+    Given a point $Q\colon(x,y)$ not lying on $PP'$, let $M = PQ \wedge XY$ and set $Q' = MP' \wedge QY$. Then $Q'$ has the form $Q'\colon(x,y')$ for some $y' \in \ter$. Hence, a $(Y,XY)$-collineation must map $Q$ to $Q'$, with no alternative.
+
+    Since $XY$ is the line at infinity, $Q'P'$ is parallel to $QP$. Hence, if $b\+d=b'$, then $y\+d=y'$. Since $(\ter,\+)$ is a group, $d$ is well-defined.\footnote{If $\ter$ is finite, it suffices to invoke Lemma~\ref{lem:left-solution-of-sum}.} Thus, we can set
+    \begin{align*}
+        \alpha_{\pts}\colon\pts&\to\pts
+        &\alpha_{\blocks}\colon\blocks&\to\blocks\\
+        (x,y)&\mapsto(x,y\+d),
+        &[m,h]&\mapsto[m,h\+d],\\
+        (m)&\mapsto(m),
+        &[m]&\mapsto[m],\\
+        (\infty)&\mapsto(\infty)
+        &[\infty]&\mapsto[\infty].
+    \end{align*}
+    Observe that $\alpha_{\pts}$ and $\alpha_{\blocks}$ are bijections, since $(\ter,\+)$ is a group: associativity ensures that $y_1=y_2$ whenever $y_1\+d=y_2\+d$.
+
+    To verify that $(\alpha_{\pts},\alpha_{\blocks})$ is a collineation, we have to show that
+    \[
+        (u,v)\incidence{[m,h]}\implies(u,v\+d)\incidence{[m,h\+d]}.
+    \]
+    But,
+    \begin{align*}
+        (u,v)\incidence{[m,h]} &\iff v=T(u,m,h)=u\cdot m\+h
+                &&\text{; $(\ter,T)$ linearity}\\
+            &\,\implies v\+d=u\cdot m\+(h\+d)
+                &&\text{; associativity of }\+\\
+            &\iff(u,v\+d)\incidence{[m,h\+d]}
+                &&\text{; $(\ter,T)$ linearity}.
+    \end{align*}
+
+    \item[\rm\textit{only if\/}:]
+
+    \end{description}
