@@ -492,7 +492,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \end{align*}
 \end{defn}
 
-\begin{defn}
+\begin{defn}\label{defn:ternary-ring}
     The algebraic structure $(\ter,T)$, where $T$ is a ternary operation, is called a \textsl{ternary ring of order}~$n$ if $\ter$ has $n$ elements and the following axioms hold:
     \begin{enumerate}[label=tr$_\arabic*$,font=\scshape]
         \item\label{TR1} For every\/ $x,m,b \in \ter$, we have
@@ -641,7 +641,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             {(x,y)} &\textsc f &x=c &y=T(x,m,b)
         \end{array}        
     \end{equation}
-    To verify axioms \ref{P1}, \ref{P2} and \hyperref[lem:alternative-projective-axiom]{P3'}, we proceed as follows:
+    To verify axioms \ref{P1}, \ref{P2} and \Ptprime, we proceed as follows:
     \begin{description}
         \item[\small\sc Axiom P1:]
         $$
@@ -1288,7 +1288,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 
 \begin{defn}
     As introduced in Appendix~\nameref{ch:nearfields}, Definition~\ref{defn:quasifield}, a triple\/ $(Q, +,{}\cdot{})$, where\/ $Q$ is a set and\/ $+$ and\/ $\cdot$ are binary operations on\/ $Q$, is called a \textsl{right quasifield} if the following conditions hold:
-    \begin{enumerate}[\roman*,
+    \begin{enumerate}[\roman*.,
         ref=\upshape(\scshape\roman*),
         font=\upshape\scshape]
         \item\label{qf-i} $(Q, +)$ is an abelian group with identity\/ $0$;
@@ -1392,14 +1392,84 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \]
 \end{rem}
 
+\begin{xmpl}
+    Let\/ $(\kappa,+,{}\cdot{})$ be an ordered field, and let\/ $0 < \zeta \ne 1$ be a fixed element of\/ $\kappa$. We define a new multiplication on the elements of\/ $\kappa$ in the following way:
+    \[
+    a\circ_\zeta b =
+    \begin{cases}
+        a\zeta b & \text{if } a \ge 0 \text{ and } b \ge 0,\\
+        ab & \text{otherwise}.
+    \end{cases}
+    \]
+    Let $T_\zeta(a,m,b)=a\circ_\zeta m+b$. Then, according to Definition~\ref{defn:ternary-ring}, $(\kappa,T_\zeta)$ is a ternary ring:
+    \begin{enumerate}[tr$_\arabic*$,font=\scshape]
+        \item $T_\zeta(x,0,b)=x\cdot0+b=b$, $T_\zeta(0,m,b)=0\cdot m+b=b$, $T_\zeta(1,x,0)=1\cdot x+0=x$, and $T_\zeta(x,1,0)=x\cdot1+0=x$.
+
+        \item Fix $x,x',y,y'\in\kappa$, with $x>x'$. Since these are constants, we can replace $b$ with $b-y'$ and assume that $y'=0$. Thus the equations become
+        \[
+            \left\{\begin{aligned}
+                x\circ_\zeta m+b&=y\\
+                x'\circ_\zeta m+b&=0,
+            \end{aligned}
+            \right.
+        \]
+        where the unknowns are $m$ and $b$. Let
+        \[
+            z = \frac y{x-x'}.
+        \]
+        Then,
+        \[
+            \begin{array}{c|ccc}
+                 m&y\ge0&y<0\\
+                 \hline\rule{0pt}{10pt}
+                 x'\ge0&z/\zeta&z\\
+                 x\ge0>x'&y/(x\zeta-x')&z\\
+                 0>x&z&z
+            \end{array}
+        \]
+        \item Consider the equation $x\circ m+b=y$, where $x,y,m$ are given and $b$ is the unknown. Then $b=y-x\circ m$ is the unique solution.
+
+        \item It suffices to show that the equation, where $m>m'$,
+        \[
+                x\circ_\zeta m=
+                x\circ_\zeta m'+b,
+        \]
+        has unique solution $x$. Put $c=b/(m-m')$. Then,
+        \[
+            \begin{array}{c|ccc}
+                 x&b\ge0&b<0\\
+                 \hline\rule{0pt}{10pt}
+                 m'\ge0&c/\zeta&c\\
+                 m\ge0>m'&b/(\zeta m-m')&c\\
+                 0>m&c&c
+            \end{array}
+        \]
+    \end{enumerate}
+    Note also that $(\kappa,T_\zeta)$ is linear by definition.
+\end{xmpl}
+
+\begin{xmpl}\label{xmpl:moulton-ternary-ring}
+    In the case where $\kappa=\R$ and $\zeta=1/2$, the projective plane associated with the linear ternary ring $(\R,T_{1/2})$ [cf.~Theorem~\ref{thm:projective-plane-of-ternary-ring}] of the previous example, is the Moulton plane corresponding to Example~\ref{xmpl:affine-moulton}.
+
+    Indeed. given $x,y,m,b\in\R$ we have
+    \[
+        (x,y)\incidence{[m,b]}\iff y=x\circ_{1/2}m+b
+            = \begin{cases}
+                \frac m2x+b  &\text{if }m,x\ge0,\\
+                mx++b   &\text{otherwise},
+            \end{cases}
+    \]
+    which bends the lines in the same way as the affine Moulton plane. 
+\end{xmpl}
+
 \begin{thm}
     Let\/ $\Pi$ be a projective plane with ternary ring\/ $(\ter,T)$ based on\/ $O,X,Y,E$. Then\/ $\Pi$ is\/ $(Y,XY)$-transitive if, and only if, $(\ter,T)$ is linear and\/ $(\ter,\+)$ is a group.
 \end{thm}
 
 \needspace{2\baselineskip}
-\proof${}$
-\begin{description}
-    \item[\rm\textit{if\/} part:] Take two distinct points $P$ and $P'$, not on $XY$, distinct from $Y$ and collinear with it. According to Definition~\ref{defn:(C,a)-transitive}, we have to show that there is a $(Y,XY)$-collineation $\alpha$ satisfying $\alpha(P)=P'$. 
+\begin{proof}${}$
+    \begin{description}
+    \item[\rm\textit{if\/} part:] Take two distinct points $P$ and $P'$, not on $XY$ and collinear with $Y$. According to Definition~\ref{defn:(C,a)-transitive}, we have to show that there is a $(Y,XY)$-collineation $\alpha$ satisfying $\alpha(P)=P'$. 
     
     We have $P\colon(a,b)$, $P'\colon(a,b')$, and $PP'\colon[a]$, with $b\ne b'$.
     $$
@@ -1511,7 +1581,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         (\infty)&\mapsto(\infty)
         &[\infty]&\mapsto[\infty].
     \end{align*}
-    Observe that $\alpha_{\pts}$ and $\alpha_{\blocks}$ are bijections, since $(\ter,\+)$ is a group: associativity ensures that $y_1=y_2$ whenever $y_1\+d=y_2\+d$.
+    Clearly $\alpha(P)=P'$. Moreover, $\alpha_{\pts}$ and $\alpha_{\blocks}$ are bijections, since $(\ter,\+)$ is a group: associativity ensures that $y_1=y_2$ whenever $y_1\+d=y_2\+d$.
 
     To verify that $(\alpha_{\pts},\alpha_{\blocks})$ is a collineation, we have to show that
     \[
@@ -1527,6 +1597,354 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
                 &&\text{; $(\ter,T)$ linearity}.
     \end{align*}
 
-    \item[\rm\textit{only if\/}:]
+    \item[\rm\textit{only if\/}:] Take $a,m,b\in\ter$. To prove that $T(a,m,b)=a\cdot m\+b$, we may assume that none of the trivial cases are included. These are
+    \[
+        m=0,1,\quad b=0,\quad\text{or}\quad a=0.
+    \]
+    By Baer's Theorem~\ref{thm:baer}, since we are under the hypothesis that $\Pi$ is $(Y,XY)$-transitive, we know that it is $(Y,XY)$-Desarguesian.
+
+    Consider the points $O\colon(0:0)$, $A\colon(a,0)$, $M=(m)$ and $B=\colon(0,b)$. Then $MB\colon[m,b]$ and $AY\colon[a]$.
+
+    Define $C_1=OM$ and $C_2=MB\wedge AY$. Since $OM\colon[m,0]$, we have $C_1\colon(a,a\cdot m)$. Moreover, $C_2=(a,y)$ for some $y\in\ter$.
+
+    Since $Z\colon(1)$, $ZB\colon[1,b]$ and $OZ\colon[1,0]$. Since $C_1\incidence{[m,0]}$, we deduce that $D_1=OZ\wedge XC_1$ satisfies $D_1\colon(a\cdot m,a\cdot m)$. Thus, for $D_2=ZB\wedge YD_1$ we have $D_2\colon(a\cdot m,a\cdot m\+b)$.
+    $$
+        \begin{minipage}[c]{0.55\textwidth}
+        \begin{tikzpicture}[
+            baseline=(current bounding box.center),
+            scale=1.1,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=black,
+                inner sep=1.2pt},
+                every node/.style={font=\footnotesize},
+            ]
+            \pgfmathsetmacro{\s}{1.7};
+            
+            % Points
+            \coordinate (xstart) at (0.0,0.0);
+            \coordinate (xend) at (2.5*\s,0.0);
+            \coordinate (ystart) at (0.0,0.0);
+            \coordinate (yend) at (0.0,2*\s);
+            \coordinate (A) at (\s*0.6,\s*0.0);
+            \coordinate (B) at (0.0,\s*0.9);
+            \coordinate (E) at (\s*1.8,\s*0.7);
+            
+            % Axis
+            \draw[name path=xaxis,
+                color=orange,
+                thick
+            ] (xstart) -- (xend)
+                node[point,
+                pos=0.0,
+                label={[yshift=-5mm,xshift=-2mm,text=black]:
+                    $O$}] (O) {}
+                node[point,
+                    pos=0.95,
+                    label={[text=black,xshift=0mm,yshift=-6mm]:
+                        $X$}
+                ] (X) {};
+    
+            \draw[name path=yaxis,
+                color=orange,
+                thick
+            ] (ystart) -- (yend)
+                node[point,
+                pos=0.95,
+                label={[text=black,left,yshift=-1mm]:
+                    $Y$}
+                ] (Y) {};
+            \draw[name path=XY] (X) -- (Y)
+                node[pos=0.65] (M) {};
+            \draw[name path=OE] (O) -- (E);
+            \path[name intersections={of=OE and XY,by=Z}];
+            \draw[name path=MB] (B) -- ($(B)!1.0!(M)$);
+            \draw[name path=MO] (O) -- ($(O)!1.0!(M)$);
+            \draw[name path=YA] (Y) -- ($(Y)!1.08!(A)$)
+                node[xshift=0mm,yshift=-2mm] {$[a]$};
+            \path[name intersections={of=YA and MB,by=C2}];
+                    \draw[name path=ZB] (Z) -- (B);
+            \draw[name path=XC2] ($(X)!0.3!(C2)$) -- (C2);
+            \draw[dashed] (X) -- ($(X)!0.3!(C2)$);
+            \draw[name intersections={of=ZB and XC2,by=D2}];
+            \path[name intersections={of=YA and MO,by=C1}];
+            \draw[name path=YD2] (Y) -- ($(Y)!1.78!(D2)$)
+                node[below] {$[a\cdot m]$};
+            \path[name intersections={of= OE and YD2,by=D1}];
+            \draw (X) -- ($(X)!1.1!(C1)$);
+
+            \draw[thick] (B) -- (C2) -- (D2) -- (B);
+            \draw[thick] (O) -- (C1) -- (D1) -- (O);
+            \node[point,
+                fill=green,
+                label={[xshift=-1mm,yshift=-6mm,text=black]:
+                    $D_1$}
+            ] at (D1) {};
+            \node[point,
+                fill=green,
+                label={[xshift=-7mm,yshift=-3mm,text=black]:
+                    $B\colon(0,b)$}
+            ] at (B) {};
+            \node[point,
+                fill=green,
+                label={[xshift=1.5mm,yshift=-0.5mm,text=black]:
+                    $D_2$}
+            ] at (D2) {};
+            \node[point,
+                fill=green,
+                label={[xshift=1.7mm,yshift=0.2mm,text=black]:
+                    $C_2$}
+            ] at (C2) {};
+            \node[point,
+                fill=green,
+                label={[xshift=3.5mm,yshift=-2.2mm,text=black]:
+                    $C_1$}
+            ] at (C1) {};
+            \node[point,
+                fill=white,
+                label={[xshift=-0.5mm,yshift=-5mm,text=black]:
+                    $Z$}
+                ] at (Z) {};
+            \node[point,
+                fill=green,
+                label={[xshift=4mm,yshift=-1mm,text=black]:
+                    $M\colon(m)$}
+            ] at (M) {};
+            \node[point,
+                label={[xshift=2mm,yshift=-1mm,text=black]:
+                    $E$}
+            ] at (E) {};
+        \end{tikzpicture}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[c]{0.35\textwidth}
+        {\small
+        \begin{align*}
+            O\phantom{_1}&\colon(0,0)\\
+            C_1&\colon(a,a\cdot m)\\
+            D_1&\colon(a\cdot m,a\cdot m)\\[-3.2mm]\\
+            B\phantom{_1}&\colon(0,b)\\
+            C_2&\colon(a,y)\\
+            D_2&\colon(a\cdot m,a\cdot m\+b)\\\\
+        \end{align*}
+        }
+        \end{minipage}
+    $$
+    This configuration contains two triangles, $OC_1D_1$ and $BC_2D_2$, whose corresponding vertices are collinear with $Y$. Moreover, the intersection points of the corresponding sides, namely $M=OC_1\wedge BC_2$ and $Z=OD_1\wedge BD_2$, lie on $XY$. Since $X=C_1D_1\wedge XY$, we also have $X=C_2D_2\wedge XY$. This means that the second coordinates of $C_2$ and $D_2$ coincide, i.e., 
+    \[
+        C_2\colon(a,a\cdot m\+b).
+    \]
+    Hence, $(a,a\cdot m\+b)\incidence{[m,b]}$, which proves that the ternary ring is linear.
+
+    It remains to be shown that $(\ter,\+)$ is a group, which reduces to proving the associativity.
+
+    Take $a,b,c\in\ter$. We will show that $(a\+b)\+c=a\+(b\+c)$. The transitivity hypothesis implies the existence of a $(Y,XY)$-elation $\alpha$ mapping $O\colon(0,0)$ to $B\colon(0,c)$.
+    
+    Given $x\in\ter$, devine $A=(x,0)$ and $P\colon(x,y)$. Since $AY\in\Fix\alpha$ and $AY\colon[x]$, we deduce that $\alpha(P)\colon(x,y')$, for some $y'\in\ter$. Thus, the assignment $y\mapsto y'$ defines a bijection $\sigma\colon\ter\to\ter$ that satisfies $\sigma(0)=c$.
+
+    Furthermore, for $M\colon(m)$ it is $\alpha(M)=M$. Consequently,
+    \[
+        \alpha[m,y]=\alpha(m)\alpha(0,y)=(m)(0,\sigma(y))=[m,\sigma(y)].
+    \]
+    In particular, for $z=m\cdot x\+y$, the linearity hypothesis yields
+    \[
+        (x,z)\incidence{[m,y]}
+            \iff (x,\sigma(z))\incidence{[m,\sigma(y)]},
+    \]
+    which translates into
+    \[
+        z=m\cdot x\+y \iff \sigma(z)=m\cdot x\+\sigma(y).
+    \]
+    Taking $m=1$ gives
+    \[
+        \sigma(x\+y)=x\+\sigma(y).
+    \]
+    Setting $x=b$, $y=0$ we find
+    \[
+        \sigma(b)=b\+\sigma(0)=b\+c.
+    \]
+    Hence, for $x=a$, $y=b$,
+    \[
+        \sigma(a\+b)=a\+\sigma(b)=a\+(b\+c),
+    \]
+    while for $x=a\+b$, $y=0$ we obtain
+    \[
+        \sigma(a\+b)=\sigma((a\+b)\+0)=(a\+b)\+c,
+    \]
+    which confirms associativity.
 
     \end{description}
+\end{proof}
+
+\begin{test}
+    According to the theorem, the Moulton ternary ring of Example~\ref{xmpl:moulton-ternary-ring} must be $((\infty),[\infty])$-transitive.
+
+    To verify this we have to take two points $(x_0,y_0)$ and $(x_1,y_1)$ on the same vertical line and show that there is an elation $\alpha$ with center $(\infty)$ and axis $[\infty]$ satisfying $\alpha(a,b)=\alpha(a,c)$.
+
+    Define
+    \begin{align*}
+        \alpha_{\pts}(x,y)&=(x,y+c-b)
+            &\alpha(m)&=(m)
+            &\alpha_{\pts}(\infty)&=(\infty)\\
+        \alpha_{\blocks}[m,h]&=[m,h+c-b]
+            &\alpha_{\blocks}[x]&=[x]
+            &\alpha_{\blocks}[\infty]&=[\infty].
+    \end{align*}
+    Take a point $(x,y)\incidence{[m,h]}$. Then
+    \[
+        y=x\circ_{1/2}m+h=
+            \begin{cases}
+                \frac m2x+h &\text{if }m,x\ge0,\\
+                mx+h    &\text{otherwise.}
+            \end{cases}
+    \]
+    Summing $c-b$ to both sides of the equations, we obtain
+    \[
+        y+c-b=x\circ_{1/2}m+h=
+            \begin{cases}
+                \frac m2x+h+c-b &\text{if }m,x\ge0,\\
+                mx+h+c-b    &\text{otherwise},
+            \end{cases}
+    \]
+    which shows that $\alpha=(\alpha_{\pts},\alpha_{\blocks})$ is the desired elation, more precisely, it is a vertical translation by $c-b$.
+\end{test}
+
+\begin{thm}
+    The projective plane\/ $\Pi$ is \textsl{$(X, XY)$-transitive} if, and only if, $(\ter,\+)$ is a group and for every\/ $a,b,c\in\ter$ we have\/ $T(a,b,c\cdot b) = (a\+c)\cdot b$.
+\end{thm}
+
+\begin{proof}
+    $$
+        \begin{minipage}[c]{0.55\textwidth}
+        \begin{tikzpicture}[
+            baseline=(current bounding box.center),
+            scale=1.1,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=black,
+                inner sep=1.2pt},
+                every node/.style={font=\footnotesize},
+            ]
+            \pgfmathsetmacro{\s}{1.7};
+            
+            % Points
+            \coordinate (xstart) at (0.0,0.0);
+            \coordinate (xend) at (2.5*\s,0.0);
+            \coordinate (ystart) at (0.0,0.0);
+            \coordinate (yend) at (0.0,2*\s);
+            \coordinate (Ax) at (\s*0.55,\s*0.0);
+            \coordinate (B) at (0.0,\s*0.5);
+            \coordinate (C) at (0.0,\s*1.0);
+            \coordinate (P) at (0.0,\s*1.4);
+            \coordinate (E) at (\s*1.8,\s*0.8);
+            
+            % Axes
+            \draw[name path=xaxis,
+                color=orange,
+                thick
+            ] (xstart) -- (xend)
+                node[point,
+                pos=0.0,
+                label={[yshift=-5mm,xshift=-2mm,text=black]:
+                    $O$}] (O) {}
+                node[point,
+                    pos=0.95,
+                    label={[text=black,xshift=0mm,yshift=-6mm]:
+                        $X$}
+                ] (X) {};
+    
+            \draw[name path=yaxis,
+                color=orange,
+                thick
+            ] (ystart) -- (yend)
+                node[point,
+                pos=0.95,
+                label={[text=black,left,yshift=-1mm]:
+                    $Y$}
+                ] (Y) {};
+            \draw[name path=XY] (X) -- (Y)
+                node[pos=0.65] (M) {};
+            \draw[name path=OE] (O) -- (E);
+            \path[name intersections={of=OE and XY,by=Z}];
+
+            %Lines
+            \draw[name path=ZB] (Z) -- (B);
+            \draw[name path=ZC] (Z) -- (C);
+            \draw[name path=ZP] (Z) -- (P);
+            \draw[name path=AxY] (Ax) -- (Y);
+
+            %Intersections
+            \draw[name path=BX] (B) -- (X);
+            \path[name intersections={of=OE and BX,by=Q'}];
+            \path[name path=BY1] (Y) -- ($(Y)!1.37!(Q')$);
+            \path[name intersections={of=xaxis and BY1,by=Bx}];
+            \draw[name path=BY] (Y) -- (Bx);
+            \path[name intersections={of=AxY and ZB,by=R}];
+            \path[name intersections={of=BX and BY1,by=Q'}];
+            
+            %Points
+            \node[point,
+                fill=white,
+                label={[xshift=-0.5mm,yshift=-5mm,text=black]:
+                    $Z$}
+                ] at (Z) {};
+            \node[point,
+                label={[xshift=2mm,yshift=-1mm,text=black]:
+                    $E$}
+            ] at (E) {};
+            \node[point,
+                fill=green,
+                label={[xshift=-7mm,yshift=-3mm,text=black]:
+                    $B\colon(0,b)$}
+            ] at (B) {};
+            \node[point,
+                fill=green,
+                label={[xshift=-7mm,yshift=-3mm,text=black]:
+                    $C\colon(0,c)$}
+            ] at (C) {};
+            \node[point,
+                fill=green,
+                label={[xshift=-3mm,yshift=-3mm,text=black]:
+                    $P$}
+            ] at (P) {};
+            \node[point,
+                fill=green,
+                label={[xshift=0mm,yshift=-6mm,text=black]:
+                    $(a,0)$}
+            ] at (Ax) {};
+            \node[point,
+                fill=green,
+                label={[xshift=1mm,yshift=-0.5mm,text=black]:
+                    $Q'$}
+            ] at (Q') {};
+            \node[point,
+                fill=green,
+                label={[xshift=0.5mm,yshift=-6mm,text=black]:
+                    $(b,0)$}
+            ] at (Bx) {};
+            \node[point,
+                fill=green,
+                label={[xshift=-2.3mm,yshift=-1.5mm,text=black]:
+                    $R$}
+            ] at (R) {};
+        \end{tikzpicture}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[c]{0.35\textwidth}
+        {\small
+        \begin{align*}
+            O\phantom{_1}&\colon(0,0)\\
+            C_1&\colon(a,a\cdot m)\\
+            D_1&\colon(a\cdot m,a\cdot m)\\[-3.2mm]\\
+            B\phantom{_1}&\colon(0,b)\\
+            C_2&\colon(a,y)\\
+            D_2&\colon(a\cdot m,a\cdot m\+b)\\\\
+        \end{align*}
+        }
+        \end{minipage}
+    $$    
+\end{proof}
