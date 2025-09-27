@@ -494,7 +494,10 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 
 \begin{defn}\label{defn:ternary-ring}
     The algebraic structure $(\ter,T)$, where $T$ is a ternary operation, is called a \textsl{ternary ring of order}~$n$ if $\ter$ has $n$ elements and the following axioms hold:
-    \begin{enumerate}[label=tr$_\arabic*$,font=\scshape]
+    \begin{enumerate}[
+        label=tr$_{\arabic*}$,
+        ref={\upshape\scshape tr$_{\arabic*}$},
+        font=\scshape]
         \item\label{TR1} For every\/ $x,m,b \in \ter$, we have
         \[
             T(x,0,b) = T(0,m,b) =b
@@ -656,9 +659,9 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \needspace{2\baselineskip}
         where
         \begin{enumerate}
-            \item By table \eqref{tbl:incidence}, the line $[m,b]$ passes through the points $(c)$ and $(x,y)$ if, and only if, $c=m$ and $y=T(x,m,b)$. Thus, we have to show that there exists $b$ satisfying $y=T(x,c,b)$. But this follows from \textsc{\ref{TR3}}.
+            \item By table \eqref{tbl:incidence}, the line $[m,b]$ passes through the points $(c)$ and $(x,y)$ if, and only if, $c=m$ and $y=T(x,m,b)$. Thus, we have to show that there exists $b$ satisfying $y=T(x,c,b)$. But this follows from \ref{TR3}.
 
-            \item This is Axiom \textsc{\ref{TR2}}.
+            \item This is Axiom \ref{TR2}.
         \end{enumerate}
 
         \item[\small\sc Axiom P2:]
@@ -675,7 +678,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \begin{enumerate}
             \item[3.] By Table~\eqref{tbl:incidence}, the point $(x,y)$ lies on both $[c]$ and $[m,b]$ if, and only if, $x=c$ and $y=T[c,m,b]$.
 
-            \item[4.] If $m\ne m'$, then \textsc{\ref{TR4}} there exists a unique pair $(x,y)$ incident with both $[m,b]$ and $[m',b']$. If $m=m'$ and $b\ne b'$, the two lines intersect at $(\infty)$.  
+            \item[4.] If $m\ne m'$, then \ref{TR4} there exists a unique pair $(x,y)$ incident with both $[m,b]$ and $[m',b']$. If $m=m'$ and $b\ne b'$, the two lines intersect at $(\infty)$.  
 
         \item[\small\sc Axiom P3':] We claim that the points
         \[
@@ -701,7 +704,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             \item $OX=[0,0]$ by property~a) and axiom P1.
                 \begin{enumerate}[$\to$]
                     \item $(\infty)\nincidence{[0,0]}$ by table \eqref{tbl:incidence}.
-                    \item $(1,1)\nincidence{[0,0]}$ because $T(1,0,0)=0\ne1$ by \textsc{\ref{TR1}}
+                    \item $(1,1)\nincidence{[0,0]}$ because $T(1,0,0)=0\ne1$ by \ref{TR1}
                 \end{enumerate}
             \item $OE=[1,0]$ since property a) implies that $T(0,1,0)=0$ and $T(1,1,0)=1$. Moreover, $(\infty)\nincidence{[1,0]}$ by \eqref{tbl:incidence}.
             \item $XY=[\infty]$ since \eqref{tbl:incidence} implies $(0)\incidence{[\infty]}$ and $(\infty)\incidence{[\infty]}$. Furthermore, $(1,1)\nincidence{[\infty]}$ by \eqref{tbl:incidence}.
@@ -852,12 +855,12 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{lem}
 
 \begin{proof}
-    Since $\ter$ is a finite set, it suffices to show that the map is injective. Suppose that $T(x,m,b)=T(x',m,b)$ for some $x\ne x'$, and let $y$ denote the common value. By \textsc{\ref{TR1}},
+    Since $\ter$ is a finite set, it suffices to show that the map is injective. Suppose that $T(x,m,b)=T(x',m,b)$ for some $x\ne x'$, and let $y$ denote the common value. By \ref{TR1},
     \begin{align*}
         T(x,0,y) &= y, &T(x',0,y) &= y,\\
         T(x,m,b) &= y, &T(x',m,b) &= y.
     \end{align*}
-    By \textsc{\ref{TR2}}, we must have $(m,b)=(0,y)$, which is impossible because $m\ne0$.
+    By \ref{TR2}, we must have $(m,b)=(0,y)$, which is impossible because $m\ne0$.
 \end{proof}
 
 \begin{lem}\label{lem:right-solution-of-product}
@@ -874,7 +877,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \begin{align*}
         T(a,m,0)&=b &T(0,m,0)&=0.
     \end{align*}
-    However, since $a\ne0$, according to \textsc{\ref{TR2}}, there should be a unique pair $(m,0)$ satisfying these equations.
+    However, since $a\ne0$, according to \ref{TR2}, there should be a unique pair $(m,0)$ satisfying these equations.
 \end{proof}
 
 \begin{lem}
@@ -886,12 +889,12 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \begin{align*}
         T'(\theta(0),\theta(m),\theta(b)) &= \theta(T(0,m,b))\\
             &=\theta(b) 
-                &&\text{; \textsc{\ref{TR1}}}\\
+                &&\text{; \ref{TR1}}\\
             &= T'(0',\theta(m),\theta(b)).
     \end{align*}
     Hence, by the previous lemma, $\theta(0)=0'$, as wanted.
 
-    On the other hand, given $x\in\ter$, by \textsc{\ref{TR1}}, we have
+    On the other hand, given $x\in\ter$, by \ref{TR1}, we have
     \begin{align*}
         T'(1',\theta(x),0') &= \theta(x)\\
             &= \theta(T(1,x,0))\\
@@ -1262,28 +1265,30 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 
 \section{Linear Ternary Rings and Quasifields}
 
+It is not generally valid that the operations of sum and multiplication defined on a ternary ring $(\ter,T)$ must satisfy the equality $x\cdot m\+b=T(x,m,b)$. In this section we study these kinds of relations between geometric and algebraic properties and their equivalences.
+
 \begin{defn}
     A \textsl{magma} is a set equipped with an operation. A \textsl{quasigroup} is a magma $(Q,{}\cdot{})$, where, for any two elements $a,b\in Q$, the equations $a\cdot x=b$ and $x\cdot a=b$ have unique solutions. A \textsl{loop} is a quasigroup with an identity element. A \textsl{group} is an associative loop.
 \end{defn}
 
-\begin{lem}
+\begin{lem}\label{lem:ternary-operations-define-loops}
     If\/ $(\ter, T)$ is a ternary ring and\/ $\ter^* = \ter \setminus \{0\}$, then\/ $(\ter, \+)$ and\/ $(\ter^*,\,\cdot\,)$ are loops with unit elements\/ $0$ and\/ $1$, respectively.
 \end{lem}
 
 \begin{proof}
     To verify that $(\ter^*,\,\cdot\,)$ is a magma, we have to show that $a\cdot m=0$ implies $a=0$ or $m=0$. But $a\cdot m=0$, means $(a,0)\incidence{[m,0]}=(m)(0,0)$. If $a=0$ we are done. Otherwise, $(m)\incidence(a,0)(0,0)$ by the \rr. Since $(a,0)(0,0)=[0,0]$, we deduce $(m)\incidence{[0,0]}\wedge[\infty]=(0)$, which implies that $m=0$.
 
-    The equation $a\+x=b$ is equivalent to $T(a,1,x)=b$, which has a unique solution by \textsc{\ref{TR3}}.
+    The equation $a\+x=b$ is equivalent to $T(a,1,x)=b$, which has a unique solution by \ref{TR3}.
 
     The equation $x\+a=b$ is equivalent to $T(x,1,a)=b$, which has a unique solution by Lemma~\ref{lem:left-solution-of-sum}.
 
-    The equations $a\+0=a$ and $0\+a=a$ are equivalent to $T(a,1,0)=a$ and $T(0,1,a)=a$, which hold by \textsc{\ref{TR1}}.
+    The equations $a\+0=a$ and $0\+a=a$ are equivalent to $T(a,1,0)=a$ and $T(0,1,a)=a$, which hold by \ref{TR1}.
 
     The equation $a\cdot x=b$ is equivalent to $T(a,x,0)=b$, which has a unique solution when $a\ne0$ by Lemma~\ref{lem:right-solution-of-product}.
 
     The equation $x\cdot a=b$ is equivalent to $T(x,a,0)=b$, which has a unique solution when $a\ne0$ by Lemma~\ref{lem:left-solution-of-sum}.
 
-    The equations $a\cdot1=a$ and $1\cdot a=a$ are equivalent to $T(a,1,0)=a$ and $T(1,a,0)=a$, which hold by \textsc{\ref{TR1}}.
+    The equations $a\cdot1=a$ and $1\cdot a=a$ are equivalent to $T(a,1,0)=a$ and $T(1,a,0)=a$, which hold by \ref{TR1}.
 \end{proof}
 
 \begin{defn}
@@ -1370,7 +1375,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     If $x\ne y$, axiom~\ref{qf-ii} allows us to cancel the nonzero factor $x-y$ on both sides, yielding $a=b$, which contradicts our assumption that $a\ne b$. Hence $x=y$, and $\delta$ is injective, as claimed.
 \end{proof}
 
-\begin{defn}
+\begin{defn}\label{defn:linear}
     The ternary ring $(\ter,T)$ is \textsl{linear} if $T(a,m,b)=a\cdot m\+b$ for every $a,m,b\in\ter$.
 \end{defn}
 
@@ -1463,6 +1468,10 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{xmpl}
 
 \begin{thm}
+    If $(\ter,T)$ be a linear ternary ring, then $(\ter,\+)$ is a group.
+\end{thm}
+
+\begin{thm}\label{(Y,XY)-transitive}
     Let\/ $\Pi$ be a projective plane with ternary ring\/ $(\ter,T)$ based on\/ $O,X,Y,E$. Then\/ $\Pi$ is\/ $(Y,XY)$-transitive if, and only if, $(\ter,T)$ is linear and\/ $(\ter,\+)$ is a group.
 \end{thm}
 
@@ -1738,24 +1747,24 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \]
     Hence, $(a,a\cdot m\+b)\incidence{[m,b]}$, which proves that the ternary ring is linear.
 
-    It remains to be shown that $(\ter,\+)$ is a group, which reduces to proving the associativity.
+    It remains to be shown that $(\ter,\+)$ is a group. By Lemma~\ref{lem:ternary-operations-define-loops}, this reduces to proving the associativity.
 
     Take $a,b,c\in\ter$. We will show that $(a\+b)\+c=a\+(b\+c)$. The transitivity hypothesis implies the existence of a $(Y,XY)$-elation $\alpha$ mapping $O\colon(0,0)$ to $B\colon(0,c)$.
     
-    Given $x\in\ter$, devine $A=(x,0)$ and $P\colon(x,y)$. Since $AY\in\Fix\alpha$ and $AY\colon[x]$, we deduce that $\alpha(P)\colon(x,y')$, for some $y'\in\ter$. Thus, the assignment $y\mapsto y'$ defines a bijection $\sigma\colon\ter\to\ter$ that satisfies $\sigma(0)=c$.
+    Given $x\in\ter$, define $A=(x,0)$ and $P\colon(x,y)$. Since $AY\in\Fix\alpha$ and $AY\colon[x]$, we deduce that $\alpha(P)\colon(x,y')$, for some $y'\in\ter$. Thus, the assignment $y\mapsto y'$ defines a bijection $\sigma\colon\ter\to\ter$ that satisfies $\sigma(0)=c$.
 
     Furthermore, for $M\colon(m)$ it is $\alpha(M)=M$. Consequently,
     \[
         \alpha[m,y]=\alpha(m)\alpha(0,y)=(m)(0,\sigma(y))=[m,\sigma(y)].
     \]
-    In particular, for $z=m\cdot x\+y$, the linearity hypothesis yields
+    In particular, for $z=x\cdot m\+y$, linearity yields
     \[
         (x,z)\incidence{[m,y]}
             \iff (x,\sigma(z))\incidence{[m,\sigma(y)]},
     \]
     which translates into
     \[
-        z=m\cdot x\+y \iff \sigma(z)=m\cdot x\+\sigma(y).
+        z=x\cdot m\+y \iff \sigma(z)=x\cdot m\+\sigma(y).
     \]
     Taking $m=1$ gives
     \[
@@ -1811,13 +1820,13 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     which shows that $\alpha=(\alpha_{\pts},\alpha_{\blocks})$ is the desired elation, more precisely, it is a vertical translation by $c-b$.
 \end{test}
 
-\begin{thm}
+\begin{thm}\label{thm:(X,XY)-transitive}
     The projective plane\/ $\Pi$ is \textsl{$(X, XY)$-transitive} if, and only if, $(\ter,\+)$ is a group and for every\/ $a,b,c\in\ter$ we have\/ $T(a,b,c\cdot b) = (a\+c)\cdot b$.
 \end{thm}
 
-\begin{proof}
+\begin{proof} Suppose that $\Pi$ is $(X,XY)$-transitivie. Fix $a,b,c\in\ter$. Let $A\colon(a,0)$, $B\colon(b,0)$, and $C\colon(0,c)$. Locate the points $Q'$, $Q$, $P'$, $P$, $R$, $R'$, $S$, and $S'$, as defined below
     $$
-        \begin{minipage}[c]{0.55\textwidth}
+        \begin{minipage}[c]{0.60\textwidth}
         \begin{tikzpicture}[
             baseline=(current bounding box.center),
             scale=1.1,
@@ -1833,14 +1842,13 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             
             % Points
             \coordinate (xstart) at (0.0,0.0);
-            \coordinate (xend) at (2.5*\s,0.0);
+            \coordinate (xend) at (2.7*\s,0.0);
             \coordinate (ystart) at (0.0,0.0);
-            \coordinate (yend) at (0.0,2*\s);
-            \coordinate (Ax) at (\s*0.55,\s*0.0);
-            \coordinate (B) at (0.0,\s*0.5);
+            \coordinate (yend) at (0.0,2.3*\s);
+            \coordinate (Ax) at (\s*0.5,\s*0.0);
+            \coordinate (Q) at (0.0,\s*0.65);
             \coordinate (C) at (0.0,\s*1.0);
-            \coordinate (P) at (0.0,\s*1.4);
-            \coordinate (E) at (\s*1.8,\s*0.8);
+            \coordinate (E) at (\s*2.2,\s*1.4);
             
             % Axes
             \draw[name path=xaxis,
@@ -1852,7 +1860,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
                 label={[yshift=-5mm,xshift=-2mm,text=black]:
                     $O$}] (O) {}
                 node[point,
-                    pos=0.95,
+                    pos=0.98,
                     label={[text=black,xshift=0mm,yshift=-6mm]:
                         $X$}
                 ] (X) {};
@@ -1862,7 +1870,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
                 thick
             ] (ystart) -- (yend)
                 node[point,
-                pos=0.95,
+                pos=0.98,
                 label={[text=black,left,yshift=-1mm]:
                     $Y$}
                 ] (Y) {};
@@ -1872,19 +1880,31 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             \path[name intersections={of=OE and XY,by=Z}];
 
             %Lines
-            \draw[name path=ZB] (Z) -- (B);
+            \draw[name path=ZQ] (Z) -- (Q);
             \draw[name path=ZC] (Z) -- (C);
-            \draw[name path=ZP] (Z) -- (P);
             \draw[name path=AxY] (Ax) -- (Y);
 
             %Intersections
-            \draw[name path=BX] (B) -- (X);
-            \path[name intersections={of=OE and BX,by=Q'}];
-            \path[name path=BY1] (Y) -- ($(Y)!1.37!(Q')$);
-            \path[name intersections={of=xaxis and BY1,by=Bx}];
-            \draw[name path=BY] (Y) -- (Bx);
-            \path[name intersections={of=AxY and ZB,by=R}];
-            \path[name intersections={of=BX and BY1,by=Q'}];
+            \draw[name path=QX] (Q) -- (X);
+            \path[name intersections={of=OE and QX,by=Q'}];
+            \path[name path=YQ'] (Y) -- ($(Y)!1.37!(Q')$);
+            \path[name intersections={of=xaxis and YQ',by=B}];
+            \draw[name path=BY] (Y) -- (B);
+            \path[name intersections={of=BY and ZC,by=P'}];
+            \path[name path=XP'] (X) -- ($(X)!1.5!(P')$);
+            \path[name intersections={of=XP' and yaxis,by=P}];
+            \draw[dotted] (X) -- (P);
+            \path[name path=ZP] (Z) -- (P);
+            \draw (P) -- ($(P)!0.45!(Z)$);
+            \draw ($(P)!0.55!(Z)$) -- (Z);
+            \path[name intersections={of=AxY and ZQ,by=R}];
+            \draw[name path=RX] (R) -- (X);
+            \path[name intersections={of=RX and OE,by=R'}];
+            \path[name intersections={of=QX and YQ',by=Q'}];
+            \path[name intersections={of=AxY and ZP,by=S}];
+            \draw[name path=R'Y] (R') -- (Y);
+            \path[name intersections={of= ZC and R'Y,by=S'}];
+            \draw[name path=SS',dashed] (S) -- (X);
             
             %Points
             \node[point,
@@ -1899,8 +1919,8 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             \node[point,
                 fill=green,
                 label={[xshift=-7mm,yshift=-3mm,text=black]:
-                    $B\colon(0,b)$}
-            ] at (B) {};
+                    $Q\colon(0,b)$}
+            ] at (Q) {};
             \node[point,
                 fill=green,
                 label={[xshift=-7mm,yshift=-3mm,text=black]:
@@ -1908,43 +1928,103 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             ] at (C) {};
             \node[point,
                 fill=green,
-                label={[xshift=-3mm,yshift=-3mm,text=black]:
-                    $P$}
+                label={[xshift=-9mm,yshift=-2mm,text=black]:
+                    $P\colon(0,b\+c)$}
             ] at (P) {};
             \node[point,
                 fill=green,
-                label={[xshift=0mm,yshift=-6mm,text=black]:
-                    $(a,0)$}
+                label={[xshift=-2mm,yshift=-5mm,text=black]:
+                    $P'$}
+            ] at (P') {};
+            \node[point,
+                fill=green,
+                label={[xshift=-2mm,yshift=-6mm,text=black]:
+                    $A\colon(a,0)$}
             ] at (Ax) {};
             \node[point,
                 fill=green,
-                label={[xshift=1mm,yshift=-0.5mm,text=black]:
+                label={[xshift=-1.4mm,yshift=-6.1mm,text=black]:
                     $Q'$}
             ] at (Q') {};
             \node[point,
                 fill=green,
-                label={[xshift=0.5mm,yshift=-6mm,text=black]:
-                    $(b,0)$}
-            ] at (Bx) {};
+                label={[xshift=3mm,yshift=-6mm,text=black]:
+                    $B\colon(b,0)$}
+            ] at (B) {};
             \node[point,
                 fill=green,
-                label={[xshift=-2.3mm,yshift=-1.5mm,text=black]:
+                label={[xshift=-2.5mm,yshift=-1.9mm,text=black]:
                     $R$}
             ] at (R) {};
+            \node[point,
+                fill=green,
+                label={[xshift=4mm,yshift=-2.4mm,text=black]:
+                    $R'$}
+            ] at (R') {};
+            \node[point,
+                fill=green,
+                label={[xshift=1mm,yshift=-0.7mm,text=black]:
+                    $S$}
+            ] at (S) {};
+            \node[point,
+                fill=green,
+                label={[xshift=2mm,yshift=-1.4mm,text=black]:
+                    $S'$}
+            ] at (S') {};
         \end{tikzpicture}
         \end{minipage}
         \hfill
-        \begin{minipage}[c]{0.35\textwidth}
+        \begin{minipage}[c]{0.30\textwidth}
         {\small
         \begin{align*}
-            O\phantom{_1}&\colon(0,0)\\
-            C_1&\colon(a,a\cdot m)\\
-            D_1&\colon(a\cdot m,a\cdot m)\\[-3.2mm]\\
-            B\phantom{_1}&\colon(0,b)\\
-            C_2&\colon(a,y)\\
-            D_2&\colon(a\cdot m,a\cdot m\+b)\\\\
+            Q'&\colon(b,b)\\
+            Q\phantom'&\colon(0,b)\\
+            P'&\colon(b,b\+c)\\
+            P\phantom'&\colon(0,b\+c)\\
+            R\phantom'&\colon(a,a\+b)\\
+            R'&\colon(a\+b,a\+b)\\
+            S\phantom'&\colon(a,a\+(b\+c))\\
+            S'&\colon(a\+b,(a\+b)\+c)\\
         \end{align*}
         }
         \end{minipage}
-    $$    
+    $$
+    Let $\alpha$ be an elation with center $X$ and axis $XY$ satisfying $\alpha(Q)=Q'$. Then,
+    \begin{align*}
+        \alpha(P) &= PX\wedge\alpha(QY)=PX\wedge Q'Y=P',\\
+        \alpha(R) &= RX\wedge\alpha(QZ)=RX\wedge Q'Z=R',\\
+        \alpha(S) &= SX\wedge\alpha(RY)= SX\wedge R'Y=S'.
+    \end{align*}
+    In particular, $S,S',X$ are collinear, this is $a\+(b\+c)=(a\+b)\+c$. Thus, $(\ter,\+)$ is associative, or equivalently, a group.
+
+    To verify the equality $T(a,b,c\cdot b)=(a\+c)\cdot b$, take an elation $\beta$ with center $X$ and axis $XY$ satisfying $\beta(O)=A$. Since $\beta$ fixes $X$, it fixes the second coordinate of every point, this is, given $x,y\in\ter$, we have $\beta(x,y)=(x',y)$ for some $x'\in\ter$.
+    
+    The mapping $x\mapsto x'$ defines a permutation $\sigma\in\Sym(\ter)$ that satisfies
+    \[
+        \beta(x,y)=(\sigma(x),y),
+    \]
+    with $\sigma(0)=a$. In particular, since $\beta(0,y)=(a,y)$. Therefore, given a line $[m,h]$, the equation $[m,h]=(m)(0,h)$ implies
+    \[
+        \beta([m,h])=[m,k_{m,h}],
+    \]
+    where $k_{m,h}$ depends on $m$ and $h$ and satisfies $(0,k_{m,h})=[0]\wedge(a,h)(0)$. Hence,
+    \[
+        (x,y)\incidence{[m,h]}\iff
+            (\sigma(x),y)\incidence{[m,k_{m,h}]}.\tag{\dag}
+    \]
+    Substituting $x=0$, from \ref{TR1} we obtain
+    \[
+        h=T(a,m,k_{m,h}).\tag{\ddag}
+    \]
+    From (\dag) and (\ddag), for $m=1$ we get $x\+h=\sigma(x)\+k_{1,h}$ and $k_{1,h}=\!\minus a\+h$. Hence,
+    \[
+        \sigma(x)=x\+a.
+    \]
+    From (\ddag) and \ref{TR3} we deduce $k_{m,a\cdot m}=0$.  Thus, evaluating ($\dag$) at $h=a\cdot m$, we arrive at
+    \[
+        T(x,m,a\cdot m) = (x\+a)\cdot m.
+    \]
+    The conclusion follows by replacing $a$ with $b$, $x$ with $a$, and $m$ with $c$.
+    %
+    
 \end{proof}
