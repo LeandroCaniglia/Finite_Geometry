@@ -132,7 +132,7 @@ $$
 $$
 If $Q=OX\wedge EY$, then $OE\wedge YQ=E\colon(1,1)$ and $OE\wedge XQ\colon(0,0)$. Hence, according to \eqref{eq:P-coordinates}, $Q\colon(1,0)$.
 
-Note, in particular, that when the point $P\ne Y$ is on the line $EY$, it gets asigned the coordinates $(1,m)$ for some $m$. This is so because the first coordinate, that we called $a$ for the general case, comes from the coordinates of $PY\wedge OE$, which in the special case we are analyzing coincides with $E$, whose corrdinates are $(1,1)$.
+Note, in particular, that when the point $P\ne Y$ is on the line $EY$, it gets assigned the coordinates $(1,m)$ for some $m$. This is so because the first coordinate, that we called $a$ for the general case, comes from the coordinates of $PY\wedge OE$, which in the special case we are analyzing coincides with $E$, whose coordinates are $(1,1)$.
 
 The observation we just made allows us to extend the assignment of coordinates to any point $M$ on $XY$. Since the coordinates of $OM\wedge EY$ have the form $(1,m)$, we assign the coordinate $(m)$ to $M$. In particular, $Z\colon(1)$ and $X\colon(0)$.
 
@@ -270,6 +270,228 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \begin{rem}
     The interpretation is clear. The line\/ $XY$ is the line at infinity. The slope\/ $m$ of a line\/ $y=mx+b$ is determined by the point where it intersects the line\/ $XY$. The\/ $Y$-intercept\/ $b$ is determined by the line's intersection with the\/ $OY$ axis. Lines with infinite slope (vertical lines) have the form\/ $x=c$ and are assigned the coordinate\/ $[c]$. Every line passing through the origin\/ $O$ has coordinates of the form\/ $[m,0]$ (for finite slopes) or\/ $[0]$ (for the line\/ $OY$ which has infinite slope).
 \end{rem}
+
+\begin{xmpl}\label{xmpl:Moulton-coordinatization} [Moulton coordinatization]
+    Consider the projective plane associated with the Moulton affine plane of Example~\ref{xmpl:affine-Moulton}.
+
+    We have $O\equiv(0,0)$, $X\equiv\text{horizontal slope}$, $Y\equiv\text{vertical slope}$, and $E\equiv(1,\frac12)$.
+
+    To distinguish cartesian coordinates from the coordinates assigned to points and lines, we will subscript the latter ones with $M$. With this notation, the points on $OE$ have coordinates $(x,x)_M$ that satisfy
+    \[
+        (x,x)_M=\begin{cases}
+            (x,\frac12x) &\text{if }x>0,\\
+            (x,x) &\text{if }x\le0.
+        \end{cases}
+    \]
+    By definition, the Moulton coordinates $(u,v)_M$ of a point with cartesian coordinates $(a,b)$, are computed as
+    \begin{align*}
+        (u,u)_M &= (a,b)Y\wedge OE\\
+            &= \set{x=a}\wedge OE\\
+            &= \begin{cases}
+                    (a,\frac12a)    &\text{if }a>0,\\
+                    (a,a)   &\text{if }a\le0.
+                \end{cases}\\
+            &= (a,a)_M
+    \end{align*}
+    and
+    \begin{align*}
+        (v,v)_M &= (a,b)X\wedge OE\\
+            &= \set{y=b}\wedge OE\\
+            &= \begin{cases}
+                    (2b,b)    &\text{if }b>0,\\
+                    (b,b)   &\text{if }b\le0.
+                \end{cases}\\
+            &= \begin{cases}
+                (2b,2b)_M   &\text{if }b>0,\\
+                (b,b)_M       &\text{if }b\le0.
+            \end{cases}
+    \end{align*}
+    Hence,
+    \[
+        (u,v)_M = \begin{cases}
+            (u,\frac12v)  &\text{if }v>0,\\
+            (u,v)   &\text{if }v\le0.
+        \end{cases}
+    \]
+    In particular, $(1,m)_M$ is the point with cartesian coordinates $(1,\frac12m)$ when $m>0$ and $(1,m)$ when $m\le0$. This implies that $(m)_M$ corresponds to the cartesian slope $m$ for $y\le0$, that switches to $\frac12m$ for $y>0$ when $m>0$. Following the construction depicted in \eqref{tik:line-coordinates}, we obtain the following visualization
+    $$
+        \begin{tikzpicture}[
+            scale=0.9,
+            font=\footnotesize,
+            baseline=(center_ref.base),
+            point/.style={draw, circle, fill=black, inner sep=1.0pt, minimum size=1.5pt}
+            ]
+            \coordinate (center_ref) at (0,0);
+            \pgfmathsetmacro{\u}{0.7};
+            \pgfmathsetmacro{\m}{3.0*\u}
+            \pgfmathsetmacro{\mh}{1.5*\u}
+            \coordinate (E) at (3.0,1.5);
+            
+            % Axes
+            \draw[->,thick] (-1.7,0) -- (3.5,0) node[right] {$x$};
+            \draw[->,thick] (0,-1.7) -- (0,2.4) node[above] {$y$};
+            \draw (-1.5,-1.5) -- (0,0) -- (E);
+            \path let \p1 = (E) in
+                coordinate (MM) at (\m,\mh)
+                coordinate (1Mx) at (\m,0)
+                coordinate (1My) at (0,\mh)
+                node[label={[yshift=-5.5mm]:$m$}] at (1Mx) {}
+                node[label={[yshift=-5.5mm]:$1$}] at (\x1,0) {}
+                node[label={[xshift=-3.5mm,yshift=-4.2mm]:$\frac12m$}] at (1My) {}
+                (0,{\y1*\u}) edge[dotted] (MM)
+                ({\x1*\u},0) edge[dotted] (MM)
+                (\x1,0) edge[gray] (E)
+                (MM) edge[dotted] (\x1,{\y1*\u})
+                (0,0) edge[-latex,color=orange] ({\x1*1.5},{\y1*\u*1.5})
+                (0,0) edge[-latex,color=orange] ({-\x1*0.5},{-\m*0.5})
+                node[label={[right]:$(m)_M$}] at ({\x1*1.5},{\y1*\u*1.5}) {}
+                node[point,
+                    fill=green,
+                    label={[xshift=-6mm,yshift=-1mm]:$(m,m)_M$}
+                ] at ({\x1*\u},{\y1*\u}) {}
+                node[point,
+                    fill=green,
+                    label={[xshift=6.5mm,yshift=-5mm]:$(1,m)_M$}
+                ] at (\x1,{\y1*\u}) {};
+                \node[point,
+                label={[yshift=-0.5mm]:$E\colon(1,1)_M$}
+            ] at (E) {};
+    \end{tikzpicture}
+    $$
+    It follows that, for $m>0$, the line $[m,b]_M$ has slope $(m)_M$ and passes through $(0,b)_M=(0,\frac12b)$ if $b\ge0$ or $(0,b)$ if $b<0$.
+    $$
+        \begin{tikzpicture}[
+            scale=0.9,
+            font=\small,
+            baseline=(center_ref.base)
+            ]
+            \coordinate (center_ref) at (0,0);
+            % Axes
+            \draw[->,thick] (-1.7,0) -- (3.5,0) node[right] {$x$};
+            \draw[->,thick] (0,-2.1) -- (0,3.5) node[above] {$y$};
+            
+            % Line d: positive slope with bending
+            \def\xz{-1.5}
+            \def\yz{-1.8}
+            \def\u{1.0}
+            \def\v{2.0}
+            \pgfmathsetmacro{\xi}{(2*\v*\xz-\yz*\u)/(2*\v-\yz)}
+            \draw[name path=d1] (\xz,\yz) -- (\xi,0);
+            \pgfmathsetmacro{\mh}{\v/(\u-\xi)};
+            \pgfmathsetmacro{\m}{\mh*2};
+            
+            % Define the y-intercept (b value)
+            \pgfmathsetmacro{\b}{\yz-\m*\xz}
+            \pgfmathsetmacro{\bh}{\v-\mh*\u}
+
+            % Draw the line using two points
+            \draw[name path=d2] (\xi,0) -- (1.2,{\mh*1.2+\bh}) 
+                node[right]{$y=\frac12mx+\frac12b$};
+            
+            \draw[name path=ds,dashed] (\xi,0) -- (0.6,{\m*0.6+\b})
+                node[right]{$y=mx+b$};
+
+            \coordinate (A) at ({\xz+0.3},{\m*(\xz+0.3)+\b});
+            \draw[fill=black] (A) circle (1.5pt) node[below right,xshift=-1mm] at (A) {$(x_0,y_0)$};
+            \coordinate (B) at (0,\b);
+            \draw[fill=black] (B) circle (1.5pt) node[xshift=-2.5mm] at (B) {$b$};
+
+            \coordinate (B) at ({\xi+1.5},{\mh*(\xi+1.5)+\bh});
+            \draw[fill=black] (B) circle (1.5pt) node[below right,xshift=-1mm]{$(x_1,\frac12y_1)$};
+
+            \coordinate (C) at ({\xi},0);
+            \draw[fill=white] (C) circle (1.5pt) node[xshift=2mm,yshift=-3.0mm]{$-\frac bm$};           
+        \end{tikzpicture}
+        \quad
+            \begin{tikzpicture}[
+            scale=0.9,
+            font=\small,
+            baseline=(center_ref.base)
+            ]
+            \coordinate (center_ref) at (0,0);
+            % Axes
+            \draw[->,thick] (-0.7,0) -- (4.5,0) node[right] {$x$};
+            \draw[->,thick] (0,-2.1) -- (0,3.5) node[above] {$y$};
+            
+            % Line d: positive slope with bending
+            \def\xo{-1.5}
+            \pgfmathsetmacro{\dx}{-1.4}
+            \pgfmathsetmacro{\xz}{\xo-\dx}
+            \pgfmathsetmacro{\yz}{-1.8}
+            \pgfmathsetmacro{\u}{1.0-\dx}
+            \pgfmathsetmacro{\v}{2.0*(\u+\dx)}
+            \pgfmathsetmacro{\xi}{(2*\v*\xz-\yz*\u)/(2*\v-\yz)}
+            \draw[name path=d1] (\xz,\yz) -- (\xi,0);
+            \pgfmathsetmacro{\mh}{\v/(\u-\xi)};
+            \pgfmathsetmacro{\m}{\mh*2};
+            
+            % Define the y-intercept (b value)
+            \pgfmathsetmacro{\b}{\yz-\m*\xz}
+            \pgfmathsetmacro{\bh}{\v-\mh*\u}
+
+            % Draw the line using two points
+            \draw[name path=d2] (\xi,0) -- (1.2-\dx,{\mh*(1.2-\dx)+\bh}) 
+                node[right]{$y=\frac12mx+\frac12b$};
+
+            \draw[dashed] (\xi,0) -- (0,\bh);
+                        
+            \draw[name path=ds,dashed] (\xi,0) -- (0.6-\dx,{\m*(0.6-\dx)+\b})
+                node[right]{$y=mx+b$};
+
+            \coordinate (A) at ({\xz+0.3},{\m*(\xz+0.3)+\b});
+            \draw[fill=black] (A) circle (1.5pt) node[right] at (A) {$(x_0,y_0)$};
+            \coordinate (B) at (0,\b);
+            \draw[fill=black] (B) circle (1.5pt) node[xshift=-2.5mm] at (B) {$b$};
+
+            \coordinate (B) at ({\xi+1.5},{\mh*(\xi+1.5)+\bh});
+            \draw[fill=black] (B) circle (1.5pt) node[below right,xshift=-1mm]{$(x_1,\frac12y_1)$};
+
+            \draw[fill=black] (0,\bh) circle (1.5pt) node[left,xshift=-0.5mm]{$\frac12b$};
+
+            \coordinate (C) at ({\xi},0);
+            \draw[fill=white] (C) circle (1.5pt) node[xshift=2mm,yshift=-3.0mm]{$-\frac bm$};       
+        \end{tikzpicture}
+    $$
+    The following table summarizes the translation of $(x,y)_M\incidence_M{[m,b]_M}$ to cartesian coordinates for $m>0$
+    \[
+        \begin{array}{c|cc}
+                &x>-\frac bm &x\le-\frac bm\\[2mm]
+            \hline\rule{0mm}{4mm}
+            b>0
+                &(x,\frac12y)\incidence{[\frac12m,\frac12b]}
+                &(x,y)\incidence{[m,b]}\\[2mm]
+            b<0
+                &(x,\frac12y)\incidence{[\frac12m,\frac12b]}
+                &(x,y)\incidence{[m,b]}
+            \end{array}
+    \]
+    Thus, for $m>0$, we have
+    \[
+        (x,y)_M\incidence_M{[m,b]_M} \iff y=mx+b.
+    \]
+    For $m\le0$, the incidence relation $(x,y)_M\incidence_M{[m,b]_M}$ translates into
+    \[
+        \begin{array}{c|cc}
+                &y>0 &y\le0\\[2mm]
+            \hline\rule{0mm}{4mm}
+            b>0
+                &(x,\frac12y)\incidence{[m,\frac12b]}
+                &(x,y)\incidence{[m,\frac12b]}\\[2mm]
+            b<0
+                &(x,\frac12y)\incidence{[m,b]}
+                &(x,y)\incidence{[m,b]}
+            \end{array}
+    \]
+    or
+    \[
+        \begin{cases}
+            y=2mx+b     &b\ge0,\ x\le-\dfrac b{2m},\\[3.5mm]
+            y=mx+\frac12b   &b\ge0,\ x\ge-\dfrac b{2m},\\[3.5mm]
+            y=2mx+2b    &b\le0,\ x\le-\dfrac bm,\\[3.5mm]
+            y=mx+b      &b\le0,\ x\ge-\dfrac bm.
+        \end{cases}
+    \]
+\end{xmpl}
 
 \begin{prop}\label{prop:coodinatization-maps}
     The maps defined above
@@ -500,9 +722,9 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         font=\scshape]
         \item\label{TR1} For every\/ $x,m,b \in \ter$, we have
         \[
-            T(x,0,b) = T(0,m,b) =b
+            \textsc{i) } T(x,0,b) = T(0,m,b) =b
             \quad\text{and}\quad
-            T(1,x,0) = T(x,1,0) =x.
+            \textsc{ii) } T(1,x,0) = T(x,1,0) =x.
         \]
         \item\label{TR2} If\/ $x,y,x',y' \in \ter$ are given and\/ $x\ne x'$, then there exists a unique pair\/ $(m,b) \in \ter \times \ter$ for which\/ $T(x,m,b)=y$ and\/ $T(x',m,b)=y'$.
         
@@ -510,6 +732,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         
         \item\label{TR4} If\/ $m,b,m',b'\in\ter$ are given and\/ $m\ne m'$, then there is a unique\/ $x\in\ter$ for which\/ $T(x,m,b) = T(x,m',b')$.
     \end{enumerate}
+    When \ref{TR1} \textsc{ii)} is relaxed to only require $T(1,1,0)=1$, the resulting structure is called \textsl{ternary prering}.
 \end{defn}
 
 
@@ -521,12 +744,13 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     defines a ternary ring.
 \end{prop}
 
+\needspace{2\baselineskip}
 \begin{proof}${}$
-    \begin{enumerate}[tr$_\arabic*$,font=\scshape]
+    \begin{enumerate}[tr$_\arabic*$:,font=\scshape]
         \item From \eqref{eq:line-coordinates} we obtain $[0,b]\wedge[\infty]=(0,b)$ and $[0,b]\wedge[0,0]=(0)$. In particular, $(0,b),(0)\incidence{[0,b]}$. Then $[0,b]=(0,b)(0)$ and so $(x,b)\incidence{[0,b]}$, as illustrated below. Hence, the definition of $T$ implies $T(x,0,b)=b$.
         $$
             \begin{tikzpicture}[
-                scale=1.0,
+                scale=1.1,
                 font=\small,
                 point/.style={
                     draw,
@@ -608,7 +832,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
                 ] at (O) {};
             \end{tikzpicture}
         $$
-        Equality $T(0,m,b)=b$ follows at it simply means $(0,b)\incidence{[m,b]}$.
+        Equality $T(0,m,b)=b$ follows as it simply means $(0,b)\incidence{[m,b]}$.
 
         To see that $T(1,x,0)=x$ it is enough to observe that $(1,x)\incidence{[x,0]}$, which is easily verified as depicted in~\eqref{tik:line-coordinates} for $x=m$.
 
@@ -618,16 +842,17 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 
         \item This is equivalent to part~b) of Lemma~\ref{lem:ternary-full-domain}.
 
-        \item Let $\block a$ and $\block a'$ be two lines such that $\block a\colon[m,b]$ and $\block b\colon[m',b']$. Since $m\ne m'$, it follows that $\block a\ne\block a'$, so the point $P=\block a\wedge\block a'$ is well-defined. Let $P\colon(x,y)$. Then, $P\incidence\block a$ and $P\incidence\block a'$ translate into $(x,y)\incidence{[m,b]}$ and $(x,y)\incidence{[m',b']}$, as desired.
+        \item Let $\block a$ and $\block a'$ be two lines such that $\block a\colon[m,b]$ and $\block b\colon[m',b']$. Since $m\ne m'$, it follows that $\block a\ne\block a'$, so the point $P=\block a\wedge\block a'$ is well-defined. Let $P\colon(x,y)$. Then, $P\incidence\block a$ and $P\incidence\block a'$ translate into $(x,y)\incidence{[m,b]}$ and $(x,y)\incidence{[m',b']}$, as desired. \qedhere
 
     \end{enumerate}
 \end{proof}
 
+
 \begin{thm}\label{thm:projective-plane-of-ternary-ring}
-    Every ternary ring coordinatizes some projective plane.  
+    Every ternary prering coordinatizes some projective plane.  
 \end{thm}
 
-\begin{proof} Introduce
+\begin{proof} Let $(\ter,T)$ be a ternary prering. Introduce
     \begin{align*}
         \pts &= \set{(\infty)}\cup\set{(c)\mid c\in\ter}
                 \cup\set{(a,b)\mid a,b\in\ter}\\
@@ -645,8 +870,8 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \end{array}        
     \end{equation}
     To verify axioms \ref{P1}, \ref{P2} and \Ptprime, we proceed as follows:
-    \begin{description}
-        \item[\small\sc Axiom P1:]
+    \begin{description}[font=\normalfont\small\scshape]
+        \item[Axiom p$_1$:]
         $$
             \begin{array}{c|ccc}
                 & {(\infty)} & {(c')} & {(x',y')}\\
@@ -664,7 +889,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             \item This is Axiom \ref{TR2}.
         \end{enumerate}
 
-        \item[\small\sc Axiom P2:]
+        \item[Axiom p$_2$:]
         $$
             \begin{array}{c|ccc}
                 \wedge& {[\infty]} & {[c']} & {[m',b']}\\
@@ -678,9 +903,9 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \begin{enumerate}
             \item[3.] By Table~\eqref{tbl:incidence}, the point $(x,y)$ lies on both $[c]$ and $[m,b]$ if, and only if, $x=c$ and $y=T[c,m,b]$.
 
-            \item[4.] If $m\ne m'$, then \ref{TR4} there exists a unique pair $(x,y)$ incident with both $[m,b]$ and $[m',b']$. If $m=m'$ and $b\ne b'$, the two lines intersect at $(\infty)$.  
+            \item[4.] If $m\ne m'$, then by \ref{TR4} there exists a unique pair $(x,y)$ incident with both $[m,b]$ and $[m',b']$. If $m=m'$ and $b\ne b'$, the two lines intersect at $(\infty)$.  
 
-        \item[\small\sc Axiom P3':] We claim that the points
+        \item[Axiom p$_3$\!':] We claim that the points
         \[
             O=(0,0),\quad X=(0),
                 \quad Y=(\infty),\quad E=(1,1)
@@ -701,12 +926,12 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             \end{array}
         $$}
         \begin{enumerate}[-]
-            \item $OX=[0,0]$ by property~a) and axiom P1.
+            \item $OX=[0,0]$ by \ref{TR1} \textsc i) and axiom \PP1.
                 \begin{enumerate}[$\to$]
                     \item $(\infty)\nincidence{[0,0]}$ by table \eqref{tbl:incidence}.
-                    \item $(1,1)\nincidence{[0,0]}$ because $T(1,0,0)=0\ne1$ by \ref{TR1}
+                    \item $(1,1)\nincidence{[0,0]}$ because $T(1,0,0)=0\ne1$ by \ref{TR1} \textsc i).
                 \end{enumerate}
-            \item $OE=[1,0]$ since property a) implies that $T(0,1,0)=0$ and $T(1,1,0)=1$. Moreover, $(\infty)\nincidence{[1,0]}$ by \eqref{tbl:incidence}.
+            \item $OE=[1,0]$, since $T(0,1,0)=0$ by \ref{TR1} \textsc i) and $T(1,1,0)=1$ by the relaxed version of \textsc{ii)}. Moreover, $(\infty)\nincidence{[1,0]}$ by \eqref{tbl:incidence}.
             \item $XY=[\infty]$ since \eqref{tbl:incidence} implies $(0)\incidence{[\infty]}$ and $(\infty)\incidence{[\infty]}$. Furthermore, $(1,1)\nincidence{[\infty]}$ by \eqref{tbl:incidence}.
         \end{enumerate}
         \end{enumerate}
@@ -714,11 +939,12 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{proof}
 
 \begin{ntn}\label{ntn:plane-assciated-to-ternary-ring}
-    The projective plane associated by {\upshape Theorem~\ref{thm:projective-plane-of-ternary-ring}} to the ternary ring\/ $(\ter,T)$ will be denoted by
+    The projective plane associated with the ternary prering\/ $(\ter,T)$ by {\upshape Theorem~\ref{thm:projective-plane-of-ternary-ring}} will be denoted
     \[
-        \Pi_{(\ter,T)}=(\pts_{(\ter,T)},\blocks_{(\ter,T)},\incidence_{(\ter,T)}).
+        \Pi_T=(\pts_T,\blocks_T,\incidence_T).\footnote{Since $T\colon\ter\times\ter\times\ter\to\ter$, there is no need to include $\ter$ in the subscript.}
     \]
-    This projective plane is of the same order as\/~$\ter$. Furthermore, for\/ $\Pi_{(\ter,T)}$ the bijections\/ $\sigma$ and\/ $\gamma$ of\/ {\upshape Proposition~\ref{prop:coodinatization-maps}} are both the identity.
+
+    This projective plane is of the same order as\/~$\ter$. Furthermore, for\/ $\Pi_T$ the bijections\/ $\sigma$ and\/ $\gamma$ of\/ {\upshape Proposition~\ref{prop:coodinatization-maps}} are both the identity.
 \end{ntn}
 
 
@@ -728,12 +954,13 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 
 
 \begin{proof}
-    Let $\Pi_{(\ter,T)}=(\pts_{(\ter,T)},\blocks_{(\ter,T)},\incidence_{(\ter,T)})$ be the projective plane associated to $(\ter,T)$. Consider the bijections
+    Let $\Pi_T=(\pts_T,\blocks_T,\incidence_T)$ be the projective plane associated with $(\ter,T)$. Consider the bijections
     \begin{align*}
-        \sigma\colon\pts&\to\pts_{(\ter,T)}\\
-        \gamma\colon\blocks&\to\blocks_{(\ter,T)} 
+        \sigma\colon\pts&\to\pts_T\\
+        \gamma\colon\blocks&\to\blocks_T 
     \end{align*}
-    defined in Proposition~\ref{prop:coodinatization-maps}.      We claim that $(\sigma,\gamma)$ is a collineation. To prove this, we have to show that if $P\incidence\block a$, then $\sigma(P)\incidence_{(\ter,T)}\lambda(\block a)$. We will say that the flag $(P,\block a)$ is \textsl{good} if the coordinates satisfy the incidence relation. There are several cases for $\sigma(P)$ and $\gamma(\block a)$, namely
+    defined in Proposition~\ref{prop:coodinatization-maps}.      We claim that $(\sigma,\gamma)$ is a collineation. To prove this, we have to show that if $P\incidence\block a$, then $\sigma(P)\incidence_T\lambda(\block a)$. We will say that the flag $(P,\block a)$ is \textsl{good} if the coordinates of $P$ and $\block a$ satisfy the incidence relation. There are several cases for $\sigma(P)$ and $\gamma(\block a)$, namely
+    {\small
     \[
         \begin{array}{c|ccc}
             &{[\infty]}&{[a]}&{[m,b]}\\
@@ -743,7 +970,8 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             (x,y)&\text-&2&3
         \end{array}
     \]
-    The check mark stands for cases where the flag is clearly good; the dash for impossible cases. Let's analyze the three possibilities left
+    }
+    Check marks stand for cases where the flag is clearly good; the dash for impossible cases. Let's analyze the three possibilities left
     \begin{enumerate}
         \item Here $P\ne Y$, $P\incidence XY$, $Y\nincidence\block a$, $\block a\wedge XY\colon(m)$, and $\block a\wedge OY\colon(0,b)$. It follows that $P=\block a\wedge XY\colon(m)$. Hence, $c=m$, and since $(m)$ is on $[m,b]$, the flag is good.
         
@@ -842,11 +1070,11 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{proof}
 
 \begin{defn}
-    The ternary rings $(\ter,T)$ and $(\ter',T')$ are isomorphic, if there is a map $\theta\colon\ter\to\ter'$ for which $\theta(T(x,m,b))=T'(\theta(x),\theta(m),\theta(b))$ holds for every $x,m,b\in\ter$.
+    The ternary prerings $(\ter,T)$ and $(\ter',T')$ are isomorphic, if there is a map $\theta\colon\ter\to\ter'$ for which $\theta(T(x,m,b))=T'(\theta(x),\theta(m),\theta(b))$ holds for every $x,m,b\in\ter$.
 \end{defn}
 
 \begin{lem}\label{lem:left-solution-of-sum}
-    Let\/ $(\ter,T)$ be a ternary ring. Given\/ $m,b\in\ter$, with\/ $m\ne0$, the map
+    Let\/ $(\ter,T)$ be a ternary prering. Given\/ $m,b\in\ter$, with\/ $m\ne0$, the map
     \begin{align*}
         \ter&\to\ter\\
         x&\mapsto T(x,m,b)
@@ -855,7 +1083,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{lem}
 
 \begin{proof}
-    Since $\ter$ is a finite set, it suffices to show that the map is injective. Suppose that $T(x,m,b)=T(x',m,b)$ for some $x\ne x'$, and let $y$ denote the common value. By \ref{TR1},
+    Since $\ter$ is a finite set, it suffices to show that the map is injective. Suppose that $T(x,m,b)=T(x',m,b)$ for some $x\ne x'$, and let $y$ denote the common value. By \ref{TR1} \textsc i),
     \begin{align*}
         T(x,0,y) &= y, &T(x',0,y) &= y,\\
         T(x,m,b) &= y, &T(x',m,b) &= y.
@@ -864,7 +1092,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{proof}
 
 \begin{lem}\label{lem:right-solution-of-product}
-    Let\/ $(\ter,T)$ be a ternary ring. Given $a,b\in\ter$, with $a\ne0$, the map
+    Let\/ $(\ter,T)$ be a ternary prering. Given $a,b\in\ter$, with $a\ne0$, the map
     \begin{align*}
         \ter&\to\ter\\
         x&\mapsto T(a,x,0)
@@ -873,15 +1101,15 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{lem}
 
 \begin{proof}
-    It is enough to prove the injectivity of the map. Suppose that $T(a,x,0)=T(a,x',0)$ for some $x'\ne x$. Then, both $m=x$ and $m=x'$ satisfy the equations
+    It suffices to prove injectivity. Suppose that $T(a,x,0)=T(a,x',0)$ for some $x'\ne x$. Then, both $m=x$ and $m=x'$ satisfy the equations
     \begin{align*}
         T(a,m,0)&=b &T(0,m,0)&=0.
     \end{align*}
     However, since $a\ne0$, according to \ref{TR2}, there should be a unique pair $(m,0)$ satisfying these equations.
 \end{proof}
 
-\begin{lem}
-    If\/ $\theta\colon(\ter,T)\to(\ter',T')$ is an isomorphism, then\/ $\theta(0)=0'$ and\/ $\theta(1)=1'$.
+\begin{lem}\label{lem:ternary-isomorphisms-preserve-units}
+    If\/ $\theta\colon(\ter,T)\to(\ter',T')$ is an isomorphism of ternary prerings, then\/ $\theta(0)=0'$. If the ternary prerings are ternary rings, then\/ $\theta(1)=1'$.
 \end{lem}
 
 \begin{proof}
@@ -889,23 +1117,23 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \begin{align*}
         T'(\theta(0),\theta(m),\theta(b)) &= \theta(T(0,m,b))\\
             &=\theta(b) 
-                &&\text{; \ref{TR1}}\\
+                &&\text{; \ref{TR1} \textsc i)}\\
             &= T'(0',\theta(m),\theta(b)).
     \end{align*}
-    Hence, by the previous lemma, $\theta(0)=0'$, as wanted.
-
-    On the other hand, given $x\in\ter$, by \ref{TR1}, we have
+    Hence, by the Lemma \ref{lem:left-solution-of-sum}, $\theta(0)=0'$, as wanted. On the other hand,
     \begin{align*}
-        T'(1',\theta(x),0') &= \theta(x)\\
-            &= \theta(T(1,x,0))\\
-            &= T'(\theta(1),\theta(x),0')
-                &&;\ \theta(0)=0'
+        T'(1',\theta(1),0') &= \theta(1)
+                &&\text{; \ref{TR1} \textsc{ii)} non-relaxed}\\
+            &= \theta(T(1,1,0))
+                &&\text{; \ref{TR1} \textsc{ii)} relaxed}\\
+            &= T'(\theta(1),\theta(1),0')
+                &&;\ \theta(0)=0'.
     \end{align*}
-    which, according to the previous lemma, implies that $\theta(1)=1'$.
+    Since $\theta(1)\ne\theta(0)=0'$, we can use Lemma \ref{lem:left-solution-of-sum} to conclude that $\theta(1)=1'$.
 \end{proof}
 
 \begin{prop}\label{prop:coorinatized-isomorphism}
-    Let\/ $\theta\colon (\ter,T)\to(\ter',T')$ be an isomorphism of ternary rings. Then\/ $\theta$ induces a collineation between the associated projective planes.\footnote{See {\upshape Theorem~\ref{thm:projective-plane-of-ternary-ring}} for the construction of a projective plane from a ternary ring.} Moreover, this collineation maps the base quad\/ $((0,0),(0),(\infty),(1,1))$ of\/ $\Pi$ onto the base quad\/ $((0',0'),(0'),(\infty'),(1',1'))$ of\/ $\Pi'$.
+    Let\/ $\theta\colon (\ter,T)\to(\ter',T')$ be an isomorphism of ternary prerings. Then\/ $\theta$ induces a collineation between the associated projective planes.\footnote{See {\upshape Theorem~\ref{thm:projective-plane-of-ternary-ring}} for the construction of a projective plane from a ternary prering.} Moreover, in the case of ternary rings, this collineation maps the base quad\/ $((0,0),(0),(\infty),(1,1))$ of\/ $\Pi$ onto the base quad\/ $((0',0'),(0'),(\infty'),(1',1'))$ of\/~$\Pi'$.
 \end{prop}
 
 
@@ -926,14 +1154,15 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             [m,b]&\mapsto[\theta(m),\theta(b)]
         \end{aligned}
     \end{align*}
-    Both\/ $\theta_{\pts}$ and\/ $\theta_{\blocks}$ are bijections, since\/ $\theta$ is a bijection. By table\/ \eqref{tbl:incidence}, the pair\/ $(\theta_{\pts},\theta_{\blocks})$ preserves incidences, and therefore defines a collineation. The correspondence of base quads is a direct consequence of the previous lemma.
+    Both\/ $\theta_{\pts}$ and\/ $\theta_{\blocks}$ are bijections, since\/ $\theta$ is a bijection. By table\/ \eqref{tbl:incidence}, the pair\/ $(\theta_{\pts},\theta_{\blocks})$ preserves incidences, and therefore defines a collineation. The correspondence of base quads is a direct consequence of Lemma~\ref{lem:ternary-isomorphisms-preserve-units}.
+    
 \end{proof}
 
 
 \begin{rem}
     The correspondence
     \begin{align*}
-        (\ter,T)\mapsto\Pi_{(\ter,T)},\qquad 
+        (\ter,T)\mapsto\Pi_T,\qquad 
         \theta\mapsto(\theta_{\pts},\theta_{\blocks})
     \end{align*}
     is functorial, that is, it preserves both identities and compositions.
@@ -952,9 +1181,9 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
                 \arrow[r,"{(\phi_{\pts},\phi_{\blocks})}",dashed]
             & \Pi
                 \arrow[d,"{(\sigma',\gamma')}"]\\
-            {\Pi_{(\ter,T)}}
+            {\Pi_T}
                 \arrow[r,"{(\theta_{\pts},\theta_{\blocks})}"']
-            & {\Pi_{(\ter',T')}}
+            & {\Pi_{T'}}
         \end{tikzcd}
     \]
     where the top horizontal collineation ensures commutativity. The conclusion of this part follows directly from the cited lemma and proposition.
@@ -970,10 +1199,15 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \varphi(0,0)=(0',0'),\quad\varphi(0)=(0'),
         \quad\varphi(1,1)=(1',1'),\quad\varphi(\infty)=(\infty').
     \]
-    Furthermore, since $Z=XY\wedge OE$ and $Z'=X'Y'\wedge O'E'$, we get $\varphi(1)=(1')$. Similarly,
+    Furthermore, since $Z=XY\wedge OE$ and $Z'=X'Y'\wedge O'E'$, we get $\varphi(1)=(1')$. Therefore, using the equality $[m,0]=(m)(0,0)$ for $m=0,1$ we obtain
     \[
-        \psi[0,0]=[0',0'],\quad\psi[0]=[0'],
-        \quad\psi[1,0]=[1',0'],\quad\psi[\infty]=[\infty'].
+        \psi[0,0]=[0',0']\quad\text{and}\quad
+        \quad\psi[1,0]=[1',0'].
+    \]
+    Additionally, from $OY\colon[0]$, $XY\colon[\infty]$, and $YE\colon[1,0]$, we respectively deduce
+    \[
+        \psi[0]=[0'],\quad\psi[\infty]=[\infty'],
+            \quad\text{and}\quad\psi[1,0]=[1',0'].
     \]
     In consequence,
     \begin{equation}\label{eq:OE-and-YE}
@@ -991,7 +1225,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             (\theta(x),\theta(y))
                 \incidence{[\theta(m),\theta(b)]},
     \end{equation}
-    where, for the sake of simplicity, we have used $\incidence$ instead of $\incidence_{(\ter,T)}$. By definition, $(\theta(m))=\varphi((m))$. Thus, from \eqref{eq:OE-and-YE}, we deduce
+    where, for the sake of simplicity, we have used $\incidence$ instead of $\incidence_T$. By definition, $(\theta(m))=\varphi((m))$. Thus, from \eqref{eq:OE-and-YE}, we deduce
     \begin{align*}
         \varphi((1,m)) &= \varphi((0,0))\varphi((m))\wedge[1']\\
             &= (0',0')(\theta(m))\wedge[1']\\
@@ -1003,7 +1237,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             &=[1']\wedge(0')(c',c')\\
             &= (1',c'),
     \end{align*}
-    which implies $c'=\theta(c)$. Hence, $\varphi((c,c))=(\theta(c),\theta(c))$. This has two consequences. First, we have\/ $\varphi(x,y)=(\theta(x),\theta(y))$. Indeed,\/ $x$ is determined by the relation\/ $(x,y)(\infty)\wedge[1,0]=(x,x)$, and\/ $y$ by\/ $(x,y)(0)\wedge[1,0]=(y,y)$. 
+    which implies $c'=\theta(c)$. Hence, $\varphi((c,c))=(\theta(c),\theta(c))$. This has two consequences. First, $\varphi(x,y)=(\theta(x),\theta(y))$. Indeed,\/ $x$ is determined by the relation\/ $(x,y)(\infty)\wedge[1,0]=(x,x)$, and\/ $y$ by\/ $(x,y)(0)\wedge[1,0]=(y,y)$. 
 
     Second, using that\/ $[m,b]=(m)(0,b)$, we deduce
     \begin{align*}
@@ -1263,6 +1497,181 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     $$
 \end{defn}
 
+\begin{rem}
+    Given $m\in\ter\setminus\set0$, the following picture illustrates how to find $m'$ such that $m\cdot m'=m'\cdot m=1$
+    $$
+        \begin{tikzpicture}[
+            scale=1.2,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=black,
+                inner sep=1.2pt},
+                every node/.style={font=\footnotesize},
+            ]
+            \pgfmathsetmacro{\u}{1.7};
+            
+            % Points
+            \coordinate (xstart) at (0.0,0.0);
+            \coordinate (xend) at (2*\u,0.0);
+            \coordinate (ystart) at (0.0,0.0);
+            \coordinate (yend) at (0.0,2*\u);
+            \coordinate (E) at (\u,\u*1.0);
+            
+            % Axes
+            \draw[name path=xaxis,
+                color=orange,
+                thick
+            ] (xstart) -- (xend)
+                node[right,text=black] {$[0,0]$}
+                node[point,
+                pos=0.0,
+                label={[yshift=-5mm,xshift=-2mm,text=black]:
+                    $O$}] (O) {}
+                node[point,
+                    pos=0.43,
+                    label={[text=black,xshift=-1mm,yshift=-6mm]:
+                        $X$}
+                ] (X) {};
+    
+            \draw[name path=yaxis,
+                color=orange,
+                thick
+            ] (ystart) -- (yend)
+                node[above,text=black] {$[0]$}
+                node[point,
+                pos=0.95,
+                label={[text=black,left,yshift=-1mm]:
+                    $Y$}
+                ] (Y) {};
+            \draw[name path=OE] (O) -- ($(O)!1.7!(E)$)
+                node[right] {$[1,0]$};
+            \draw[name path=XY] ($(X)!-0.1!(Y)$) -- (Y)
+                node[pos=0,xshift=2.7mm,yshift=-2mm] {$[\infty]$}
+                node[pos=0.46,
+                    label={[left,yshift=-1.5mm]:
+                        $(m)$}
+                ] (M) {};
+            
+            % Lines
+            \draw[name path=YE] (Y) -- ($(Y)!1.5!(E)$)
+                node[right] {$[1]$};
+            \path[name path=XE] (X) -- ($(X)!1.7!(E)$);
+            
+            % Intersections
+            \path[name intersections={of=OE and XY, by=Z}];
+            \draw[name path=OM] (O) -- ($(O)!2.5!(M)$)
+                node[xshift=2mm,yshift=2mm] {$[m,0]$};
+            \node[point,
+                fill=white,
+                label={[xshift=2.5mm,yshift=-2.5mm]:
+                    $Z$}
+            ] at (Z) {};
+            \path[name intersections={of=XE and OM,by=invOne}];
+            \draw (X) -- (invOne);
+            \path[name path=Yinv] (Y) -- ($(Y)!1.4!(invOne)$);
+            \path[name intersections={of=OE and Yinv,by=invInv}];
+            \draw (Y) -- (invInv);
+            \draw[name path=XinvInv] (X) -- (invInv);
+            \path[name intersections={of=YE and XinvInv,by=1Inv}];
+            \draw[name path=OM'] (O) -- (1Inv);
+            \path[name intersections={of=OM' and XY,by=M'}];
+            
+            % Points
+            \node[point,
+                fill=green,
+                label={[xshift=-1.4mm,yshift=-7.7mm,text=black]:
+                    $(m')$}
+            ] at (M') {};
+            \node[point,
+                fill=green,
+                label={[xshift=6mm,yshift=-3.0mm,text=black]:
+                    $(1,m')$}
+            ] at (1Inv) {};
+            \node[point,
+                fill=green,
+                label={[xshift=7mm,yshift=-5.0mm,text=black]:
+                    $(m',m')$}
+            ] at (invInv) {};
+            \node[point,
+                fill=green,
+                label={[xshift=-3.0mm,yshift=0.5mm,text=black]:
+                    $(m',1)$}
+            ] at (invOne) {};
+            \node[point,
+                label={[xshift=-2.7mm,yshift=-3.0mm]:
+                    $E$}
+            ] at (E) {};
+            \path[name intersections={of=OM and YE,by=oneM}];
+            \node[point,
+                fill=green,
+                label={[xshift=-5mm,yshift=-3.5mm]:$(1,m)$}
+            ] at (oneM) {};
+            \node[point,
+                fill=lightblue
+            ] at (M) {};
+        \end{tikzpicture}
+    $$
+    {\small\alg
+         \begin{enumerate}[itemsep=1.8pt, parsep=0pt]
+            \item Locate $(m,m)$ on $OE$
+            \item Draw $X(m,m)$
+            \item Locate $(1,m)=X(m,m)\wedge YE$
+            \item Locate $(m)=O(1,m)\wedge XY$
+            \item Draw $[m,0]=O(m)$
+            \item Locate $(m',1)=XE\wedge[m,0]$\qquad
+                ; \textcolor{gray}{$m\ne0\implies XE\wedge[m,0]\ne X$}
+            \item Draw $Y(m',1)$
+            \item Locate $(m',m')=Y(m',1)\wedge OE$
+            \item Draw $X(m',m')$
+            \item Locate $(1,m')=X(m,m')\wedge YE$
+            \item Draw $O(1,m')$
+            \item Locate $(m')=O(1,m')\wedge XY$
+         \end{enumerate}
+    }
+    Note that in the case\/ $m=0$, we would have\/ $XE\wedge[m,0]=X$. However, the algorithm can proceed in this case as well:
+    {\small\alg
+        \begin{enumerate}[itemsep=1.8pt, parsep=0pt]
+        \setcounter{enumi}{9}
+            \item Locate $X=XE\wedge[0,0]$\qquad
+            \item Draw $YX$
+            \item Locate $Z=YX\wedge OE$
+            \item Draw $XZ$
+            \item Locate $Y=XZ\wedge YE$
+            \item Draw $OY$
+            \item Locate $Y=OY\wedge XY$
+        \end{enumerate}
+    }
+    \vspace{-0.7\parskip}
+    finding $\infty$ as the multiplicative inverse of $0$.
+\end{rem}
+
+\begin{xmpl}\label{xmpl:Moulton-ternary-ring-defn}
+    As a follow up of Example~\ref{xmpl:Moulton-coordinatization}, the ternary ring $(\R,T_M)$ associated to the Moulton plane is given by
+    \[
+        T_M(x,m,b) =
+            \begin{cases}
+                mx+b        &m\ge0,\\[1mm]
+                2mx+b     &m<0,\ b\ge0,\ x\le-\frac b{2m},\\[1mm]
+                mx+\frac12b   &m<0,\ b\ge0,\ x\ge-\frac b{2m},\\[1mm]
+                2mx+2b    &m<0,\ b\le0,\ x\le-\frac bm,\\[1mm]
+                mx+b      &m<0,\ b\le0,\ x\ge-\frac bm.
+            \end{cases}
+    \]
+    Let $+_M$ and $\circ_M$ be the multiplication and sum associated with this ternary ring. Then
+    \begin{align*}
+        u+_Mv &= T_M(u,1,v)= u + v\\
+        u\circ_Mv &= T_M(u,v,0)
+        = \begin{cases}
+            2uv     &\text{if }v,u\le0,\\
+            uv      &\text{otherwise}.
+        \end{cases}
+    \end{align*}
+    Note also that, in this case, $T(x,m,b)$ does not always equal $x\circ_Mm+_Mb$.
+\end{xmpl}
+
+
 \section{Linear Ternary Rings and Quasifields}
 
 It is not generally valid that the operations of sum and multiplication defined on a ternary ring $(\ter,T)$ must satisfy the equality $x\cdot m\+b=T(x,m,b)$. In this section we study these kinds of relations between geometric and algebraic properties and their equivalences.
@@ -1282,13 +1691,13 @@ It is not generally valid that the operations of sum and multiplication defined 
 
     The equation $x\+a=b$ is equivalent to $T(x,1,a)=b$, which has a unique solution by Lemma~\ref{lem:left-solution-of-sum}.
 
-    The equations $a\+0=a$ and $0\+a=a$ are equivalent to $T(a,1,0)=a$ and $T(0,1,a)=a$, which hold by \ref{TR1}.
+    The equations $a\+0=a$ and $0\+a=a$ are equivalent to $T(a,1,0)=a$ and $T(0,1,a)=a$, which hold by \ref{TR1} \textsc i).
 
     The equation $a\cdot x=b$ is equivalent to $T(a,x,0)=b$, which has a unique solution when $a\ne0$ by Lemma~\ref{lem:right-solution-of-product}.
 
     The equation $x\cdot a=b$ is equivalent to $T(x,a,0)=b$, which has a unique solution when $a\ne0$ by Lemma~\ref{lem:left-solution-of-sum}.
 
-    The equations $a\cdot1=a$ and $1\cdot a=a$ are equivalent to $T(a,1,0)=a$ and $T(1,a,0)=a$, which hold by \ref{TR1}.
+    The equations $a\cdot1=a$ and $1\cdot a=a$ are equivalent to $T(a,1,0)=a$ and $T(1,a,0)=a$, which hold by \ref{TR1} \textsc{ii)}.
 \end{proof}
 
 \begin{defn}
@@ -1402,14 +1811,14 @@ It is not generally valid that the operations of sum and multiplication defined 
     \[
     a\circ_\zeta b =
     \begin{cases}
-        a\zeta b & \text{if } a \ge 0 \text{ and } b \ge 0,\\
+        a\zeta b & \text{if } a\le0 \text{ and } b\le 0,\\
         ab & \text{otherwise}.
     \end{cases}
     \]
-    Let $T_\zeta(a,m,b)=a\circ_\zeta m+b$. Then, according to Definition~\ref{defn:ternary-ring}, $(\kappa,T_\zeta)$ is a ternary ring:
-    \begin{enumerate}[tr$_\arabic*$,font=\scshape]
-        \item $T_\zeta(x,0,b)=x\cdot0+b=b$, $T_\zeta(0,m,b)=0\cdot m+b=b$, $T_\zeta(1,x,0)=1\cdot x+0=x$, and $T_\zeta(x,1,0)=x\cdot1+0=x$.
-
+    Let $T_\zeta(a,m,b)=a\circ_\zeta m+b$. According to Definition~\ref{defn:ternary-ring}, $(\kappa,T_\zeta)$ is a ternary ring:
+    \begin{enumerate}[tr$_\arabic*$.,font=\scshape]
+        \item Straightforward.
+        
         \item Fix $x,x',y,y'\in\kappa$, with $x>x'$. Since these are constants, we can replace $b$ with $b-y'$ and assume that $y'=0$. Thus the equations become
         \[
             \left\{\begin{aligned}
@@ -1427,14 +1836,14 @@ It is not generally valid that the operations of sum and multiplication defined 
             \begin{array}{c|ccc}
                  m&y\ge0&y<0\\
                  \hline\rule{0pt}{10pt}
-                 x'\ge0&z/\zeta&z\\
-                 x\ge0>x'&y/(x\zeta-x')&z\\
-                 0>x&z&z
+                 x'\ge0&z&z\\
+                 x\ge0>x'&z&y/(x-\zeta x')\\
+                 0>x&z&z/\zeta
             \end{array}
         \]
-        \item Consider the equation $x\circ m+b=y$, where $x,y,m$ are given and $b$ is the unknown. Then $b=y-x\circ m$ is the unique solution.
+        \item Consider the equation $x\circ_\zeta m+b=y$, where $x,y,m$ are given and $b$ is the unknown. Then $b=y-x\circ m$ is the unique solution.
 
-        \item It suffices to show that the equation, where $m>m'$,
+        \item It suffices to show that, when $m>m'$, the equation
         \[
                 x\circ_\zeta m=
                 x\circ_\zeta m'+b,
@@ -1444,23 +1853,22 @@ It is not generally valid that the operations of sum and multiplication defined 
             \begin{array}{c|ccc}
                  x&b\ge0&b<0\\
                  \hline\rule{0pt}{10pt}
-                 m'\ge0&c/\zeta&c\\
-                 m\ge0>m'&b/(\zeta m-m')&c\\
-                 0>m&c&c
+                 m'\ge0&c&c\\
+                 m\ge0>m'&c&b/(m-\zeta m')\\
+                 0>m&c&c/\zeta
             \end{array}
         \]
     \end{enumerate}
-    Note also that $(\kappa,T_\zeta)$ is linear by definition.
 \end{xmpl}
 
-\begin{xmpl}\label{xmpl:moulton-ternary-ring}
-    In the case where $\kappa=\R$ and $\zeta=1/2$, the projective plane associated with the linear ternary ring $(\R,T_{1/2})$ [cf.~Theorem~\ref{thm:projective-plane-of-ternary-ring}] of the previous example, is the Moulton plane corresponding to Example~\ref{xmpl:affine-moulton}.
+\begin{xmpl}\label{xmpl:Moulton-ternary-ring}
+    In the case where $\kappa=\R$ and $\zeta=1/2$, the projective plane associated with the linear ternary ring $(\R,T_{1/2})$ [cf.~Theorem~\ref{thm:projective-plane-of-ternary-ring}] of the previous example, is the Moulton plane corresponding to Example~\ref{xmpl:Moulton-ternary-ring-defn}.
 
     Indeed. given $x,y,m,b\in\R$ we have
     \[
-        (x,y)\incidence{[m,b]}\iff y=x\circ_{1/2}m+b
+        (x,y)_M\incidence_M{[m,b]_M}\iff y=x\circ_{1/2}m+b
             = \begin{cases}
-                \frac m2x+b  &\text{if }m,x\ge0,\\
+                \frac m2x+b  &\text{if }m,x<0,\\
                 mx++b   &\text{otherwise},
             \end{cases}
     \]
@@ -1788,7 +2196,7 @@ It is not generally valid that the operations of sum and multiplication defined 
 \end{proof}
 
 \begin{test}
-    According to the theorem, the Moulton ternary ring of Example~\ref{xmpl:moulton-ternary-ring} must be $((\infty),[\infty])$-transitive.
+    According to the theorem, the Moulton ternary ring of Example~\ref{xmpl:Moulton-ternary-ring} must be $((\infty),[\infty])$-transitive.
 
     To verify this we have to take two points $(x_0,y_0)$ and $(x_1,y_1)$ on the same vertical line and show that there is an elation $\alpha$ with center $(\infty)$ and axis $[\infty]$ satisfying $\alpha(a,b)=\alpha(a,c)$.
 
@@ -1824,9 +2232,10 @@ It is not generally valid that the operations of sum and multiplication defined 
     The projective plane\/ $\Pi$ is \textsl{$(X, XY)$-transitive} if, and only if, $(\ter,\+)$ is a group and for every\/ $a,b,c\in\ter$ we have\/ $T(a,b,c\cdot b) = (a\+c)\cdot b$.
 \end{thm}
 
-\begin{proof} Suppose that $\Pi$ is $(X,XY)$-transitivie. Fix $a,b,c\in\ter$. Let $A\colon(a,0)$, $B\colon(b,0)$, and $C\colon(0,c)$. Locate the points $Q'$, $Q$, $P'$, $P$, $R$, $R'$, $S$, and $S'$, as defined below
+\begin{proof}
+    Suppose that $\Pi$ is $(X,XY)$-transitivie. Fix $a,b,c\in\ter$. Let $A\colon(a,0)$, $B\colon(b,0)$, and $C\colon(0,c)$. Locate the points $Q'$, $Q$, $P'$, $P$, $R$, $R'$, $S$, and $S'$, as defined below
     $$
-        \begin{minipage}[c]{0.60\textwidth}
+        \begin{minipage}[c]{0.58\textwidth}
         \begin{tikzpicture}[
             baseline=(current bounding box.center),
             scale=1.1,
@@ -1974,17 +2383,17 @@ It is not generally valid that the operations of sum and multiplication defined 
         \end{tikzpicture}
         \end{minipage}
         \hfill
-        \begin{minipage}[c]{0.30\textwidth}
-        {\small
+        \begin{minipage}[c]{0.42\textwidth}
+        {\footnotesize
         \begin{align*}
-            Q'&\colon(b,b)\\
-            Q\phantom'&\colon(0,b)\\
-            P'&\colon(b,b\+c)\\
-            P\phantom'&\colon(0,b\+c)\\
-            R\phantom'&\colon(a,a\+b)\\
-            R'&\colon(a\+b,a\+b)\\
-            S\phantom'&\colon(a,a\+(b\+c))\\
-            S'&\colon(a\+b,(a\+b)\+c)\\
+            Q'&=BY\wedge OE\colon(b,b)\\
+            Q\phantom'&=XQ'\wedge OY\colon(0,b)\\
+            P'&=BY\wedge ZC\colon(b,b\+c)\\
+            P\phantom'&=XP'\wedge OY\colon(0,b\+c)\\
+            R\phantom'&=AY\wedge ZQ\colon(a,a\+b)\\
+            R'&=XR\wedge OE\colon(a\+b,a\+b)\\
+            S\phantom'&=AY\wedge ZP\colon(a,a\+(b\+c))\\
+            S'&=YR\wedge ZC\colon(a\+b,(a\+b)\+c)\\
         \end{align*}
         }
         \end{minipage}

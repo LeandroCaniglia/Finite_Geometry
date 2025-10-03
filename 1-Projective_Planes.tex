@@ -160,7 +160,7 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
 \begin{defn}
     An incidence geometry $\igeo$ is a \textsl{projective plane} if it satisfies:
     \begin{enumerate}[
-        p$_{\arabic*}$,
+        p$_{\arabic*}.$,
         ref=\textsc{p$_\arabic*$},
         font=\scshape]
         \item \label{P1}Every pair of distinct points of $\pts$ is incident with one, and only one, block in~$\blocks$.
@@ -224,8 +224,8 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
 \begin{lem}\label{lem:alternative-projective-axiom}
     An incidence geometry\/ $\igeo$ is a projective plane if, and only if, it satisfies properties\/ \PP1 and\/ \PP2, and one of the following two conditions:
     \begin{enumerate}[font=\scshape]
-        \item[p$_3$\!'\hphantom'] There are four points in general position.
-        \item[p$_3$\!''] ${\incidence}\ne\emptyset$ and given two lines, there is always a point not incident with either of them.
+        \item[p$_3$\!'.\hphantom'] There are four points in general position.
+        \item[p$_3$\!''.] ${\incidence}\ne\emptyset$ and given two lines, there is always a point not incident with either of them.
     \end{enumerate}
 \end{lem}
 
@@ -365,8 +365,8 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
 \begin{rem}\label{rem:point-identification-from-blocks}
     It follows from the lemma that the duals of \Ptprime\ and \Ptdprime\ also hold in a projective plane. These are:
     \begin{enumerate}[font=\upshape\scshape]
-        \item[q$_3$\!'\hphantom'] \textit{There are four lines, no three of which are concurrent.}
-        \item[q$_3$\!''] \textit{Given two points, there is always a line not incident with either of them.}
+        \item[q$_3$\!'.\hphantom'] \textit{There are four lines, no three of which are concurrent.}
+        \item[q$_3$\!''.] \textit{Given two points, there is always a line not incident with either of them.}
     \end{enumerate} 
 \end{rem}
 
@@ -1272,9 +1272,9 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
     This process is constructive. It begins with a partial projective plane, which is a set of points and lines with an incidence relation that satisfies some, but not all, axioms of a projective plane. The goal is to extend this partial structure to a complete projective plane by freely adding new elements (points and lines) in such a way that the extended structure satisfies all the axioms of a projective plane.
 
     In describing this process, we will rely on weaker versions of axioms~\PP1 and \PP2, stated as follows:
-    \begin{enumerate}
-        \item[P1'.] Any pair of points lies on \emph{at most} one line.
-        \item[P2'.] Any pair of lines meets in \emph{at most} one point.
+    \begin{enumerate}[font=\scshape]
+        \item[p$_1$\!'.] Any pair of points lies on \emph{at most} one line.
+        \item[p$_2$\!'.] Any pair of lines meets in \emph{at most} one point.
     \end{enumerate}
     These weaker versions ensure that in the process we don't violate \PP1 and \PP2 by an excess of incidences. The idea is to add new incidences, in an attempt to fulfill \PP1 or \PP2 at every step.
 
@@ -1282,7 +1282,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
     \begin{enumerate}[1.]
         \item \textbf{Identify Incomplete Configurations:} \textit{Determine pairs of points not yet connected by a line and pairs of lines not yet intersecting at a point.}
 
-        Start with an incidence matrix in which the rows index lines and columns index points. This matrix must satisfy P1' and P2', although it may fail to satisfy \PP1 or \PP2. For example, start with
+        Start with an incidence matrix in which the rows index lines and columns index points. This matrix must satisfy \textsc{p$_1$\!'} and \textsc{p$_2$\!'}, although it may fail to satisfy \PP1 or \PP2. For example, start with
 
         \vspace{-2\parskip}
         \small
@@ -1299,9 +1299,9 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
             \end{array}            
         \end{equation}
         \normalsize
-        Here, \PP1 and P2' are satisfied but not \PP2: $\ell_1\cap\ell_6=\ell_2\cap\ell_5=\ell_3\cap\ell_4=\emptyset$. 
+        Here, \PP1 and \textsc{p$_2$\!}' are satisfied but not \PP2: $\ell_1\cap\ell_6=\ell_2\cap\ell_5=\ell_3\cap\ell_4=\emptyset$. 
 
-        \item \textbf{Add New Elements:} \textit{For each pair of points or lines, add a new line or point to establish the incidence required by\/ \PP1 or\/ \PP2, ensuring that the addition still satisfies\/ {\upshape P1'} and\/ {\upshape P2'}.}
+        \item \textbf{Add New Elements:} \textit{For each pair of points or lines, add a new line or point to establish the incidence required by\/ \PP1 or\/ \PP2, ensuring that the addition still satisfies\/ {\upshape\textsc{p$_1$\!'}} and\/ {\upshape\textsc{p$_2$\!'}}}.
         
         In the table we are building, we add more points so that \PP2 is satisfied:
         \small
@@ -1319,7 +1319,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
             \end{array}            
         \end{align}
         \normalsize
-        Our table satisfies P1' and \PP2 but not \PP1 (no line joins the new points).
+        Our table satisfies \textsc{p$_1$\!'} and \PP2 but not \PP1 (no line joins the new points).
 
         \item \textbf{Iterate:} \textit{Repeat the process iteratively, each time by extending the partial plane by adding new elements to resolve remaining incomplete configurations.}
 
@@ -1372,7 +1372,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 
         \item \textbf{Complete:} \textit{Continue the process (possibly \textsl{ad infinitum}) until all pairs of distinct points are connected by a unique line, and all pairs of distinct lines intersect at a unique point, resulting in a complete projective plane.}
 
-        This construction continues for a countable number of steps. The infinite incidence matrix satisfies axioms~\PP1 and \PP2, because it does from a certain step on. More precisely, if points $A$ and $B$ have been defined in step $i$, then the line $AB$ is also defined in step~$i$ or it will be in step $i+1$. Axiom~\hyperref[lem:alternative-projective-axiom]{P3'} is satisfied by \hyperref[eq:T1]{$T_1$}, and preserved in all subsequent tables. Note also that if we transpose \hyperref[eq:T1]{$T_1$}, the incidence geometry it induces satisfies~\hyperref[lem:alternative-projective-axiom]{P3''}.
+        This construction continues for a countable number of steps. The infinite incidence matrix satisfies axioms~\PP1 and \PP2, because it does from a certain step on. More precisely, if points $A$ and $B$ have been defined in step $i$, then the line $AB$ is also defined in step~$i$ or it will be in step $i+1$. Axiom~\textsc{p$_3$\!'} is satisfied by \hyperref[eq:T1]{$T_1$}, and preserved in all subsequent tables. Note also that if we transpose \hyperref[eq:T1]{$T_1$}, the incidence geometry it induces satisfies~\textsc{p$_3$\!''}.
     \end{enumerate}
 \end{xmpl}
 
@@ -1542,7 +1542,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 \begin{defn}
     An incidence geometry $\igeo$ is an \textsl{affine plane} if it satisfies the following properties
     \begin{enumerate}[
-        {a}$_\arabic*$,
+        {a}$_\arabic*$.,
         ref=\textsc{a$_\arabic*$},
         font=\upshape\scshape]
         \item\label{A1} Every pair of distinct points of $\pts$ is incident with one, and only one, block in~$\blocks$.
@@ -1727,7 +1727,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 
 \end{proof}
 
-\begin{xmpl}\label{xmpl:affine-moulton}{\upshape[Affine Moulton Plane]}
+\begin{xmpl}\label{xmpl:affine-Moulton}{\upshape[Affine Moulton Plane]}
     The \textsl{affine Moulton plane} has the same points as the Euclidean plane, but it bends all lines with positive slope to halve their slope as they cross from the lower- (below the $x$-axis) to the upper-half plane (above the axis). 
     $$
         \begin{tikzpicture}[scale=0.65]
@@ -1781,7 +1781,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
     In the picture, lines $\block a$, $\block b$ and $\block v$ are the same in both the Moulton plane and the Euclidean plane. However, lines $\block e$ and $\block d$, which belong to the Moulton plane, differ from the Euclidean ones in that they have their slopes halved in the upper half-plane.
 
     In order to verify axiom~\ref{A1} in the Moulton plane it is enough to consider the case of two points $(x_0,y_0)$ and $(x_1,y_1)$ such that $x_0<x_1$ and $y_0<0<y_1$.
-    \begin{equation}\label{picture:moulton-m}
+    \begin{equation}\label{picture:Moulton-m}
         \begin{tikzpicture}[
             scale=1,
             baseline=(center_ref.base)
@@ -1820,7 +1820,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
     \end{equation}
     Our goal is to determine the value of $c$ and the slope $m$ of the line passing through $(x_0, y_0)$ and $(c, 0)$.  
     To that end, we consider the system
-    \begin{align}\label{eq:moulton-m}
+    \begin{align}\label{eq:Moulton-m}
         m &= \frac{-y_0}{c-x_0},\nonumber\\
         \frac{m}{2} &= \frac{y_1}{x_1-c}.
     \end{align}
@@ -3153,7 +3153,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
         Each of these partitions can be visualized as a set of~$3$ disjoint edges in the complete graph $K_6$ of six nodes, as illustrated in the example below
         $$
             \begin{tikzpicture}[
-                scale=0.8,
+                scale=0.6,
                 vertex/.style={circle, draw, fill=gray!10, inner sep=2pt, minimum size=18pt},
                 edge/.style={thin}
                 ]
@@ -3194,9 +3194,11 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 
         $$
             \begin{tikzpicture}[
-                scale=0.8,
-                vertex/.style={circle, draw, fill=gray!10, inner sep=2pt, minimum size=18pt},
-                edge/.style={thin}]
+                    scale=0.6,
+                    vertex/.style={circle, draw, fill=gray!10, inner sep=2pt, minimum size=12pt},
+                    edge/.style={thin},
+                    font=\footnotesize
+                ]
             
                 % Define radius for vertex placement
                 \def\radius{2.5cm}
@@ -3241,7 +3243,10 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
                 }
                 
                 % Add a legend
-                \begin{scope}[xshift=\radius+1.2cm, yshift=1.2cm, font=\small] % Adjust xshift/yshift to position legend
+                \begin{scope}[
+                    xshift=\radius+1.2cm, yshift=1.2cm, 
+                    font=\footnotesize % Adjust xshift/yshift to position legend
+                    ]
                     \node[anchor=west, color=colorF1] at (0.5, 0) {$F_1: \set{\{1,2\},\{3,4\},\{5,6\}}$};
                     \draw[colorF1, edge] (0,0) -- (0.4,0);
                 
@@ -3287,13 +3292,14 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
                 F &= \{\{1,2\},\{3,4\},\{5,6\}\}\\
                 G &= \{\{1,n_1\},\{2,3\},\{n_3,n_4\}\}
             \end{align*}
-            we are left with two possibilities for the $G$-edge at $4$: $n_1$ or $n_3$. However, such an edge cannot be $\{1,n_1\}$ because that would mean $n_1=4$ and, \textit{a fortiori}, $\{n_3,n_4\}=\{5,6\}$, which is impossible. Therefore, the only possibilities for this edge are $\{4,5\}$ or $\{4,6\}$. This means that $\{n_3,n_4\}=\{4,5\}$ or $\{n_3,n_4\}=\{4,6\}$. In the first case we would have $n_1=6$ and, in the second, $n_1=5$. The following picture illustrates the case $n_1=5$
-            $$
+            we are left with two possibilities for the $G$-edge at $4$: $n_1$ or $n_3$. However, such an edge cannot be $\{1,n_1\}$ because that would mean $n_1=4$ and, \textit{a fortiori}, $\{n_3,n_4\}=\{5,6\}$, which is impossible. Therefore, the only possibilities for this edge are $\{4,5\}$ or $\{4,6\}$. This means that $\{n_3,n_4\}=\{4,5\}$ or $\{n_3,n_4\}=\{4,6\}$. In the first case we would have $n_1=6$ and, in the second, $n_1=5$. The following picture illustrates the case $n_1=5$, proving the claim.
+            \begin{center}
                 \begin{tikzpicture}[
                     scale=0.8,
+                    font=\footnotesize,
                     vertex/.style={circle,
                     draw,
-                    minimum size=1.5em,
+                    minimum size=12pt,
                     inner sep=0pt,
                     align=center},
                     baseline=(1.base),
@@ -3313,8 +3319,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
                     \draw[factor] (n3) -- node[above] {$F$} (n4);
                     \draw[factor] (n4) to[bend left=30] node[above] {$G$} (1);
                 \end{tikzpicture}
-            $$
-            This proves the claim.
+            \end{center}
         \end{quote}
 
         \textbf{Claim 6.} \textit{Any\/ $1$-factorization is determined by two of its\/ $1$-factors. Reciprocally, any pair of edge-disjoint\/ $1$-factors can be extended to a unique\/ $1$-factorization.}
@@ -3997,7 +4002,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 \end{solution}
 
 \begin{exr}
-     Show that the Moulton plane\/ {\upshape[Example~\ref{xmpl:affine-moulton}]} is not Desarguesian.
+     Show that the Moulton plane\/ {\upshape[Example~\ref{xmpl:affine-Moulton}]} is not Desarguesian.
 \end{exr}
 
 \begin{solution}
@@ -4013,7 +4018,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
         A_1B_1C_1 &= \set{(-2,0),(0,\tfrac12),(1,0)}\\
         A_2B_2C_2 &= \set{(-\tfrac52,-\tfrac12),(0,-2),(\tfrac52,-\tfrac32)}.
     \end{align*}
-    By equation \eqref{eq:moulton-m}, the slope of $A_1B_1$ in $y<0$ is $m=\frac1{0-c}$. And since in our case, the bending point is $c=-2$ (see~\eqref{picture:moulton-m}), we see that $m=\frac12$. Thus, for $y\le0$, $A_1B_1\equiv y=\frac12x+1$. Therefore,
+    By equation \eqref{eq:Moulton-m}, the slope of $A_1B_1$ in $y<0$ is $m=\frac1{0-c}$. And since in our case, the bending point is $c=-2$ (see~\eqref{picture:Moulton-m}), we see that $m=\frac12$. Thus, for $y\le0$, $A_1B_1\equiv y=\frac12x+1$. Therefore,
     \small
     \begin{align*}
         X_1 &= A_1C_1\wedge A_2C_2 = \begin{cases}
@@ -4047,7 +4052,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
             opoint/.style={circle, inner sep=1.5pt, draw=black},
             dpoint/.style={circle, inner sep=1.5pt, draw=red},
             line_style/.style={thin},
-            moulton_line/.style={line_style},
+            Moulton_line/.style={line_style},
             line_1/.style={line_style},
             line_2/.style={line_style},
             triangle_1/.style={teal, thick},
@@ -4068,9 +4073,9 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
             % Line 3: The Moulton Line
             % It bends at point A1 = (-2,0)
             % Segment for x < -2: y = x + 2
-            \draw[moulton_line, domain=-4:-2] plot (\x, {\x+2});
+            \draw[Moulton_line, domain=-4:-2] plot (\x, {\x+2});
             % Segment for x >= -2: y = 0.5*x + 1
-            \draw[moulton_line, domain=-2:2.5] plot (\x, {0.5*\x+1})
+            \draw[Moulton_line, domain=-2:2.5] plot (\x, {0.5*\x+1})
             node[above] {$y=\frac12x+1$};
             \draw[dashed,gray,domain=-2:0.2] plot (\x,{\x+2});
             
