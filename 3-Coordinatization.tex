@@ -2,7 +2,7 @@
 
 \section{Ternary Operations}
 
-Let $\Pi=\igeo$ be a projective plane of order $n$. Fix in $\Pi$ a quad $O,X,Y,E$. Let $\ter$ be a set of $n$ elements, containing $0$ and $1$, and not $\infty$.
+Let $\Pi=\igeo$ be a projective plane of order $n$. Fix in $\Pi$ a quad $O,X,Y,E$. Let $\ter$ be a set of $n$ elements, containing $0$ and $1$, but not $\infty$.
 
 Using these elements, we introduce coordinates as follows
 $$
@@ -13,7 +13,7 @@ In addition, we label the points of $\tr(OE)\setminus\set{O,E,Z}$, where $Z=OE\w
     \tr(OE)\setminus\set{O,E,Z}
         \to\set{(\zeta,\zeta)\mid\zeta\ne0,1}.
 \]
-To label a point $P$ not on $OE$ and $XY$ with $(a,b)$, we define $a$ and~$b$ by
+To label a point $P$ that is not on $OE$ nor on $XY$ with $(a,b)$, we define $a$ and~$b$ by
 \begin{equation}\label{eq:P-coordinates}
     OE\wedge YP\colon(a,a)
     \quad\text{and}\quad
@@ -132,7 +132,7 @@ $$
 $$
 If $Q=OX\wedge EY$, then $OE\wedge YQ=E\colon(1,1)$ and $OE\wedge XQ\colon(0,0)$. Hence, according to \eqref{eq:P-coordinates}, $Q\colon(1,0)$.
 
-Note, in particular, that when the point $P\ne Y$ is on the line $EY$, it gets assigned the coordinates $(1,m)$ for some $m$. This is so because the first coordinate, that we called $a$ for the general case, comes from the coordinates of $PY\wedge OE$, which in the special case we are analyzing coincides with $E$, whose coordinates are $(1,1)$.
+Note, in particular, that when the point $P\ne Y$ is on the line $EY$, it is assigned the coordinates $(1,m)$ for some $m$. This is because the first coordinate is determined by the intersection $PY\wedge OE$. In the special case where $P\incidence EY$ this point is~$E$, whose coordinates are $(1,1)$.
 
 The observation we just made allows us to extend the assignment of coordinates to any point $M$ on $XY$. Since the coordinates of $OM\wedge EY$ have the form $(1,m)$, we assign the coordinate $(m)$ to $M$. In particular, $Z\colon(1)$ and $X\colon(0)$.
 
@@ -157,7 +157,7 @@ Here is an algorithmic description of the definition:
     \end{enumerate}
     }
 
-Coordinates are further extended to lines. Here we will use squared brackets to distinguish them from point coordinates. Given $\block a\in\blocks$, we define
+Coordinates are further extended to lines. Here we will use square brackets to distinguish them from point coordinates. Given $\block a\in\blocks$, we define
 \begin{equation}\label{eq:line-coordinates}
     \block a\colon
         \begin{cases}
@@ -274,7 +274,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \begin{xmpl}\label{xmpl:Moulton-coordinatization} [Moulton coordinatization]
     Consider the projective plane associated with the Moulton affine plane of Example~\ref{xmpl:affine-Moulton}.
 
-    We have $O\equiv(0,0)$, $X\equiv\text{horizontal slope}$, $Y\equiv\text{vertical slope}$, and $E\equiv(1,\frac12)$.
+    We have $O=(0,0)$, $X=\text{horizontal slope}$, $Y=\text{vertical slope}$, and $E=(1,\frac12)$.
 
     To distinguish cartesian coordinates from the coordinates assigned to points and lines, we will subscript the latter ones with $M$. With this notation, the points on $OE$ have coordinates $(x,x)_M$ that satisfy
     \[
@@ -519,23 +519,23 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{prop}
 
 \begin{proof}
-    Suppose that $\sigma(P)=\sigma(Q)$. Let $\sigma$ be the common value. There are four cases:
+    Suppose that $\sigma(P)=\sigma(Q)$. Let $v$ be this common value. There are four cases:
     \begin{enumerate}[1.]
-        \item If $\sigma=\infty$, then $P=Y=Q$.
+        \item If $v=\infty$, then $P=Y=Q$.
         
-        \item If $\sigma=(a,a)$, then $P=Q$ because, by construction, there is a bijection between these pairs and the points incident with $OE$.
+        \item If $v=(a,a)$, then $P=Q$ because, by construction, there is a bijection between these pairs and the points incident with $OE$.
         
-        \item If $\sigma=(a,b)$, then $PY\wedge OE=QY\wedge OE$ and $PX\wedge OE=QX\wedge OE$. Let $A$ be the first of these two points and $B$ the second. By the \rr\ $P,Q\incidence Y\!A$ and $P,Q\incidence XB$. Hence, $P=Y\!A\wedge XB=Q$.
+        \item If $v=(a,b)$, then $PY\wedge OE=QY\wedge OE$ and $PX\wedge OE=QX\wedge OE$. Let $A$ be the first of these two points and $B$ the second. By the \rr\ $P,Q\incidence Y\!A$ and $P,Q\incidence XB$. Hence, $P=Y\!A\wedge XB=Q$.
         
-        \item If $\sigma=(m)$, then $P,Q\incidence XY$ and $\sigma(OP\wedge Y\!E)=(1,m)=\sigma(OQ\wedge Y\!E)$. By the previous case, $OP\wedge Y\!E=OQ\wedge Y\!E$. Let $C$ denote this common value. By the \rr\ $P,Q\incidence OC$. Hence, $P=OC\wedge XY=Q$.
+        \item If $v=(m)$, then $P,Q\incidence XY$ and $\sigma(OP\wedge Y\!E)=(1,m)=\sigma(OQ\wedge Y\!E)$. By the previous case, $OP\wedge Y\!E=OQ\wedge Y\!E$. Let $C$ denote this common value. By the \rr\ $P,Q\incidence OC$. Hence, $P=OC\wedge XY=Q$.
     \end{enumerate}
     It follows that $\sigma$ is injective. Since domain and codomain have the same number of elements, the map is bijective.
 
-    To verify that $\gamma$ is bijective suppose $\gamma(\block a)=\gamma(\block b)$. Let $\gamma$ be the common value. There are three cases:
+    To verify that $\gamma$ is bijective suppose $\gamma(\block a)=\gamma(\block b)$. Let $w$ be this common value. There are three cases:
     \begin{enumerate}[1.]
-        \item If $\gamma=[\infty]$, then $\block a=XY=\block b$.
+        \item If $w=[\infty]$, then $\block a=XY=\block b$.
 
-        \item If $\gamma=(m,b)$, then
+        \item If $w=(m,b)$, then
         \begin{align*}
             \sigma(\block a\wedge XY)&=(m)=\sigma(\block b\wedge XY)\\
             \sigma(\block a\wedge OY)&=(0,b)=\sigma(\block b\wedge OY).
@@ -548,7 +548,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \end{align*}
         Let $P$ and $Q$ denote the common values of these expressions. Since $Y\nincidence\block a,\block b$, we deduce that $P\ne Q$ and so $\block a=PQ=\block b$.
         
-        \item If $\gamma=[x]$, then $Y\incidence\block a,\block b$ and $\sigma(\block a\wedge OX)=(x,0)=\sigma(\block b\wedge OX)$. Hence, $\block a\wedge OX=\block b\wedge OX$. Thus, if $C$ is the common value of these two expressions, then $C\ne Y$ since $X,Y,O$ are not collinear, and so $\block a=YC=\block b$.
+        \item If $w=[x]$, then $Y\incidence\block a,\block b$ and $\sigma(\block a\wedge OX)=(x,0)=\sigma(\block b\wedge OX)$. Hence, $\block a\wedge OX=\block b\wedge OX$. Thus, if $C$ is the common value of these two expressions, then $C\ne Y$ since $X,Y,O$ are not collinear, and so $\block a=YC=\block b$.
     \end{enumerate}
     Thus, $\gamma$ is injective and, \textit{a fortiori}, bijective because domain and codomain are equipotent.
 \end{proof}
@@ -694,7 +694,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     Let\/ $\Pi$ be a projective plane of order\/ $n$ with coordinatization based on the quad\/ $O,X,Y,E$ and the set of symbols~$\ter$. Then
     \begin{enumerate}[a),font=\upshape]
         \item Every point on\/ $[x]$ has coordinates\/ $(x,y)$ for some\/ $y\in\ter$.
-        \item Given\/ $x,y,m\in\ter$, there unique\/ $b$ such that\/ $(x,y)\incidence{[m,b]}$.
+        \item Given\/ $x,y,m\in\ter$, there is a unique\/ $b$ such that\/ $(x,y)\incidence{[m,b]}$.
     \end{enumerate}
 \end{lem}
 
@@ -707,7 +707,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{proof}
 
 \begin{defn}
-    Let A \textsl{ternary operation} on the set\/ $\ter$ is a map
+    A \textsl{ternary operation} on the set\/ $\ter$ is a map
     \begin{align*}
         T\colon\ter\times\ter\times\ter&\to\ter\\
         (x,m,b)&\mapsto T(x,m,b).
@@ -838,11 +838,11 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 
         For $T(x,1,0)=x$ it suffices to recall that, by definition, $(x,x)\incidence{[1,0]}$.
 
-        \item Let $P$ and $P'$ be points of the plane such that $P\colon(x,y)$ and $P'\colon(x',y')$. Since $x\ne x'$, it follows that $P\ne P'$, so the line $\block a=PP'$ is well-defined. Moreover, $Y\nincidence\block a'$, for otherwise we would have $PY=P'Y$, which is impossible because $PY\colon[x]$, $P'Y\colon[x']$, and $[x]\ne[x']$. Then, by~\eqref{eq:line-coordinates}, we have $\block a\colon[m,b]$, and the conclusion follows.
+        \item Let $P$ and $P'$ be points of the plane such that $P\colon(x,y)$ and $P'\colon(x',y')$. Since $x\ne x'$, it follows that $P\ne P'$, so the line $\block a=PP'$ is well-defined. Moreover, $Y\nincidence\block a$, for otherwise we would have $PY=P'Y$, which is impossible because $PY\colon[x]$, $P'Y\colon[x']$, and $[x]\ne[x']$. Then, by~\eqref{eq:line-coordinates}, we have $\block a\colon[m,b]$, and the conclusion follows.
 
         \item This is equivalent to part~b) of Lemma~\ref{lem:ternary-full-domain}.
 
-        \item Let $\block a$ and $\block a'$ be two lines such that $\block a\colon[m,b]$ and $\block b\colon[m',b']$. Since $m\ne m'$, it follows that $\block a\ne\block a'$, so the point $P=\block a\wedge\block a'$ is well-defined. Let $P\colon(x,y)$. Then, $P\incidence\block a$ and $P\incidence\block a'$ translate into $(x,y)\incidence{[m,b]}$ and $(x,y)\incidence{[m',b']}$, as desired. \qedhere
+        \item Let $\block a$ and $\block a'$ be two lines such that $\block a\colon[m,b]$ and $\block a'\colon[m',b']$. Since $m\ne m'$, it follows that $\block a\ne\block a'$, so the point $P=\block a\wedge\block a'$ is well-defined. Let $P\colon(x,y)$. Then, $P\incidence\block a$ and $P\incidence\block a'$ translate into $(x,y)\incidence{[m,b]}$ and $(x,y)\incidence{[m',b']}$, as desired. %\qedhere
 
     \end{enumerate}
 \end{proof}
@@ -901,9 +901,9 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         $$
         where
         \begin{enumerate}
-            \item[3.] By Table~\eqref{tbl:incidence}, the point $(x,y)$ lies on both $[c]$ and $[m,b]$ if, and only if, $x=c$ and $y=T[c,m,b]$.
+            \item[3.] By Table~\eqref{tbl:incidence}, the point $(x,y)$ lies on both $[c]$ and $[m,b]$ if, and only if, $x=c$ and $y=T(c,m,b)$.
 
-            \item[4.] If $m\ne m'$, then by \ref{TR4} there exists a unique pair $(x,y)$ incident with both $[m,b]$ and $[m',b']$. If $m=m'$ and $b\ne b'$, the two lines intersect at $(\infty)$.  
+            \item[4.] If $m\ne m'$, then by \ref{TR4} there exists a unique pair $(x,y)$ incident with both $[m,b]$ and $[m',b']$. If $m=m'$ and $b\ne b'$, the two lines intersect at $(m)$, on the line $[\infty]$.
 
         \item[Axiom p$_3$\!':] We claim that the points
         \[
@@ -959,7 +959,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \sigma\colon\pts&\to\pts_T\\
         \gamma\colon\blocks&\to\blocks_T 
     \end{align*}
-    defined in Proposition~\ref{prop:coodinatization-maps}.      We claim that $(\sigma,\gamma)$ is a collineation. To prove this, we have to show that if $P\incidence\block a$, then $\sigma(P)\incidence_T\lambda(\block a)$. We will say that the flag $(P,\block a)$ is \textsl{good} if the coordinates of $P$ and $\block a$ satisfy the incidence relation. There are several cases for $\sigma(P)$ and $\gamma(\block a)$, namely
+    defined in Proposition~\ref{prop:coodinatization-maps}. We claim that $(\sigma,\gamma)$ is a collineation. To prove this, we have to show that if $P\incidence\block a$, then $\sigma(P)\incidence_T\gamma(\block a)$. We will say that the flag $(P,\block a)$ is \textsl{good} if the coordinates of $P$ and $\block a$ satisfy the incidence relation. There are several cases for $\sigma(P)$ and $\gamma(\block a)$, namely
     {\small
     \[
         \begin{array}{c|ccc}
@@ -971,6 +971,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \end{array}
     \]
     }
+    
     Check marks stand for cases where the flag is clearly good; the dash for impossible cases. Let's analyze the three possibilities left
     \begin{enumerate}
         \item Here $P\ne Y$, $P\incidence XY$, $Y\nincidence\block a$, $\block a\wedge XY\colon(m)$, and $\block a\wedge OY\colon(0,b)$. It follows that $P=\block a\wedge XY\colon(m)$. Hence, $c=m$, and since $(m)$ is on $[m,b]$, the flag is good.
@@ -1194,7 +1195,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             \circ(\phi_{\pts},\phi_{\blocks})
             \circ(\sigma,\gamma)^{-1}=(\theta_{\pts},\theta_{\blocks}).
     \end{equation}
-    Let $(\varphi,\psi)$ be the correlation on the \lhs\ of~\eqref{eq:theta-equation}. By Lemma~\ref{lem:isomorphic-coordinatized-projective-plane}, we have
+    Let $(\varphi,\psi)$ be the collineation on the \lhs\ of~\eqref{eq:theta-equation}. By Lemma~\ref{lem:isomorphic-coordinatized-projective-plane}, we have
     \[
         \varphi(0,0)=(0',0'),\quad\varphi(0)=(0'),
         \quad\varphi(1,1)=(1',1'),\quad\varphi(\infty)=(\infty').
@@ -1204,14 +1205,11 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
         \psi[0,0]=[0',0']\quad\text{and}\quad
         \quad\psi[1,0]=[1',0'].
     \]
-    Additionally, from $OY\colon[0]$, $XY\colon[\infty]$, and $YE\colon[1,0]$, we respectively deduce
-    \[
-        \psi[0]=[0'],\quad\psi[\infty]=[\infty'],
-            \quad\text{and}\quad\psi[1,0]=[1',0'].
-    \]
-    In consequence,
+    Additionally, from $OY\colon[0]$, $XY\colon[\infty]$, $YE\colon[1]$, $OX\wedge YE\colon(1,0)$ we respectively deduce
     \begin{equation}\label{eq:OE-and-YE}
-        \psi[1]=[1'],\quad\varphi(1,0)=(1',0')
+        \psi[0]=[0'],\quad\psi[\infty]=[\infty'],
+            \quad\psi[1,0]=[1'],
+            \quad\varphi(1,0)=(1',0').
     \end{equation}
     Consider the bijection
     \begin{align*}
@@ -1254,7 +1252,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{proof}
 
 \begin{defn}
-    In the ternary ring\/ $(\ter,T)$ the \textsl{sum} of two elements $a,b\in\ter$ are defined by
+    In the ternary ring\/ $(\ter,T)$ the \textsl{sum} of two elements $a,b\in\ter$ is defined by
     \[
         a\+b = T(a,1,b).
     \]
@@ -1375,7 +1373,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     \[
         a\cdot m = T(a,m,0).
     \]
-    Thus, $a\cdot m$ is the unique element of $\ter$ such that $(a,a\cdot m)\incidence{[m,0]}$. As usual, $a\cdot m$ often will be written as\/ $am$.
+    Thus, $a\cdot m$ is the unique element of $\ter$ such that $(a,a\cdot m)\incidence{[m,0]}$. As usual, $a\cdot m$ will often be written as\/ $am$.
     $$
         \begin{minipage}[c]{0.45\textwidth}
         \begin{tikzpicture}[
@@ -1469,7 +1467,6 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
                 label={[xshift=3.5mm,yshift=-3.2mm,text=black]:
                     $(m)$}
             ] at (m) {};
-            ] at (aa) {};
             \node[point,
                 label={[xshift=5.5mm,yshift=-2.5mm,text=black]:
                     $(1,m)$}
@@ -1634,13 +1631,13 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
     {\small\alg
         \begin{enumerate}[itemsep=1.8pt, parsep=0pt]
         \setcounter{enumi}{9}
-            \item Locate $X=XE\wedge[0,0]$\qquad
+            \item Locate $XE\wedge[0,0]=X$
             \item Draw $YX$
-            \item Locate $Z=YX\wedge OE$
+            \item Locate $YX\wedge OE=Z$
             \item Draw $XZ$
-            \item Locate $Y=XZ\wedge YE$
+            \item Locate $XZ\wedge YE=Y$
             \item Draw $OY$
-            \item Locate $Y=OY\wedge XY$
+            \item Locate $OY\wedge XY=Y$
         \end{enumerate}
     }
     \vspace{-0.7\parskip}
@@ -1648,7 +1645,7 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
 \end{rem}
 
 \begin{xmpl}\label{xmpl:Moulton-ternary-ring-defn}
-    As a follow up of Example~\ref{xmpl:Moulton-coordinatization}, the ternary ring $(\R,T_M)$ associated to the Moulton plane is given by
+    As a follow-up of Example~\ref{xmpl:Moulton-coordinatization}, the ternary ring $(\R,T_M)$ associated to the Moulton plane is given by
     \[
         T_M(x,m,b) =
             \begin{cases}
@@ -1668,13 +1665,13 @@ Coordinates are further extended to lines. Here we will use squared brackets to 
             uv      &\text{otherwise}.
         \end{cases}
     \end{align*}
-    Note also that, in this case, $T(x,m,b)$ does not always equal $x\circ_Mm+_Mb$.
+    Note also that, in this case, $T(x,m,b)$ does not always equal $(x\circ_Mm)+_Mb$.
 \end{xmpl}
 
 
 \section{Linear Ternary Rings and Quasifields}
 
-It is not generally valid that the operations of sum and multiplication defined on a ternary ring $(\ter,T)$ must satisfy the equality $x\cdot m\+b=T(x,m,b)$. In this section we study these kinds of relations between geometric and algebraic properties and their equivalences.
+It is not generally true that the operations of sum and multiplication defined on a ternary ring $(\ter,T)$ must satisfy the equality $x\cdot m\+b=T(x,m,b)$. In this section we study these kinds of relations between geometric and algebraic properties and their equivalences.
 
 \begin{defn}
     A \textsl{magma} is a set equipped with an operation. A \textsl{quasigroup} is a magma $(Q,{}\cdot{})$, where, for any two elements $a,b\in Q$, the equations $a\cdot x=b$ and $x\cdot a=b$ have unique solutions. A \textsl{loop} is a quasigroup with an identity element. A \textsl{group} is an associative loop.
@@ -2020,7 +2017,7 @@ It is not generally valid that the operations of sum and multiplication defined 
     \]
     By Baer's Theorem~\ref{thm:baer}, since we are under the hypothesis that $\Pi$ is $(Y,XY)$-transitive, we know that it is $(Y,XY)$-Desarguesian.
 
-    Consider the points $O\colon(0:0)$, $A\colon(a,0)$, $M=(m)$ and $B=\colon(0,b)$. Then $MB\colon[m,b]$ and $AY\colon[a]$.
+    Consider the points $O\colon(0:0)$, $A\colon(a,0)$, $M=(m)$ and $B\colon(0,b)$. Then $MB\colon[m,b]$ and $AY\colon[a]$.
 
     Define $C_1=OM$ and $C_2=MB\wedge AY$. Since $OM\colon[m,0]$, we have $C_1\colon(a,a\cdot m)$. Moreover, $C_2=(a,y)$ for some $y\in\ter$.
 
@@ -2198,7 +2195,7 @@ It is not generally valid that the operations of sum and multiplication defined 
 \begin{test}
     According to the theorem, the Moulton ternary ring of Example~\ref{xmpl:Moulton-ternary-ring} must be $((\infty),[\infty])$-transitive.
 
-    To verify this we have to take two points $(x_0,y_0)$ and $(x_1,y_1)$ on the same vertical line and show that there is an elation $\alpha$ with center $(\infty)$ and axis $[\infty]$ satisfying $\alpha(a,b)=\alpha(a,c)$.
+    To verify this we have to take two points $(a,b)$ and $(c,d)$ on the same vertical line and show that there is an elation $\alpha$ with center $(\infty)$ and axis $[\infty]$ satisfying $\alpha(a,b)=(a,c)$.
 
     Define
     \begin{align*}
@@ -2386,14 +2383,14 @@ It is not generally valid that the operations of sum and multiplication defined 
         \begin{minipage}[c]{0.42\textwidth}
         {\footnotesize
         \begin{align*}
-            Q'&=BY\wedge OE\colon(b,b)\\
-            Q\phantom'&=XQ'\wedge OY\colon(0,b)\\
-            P'&=BY\wedge ZC\colon(b,b\+c)\\
-            P\phantom'&=XP'\wedge OY\colon(0,b\+c)\\
-            R\phantom'&=AY\wedge ZQ\colon(a,a\+b)\\
-            R'&=XR\wedge OE\colon(a\+b,a\+b)\\
-            S\phantom'&=AY\wedge ZP\colon(a,a\+(b\+c))\\
-            S'&=YR\wedge ZC\colon(a\+b,(a\+b)\+c)\\
+            Q'&=OE\wedge BY\colon(b,b)\\
+            Q\phantom'&=OY\wedge XQ'\colon(0,b)\\
+            P'&=ZC\wedge BY\colon(b,b\+c)\\
+            P\phantom'&=OY\wedge XP'\colon(0,b\+c)\\
+            R\phantom'&=ZQ\wedge AY\colon(a,a\+b)\\
+            R'&=OE\wedge XR\colon(a\+b,a\+b)\\
+            S\phantom'&=ZP\wedge AY\colon(a,a\+(b\+c))\\
+            S'&=ZC\wedge YR'\colon(a\+b,(a\+b)\+c)\\
         \end{align*}
         }
         \end{minipage}
@@ -2406,7 +2403,7 @@ It is not generally valid that the operations of sum and multiplication defined 
     \end{align*}
     In particular, $S,S',X$ are collinear, this is $a\+(b\+c)=(a\+b)\+c$. Thus, $(\ter,\+)$ is associative, or equivalently, a group.
 
-    To verify the equality $T(a,b,c\cdot b)=(a\+c)\cdot b$, take an elation $\beta$ with center $X$ and axis $XY$ satisfying $\beta(O)=A$. Since $\beta$ fixes $X$, it fixes the second coordinate of every point, this is, given $x,y\in\ter$, we have $\beta(x,y)=(x',y)$ for some $x'\in\ter$.
+    To verify the equality $T(a,b,c\cdot b)=(a\+c)\cdot b$, take an elation $\beta$ with center $X$ and axis $XY$ satisfying $\beta(O)=A$. Since $\beta$ fixes $X$, it fixes the second coordinate of every point, that is, given $x,y\in\ter$, we have $\beta(x,y)=(x',y)$ for some $x'\in\ter$.
     
     The mapping $x\mapsto x'$ defines a permutation $\sigma\in\Sym(\ter)$ that satisfies
     \[
