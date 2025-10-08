@@ -313,7 +313,7 @@ Coordinates are further extended to lines. Here we will use square brackets to d
             (u,v)   &\text{if }v\le0.
         \end{cases}
     \]
-    In particular, $(1,m)_M$ is the point with cartesian coordinates $(1,\frac12m)$ when $m>0$ and $(1,m)$ when $m\le0$. This implies that $(m)_M$ corresponds to the cartesian slope $m$ for $y\le0$, that switches to $\frac12m$ for $y>0$ when $m>0$. Following the construction depicted in \eqref{tik:line-coordinates}, we obtain the following visualization
+    In particular, $(1,m)_M$ is the point with cartesian coordinates $(1,\frac12m)$ if $m>0$ and $(1,m)$ otherwise. This implies that $(m)_M$ corresponds to the cartesian slope $m$ for $y\le0$, that switches to $\frac12m$ for $y>0$ when $m>0$. Following the construction depicted in \eqref{tik:line-coordinates}, we obtain the visualization below
     $$
         \begin{tikzpicture}[
             scale=0.9,
@@ -358,7 +358,7 @@ Coordinates are further extended to lines. Here we will use square brackets to d
             ] at (E) {};
     \end{tikzpicture}
     $$
-    It follows that, for $m>0$, the line $[m,b]_M$ has slope $(m)_M$ and passes through $(0,b)_M=(0,\frac12b)$ if $b\ge0$ or $(0,b)$ if $b<0$.
+    It follows that, for $m>0$, the line $[m,b]_M$ has slope $\frac12m$ and passes through $(0,b)_M=(0,\frac12b)$ if $b\ge0$ or $(0,b)$ if $b<0$.
     $$
         \begin{tikzpicture}[
             scale=0.9,
@@ -485,10 +485,10 @@ Coordinates are further extended to lines. Here we will use square brackets to d
     or
     \[
         \begin{cases}
-            y=2mx+b     &b\ge0,\ x\le-\dfrac b{2m},\\[3.5mm]
-            y=mx+\frac12b   &b\ge0,\ x\ge-\dfrac b{2m},\\[3.5mm]
-            y=2mx+2b    &b\le0,\ x\le-\dfrac bm,\\[3.5mm]
-            y=mx+b      &b\le0,\ x\ge-\dfrac bm.
+            y=2mx+b     &b\ge0,\ x\le-\frac b{2m},\\[1mm]
+            y=mx+\frac12b   &b\ge0,\ x\ge-\frac b{2m},\\[1mm]
+            y=2mx+2b    &b\le0,\ x\le-\frac bm,\\[1mm]
+            y=mx+b      &b\le0,\ x\ge-\frac bm.
         \end{cases}
     \]
 \end{xmpl}
@@ -1656,7 +1656,7 @@ Coordinates are further extended to lines. Here we will use square brackets to d
                 mx+b      &m<0,\ b\le0,\ x\ge-\frac bm.
             \end{cases}
     \]
-    Let $+_M$ and $\circ_M$ be the multiplication and sum associated with this ternary ring. Then
+    Let $+_M$ and $\circ_M$ be the sum and multiplication associated with this ternary ring. Then
     \begin{align*}
         u+_Mv &= T_M(u,1,v)= u + v\\
         u\circ_Mv &= T_M(u,v,0)
@@ -1702,15 +1702,15 @@ It is not generally true that the operations of sum and multiplication defined o
     \begin{enumerate}[\roman*.,
         ref=\upshape(\scshape\roman*),
         font=\upshape\scshape]
-        \item\label{qf-i} $(Q, +)$ is an abelian group with identity\/ $0$;
-        \item\label{qf-ii} $(Q \setminus \{0\}, {}\cdot{})$ is a group with identity\/ $1\ne0$;
+        \item\label{qf-i} $(Q, +)$ is an group with identity\/ $0$;
+        \item\label{qf-ii} $(Q \setminus \{0\}, {}\cdot{})$ is a loop with identity\/ $1\ne0$;
         \item\label{qf-iii} $(a+b) \cdot c = a \cdot c + b \cdot c$ for every\/ $a,b,c \in Q$ (right distributivity);
         \item\label{qf-iv} For every\/ $a, b, c \in Q$ with\/ $a \ne b$, there is a unique\/ $x \in Q$ satisfying the equation\/ $x \cdot a - x \cdot b = c$.
     \end{enumerate}
 \end{defn}
 
 \begin{rem}
-    Even though the commutativity of the group $(Q,+)$ is not required \ref{defn:quasifield}, here we will restrict to that case.
+    Even though the commutativity of the group $(Q,+)$ is not required in \ref{defn:quasifield}, here we will restrict to that case.
 \end{rem}
 
 \begin{prop}
@@ -1812,7 +1812,7 @@ It is not generally true that the operations of sum and multiplication defined o
         ab & \text{otherwise}.
     \end{cases}
     \]
-    Let $T_\zeta(a,m,b)=a\circ_\zeta m+b$. According to Definition~\ref{defn:ternary-ring}, $(\kappa,T_\zeta)$ is a ternary ring:
+    Let $T_\zeta(a,m,b)=a\circ_\zeta m+b$. According to Definition~\ref{defn:ternary-ring}, $(\kappa,T_\zeta)$ is a ternary ring:\footnote{The projective plane associated with $(\R,T_{\frac12})$ is a \textit{variant} of the Moulton plane in which the lines with \textit{negative slope} $m$ bend to $\frac12m$ in the half-plane $\{y>0\}$.}
     \begin{enumerate}[tr$_\arabic*$.,font=\scshape]
         \item Straightforward.
         
@@ -1829,6 +1829,7 @@ It is not generally true that the operations of sum and multiplication defined o
             z = \frac y{x-x'}.
         \]
         Then,
+        {\small
         \[
             \begin{array}{c|ccc}
                  m&y\ge0&y<0\\
@@ -1837,7 +1838,7 @@ It is not generally true that the operations of sum and multiplication defined o
                  x\ge0>x'&z&y/(x-\zeta x')\\
                  0>x&z&z/\zeta
             \end{array}
-        \]
+        \]}
         \item Consider the equation $x\circ_\zeta m+b=y$, where $x,y,m$ are given and $b$ is the unknown. Then $b=y-x\circ m$ is the unique solution.
 
         \item It suffices to show that, when $m>m'$, the equation
@@ -1846,7 +1847,7 @@ It is not generally true that the operations of sum and multiplication defined o
                 x\circ_\zeta m'+b,
         \]
         has unique solution $x$. Put $c=b/(m-m')$. Then,
-        \[
+        {\small\[
             \begin{array}{c|ccc}
                  x&b\ge0&b<0\\
                  \hline\rule{0pt}{10pt}
@@ -1854,48 +1855,30 @@ It is not generally true that the operations of sum and multiplication defined o
                  m\ge0>m'&c&b/(m-\zeta m')\\
                  0>m&c&c/\zeta
             \end{array}
-        \]
+        \]}
     \end{enumerate}
 \end{xmpl}
 
-\begin{xmpl}\label{xmpl:Moulton-ternary-ring}
-    In the case where $\kappa=\R$ and $\zeta=1/2$, the projective plane associated with the linear ternary ring $(\R,T_{1/2})$ [cf.~Theorem~\ref{thm:projective-plane-of-ternary-ring}] of the previous example, is the Moulton plane corresponding to Example~\ref{xmpl:Moulton-ternary-ring-defn}.
-
-    Indeed. given $x,y,m,b\in\R$ we have
-    \[
-        (x,y)_M\incidence_M{[m,b]_M}\iff y=x\circ_{1/2}m+b
-            = \begin{cases}
-                \frac m2x+b  &\text{if }m,x<0,\\
-                mx++b   &\text{otherwise},
-            \end{cases}
-    \]
-    which bends the lines in the same way as the affine Moulton plane. 
-\end{xmpl}
-
-\begin{thm}
-    If $(\ter,T)$ be a linear ternary ring, then $(\ter,\+)$ is a group.
-\end{thm}
-
-\begin{thm}\label{(Y,XY)-transitive}
+\begin{thm}\label{thm:(Y,XY)-transitive}
     Let\/ $\Pi$ be a projective plane with ternary ring\/ $(\ter,T)$ based on\/ $O,X,Y,E$. Then\/ $\Pi$ is\/ $(Y,XY)$-transitive if, and only if, $(\ter,T)$ is linear and\/ $(\ter,\+)$ is a group.
 \end{thm}
 
 \needspace{2\baselineskip}
 \begin{proof}${}$
     \begin{description}
-    \item[\rm\textit{if\/} part:] Take two distinct points $P$ and $P'$, not on $XY$ and collinear with $Y$. According to Definition~\ref{defn:(C,a)-transitive}, we have to show that there is a $(Y,XY)$-collineation $\alpha$ satisfying $\alpha(P)=P'$. 
+    \item[\rm\textit{if\/} part:] Take two distinct points $P$ and $P'$, not on $XY$ and collinear with $Y$. According to Definition~\ref{defn:(C,a)-transitive}, we have to show that there is a $(Y,XY)$-elation $\alpha$ satisfying $\alpha(P)=P'$. 
     
     We have $P\colon(a,b)$, $P'\colon(a,b')$, and $PP'\colon[a]$, with $b\ne b'$.
     $$
         \begin{tikzpicture}[
-            scale=1.0,
+            scale=0.9,
             point/.style={
                 draw,
                 circle,
                 color=black,
                 fill=black,
                 inner sep=1.2pt},
-                every node/.style={font=\footnotesize},
+            every node/.style={font=\footnotesize},
             ]
             \pgfmathsetmacro{\s}{1.7};
             
@@ -1928,7 +1911,7 @@ It is not generally true that the operations of sum and multiplication defined o
                 color=orange,
                 thick
             ] (ystart) -- (yend)
-                node[above,text=black] {$[0]$}
+                %node[above,text=black] {$[0]$}
                 node[point,
                 pos=0.95,
                 label={[text=black,left,yshift=-1mm]:
@@ -1940,22 +1923,22 @@ It is not generally true that the operations of sum and multiplication defined o
             ] at (E) {};
             \draw[name path=OE] (O) -- ($(O)!1.2!(E)$)
                 node[right] {$[1,0]$};
-            \draw[name path=YA] (Y) -- ($(Y)!1.1!(A)$)
+            \draw[name path=YA] (Y) -- ($(Y)!1.05!(A)$)
                 node[xshift=2mm,yshift=-2mm] {$[a]$}
                 node[point,
                     fill=orange,
                     pos=0.60,
-                    label={[text=black,xshift=-3mm,yshift=-3mm]:
+                    label={[text=black,xshift=-2.5mm,yshift=-2.5mm]:
                         $P'$}
                 ] (P') {}
                 node[point,
                     fill=orange,
                     pos=0.40,
-                    label={[text=black,xshift=-2.5mm,yshift=-2mm]:
+                    label={[text=black,xshift=-2.0mm,yshift=-2mm]:
                         $P$}
                 ] (P) {};;
 
-            \draw[name path=YQ] (Y) -- ($(Y)!1.1!(Q)$)
+            \draw[name path=YQ] (Y) -- ($(Y)!1.05!(Q)$)
                 node[xshift=2mm,yshift=-2mm] {$[x]$}
                 node[pos=0.38] (Q) {};
 
@@ -1982,10 +1965,10 @@ It is not generally true that the operations of sum and multiplication defined o
             ] at (Q) {};
         \end{tikzpicture}
     $$
-    Given a point $Q\colon(x,y)$ not lying on $PP'$, let $M = PQ \wedge XY$ and set $Q' = MP' \wedge QY$. Then $Q'$ has the form $Q'\colon(x,y')$ for some $y' \in \ter$. Hence, a $(Y,XY)$-collineation must map $Q$ to $Q'$, with no alternative.
+    Given a point $Q\colon(x,y)$ not lying on $PP'$, let $M = PQ \wedge XY$ and set $Q' = MP' \wedge QY$. Then $Q'$ has the form $Q'\colon(x,y')$ for some $y' \in \ter$. Hence, a $(Y,XY)$-elation must map $Q$ to $Q'$, with no alternative.
 
-    Since $XY$ is the line at infinity, $Q'P'$ is parallel to $QP$. Hence, if $b\+d=b'$, then $y\+d=y'$. Since $(\ter,\+)$ is a group, $d$ is well-defined.\footnote{If $\ter$ is finite, it suffices to invoke Lemma~\ref{lem:left-solution-of-sum}.} Thus, we can set
-    \begin{align*}
+    Let $d=b'\dotminus b$, which is well-defined because $(\ter,\+)$ is a group. Put $M\colon(m)$. Then, $(a,b),(x,y)\incidence{[m,b]}$ and $(a,b'),(x,y')\incidence{[m,b\+d]}$. Since $(\ter,T)$ is linear, we deduce that $y'=y\+d$. Thus, we can set
+    {\small\begin{align*}
         \alpha_{\pts}\colon\pts&\to\pts
         &\alpha_{\blocks}\colon\blocks&\to\blocks\\
         (x,y)&\mapsto(x,y\+d),
@@ -1994,46 +1977,40 @@ It is not generally true that the operations of sum and multiplication defined o
         &[m]&\mapsto[m],\\
         (\infty)&\mapsto(\infty)
         &[\infty]&\mapsto[\infty].
-    \end{align*}
-    Clearly $\alpha(P)=P'$. Moreover, $\alpha_{\pts}$ and $\alpha_{\blocks}$ are bijections, since $(\ter,\+)$ is a group: associativity ensures that $y_1=y_2$ whenever $y_1\+d=y_2\+d$.
-
-    To verify that $(\alpha_{\pts},\alpha_{\blocks})$ is a collineation, we have to show that
-    \[
-        (u,v)\incidence{[m,h]}\implies(u,v\+d)\incidence{[m,h\+d]}.
-    \]
-    But,
+    \end{align*}}
+    
+    \vspace{-0.5\baselineskip}
+    Clearly $\alpha(P)=P'$. Moreover, $\alpha_{\pts}$ and $\alpha_{\blocks}$ are bijections: since $(\ter,\+)$ is a group, associativity ensures that $y_1=y_2$ whenever $y_1\+d=y_2\+d$. To verify that $(\alpha_{\pts},\alpha_{\blocks})$ is a collineation observe that
     \begin{align*}
         (u,v)\incidence{[m,h]} &\iff v=T(u,m,h)=u\cdot m\+h
                 &&\text{; $(\ter,T)$ linearity}\\
-            &\,\implies v\+d=u\cdot m\+(h\+d)
+            &\iff v\+d=u\cdot m\+(h\+d)
                 &&\text{; associativity of }\+\\
             &\iff(u,v\+d)\incidence{[m,h\+d]}
                 &&\text{; $(\ter,T)$ linearity}.
     \end{align*}
 
-    \item[\rm\textit{only if\/}:] Take $a,m,b\in\ter$. To prove that $T(a,m,b)=a\cdot m\+b$, we may assume that none of the trivial cases are included. These are
-    \[
-        m=0,1,\quad b=0,\quad\text{or}\quad a=0.
-    \]
+    \item[\rm\textit{only if\/}:] Take $a,m,b\in\ter$. To prove that $T(a,m,b)=a\cdot m\+b$, we may assume that none of the trivial cases are included. These are $m=0,1$, $b=0$, or $a=0$.
+    
     By Baer's Theorem~\ref{thm:baer}, since we are under the hypothesis that $\Pi$ is $(Y,XY)$-transitive, we know that it is $(Y,XY)$-Desarguesian.
 
     Consider the points $O\colon(0:0)$, $A\colon(a,0)$, $M=(m)$ and $B\colon(0,b)$. Then $MB\colon[m,b]$ and $AY\colon[a]$.
 
-    Define $C_1=OM$ and $C_2=MB\wedge AY$. Since $OM\colon[m,0]$, we have $C_1\colon(a,a\cdot m)$. Moreover, $C_2=(a,y)$ for some $y\in\ter$.
+    Define $C_1=OM\wedge AY$ and $C_2=BM\wedge AY$. Since $OM\colon[m,0]$, we have $C_1\colon(a,a\cdot m)$. Moreover, $C_2=(a,y)$ for some $y\in\ter$.
 
-    Since $Z\colon(1)$, $ZB\colon[1,b]$ and $OZ\colon[1,0]$. Since $C_1\incidence{[m,0]}$, we deduce that $D_1=OZ\wedge XC_1$ satisfies $D_1\colon(a\cdot m,a\cdot m)$. Thus, for $D_2=ZB\wedge YD_1$ we have $D_2\colon(a\cdot m,a\cdot m\+b)$.
+    As $Z\colon(1)$ and $OZ\colon[1,0]$, we have $ZB\colon[1,b]$. Since $C_1\colon[a,a\cdot m]$, we obtain $D_1\colon(a\cdot m,a\cdot m)$. Thus, for $D_2=ZB\wedge YD_1$ we have $D_2\colon(a\cdot m,a\cdot m\+b)$.
     $$
         \begin{minipage}[c]{0.55\textwidth}
         \begin{tikzpicture}[
             baseline=(current bounding box.center),
-            scale=1.1,
+            scale=1.0,
             point/.style={
                 draw,
                 circle,
                 color=black,
                 fill=black,
                 inner sep=1.2pt},
-                every node/.style={font=\footnotesize},
+            every node/.style={font=\footnotesize},
             ]
             \pgfmathsetmacro{\s}{1.7};
             
@@ -2108,7 +2085,7 @@ It is not generally true that the operations of sum and multiplication defined o
             ] at (D2) {};
             \node[point,
                 fill=green,
-                label={[xshift=1.7mm,yshift=0.2mm,text=black]:
+                label={[xshift=1.2mm,yshift=-0.3mm,text=black]:
                     $C_2$}
             ] at (C2) {};
             \node[point,
@@ -2162,16 +2139,12 @@ It is not generally true that the operations of sum and multiplication defined o
     \[
         \alpha[m,y]=\alpha(m)\alpha(0,y)=(m)(0,\sigma(y))=[m,\sigma(y)].
     \]
-    In particular, for $z=x\cdot m\+y$, linearity yields
+    In particular, for $z=x\+y=T(x,1,y)$, we have
     \[
-        (x,z)\incidence{[m,y]}
-            \iff (x,\sigma(z))\incidence{[m,\sigma(y)]},
+        (x,z)\incidence{[1,y]}
+            \iff (x,\sigma(z))\incidence{[1,\sigma(y)]},
     \]
     which translates into
-    \[
-        z=x\cdot m\+y \iff \sigma(z)=x\cdot m\+\sigma(y).
-    \]
-    Taking $m=1$ gives
     \[
         \sigma(x\+y)=x\+\sigma(y).
     \]
@@ -2191,39 +2164,6 @@ It is not generally true that the operations of sum and multiplication defined o
 
     \end{description}
 \end{proof}
-
-\begin{test}
-    According to the theorem, the Moulton ternary ring of Example~\ref{xmpl:Moulton-ternary-ring} must be $((\infty),[\infty])$-transitive.
-
-    To verify this we have to take two points $(a,b)$ and $(c,d)$ on the same vertical line and show that there is an elation $\alpha$ with center $(\infty)$ and axis $[\infty]$ satisfying $\alpha(a,b)=(a,c)$.
-
-    Define
-    \begin{align*}
-        \alpha_{\pts}(x,y)&=(x,y+c-b)
-            &\alpha(m)&=(m)
-            &\alpha_{\pts}(\infty)&=(\infty)\\
-        \alpha_{\blocks}[m,h]&=[m,h+c-b]
-            &\alpha_{\blocks}[x]&=[x]
-            &\alpha_{\blocks}[\infty]&=[\infty].
-    \end{align*}
-    Take a point $(x,y)\incidence{[m,h]}$. Then
-    \[
-        y=x\circ_{1/2}m+h=
-            \begin{cases}
-                \frac m2x+h &\text{if }m,x\ge0,\\
-                mx+h    &\text{otherwise.}
-            \end{cases}
-    \]
-    Summing $c-b$ to both sides of the equations, we obtain
-    \[
-        y+c-b=x\circ_{1/2}m+h=
-            \begin{cases}
-                \frac m2x+h+c-b &\text{if }m,x\ge0,\\
-                mx+h+c-b    &\text{otherwise},
-            \end{cases}
-    \]
-    which shows that $\alpha=(\alpha_{\pts},\alpha_{\blocks})$ is the desired elation, more precisely, it is a vertical translation by $c-b$.
-\end{test}
 
 \begin{thm}\label{thm:(X,XY)-transitive}
     The projective plane\/ $\Pi$ is \textsl{$(X, XY)$-transitive} if, and only if, $(\ter,\+)$ is a group and for every\/ $a,b,c\in\ter$ we have\/ $T(a,b,c\cdot b) = (a\+c)\cdot b$.
@@ -2397,23 +2337,21 @@ It is not generally true that the operations of sum and multiplication defined o
     $$
     Let $\alpha$ be an elation with center $X$ and axis $XY$ satisfying $\alpha(Q)=Q'$. Then,
     \begin{align*}
-        \alpha(P) &= PX\wedge\alpha(QY)=PX\wedge Q'Y=P',\\
-        \alpha(R) &= RX\wedge\alpha(QZ)=RX\wedge Q'Z=R',\\
-        \alpha(S) &= SX\wedge\alpha(RY)= SX\wedge R'Y=S'.
+        \alpha(P) &= \alpha(QY)\wedge PX = Q'Y\wedge PX = P',\\
+        \alpha(R) &= \alpha(QZ)\wedge RX = Q'Z\wedge RX = R',\\
+        \alpha(S) &= \alpha(RY)\wedge SX = R'Y\wedge SX = S'.
     \end{align*}
     In particular, $S,S',X$ are collinear, this is $a\+(b\+c)=(a\+b)\+c$. Thus, $(\ter,\+)$ is associative, or equivalently, a group.
 
-    To verify the equality $T(a,b,c\cdot b)=(a\+c)\cdot b$, take an elation $\beta$ with center $X$ and axis $XY$ satisfying $\beta(O)=A$. Since $\beta$ fixes $X$, it fixes the second coordinate of every point, that is, given $x,y\in\ter$, we have $\beta(x,y)=(x',y)$ for some $x'\in\ter$.
-    
-    The mapping $x\mapsto x'$ defines a permutation $\sigma\in\Sym(\ter)$ that satisfies
+    To verify the equality $T(a,b,c\cdot b)=(a\+c)\cdot b$, take an elation $\beta$ with center $X$ and axis $XY$ satisfying $\beta(O)=A$. Since $\beta$ fixes every line passing through $X$, it fixes the second coordinate of every point, that is, given $x,y\in\ter$, we have $\beta(x,y)=(x',y)$ for some $x'\in\ter$. Thus, the mapping $x\mapsto x'$ defines a permutation $\sigma\in\Sym(\ter)$ that satisfies
     \[
         \beta(x,y)=(\sigma(x),y),
     \]
-    with $\sigma(0)=a$. In particular, since $\beta(0,y)=(a,y)$. Therefore, given a line $[m,h]$, the equation $[m,h]=(m)(0,h)$ implies
+    with $\sigma(0)=a$. In particular, $\beta(0,y)=(a,y)$. Therefore, given a line $[m,h]$, the equation $[m,h]=(m)(0,h)$ implies
     \[
-        \beta([m,h])=[m,k_{m,h}],
+        \beta([m,h])=(m)(a,h)=[m,k_{m,h}],
     \]
-    where $k_{m,h}$ depends on $m$ and $h$ and satisfies $(0,k_{m,h})=[0]\wedge(a,h)(0)$. Hence,
+    where $k_{m,h}$ depends on $m$ and $h$ and satisfies $(0,k_{m,h})=[0]\wedge(m)(a,h)$. In addition,
     \[
         (x,y)\incidence{[m,h]}\iff
             (\sigma(x),y)\incidence{[m,k_{m,h}]}.\tag{\dag}
@@ -2422,7 +2360,7 @@ It is not generally true that the operations of sum and multiplication defined o
     \[
         h=T(a,m,k_{m,h}).\tag{\ddag}
     \]
-    From (\dag) and (\ddag), for $m=1$ we get $x\+h=\sigma(x)\+k_{1,h}$ and $k_{1,h}=\!\minus a\+h$. Hence,
+    From (\dag) and (\ddag), for $m=1$ we get $x\+h=\sigma(x)\+k_{1,h}$ and $k_{1,h}=\!\dotminus a\+h$. Hence,
     \[
         \sigma(x)=x\+a.
     \]
@@ -2431,6 +2369,58 @@ It is not generally true that the operations of sum and multiplication defined o
         T(x,m,a\cdot m) = (x\+a)\cdot m.
     \]
     The conclusion follows by replacing $a$ with $b$, $x$ with $a$, and $m$ with $c$.
+
+    For the \textit{if\/} part assume \textsc{h$_1$}:~$(\ter,\+)$ is a group, and \textsc{h$_2$}:~$T(a,b,c\cdot b)=(a\+c)\cdot b$ for all $a,b,c\in\ter$. Fix $a$ and define the maps
+    \begin{align*}
+        \varphi\colon\pts&\to\pts
+            &\psi\colon\blocks&\to\blocks\\
+        (x,y)&\mapsto(x\+a,y)
+            &[m,h]&\mapsto[m,k_{m,h}]\\
+        (m)&\mapsto(m)
+            &[k]&\mapsto[k\+a]\\
+        (\infty)&\mapsto(\infty)
+            &[\infty]&\mapsto[\infty]
+    \end{align*}
+    where $k_{m,h}$ is defined by the equation
+    \[
+        h=T(a,m,k_{m,h}).
+    \]
+    By \ref{TR1}, $h=T(a,0,k_{0,h})=k_{0,h}$, which shows that $\psi$ fixes every line through $(0)$. Since $\varphi$ fixes every point $(m)$, we deduce that $(\varphi,\psi)$ defines an elation with center $(0)$ and axis $[\infty]$.
+
+    It remains to be shown that
+    \[
+        (x,y)\incidence{[m,h]}\iff(x\+a,y)\incidence{[m,k_{m,h}]}.
+    \]
+    Since $(\ter^*,{}\cdot{})$ is a loop, there is a unique $\hat k$ such that $\hat k\cdot m=k_{m,h}$. Then,
+    \begin{align*}
+        T(x\+a,m,k_{m,h}) &= T(x\+a,m,\hat k\cdot m)\\
+            &= (x\+a\+\hat k)\cdot m
+                &&;\ \textsc h_1\\
+            &= T(x,m,(a\+\hat k)\cdot m)
+                &&;\ \textsc h_2\\
+            &= T(x,m,T(a,m,\hat k\cdot m))
+                &&;\ \textsc h_2\\
+            &= T(x,m,T(a,m,k_{m,h}))\\
+            &= T(x,m,h),
+    \end{align*}
+    as desired.
     %
     
+\end{proof}
+
+\begin{cor}
+    The projective plane\/ $\Pi$ is\/ $(X,XY)$-transitive and\/ $(Y,XY)$-transitive if, and only if, the ternary ring\/ $(\ter,T)$ defines a quasifield\/ $(\ter,\+,{}\cdot{})$ that satisfy\/ $T(x,m,k)=x\cdot m\+k$. More explicitly, the points of the affine plane\/ $\Pi\setminus XY$ correspond to the elements of\/ $\ter\times\ter$, while the lines not passing through\/ $Y$ are precisely the sets
+    \[
+        \{(x,\,x\cdot m+k)\mid x\in\ter\},
+    \]
+    where\/ $m,k\in\ter$.
+\end{cor}
+
+\begin{proof}
+    According to Theorems~\ref{thm:(X,XY)-transitive} and~\ref{thm:(Y,XY)-transitive}, it suffices to show, when $\Pi$ is $(X,XY)$- and $(Y,XY)$-transitive, the group $(\ter,\+)$ is abelian. Fix $a,b\in\ter$. As we saw in the proof of Theorem~\ref{thm:(Y,XY)-transitive}, there exists a $(Y,XY)$-elation $\alpha$ that maps $(0,0)$ to $(0,a)$ and satisfies $\alpha(x,y)=(x,y\+a)$. Similarly, the map $\beta(x,y)=(x,y\+b)$ is an $(Y,XY)$-elation. By Theorem~\ref{thm:abelian-elation-group}, $\alpha\comm\beta$, i.e.,
+    \[
+        (x,y\+a\+b)=\beta\circ\alpha(x,y)=\alpha\circ\beta(x,y)
+            = (x,y\+b\+a),
+    \]
+    which shows that $a\+b=b\+a$, as wanted.
 \end{proof}

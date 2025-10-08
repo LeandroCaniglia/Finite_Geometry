@@ -414,7 +414,18 @@
 \definecolor{lightblue}{RGB}{120, 220, 255}
 
 \newcommand{\+}{\dotplus}
-\newcommand{\minus}{\mathbin{\begin{smallmatrix}\cdot\\[-3pt]-\end{smallmatrix}}}
+\usepackage{amsmath}
+
+\makeatletter
+\newcommand{\dotminus}{\mathbin{\mathpalette\dotminus@{}}}
+\newcommand{\dotminus@}[2]{%
+  \ooalign{%
+    $\m@th#1-$\cr
+    \hidewidth$\m@th#1\dot{}\hidewidth$\cr
+  }%
+}
+\makeatother
+
 
 \newcommand{\ulcolor}[2]{%
     \begingroup

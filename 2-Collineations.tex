@@ -708,8 +708,9 @@
     \begin{enumerate}[a)]
         \item If $P\ne C$, then $\phi(P)\in\phi(CP)=CP$ because $CP\in\Fix\phi$.
 
-        \item Let $\block b=P\phi(P)$. Then $\block b\ne\block a$ because $P\notin\Fix\phi$. Let $B=\block b\wedge\block a$. Then, $B\in\Fix\phi$ and $\block b=PB$. Since $B\ne\phi(P)$ because $B\ne P$, we have $\phi(\block b)=\phi(P)B=\block b$ since $B\in\block b$. \qedhere
+        \item Let $\block b=P\phi(P)$. Then $\block b\ne\block a$ because $P\notin\Fix\phi$. Let $B=\block b\wedge\block a$. Then, $B\in\Fix\phi$ and $\block b=PB$. Since $B\ne\phi(P)$ because $B\ne P$, we have $\phi(\block b)=\phi(P)B=\block b$ since $B\in\block b$. %\qedhere
     \end{enumerate}
+    
 \end{proof}
 
 \begin{thm}\label{thm:axis-iff-center}
@@ -738,6 +739,7 @@
     A \textsl{$(C, \block a)$-perspectivity} is an \textsl{elation} if\/ $C \incidence \block a$, otherwise it is called a \textsl{homology}. The identity can be considered as both an elation and a homology.
 \end{defn}
 
+\needspace{2\baselineskip}
 \begin{xmpls}${}$
     \begin{enumerate}[a)]
         \item Consider the matrix
@@ -852,7 +854,7 @@
 \end{ntn}
 
 \begin{thm}\label{thm:abelian-elation-group}
-    Suppose that a projective plane\/ $\Pi$ contains a line\/ $\block a$ and two distinct\/ points, $C$ and\/ $D$, on\/ $\block a$ such that none of the perspectivity groups\/ $\Aut(\Pi, C, \block a)$ and\/ $\Aut(\Pi, D, \block a)$ is trivial. Then the elation group\/ $\Elt(\Pi, \block a)$ is abelian.
+    Suppose that a projective plane\/ $\Pi$ contains a line\/ $\block a$ and two distinct\/ points $C$ and\/ $D$ on\/ $\block a$ such that none of the perspectivity groups\/ $\Aut(\Pi, C, \block a)$ and\/ $\Aut(\Pi, D, \block a)$ is trivial. Then the elation group\/ $\Elt(\Pi, \block a)$ is abelian.
 \end{thm}
 
 \begin{proof}
@@ -1084,7 +1086,7 @@
     Let $\Pi$ be a projective plane of order $q \le 4$. By Remark~\ref{rem:order-2=PG(2,2)}, Theorem~\ref{thm:orde-3=PG(2,3)}, and Exercise~\ref{exr:order-4=PG(2,4)}, $\Pi$ is isomorphic to $\PG(2,q)$. Hence, by Theorem~\ref{thm:PG(2,q)-transitivity}, we conclude that $\Pi$ is $(C,\block{a})$-transitive for any $C$ and any~$\block{a}$.
 \end{rem}
 
-\begin{thm}
+\begin{thm}\label{thm:transitivity}
     Let\/ $C$ and\/ $D$ be distinct points and let\/ $\block{a}$ be a line of a projective plane\/ $\Pi$ of order\/ $n$. If\/ $\Pi$ is\/ $(C, \block{a})$-transitive and\/ $(D, \block{a})$-transitive, then\/ $\Pi$ is\/ $(A, \block{a})$-transitive for any point\/ $A$ on the line\/ $CD$.
 \end{thm}
 
