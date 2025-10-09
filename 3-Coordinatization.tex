@@ -1080,11 +1080,11 @@ Coordinates are further extended to lines. Here we will use square brackets to d
         \ter&\to\ter\\
         x&\mapsto T(x,m,b)
     \end{align*}
-    is a bijection.
+    is an injection. In particular, if\/ $\ter$ is finite, it is a bijection.
 \end{lem}
 
 \begin{proof}
-    Since $\ter$ is a finite set, it suffices to show that the map is injective. Suppose that $T(x,m,b)=T(x',m,b)$ for some $x\ne x'$, and let $y$ denote the common value. By \ref{TR1} \textsc i),
+    Suppose that $T(x,m,b)=T(x',m,b)$ for some $x\ne x'$, and let $y$ denote the common value. By \ref{TR1} \textsc i),
     \begin{align*}
         T(x,0,y) &= y, &T(x',0,y) &= y,\\
         T(x,m,b) &= y, &T(x',m,b) &= y.
@@ -1098,11 +1098,11 @@ Coordinates are further extended to lines. Here we will use square brackets to d
         \ter&\to\ter\\
         x&\mapsto T(a,x,0)
     \end{align*}
-    is a bijection.
+    is an injection. In particular, if\/ $\ter$ is finite, it is a bijection.
 \end{lem}
 
 \begin{proof}
-    It suffices to prove injectivity. Suppose that $T(a,x,0)=T(a,x',0)$ for some $x'\ne x$. Then, both $m=x$ and $m=x'$ satisfy the equations
+    Suppose that $T(a,x,0)=T(a,x',0)$ for some $x'\ne x$. Then, both $m=x$ and $m=x'$ satisfy the equations
     \begin{align*}
         T(a,m,0)&=b &T(0,m,0)&=0.
     \end{align*}
@@ -1134,8 +1134,9 @@ Coordinates are further extended to lines. Here we will use square brackets to d
 \end{proof}
 
 \begin{prop}\label{prop:coorinatized-isomorphism}
-    Let\/ $\theta\colon (\ter,T)\to(\ter',T')$ be an isomorphism of ternary prerings. Then\/ $\theta$ induces a collineation between the associated projective planes.\footnote{See {\upshape Theorem~\ref{thm:projective-plane-of-ternary-ring}} for the construction of a projective plane from a ternary prering.} Moreover, in the case of ternary rings, this collineation maps the base quad\/ $((0,0),(0),(\infty),(1,1))$ of\/ $\Pi$ onto the base quad\/ $((0',0'),(0'),(\infty'),(1',1'))$ of\/~$\Pi'$.
+    Let\/ $\theta\colon (\ter,T)\to(\ter',T')$ be an isomorphism of ternary prerings. Then\/ $\theta$ induces a collineation between the corresponding associated projective planes\/ $\Pi$ and\/ $\Pi'$.\footnote{See {\upshape Theorem~\ref{thm:projective-plane-of-ternary-ring}} for the construction of a projective plane from a ternary prering.} In the particular case where\/ $(\ter,T)$ and\/ $(\ter',T')$ are ternary rings, this collineation maps the base quad\/ $(0,0)$, $(0)$, $(\infty)$, $(1,1)$ of\/ $\Pi$ onto the base quad\/ $(0',0')$, $(0')$, $(\infty')$, $(1',1')$ of\/~$\Pi'$.
 \end{prop}
+
 
 
 \begin{proof}
@@ -1677,6 +1678,10 @@ It is not generally true that the operations of sum and multiplication defined o
     A \textsl{magma} is a set equipped with an operation. A \textsl{quasigroup} is a magma $(Q,{}\cdot{})$, where, for any two elements $a,b\in Q$, the equations $a\cdot x=b$ and $x\cdot a=b$ have unique solutions. A \textsl{loop} is a quasigroup with an identity element. A \textsl{group} is an associative loop.
 \end{defn}
 
+\begin{rem}\label{rem:cancelation}
+    Quasigroups are both left- and right-cancellative, i.e., $a\cdot x=a\cdot y$ implies $x=y$, and similarly for $x\cdot a=y\cdot a$.
+\end{rem}
+
 \begin{lem}\label{lem:ternary-operations-define-loops}
     If\/ $(\ter, T)$ is a ternary ring and\/ $\ter^* = \ter \setminus \{0\}$, then\/ $(\ter, \+)$ and\/ $(\ter^*,\,\cdot\,)$ are loops with unit elements\/ $0$ and\/ $1$, respectively.
 \end{lem}
@@ -1713,7 +1718,7 @@ It is not generally true that the operations of sum and multiplication defined o
     Even though the commutativity of the group $(Q,+)$ is not required in \ref{defn:quasifield}, here we will restrict to that case.
 \end{rem}
 
-\begin{prop}
+\begin{prop}\label{prop:trivial-properties}
     Let\/ $(Q, +, {}\cdot{})$ satisfy axioms\/ \ref{qf-i}, \ref{qf-ii}, and\/ \ref{qf-iii} of the definition of quasifield. Then, for every\/ $u, v \in Q$, we have
     \begin{enumerate}[a),font=\upshape]
         \item $0\cdot u=0$,
@@ -2424,3 +2429,59 @@ It is not generally true that the operations of sum and multiplication defined o
     \]
     which shows that $a\+b=b\+a$, as wanted.
 \end{proof}
+
+\begin{defn}
+    The \textbf{kernel} of the quasifield\/ $(\ter,+,{}\cdot{})$ is the set\/ $\kappa$ of those elements of\/ $\ter$, for which the following two identities hold for every\/ $k\in\kappa$ and\/ $x, y \in \ter$:
+    \begin{enumerate}[a), font=\upshape]
+        \item $k\cdot(x+y) = k\cdot x + k\cdot y$,
+        \item $k\cdot(x\cdot y) = (k\cdot x)\cdot y$.
+    \end{enumerate}
+\end{defn}
+
+\begin{thm}
+    The kernel of any quasifield is a field and the quasifield is a vector space over its kernel. In particular, the order of a finite quasifield is a prime power.
+\end{thm}
+
+\begin{proof}
+    Let $\kappa$ be the kernel of the quasifield $\ter$. It follows from a) and right distributivity that $\kappa$ is closed under the sum operation. Clearly $1\in\kappa$ and, by Proposition~\ref{prop:trivial-properties}, we see that $0\in\kappa$ and that $-\kappa\subseteq\kappa$. It is straightforward to check that $1\in\kappa$ and that $\kappa$ is closed under multiplication. 
+    
+    Take $x,y\in\ter$ and $k\in\kappa\setminus\set0$. If $k\cdot k'=1$, we have
+    \begin{align*}
+        k\cdot(k'\cdot(x+y)) &= (k\cdot k')\cdot(x+y)
+                &&\text{; identity b)}\\
+            &= 1\cdot(x+y)\\
+            &= x+y.
+    \intertext{On the other hand}
+        k\cdot(k'\cdot x + k'\cdot y) &= k\cdot(k'\cdot x)+k\cdot(k'\cdot y)
+                &&\text{; identity a)}\\
+            &= (k\cdot k')\cdot x + (k\cdot k')\cdot y
+                &&\text{; identity b)}\\
+            &= 1\cdot x+1\cdot y\\
+            &= x+y.
+    \end{align*}
+    Then $k\cdot(k'\cdot x + k'\cdot y)=k\cdot(k'\cdot x + k'\cdot y)$ and left-cancellation [Remark~\ref{rem:cancelation}] shows that $k'$ satisfies identity~a).
+
+    For identity b) observe that
+    \begin{align*}
+        k\cdot(k'\cdot(x\cdot y)) &= (k\cdot k')\cdot(x\cdot y)
+                &&\text{; identity b)}\\
+            &= 1\cdot(x\cdot y)\\
+            &= x\cdot y
+    \intertext{and}
+        k\cdot((k'\cdot x)\cdot y) &= (k\cdot(k'\cdot x))\cdot y
+                &&\text{; identity b)}\\
+            &= ((k\cdot k')\cdot x)\cdot y
+                &&\text{; identity b)}\\
+            &= (1\cdot x)\cdot y\\
+            &= x\cdot y.
+    \end{align*}
+    Finally note that
+    \[
+        k\cdot(k'\cdot k)=(k\cdot k')\cdot k=1\cdot k= k\cdot1,
+    \]
+    which implies, by left-cancellation, that $k'\cdot k=1$. Hence, $k'$ is the multiplicative inverse of $k$ in $\kappa$. 
+    %
+    
+\end{proof}
+
+\section{Distributive Quasifields}
