@@ -175,7 +175,7 @@
     In what follows, $\Fix\phi$ will denote the set of all points and lines fixed by~$\phi$.
 
     A set $\mathbf C$ consisting of points and lines of a projective plane is called a \textsl{closed configuration} if it satisfies
-    \begin{enumerate}[label=C\arabic*.]
+    \begin{enumerate}[label=c$_\arabic*.$,font=\upshape\scshape]
         \item $A,B\in\mathbf C\implies AB\in\mathbf C$
         \item $\block a,\block b\in\mathbf C\implies \block a\wedge\block b\in\mathbf C$.
     \end{enumerate}
@@ -191,10 +191,12 @@
 
 \begin{proof}
     By the previous remark, $\Fix\phi$ satisfies axioms \ref{P1} and \ref{P2}. Therefore, the conclusion is a direct consequence of Lemma~\ref{lem:alternative-projective-axiom}.
+    %
+    
 \end{proof}
 
 \begin{rem}
-    If\/ $\Fix\phi$ is a subplane of\/ $\Pi$, then the number of fixed points equals the number of fixed lines. As we shall see, this equality holds even when\/ $\Fix\phi$ is not a subplane.
+    If\/ $\Fix\phi$ is a subplane of\/ $\Pi$, then the number of fixed points equals the number of fixed lines. As we shall see in Corollary~\ref{cor:fixed-points-equals-fixed-lines}, this equality holds even when\/ $\Fix\phi$ is not a subplane.
 \end{rem}
 
 \begin{rem}
@@ -733,7 +735,7 @@
     
 \end{proof}
 
-\begin{defn}
+\begin{defn}\label{defn:elation-etc}
     A collineation\/ $\alpha$ is \textsl{central-axial} if it has both a center and an axis. If\/ $C$ is a center and\/ $\block a$ is an axis of\/ $\alpha$, then\/ $\alpha$ is also called a \textsl{$(C, \block a)$-perspectivity}.
 
     A \textsl{$(C, \block a)$-perspectivity} is an \textsl{elation} if\/ $C \incidence \block a$, otherwise it is called a \textsl{homology}. The identity can be considered as both an elation and a homology.

@@ -8,11 +8,13 @@ Using these elements, we introduce coordinates as follows
 $$
     O\colon(0,0),\quad Y\colon(\infty),\quad E\colon(1,1).
 $$
-In addition, we label the points of $\tr(OE)\setminus\set{O,E,Z}$, where $Z=OE\wedge XY$, according to an arbitrary bijection
-\[
-    \tr(OE)\setminus\set{O,E,Z}
-        \to\set{(\zeta,\zeta)\mid\zeta\ne0,1}.
-\]
+In addition, we label the points of $\tr(OE)\setminus\set{O,E,Z}$, where $Z=OE\wedge XY$, according to an arbitrarily chosen bijection
+\begin{equation}\label{eq:diagonal-map}
+    \Delta\colon\tr(OE)\setminus\set{O,E,Z}
+        \to\set{(\zeta,\zeta)\mid\zeta\in\ter\setminus\set{0,1}},    
+\end{equation}
+which we will refer to as the \textsl{$\ter$-diagonal map}.
+
 To label a point $P$ that is not on $OE$ nor on $XY$ with $(a,b)$, we define $a$ and~$b$ by
 \begin{equation}\label{eq:P-coordinates}
     OE\wedge YP\colon(a,a)
@@ -904,6 +906,7 @@ Coordinates are further extended to lines. Here we will use square brackets to d
             \item[3.] By Table~\eqref{tbl:incidence}, the point $(x,y)$ lies on both $[c]$ and $[m,b]$ if, and only if, $x=c$ and $y=T(c,m,b)$.
 
             \item[4.] If $m\ne m'$, then by \ref{TR4} there exists a unique pair $(x,y)$ incident with both $[m,b]$ and $[m',b']$. If $m=m'$ and $b\ne b'$, the two lines intersect at $(m)$, on the line $[\infty]$.
+        \end{enumerate}
 
         \item[Axiom p$_3$\!':] We claim that the points
         \[
@@ -933,7 +936,6 @@ Coordinates are further extended to lines. Here we will use square brackets to d
                 \end{enumerate}
             \item $OE=[1,0]$, since $T(0,1,0)=0$ by \ref{TR1} \textsc i) and $T(1,1,0)=1$ by the relaxed version of \textsc{ii)}. Moreover, $(\infty)\nincidence{[1,0]}$ by \eqref{tbl:incidence}.
             \item $XY=[\infty]$ since \eqref{tbl:incidence} implies $(0)\incidence{[\infty]}$ and $(\infty)\incidence{[\infty]}$. Furthermore, $(1,1)\nincidence{[\infty]}$ by \eqref{tbl:incidence}.
-        \end{enumerate}
         \end{enumerate}
     \end{description}
 \end{proof}
@@ -1093,7 +1095,7 @@ Coordinates are further extended to lines. Here we will use square brackets to d
 \end{proof}
 
 \begin{lem}\label{lem:right-solution-of-product}
-    Let\/ $(\ter,T)$ be a ternary prering. Given $a,b\in\ter$, with $a\ne0$, the map
+    Let\/ $(\ter,T)$ be a ternary prering. Given $a\in\ter\setminus\set0$, the map
     \begin{align*}
         \ter&\to\ter\\
         x&\mapsto T(a,x,0)
@@ -1102,12 +1104,16 @@ Coordinates are further extended to lines. Here we will use square brackets to d
 \end{lem}
 
 \begin{proof}
-    Suppose that $T(a,x,0)=T(a,x',0)$ for some $x'\ne x$. Then, both $m=x$ and $m=x'$ satisfy the equations
+    Suppose that $T(a,x,0)=T(a,x',0)$ for some $x'\ne x$, and let $b$ denote this common value. Then, both $m=x$ and $m=x'$ satisfy the equations
     \begin{align*}
         T(a,m,0)&=b &T(0,m,0)&=0.
     \end{align*}
     However, since $a\ne0$, according to \ref{TR2}, there should be a unique pair $(m,0)$ satisfying these equations.
 \end{proof}
+
+\begin{rem}\label{rem:ternary-fixed-point}
+    Let $\Pi$ be a projective plane with coordinatization $(\ter,T)$ based on the quad $O,X,Y,E$. Then, for $m\ne1$, the map $x\mapsto T(x,m,b)$ of Lemma~\ref{lem:left-solution-of-sum} has a unique fixed point, i.e., there exists $a\in\ter$ such that $T(a,m,b)=a$. Indeed. If $\block a\colon[m,b]$ and $A=\block a\wedge OE$, then $A\colon(a,a)$ and $(a,a)\incidence{[m,b]}$.
+\end{rem}
 
 \begin{lem}\label{lem:ternary-isomorphisms-preserve-units}
     If\/ $\theta\colon(\ter,T)\to(\ter',T')$ is an isomorphism of ternary prerings, then\/ $\theta(0)=0'$. If the ternary prerings are ternary rings, then\/ $\theta(1)=1'$.
@@ -1495,11 +1501,22 @@ Coordinates are further extended to lines. Here we will use square brackets to d
     $$
 \end{defn}
 
+\begin{ntn}
+    Following the standard convention, we give multiplication precedence over addition. Therefore, we will simply write\/ $x\cdot m\+b$ instead of\/ $(x\cdot m)\+b$.
+\end{ntn}
+
+\begin{rem}\label{rem:0m=m0=0}
+    Given $m\in\ter$, axiom \ref{TR1} implies that
+    \[
+        0\cdot m=T(0,m,0)=0\quad\text{and}\quad m\cdot0=T(m,0,0)=0.
+    \]
+\end{rem}
+
 \begin{rem}
     Given $m\in\ter\setminus\set0$, the following picture illustrates how to find $m'$ such that $m\cdot m'=m'\cdot m=1$
     $$
         \begin{tikzpicture}[
-            scale=1.2,
+            scale=1.3,
             point/.style={
                 draw,
                 circle,
@@ -1644,6 +1661,7 @@ Coordinates are further extended to lines. Here we will use square brackets to d
     \vspace{-0.7\parskip}
     finding $\infty$ as the multiplicative inverse of $0$.
 \end{rem}
+
 
 \begin{xmpl}\label{xmpl:Moulton-ternary-ring-defn}
     As a follow-up of Example~\ref{xmpl:Moulton-coordinatization}, the ternary ring $(\R,T_M)$ associated to the Moulton plane is given by
@@ -2413,7 +2431,7 @@ It is not generally true that the operations of sum and multiplication defined o
     
 \end{proof}
 
-\begin{cor}
+\begin{cor}\label{cor:ternary-quasifield-equivalence}
     The projective plane\/ $\Pi$ is\/ $(X,XY)$-transitive and\/ $(Y,XY)$-transitive if, and only if, the ternary ring\/ $(\ter,T)$ defines a quasifield\/ $(\ter,\+,{}\cdot{})$ that satisfy\/ $T(x,m,k)=x\cdot m\+k$. More explicitly, the points of the affine plane\/ $\Pi\setminus XY$ correspond to the elements of\/ $\ter\times\ter$, while the lines not passing through\/ $Y$ are precisely the sets
     \[
         \{(x,\,x\cdot m+k)\mid x\in\ter\},
@@ -2429,6 +2447,10 @@ It is not generally true that the operations of sum and multiplication defined o
     \]
     which shows that $a\+b=b\+a$, as wanted.
 \end{proof}
+
+\begin{rem}\label{rem:O-E-independence}
+    It follows from the preceding results that the plane's $(Y,XY)$- and $(X,XY)$-transitivity are intrinsic properties determined entirely by the points $X$ and $Y$. The choice of an origin $O$ and a unit point $E$ to complete the coordinate quad is therefore arbitrary and has no influence on these geometric properties.
+\end{rem}
 
 \begin{defn}
     The \textbf{kernel} of the quasifield\/ $(\ter,+,{}\cdot{})$ is the set\/ $\kappa$ of those elements of\/ $\ter$, for which the following two identities hold for every\/ $k\in\kappa$ and\/ $x, y \in \ter$:
@@ -2485,3 +2507,470 @@ It is not generally true that the operations of sum and multiplication defined o
 \end{proof}
 
 \section{Distributive Quasifields}
+
+Let $\Pi$ be a finite projective plane. Let $(\ter,T)$ be the ternary ring based on the quad $O,X,Y,E$ and the $\ter$-diagonal map $\Delta$ of \eqref{eq:diagonal-map}. Then
+\begin{equation}\label{eq:base-coordinates}
+    OX\colon[0,0],\quad OY\colon[0],\quad
+    XY\colon[\infty],\quad ZU\colon[1,1],
+\end{equation}
+where $U=XE\wedge OY$, satisfies $U\colon(0,1)$.
+
+In the dual plane $\Pi^*$, consider the quad
+\[
+    O^* = OX,\quad X^* = OY,\quad Y^* = XY,\quad E^* = ZU,
+\]
+Since $\Pi$ and $\Pi^*$ have the same order, we can use $\ter$ for the coordinatization of~$\Pi^*$. To do this observe that dual line $O^*E^*$ corresponds to the point
+\[
+    N=OX\wedge ZU,
+\]
+and $X^*Y^*$ to
+\[
+    OY\wedge XY=Y.
+\]
+Given that $N\incidence OX$, we deduce that $N\colon(\nu,0)$ for some $\nu\in\ter$.
+$$
+    \begin{tikzpicture}[
+        scale=1.1,
+        point/.style={
+            draw,
+            circle,
+            color=black,
+            fill=black,
+            inner sep=1.2pt},
+        every node/.style={font=\footnotesize},
+        ]
+        \pgfmathsetmacro{\s}{1.7};
+        
+        % Points
+        \coordinate (xstart) at (0.0,0.0);
+        \coordinate (xend) at (2.5*\s,0.0);
+        \coordinate (ystart) at (0.0,0.0);
+        \coordinate (yend) at (0.0,2*\s);
+        \coordinate (E) at (\s*0.89,\s*1.26);
+        
+        % Axes
+        \draw[name path=xaxis,
+            color=orange,
+            thick
+        ] (xstart) -- (xend)
+            node[right,text=black] {$[0,0]$}
+            node[point,
+            pos=0.0,
+            label={[yshift=-5mm,xshift=-2mm]:
+                \textcolor{black}{$O$}}] (O) {}
+            node[point,
+                pos=0.99,
+                label={[text=black,xshift=0mm,yshift=-6mm]:
+                    $X$}
+            ] (X) {};
+        \draw[name path=yaxis,
+            color=orange,
+            thick
+        ] (ystart) -- (yend)
+            node[point,
+            pos=0.51,
+            label={[text=black,left,yshift=-1mm]:
+                $Y$}
+            ] (Y) {};
+        \node[point,
+            label={[xshift=3mm,yshift=-2.2mm]:
+                $E$}
+        ] at (E) {};
+        \draw[name path=OE] (O) -- ($(O)!1.2!(E)$)
+            node[above right] {$[1,0]$};
+
+        % Intersections
+        \path[name path=XU] (X) -- ($(X)!1.6!(E)$);
+        \path[name intersections={of=XU and yaxis,by=U}];
+        \draw (X) -- (U);
+        \draw[name path=XY] (X) -- (Y)
+            node[pos=0.92] (M) {};
+        \path[name intersections={of=XY and OE,by=Z}];
+        \path[name path=ZU] (U) -- ($(U)!1.8!(Z)$);
+        \path[name intersections={of=xaxis and ZU,by=N}];
+        \draw (N) -- (U);
+        \draw[name path=blocka] (N) -- ($(N)!1.6!(M)$)
+            node[pos=1.0,
+                label={[xshift=-3mm,yshift=-2mm]:$[m,b]$}
+            ] (m_b) {};
+        \path[name intersections={of=blocka and OE,by=A}];
+        \path[name intersections={of=yaxis and blocka,by=B}];
+        
+        % Points
+        \node[point,
+            fill=white,
+            label={[text=black,xshift=3mm,yshift=-2mm]:
+                $Z$}
+        ] at (Z) {};
+        \node[point,
+            fill=gray,
+            label={[text=black,xshift=-7mm,yshift=-2mm]:
+                $U\colon(0,1)$}
+        ] at (U) {};
+        \node[point,
+            fill=gray,
+            label={[text=black,xshift=0mm,yshift=-6mm]:
+                $N\colon(\nu,0)$}
+        ] at (N) {};
+        \node[point,
+            fill=green,
+            label={[text=black,xshift=1.0mm,yshift=-0.5mm]:
+                $(m)$}
+        ] at (M) {};
+        \node[point,
+            fill=green,
+            label={[text=black,xshift=-5mm,yshift=-3mm]:
+                $(0,b)$}
+        ] at (B) {};
+
+    \end{tikzpicture}
+$$
+As $ZU\colon[1,1]$, we obtain $(\nu,0)\incidence{[1,1]}$, or $0=T(\nu,1,1)$. It follows that $Z^*$, defined as $O^*E^*\wedge X^*Y^*$, translates into
+\[
+    Z^*=NY\colon[\nu].
+\]
+Now consider a line $\block a\colon[m,b]$, $\block a\ne NZ$. Then $m\ne1$ and
+\[
+    N\incidence\block a\iff 0=T(\nu,m,b).
+\]
+Let's now assume that $\Pi$ is $(Y,XY)$-transitive. According to Theorem~\ref{thm:(Y,XY)-transitive}, this means that $(\ter,T)$ is linear and that $(\ter,\+)$ is a group. In particular, $\nu=\dotminus1$ and
+\[
+    N\incidence\block a\iff (\dotminus1)\cdot m\+ b=0.
+\]
+Equivalently,
+\[
+    N\incidence\block a\iff b=m',
+\]
+where, for notational convenience, we set\/ $m'=\dotminus((\dotminus1)\cdot m)$.
+
+Thus, the $\ter$-diagonal map $\Delta^*$ of $\Pi^*$ can be defined by the equality
+\[
+    \Delta^*(\block a)=(m,m)^*,
+\]
+where $\block a\incidence^*O^*E^*=N$ and $m$ is the slope of $\block a$.
+
+Let $(\ter,T^*)$ denote the ternary ring associated with the coordinatization of~$\Pi^*$ based on $O^*,X^*,Y^*,E^*$ and the $\ter$-diagonal map $\Delta^*$.
+
+By definition, the coordinates of a dual point $\block c\colon[s,h]$ are given by the coordinates of
+\begin{align*}
+    (\block cY^*)\wedge O^*E^*
+    \quad\text{and}\quad
+    (\block cX^*)\wedge O^*E^*.
+\end{align*}
+Translated to $\Pi$ these dual yield
+\begin{align*}
+    \block c\colon(u,v)^*
+        &\iff Y^*\block c\wedge O^*E^*\colon(u,u)^*
+            \text{ and } X^*c\wedge O^*E^*\colon(v,v)^*\\
+        &\iff (XY\wedge\block c)N\colon[u,u']
+            \text{ and } (OY\block c)N\colon[v,v']\\
+        &\iff (s)(\dotminus1,0)=[u,u']
+            \text{ and } (0,h)(\dotminus1,0)\colon[v,v']\\
+        &\iff s=u \text{ and } h=v'.
+\end{align*}
+Hence, $\block c\colon(u,v)^*\iff\block c=[u,v']$.
+
+In the case where $\block c\colon[s]$, we have $Y\incidence\block c$, which is equivalent to $\block c\in X^*Y^*$, and hence, by definition,
+\begin{align*}
+    \block c\colon(u)^*
+        &\iff O^*\block c\wedge Y^*E^*\colon(1,u)^*\\
+        &\iff (OX\wedge\block c)Z\colon[1,u']\\
+        &\iff (s,0)(1)=[1,u']\\
+        &\iff s=\dotminus u'.
+\end{align*}
+Thus, $\block c\colon(u)^*\iff\block c\colon[\dotminus u']$.
+
+For a dual line $P\colon(x,y)$, we have
+\begin{align*}
+    P\colon[u,v]^*
+        &\iff P\wedge X^*Y^*\colon(u)^*
+            \text{ and } P\wedge O^*Y^*\colon(0,v)^*\\
+        &\iff PY\colon[\dotminus u']
+            \text{ and } PX\colon[0,v']\\
+        &\iff x=\dotminus u' \text{ and } y=v'.
+\end{align*}
+Therefore, $P\colon[u,v]^*\iff P\colon((\dotminus1)\cdot u,v')$.
+
+For a dual line\/ $P\colon(x)$, we have\/ $P\incidence XY$. Hence, by definition,
+\begin{align*}
+    P\colon[u]^*
+        &\iff O^*X^*\wedge P\colon(u,0)^*\\
+        &\iff OP\colon[u,0]\\
+        &\iff [x,0]=[u,0].
+\end{align*}
+Consequently, $P\colon[u]^*\iff P\colon(u)$.
+
+
+Summarizing, the translation between coordinates in $\Pi^*$ and $\Pi$ is given by
+\begin{equation}\label{eq:dual-translations}
+    \begin{aligned}
+        (m,b)^* &= [m,b'], &(m)^* &= [\dotminus m'],  &(\infty)^* &= [\infty]\\
+        [x,y]^* &= ((\dotminus1)\cdot x,y'), &[x]^* &= (x), &[\infty]^* &= (\infty).
+    \end{aligned}
+\end{equation}
+In particular,
+\[
+    (m,b)^*\incidence^*{[x,y]^*}\iff ((\dotminus1)\cdot x,y')\incidence{[m,b']}.
+\]
+Therefore, if $(\ter,T^*)$ denotes the ternary ring associated with this coordinatization of $\Pi^*$, we obtain
+\begin{equation}\label{eq:dual-ternary-ring}
+    \begin{aligned}
+        b=T^*(m,x,y) &\iff y'=T((\dotminus1)\cdot x, m,b')\\
+            &\iff y'=(\dotminus x')\cdot m\+b'.
+    \end{aligned}    
+\end{equation}
+Let $\oplus$ and $\odot$ denote the sum and the multiplication induced by $(\ter,T^*)$. From \eqref{eq:dual-ternary-ring}, first for $x=1$ and then for $y=0$, we obtain
+\begin{equation}\label{eq:dual-sum}
+    m\oplus y=b \iff m'\+y'= b'.
+\end{equation}
+\begin{equation}\label{eq:dual-product}
+    (m\odot x)'=\dotminus(\dotminus x'\cdot m).
+\end{equation}
+It follows from \eqref{eq:dual-sum} that $(\ter,\oplus)$ is associative:
+\begin{align*}
+    (m\oplus y)\oplus z=c &\iff b=m\oplus y\text{ and }b\oplus z = c\\
+        &\iff m'\+y'=b'\text{ and }b'\+z'=c'\\
+        &\iff m'\+(y'\+z')=c'\\
+        &\iff d'=y'\+z'\text{ and } m'\+ d'=c'\\
+        &\iff d=y\oplus z\text{ and }m\oplus d=c\\
+        &\iff m\oplus(y\oplus z)=c.
+\end{align*}
+Moreover, $(\ter,T^*)$ is linear:
+\begin{align*}
+    b=(m\odot x)\oplus y &\iff b=T^*(m\odot x,1,y)\\
+        &\iff y'=(\dotminus (m\odot x)')\cdot1\+b'
+            &&\text{; by \eqref{eq:dual-ternary-ring}}\\
+        &\iff y' = (\dotminus x')\cdot m\+b'
+            &&\text{; by \eqref{eq:dual-product}}\\
+        &\iff b = T^*(m,x,y).
+            &&\text{; by \eqref{eq:dual-ternary-ring}}
+\end{align*}
+
+As a result, we have proven the following
+
+\begin{thm}\label{thm:dual-ternary-ring}
+    Let\/ $\Pi$ be a finite projective plane and\/ $\Pi^*$ its dual. Let\/ $(\ter,T)$ be the ternary ring associated with the base quad\/ $O,X,Y,E$ and the $\ter$-diagonal map\/ $\Delta$. If\/ $(\ter,T)$ is linear and the loop\/ $(\ter,\+)$ is a group, then there exist a dual quad\/ $O^*,X^*,Y^*,E^*$ and a $\ter$-diagonal map\/ $\Delta^*$ such that the associated ternary ring\/ $(\ter,T^*)$ is linear and the induced loop\/ $(\ter,\oplus)$ is a group.
+\end{thm}
+
+\begin{rem}\label{rem:simple-dual-sum-and-product}
+    In the particular case where $\Pi$ is both $(Y,XY)$- and $(X,XY)$-transitive, Corollary~\ref{cor:ternary-quasifield-equivalence} implies that equations \eqref{eq:dual-sum} and \eqref{eq:dual-product} reduce to
+    \[
+        m\oplus y = m\+y\quad\text{and}\quad m\odot x=x\cdot m.
+    \]
+\end{rem}
+
+\begin{thm}\label{thm:distributive-quasifield}
+    Let\/ $\Pi$ be a finite projective plane and\/ $O,X,Y$ non-collinear points. Then the following statements are equivalent:
+    \begin{enumerate}[a),font=\upshape]
+        \item $\Pi$ is\/ $(Y,XY)$- and\/ $(Y,OY)$-transitive.
+        \item $\Pi$ is\/ $(A,XY)$-transitive for every point\/ $A\incidence XY$, and\/ $(Y,\block a)$-transitive for every line\/ $\block a$ passing through\/ $Y$.
+        \item $\Pi$ is\/ $(A,XY)$-transitive for every point\/ $A\incidence XY$.
+        \item Every ternary ring\/ $(\ter,T)$ whose base quad contains\/ $X,Y$ induces a distributive quasifield\/ $(\ter,\+,{}\cdot{})$.
+        \item Every ternary ring\/ $(\ter,T)$ whose base quad contains\/ $X,Y$ induces a quasifield\/ $(\ter,\+,{}\cdot{})$.
+        \item $\Pi$ is\/ $(Y,XY)$-, $(X,XY)$-, and\/ $(Y,OY)$-transitive.
+
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}${}$
+    \begin{enumerate}[a)]
+        \item$\Rightarrow$~b) By Theorem~\ref{thm:dual-ternary-ring} applied to the case where $X$ is replaced by $O$, we deduce that $\Pi^*$ is $(Y^*,O^*Y^*)$-transitive. Since $Y^*=XY$ and $O^*Y^*=X$, we obtain that $\Pi$ is $(X,XY)$-transitive. Thus, $(A,XY)$-transitivity for $A\incidence XY$ follows from Theorem~\ref{thm:transitivity}. Since this also holds in $\Pi^*$ and $X^*Y^*=Y$, we see that $\Pi$ is $(Y,\block a)$-transitive for any line $\block a$ through~$Y$.
+
+        \item$\Rightarrow$~c) Trivial.
+
+        \item$\Rightarrow$~d) Taking first\/ $A=X$ and then\/ $A=Y$, we deduce that\/ $(\ter,\+,{}\cdot{})$ and\/ $(\ter,\oplus,\odot)$ are quasifields. Hence, $(\ter,\oplus,\odot)$ is right distributive and, by Remark~\ref{rem:simple-dual-sum-and-product}, $(\ter,\+,{}\cdot{})$ is left distributive.
+
+        \item$\Rightarrow$~e) Trivial.
+
+        \item$\Rightarrow$~f) By Corollary~\ref{cor:ternary-quasifield-equivalence}, $\Pi$ is\/ $(Y,XY)$- and\/ $(X,XY)$-transitive. Moreover, by Remark~\ref{rem:simple-dual-sum-and-product}, the left distributivity of\/ $(\ter,\+,{}\cdot{})$ implies the right distributivity of\/ $(\ter,\oplus,\odot)$, which in turn ensures that\/ $\Pi^*$ is\/ $(X^*,X^*Y^*)$-transitive, or equivalently, that\/ $\Pi$ is\/ $(Y,OY)$-transitive.
+
+        \item$\Rightarrow$~a) Trivial.
+    \end{enumerate}
+\end{proof}
+
+\begin{thm}\label{thm:(X,OY)-transitivity}
+    The plane\/ $\Pi$ is\/ $(X,OY)$-transitive if, and only if, $(\ter,T)$ is linear and\/ $(\ter^*,{}\cdot{})$ is a group.
+\end{thm}
+
+\needspace{2\baselineskip}
+\begin{proof}${}$
+    \begin{description}[font=\normalfont\itshape]
+        \item[if\/ \upshape part:]
+        Fix $r\in\ter^*$. We will first show that there is an homology [cf.~Definition~\ref{defn:elation-etc}] that maps $(1,0)$ to $(r,0)$. Consider the map $(\phi_r,\psi_r)$ defined by
+        \begin{align*}
+            \phi_r\colon(x,y)&\mapsto (x\cdot r,y),
+            &(m)&\mapsto(r^{-1}\cdot m),
+            &(\infty)&\mapsto(\infty),\\
+            \psi_r\colon[m,b]&\mapsto[r^{-1}\cdot m,b],
+            &[x]&\mapsto[x\cdot r],
+            &[\infty]&\mapsto[\infty].
+        \end{align*}
+        Since the points on\/ $OY$ correspond either to\/ $(\infty)$ or to coordinates of the form\/ $(0,y)$, they are fixed by\/ $\phi_r$. Similarly, every line through\/ $X$ is fixed by\/ $\psi_r$, as such a line is either\/ $[\infty]$ or of the form\/ $[0,b]$.\footnote{Note that $\psi_r[0,b]=[0,b]$ by Remark~\ref{rem:0m=m0=0}.}
+
+        To verify that $\varphi_r=(\phi_r,\psi_r)$ is a collineation observe that
+        \begin{align*}
+            (x,y)\incidence{[m,b]}
+                &\iff y=x\cdot m\+b\\
+                &\iff y=(x\cdot r)\cdot(r^{-1}\cdot m)\+b\\
+                &\iff y=T(x\cdot r,r^{-1}\cdot m,b)\\
+                &\iff \phi_r(x,y)\incidence{\psi_r[m,b]},
+        \end{align*}
+        and similarly for $(x,y)\incidence{[x]}$, $(m)\incidence{[m,b]}$, $(\infty)\incidence{[x]}$, and $(\infty)\incidence{[\infty]}$.
+
+        To conclude this part of the proof, consider a line $\block a\colon[0,b]$ through $X$ and two points $P\colon(r,b)$ and $Q\colon(s,b)$ on it. Since $\varphi=\varphi_s\circ\varphi_{r^{-1}}$ has center~$X$ and axis $OY$ and maps $(r,b)$ to $(s,b)$, it defines a collineation that maps~$P$ to~$Q$.
+        
+        \item[only if\/\upshape:] Fix $r\in\ter^*$ and consider a homology $\varphi_r=(\phi_r,\psi_r)$ with center $X$ and axis $OY$ that maps $(1,0)$ to $(r,0)$. Since this homology fixes $XY$ and $OX$, for every $m\in\ter$ it maps the line with coordinate $(m)$ to a line with coordinate $(m')$. The map $m\mapsto m'$ defines a symmetry $\sigma\in\Sym(\ter)$. It follows that
+        \[
+            \sigma(0)=0\quad\text{and}\quad \psi_r[m,b]=[\sigma(m),b]
+            \quad\text{for all }m,b\in\ter.
+        \]
+        Similarly, given a point $P$ with coordinates $(x,y)$, since $\psi_r$ fixes the line $PX$, we obtain $\nu\in\Sym(\ter)$ such that
+        \[
+            \nu(1)=r\quad\text{and}\quad
+            \phi_r(x,y)=(\nu(x),y).
+        \]
+        It follows that $(x,y)\incidence{[m,0]}$ implies $(\nu(x),y)\incidence{[\sigma(m),0]}$. Equivalently, $T(x,m,0)=T(\nu(x),\sigma(m),0)$, which translates into
+        \[
+            x\cdot m=\nu(x)\cdot\sigma(m).\tag{\dag}
+        \]
+        Evaluation at $x=1$ yields $m=r\cdot\sigma(m)$. Substituting $m=r$, we arrive at
+        \[
+            r=r\cdot\sigma(r).
+        \]
+        Since $(R^*,{}\cdot{})$ is cancellative [cf.~Remark~\ref{rem:cancelation}], we obtain $\sigma(r)=1$. By~$(\dag)$ for $m=r$, we deduce $\nu(x)=x\cdot r$. Thus, $(\dag)$ becomes
+        \[
+            x\cdot m=(x\cdot r)\cdot\sigma(m).\tag{\ddag}
+        \]
+        Setting $x=1$ and $m=r\cdot y$, we get $r\cdot y=r\cdot\sigma(r\cdot y)$. Hence, $\sigma(r\cdot y)=y$ for all $y\in\ter^*\cup\set0=\ter$, and $(\ddag)$ leads to
+        \[
+            x\cdot(r\cdot y)=(x\cdot r)\cdot y,
+        \]
+        which proves the associativity of the multiplication.
+
+       To verify the linearity, evaluate\/ $(\ddag)$ at\/ $x=m=1$ and get
+        \[
+            1=r\cdot\sigma(1).
+        \]
+        Hence, by associativity, $\sigma(1)=r^{-1}$. Thus, substituting $m=1$ in $(\dag)$, we obtain
+        \[
+            x=x\cdot1=\nu(x)\cdot\sigma(1)=\nu(x)\cdot r^{-1},
+        \]
+        or $\nu(x)=x\cdot r$. Finally
+        \begin{align*}
+            y=T(x,r,b)
+                &\iff (x,y)\in[r,b]\\
+                &\iff \phi_r(x,y)\incidence\phi_r[r,b]
+                    &&\text{; $\varphi_r$ collineation}\\
+                &\iff (\nu(x),y)\incidence{[\sigma(r),b]}\\
+                &\iff (x\cdot r,y)\incidence{[1,b]}\\
+                &\iff y=(x\cdot r)\+b,
+        \end{align*}
+        and the proof is complete.
+    \end{description}
+\end{proof}
+
+\begin{thm}
+    The plane\/ $\Pi$ is\/ $(Y,OX)$-transitive if, and only if, $(\ter^*,{}\cdot{})$ is a group and $T(a,b,c\cdot b)=(a\+c)\cdot b$.
+\end{thm}
+
+\begin{proof}${}$
+    \begin{description}[font=\normalfont\itshape]
+        \item[if\/ \normalfont part:] Fix $r\in\ter^*$. Given a line with coordinates $[m,b]$ we claim that the set
+        \[
+            \ell=\set{(x,(x\cdot m\+b)\cdot r)
+                \mid (x,y)\incidence{[m,b]}}
+        \]
+        is the pencil of $[m\cdot r,b\cdot r]$. To see this observe that
+        \begin{align*}
+            (x\cdot m\+b)\cdot r
+                &= T(x\cdot m,r,b\cdot r)
+                    &&\text{; hypothesis on $T$}\\
+                &= (x\cdot m)\cdot r\+b\cdot r\\
+                &= x\cdot(m\cdot r)\+b\cdot r
+                    &&\text{; associativity}\\
+                &= T(x,m\cdot r,b\cdot r).
+        \end{align*}
+        Consider the pair $\varphi_r=(\phi_r,\psi_r)$ defined by
+        \begin{align*}
+            \phi_r\colon(x,y)&\mapsto(x,y\cdot r),
+            &(m)&\mapsto(m\cdot r),
+            &(\infty)&\mapsto(\infty)\\
+            \psi_r\colon[m,b]&\mapsto [m\cdot r,b\cdot r],
+            &[x]&\mapsto[x],
+            &[\infty]&\mapsto[\infty],
+        \end{align*}
+        Since points on the $OX$ line are either $X\colon(0)$ or have coordinates of the form $(x,0)$, they are fixed by $\phi_r$. Moreover, lines through $Y$ are fixed by $\psi_r$ because they are $XY\colon[\infty]$ or have coordinates of the form $[x]$. Thus, to conclude that $\varphi_r$ is a $(Y,OX)$-homology we have to show that it is a collineation. There are several cases:
+        \begin{enumerate}[-]
+            \item For finite points and lines, we have seen above 
+            \[
+                (x,y)\incidence{[m,r]}\iff \phi_r(x,y)\incidence{\psi_r[m,b]}.
+            \]
+            \item For finite points on vertical lines,
+            \begin{align*}
+                    (x,y)\incidence{[z]}&\iff x=z\\
+                        &\iff (x,y\cdot r) \incidence{[z]}\\
+                        &\iff \phi_r(x,y)\incidence\psi_r[z].
+            \end{align*}
+            \item For points on the infinite line,
+            \begin{align*}
+                (m)\incidence{[\infty]}
+                    &\iff (m\cdot r)\incidence{[\infty]}\\
+                    &\iff \phi_r(m)\incidence\psi_r[\infty].
+            \end{align*}
+            \item For the infinite point on a vertical line or infinite line, the conclusion is trivial.
+        \end{enumerate}
+        Clearly, $\varphi_r$ a $(Y,OX)$-homology that maps $(0,1)$ to $(0,r)$. Thus given any two points $P$ and $Q$ collinear with $Y$ on the line $\block a\colon[s]$, we have $P\colon(s,c)$ and $(s,d)$ for some $s,c,d\in\ter$. The composition $\varphi_d\circ\varphi_c$ maps $P$ to $Q$ because
+        \[
+            \phi_d\circ\phi_{c^{-1}}(s,c)
+                = \phi_d(s,1) = (s,d).
+        \]
+        Therefore, $\Pi$ is $(Y,OX)$-transitive as desired.
+        
+        \item[only if\/\normalfont:] Fix $r\in\ter^*$ and consider a $(Y,OX)$-homology $\varphi_r=(\phi_r,\psi_r)$ that maps $(0,1)$ to $(0,r)$. Since the homology fixes $XY$, for every $m\in\ter$, it maps $(m)$ to $(m')$. This defines a symmetry $\sigma\in\Sym(\ter)$ satisfying
+        \[
+            \sigma(0)=0\quad\text{and}\quad\phi_r(m)=(\sigma(m)).
+        \]
+        Similarly, since every line $[x]$ is fixed, $\phi(x,y)=(x,y')$, and so $y\mapsto y'$ defines a symmetry $\nu\in\Sym(\ter)$ such that
+        \[
+            \nu(0)=0,\quad\nu(1)=r\quad\text{and}\quad\phi_r(x,y)=(x,\nu(y)).
+        \]
+        It follows that
+        \[
+            \psi_r[m,b]=[\sigma(m),\nu(b)].
+        \]
+        Since $y=T(x,m,b)$ translates into 
+        \[
+            \nu(y)=T(x,\sigma(m),\nu(b)),\tag{$\ast$}
+        \]
+        we have
+        \[
+            \nu(x\cdot m\+b)=x\cdot\sigma(m)\+\nu(b).
+        \]
+        Evaluating at $x=1$, $b=0$ we see that $\nu=\sigma$. Therefore,
+        \[
+            \sigma(0)=0,\quad\sigma(1)=0\quad\text{and}\quad
+            \sigma(x\cdot m\+b)=x\cdot\sigma(m)\+\sigma(b).
+        \]
+        Substituting $m=1$ and $b=0$, we obtain $\sigma(x)=x\cdot r$. Hence,
+        \[
+            (x\cdot m\+b)\cdot r= x\cdot(m\cdot r)\+b\cdot r.
+        \]
+        For $b=0$, we obtain the associativity:
+        \[
+            (x\cdot m)\cdot r = x\cdot (m\cdot r).
+        \]
+        Finally, from $(\ast)$, we arrive at
+        \[
+            (x+c)\cdot r = \sigma(T(x,1,c)) = T(x,r,c\cdot r),
+        \]
+        which completes the proof.
+    \end{description}
+\end{proof}
+
+\begin{thm}
+    A projective plane\/ $\Pi$ is\/ $(X,OY)$- and\/ $(A,XY)$-transitive for every\/ $A\in XY$ if, and only if, its coordinatizing ternary ring\/ $(\ter,T)$ is an associative (and distributive) quasifield.
+\end{thm}
+
+\begin{proof}
+    This is a direct consequence of Theorem~\ref{thm:(X,OY)-transitivity} and parts~c) and~d) of Theorem~\ref{thm:distributive-quasifield}.
+\end{proof}
