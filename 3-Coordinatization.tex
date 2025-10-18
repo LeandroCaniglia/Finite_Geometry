@@ -2968,9 +2968,381 @@ As a result, we have proven the following
 \end{proof}
 
 \begin{thm}
-    A projective plane\/ $\Pi$ is\/ $(X,OY)$- and\/ $(A,XY)$-transitive for every\/ $A\in XY$ if, and only if, its coordinatizing ternary ring\/ $(\ter,T)$ is an associative (and distributive) quasifield.
+    A projective plane is\/ $(X,OY)$- and\/ $(A,XY)$-transitive for every\/ $A\in XY$ if, and only if, its coordinatizing ternary ring is an associative (and distributive) quasifield.
 \end{thm}
 
 \begin{proof}
     This is a direct consequence of Theorem~\ref{thm:(X,OY)-transitivity} and parts~c) and~d) of Theorem~\ref{thm:distributive-quasifield}.
 \end{proof}
+
+\section{Pappian Projective Planes}
+
+In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, field, etc., whenever the associated system $(\ter,\+,{}\cdot{})$ happens to be a quasifield, field, etc.
+
+\begin{thm}\label{thm:finite-desargues-iff-field}
+    If\/ $\Pi$ is a finite projective plane, then the following five properties are equivalent:
+    \begin{enumerate}[label=\alph*), font=\upshape]
+        \item $\Pi$ is\/ $(Y, XY)$-, $(X, XY)$-, $(Y, OY)$- and\/ $(X, OY)$-transitive.
+        \item The ternary ring\/ $(\ter,T)$ is a field.
+        \item Desargues’ theorem is valid in\/ $\Pi$.
+        \item $\Pi$ is\/ $(A,\block a)$-transitive for every flag $(A,\block a)$.
+        \item Every ternary ring coordinatizing\/ $\Pi$ is a field.
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}${}$
+    \begin{enumerate}[a)]
+        \item$\Rightarrow$~b) Consider the following results
+        \begin{center}\footnotesize
+            \begin{tabular}{c|ccccl}
+                Transitivity
+                    &$(\ter,\+)$
+                    &$(\ter^*,{}\cdot{})$
+                    &$(\ter,\+,{}\cdot{})$
+                    &$T(a,b,c\cdot b)$
+                    &Ref.\\
+                \hline\rule{0mm}{3mm}
+                $(Y,XY)$
+                    &group
+                    &-
+                    &-
+                    &$a\cdot b\+c\cdot b$
+                    &\ref{thm:(Y,XY)-transitive}\\
+                $(X,XY)$
+                    &group
+                    &-
+                    &-
+                    &$(a\+b)\cdot c$
+                    &\ref{thm:(X,XY)-transitive}\\
+                $(Y,OY/XY)$
+                    &commutative
+                    &
+                    &distributive
+                    &-
+                    &\ref{thm:distributive-quasifield}\\
+                $(X,OY)$
+                    &
+                    &group
+                    &-
+                    &$a\cdot b\+c\cdot b$
+                    &\ref{thm:(X,OY)-transitivity}
+            \end{tabular}
+        \end{center}
+        It follows that $(\ter,\+,{}\cdot{})$ is a division ring. Since it is finite, the Little Wedderburn Theorem~\ref{thm:wedderburn} implies that it is a field.
+
+        \item$\Rightarrow$~c) This is Theorem~\ref{thm:desargues}.
+
+        \item$\Rightarrow$~d) This is Baer's Theorem~\ref{thm:baer}.
+
+        \item$\Rightarrow$~e) Every base quad $O,X,Y,E$ used to coordinatize $\Pi$ will fulfill the hypothesis of part~a).
+
+        \item$\Rightarrow$~a) This follows from the references given in the proof of a) $\Rightarrow$ b) above.
+    \end{enumerate}
+\end{proof}
+
+\begin{rem}\label{rem:desarguess-implies-division-ring}
+    If we drop the finiteness hypothesis, the proofs of c)~$\Rightarrow$~d) and of the table for a)~$\Rightarrow~$b) also show that every ternary ring coordinatizing a Desarguesian projective plane is a division ring.
+\end{rem}
+
+
+\begin{thm}\label{thm:pappus-implies-commutativity}
+    If a projective plane satisfies\/ {\upshape Pappus' Theorem~\ref{thm:pappus}}, then multiplication is commutative in every coordinatizing ternary ring.
+\end{thm}
+
+\begin{proof}
+    As illustrated below, consider the points $O,A,B$ on $OE$ and $Y,B',A'$ on $YE$. Pappus' Theorem implies that
+    \[
+        U=OA'\wedge YB,\quad V=OB'\wedge YA,\quad X=BB'\wedge AA'
+    \]
+    are collinear.
+    \[
+        \begin{tikzpicture}[
+            scale=1.1,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=black,
+                inner sep=1.2pt},
+            every node/.style={font=\footnotesize},
+            ]
+            \pgfmathsetmacro{\s}{1.7};
+            
+            % Points
+            \coordinate (xstart) at (0.0,0.0);
+            \coordinate (xend) at (2.5*\s,0.0);
+            \coordinate (ystart) at (0.0,0.0);
+            \coordinate (yend) at (0.0,2.0*\s);
+            \coordinate (E) at (\s*2.1,\s*1.2);
+            
+            % Axes
+            \draw[name path=xaxis,
+                color=orange,
+                thick
+            ] (xstart) -- (xend)
+                node[right,text=black] {$[0,0]$}
+                node[point,
+                    pos=0.85,
+                    fill=green,
+                    label={[text=black,xshift=0mm,yshift=-6.5mm]:
+                        $(a,0)$}
+                ] (a0) {}
+                node[point,
+                    pos=0.45,
+                    fill=green,
+                    label={[text=black,xshift=0mm,yshift=-6.5mm]:
+                        $(b,0)$}
+                ] (b0) {}
+                node[point,
+                    pos=0.0,
+                    label={[yshift=-5mm,xshift=-2mm]:
+                        \textcolor{black}{$O$}}] (O) {}
+                    node[point,
+                    pos=0.30,
+                    label={[text=black,xshift=0mm,yshift=-6mm]:
+                        $X$}
+                ] (X) {};
+            \draw[name path=yaxis,
+                color=orange,
+                thick
+            ] (ystart) -- (yend)
+                node[point,
+                pos=0.85,
+                label={[text=black,left,yshift=-1mm]:
+                    $Y$}
+                ] (Y) {};
+            \node[point,
+                label={[xshift=3mm,yshift=-2.2mm]:
+                    $E$}
+            ] at (E) {};
+            \draw[name path=OE] (O) -- (E);
+            \draw[name path=YE] (E) -- (Y);
+    
+            % Intersections
+            \draw[name path=XY,thick] (X) -- (Y)
+                node[pos=0.92] (M) {};
+            \path[name intersections={of=XY and OE,by=Z}];
+            \draw[name path=AY] (a0) -- (Y);
+            \path[name intersections={of=AY and OE,by=A}];
+            \draw[name path=BY] (b0) -- (Y);
+            \path[name intersections={of=BY and OE,by=B}];
+            \draw[name path=AX] (X) -- ($(X)!2.0!(A)$);
+            \path[name intersections={of=AX and YE,by=A'}];
+            \draw[name path=XB] (X) -- ($(X)!3.3!(B)$);
+            \path[name intersections={of=XB and YE,by=B'}];
+            \draw[name path=OA'] (O) -- (A');
+            \path[name intersections={of=OA' and BY,by=U}];
+            \draw[name path=OB'] (O) -- (B');
+            \path[name intersections={of=AY and OB',by=V}];
+            \draw[orange,dashed] (X) -- ($(X)!1.2!(V)$);
+            
+            % Points
+            \node[point,
+                fill=white,
+                label={[text=black,xshift=2.5mm,yshift=-2.5mm]:
+                    ${}$}
+            ] at (Z) {};
+            \node[point,
+                fill=orange,
+                label={[text=black,xshift=-2.5mm,yshift=-2.5mm]:
+                    $U$}
+            ] at (U) {};
+            \node[point,
+                fill=orange,
+                label={[text=black,xshift=-2.5mm,yshift=-3.5mm]:
+                    $V$}
+            ] at (V) {};
+            \node[point,
+                fill=green,
+                label={[text=black,xshift=2.5mm,yshift=-3mm]:
+                    $A$}
+            ] at (A) {};
+            \node[point,
+                fill=green,
+                label={[text=black,xshift=2.5mm,yshift=-3.5mm]:
+                    $B$}
+            ] at (B) {};
+            \node[point,
+                fill=green,
+                label={[text=black,xshift=4mm,yshift=0mm]:
+                    $A'\colon(1,a)$}
+            ] at (A') {};
+            \node[point,
+                fill=green,
+                label={[text=black,xshift=2.5mm,yshift=0mm]:
+                    $B'\colon(1,b)$}
+            ] at (B') {};
+        \end{tikzpicture}
+    \]
+    It follows from the definitions that $OB'\colon[b,0]$ and $OA'\colon[a,0]$. Since $U$ and $V$ are collinear with $X$, they share the same $y$-coordinate. Moreover, the first coordinate of $V$ is $a$, and that of $U$ is $b$. Hence, $V\colon(a,y)$ and $U\colon(b,y)$. Therefore, the incidences $V\incidence OB'$ and $U\incidence OA'$ translate into $(a,y)\incidence{[b,0]}$ and $(b,y)\incidence{[a,0]}$, which yield $y=a\cdot b$ and $y=b\cdot a$.
+
+\end{proof}
+
+\begin{thm}\label{thm:pappus-implies-desargues} {\upshape[Hessenberg, 1905]}
+    If Pappus’ Theorem holds in a projective plane, then Desargues’ Theorem holds as well.
+\end{thm}
+
+\begin{proof}
+    Suppose that $O$, $A_1,A_2,A_3$, $B_1,B_2,B_3$, and $C_1,C_2,C_3$ form a Desarguesian configuration.  
+
+    Introduce the auxiliary point $K=A_1A_3\wedge B_2B_3$, as illustrated below
+    \[
+    \begin{tikzpicture}[
+            scale=1.0,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=black,
+                inner sep=1.5pt},
+            every node/.style={font=\footnotesize}
+        ]
+        % Define the point O (center of perspectivity)
+        \coordinate (O) at (0,6);
+        \node at (O) [above] {$O$};
+        
+        % Vertices
+        \coordinate (A1) at (-4,0);
+        \coordinate (A2) at (1.8,1.0);
+        \coordinate (A3) at (-0.3,3);
+        \coordinate (B1) at ($(O)!0.5!(A1)$);
+        \coordinate (B2) at ($(O)!0.80!(A2)$);
+        \coordinate (B3) at ($(O)!1.45!(A3)$);
+        
+        % Axes
+        \draw[name path=OA1] (O) -- ($(O)!1.1!(A1)$);
+        \draw[name path=OA3] (O) -- ($(O)!1.4!(B3)$);
+        \draw[name path=OA2] (O) -- ($(O)!1.1!(A2)$);
+        
+        % Label the vertices
+        \node[point,
+            label = {[xshift=-3.5mm,yshift=-4mm]:$A_1$}
+        ] at (A1) {};
+        \node[point,
+            label = {[xshift=3.5mm,yshift=-5.0mm]: $A_2$}
+        ] at (A2) {};
+        \node[point,
+            label = {[xshift=3mm,yshift=-2.5mm]: $A_3$}
+        ] at (A3) {};
+        \node[point,
+            label = {[xshift=-3mm,yshift=-3mm]: $B_1$}
+        ] at (B1) {};
+        \node[point,
+            label = {[xshift=2mm,yshift=-1mm]: $B_2$}
+        ] at (B2) {};
+        \node[point,
+            label = {[xshift=2.5mm,yshift=-0.4mm]: $B_3$}
+        ] at (B3) {};
+
+        % Draw the triangle A with thick lines
+        \draw[very thick] (A1) -- (A2) -- (A3) -- (A1);
+        
+        % Draw the triangle B with thick lines
+        \draw[very thick] (B1) -- (B2) -- (B3) -- (B1);
+        
+        % Desargues
+        \draw[dotted, name path=A1A2] (A1) -- ($(A1)!1.5!(A2)$);
+        \draw[dotted, name path=B1B2] (B1) -- ($(B1)!2.0!(B2)$);
+        \path[name intersections={of=A1A2 and B1B2, by=C3}];
+        \node[point,
+            fill=orange,
+            label = {[xshift=0mm,yshift=-6mm]: $C_3$}
+        ] at (C3) {};
+        
+        % C2= A1A3 with B1B3
+        \path[name path=A1A3] (A1) -- (A3);
+        \path[name path=B1B3] (B1) -- (B3);
+        \path[name intersections={of=A1A3 and B1B3, by=C2}];
+
+        % C1= A2A3 with B2B3
+        \path[name path=A2A3] (A2) -- (A3);
+        \path[name path=B2B3] (B2) -- (B3);
+        \path[name intersections={of=A2A3 and B2B3, by=C1}];
+        \node[point,
+            fill=orange,
+            label = {[xshift=0.3mm,yshift=-6.5mm]: $C_1$}
+        ] at (C1) {};
+
+        % Join the intersections
+        \draw[dashed,orange] ($(C2)!-0.1!(C3)$) -- ($(C2)!1.2!(C3)$)
+            node[xshift=1mm,yshift=0.5mm,text=black]{$\block d$};
+
+        % K = A1A3 with B2B3
+        \path[name path=B3K] (B3) -- ($(B3)!-1.8!(B2)$);
+        \path[name intersections={of=B3K and A1A3, by=K}];
+        \draw[gray] (B3) -- (K);
+        
+
+        % L= A1B2 with OA3
+        \draw[gray,name path=A1B2] (A1) -- (B2);
+        \path[name intersections={of=A1B2 and OA3, by=L}];
+
+        % M - A1A2 with OK
+        \draw[gray,name path=OK] (O) -- ($(O)!1.3!(K)$);
+        \path[name intersections={of=A1A2 and OK,by=M}];
+
+        % N = B1B2 with OK
+        \path[name intersections={of=B1B2 and OK,by=N}];
+        \node[point,
+            fill=green,
+            label = {[xshift=3mm,yshift=-1mm]: $N$}
+        ] at (N) {};
+
+        \draw[dotted,name path=MC1,blue,thick] (M) -- (C1);
+        \draw[dotted,name path=LN,blue,thick] (L) -- (N);
+
+        % Pappus points
+        \node[point,
+            fill=orange,
+            label = {[xshift=-0.3mm,yshift=-7mm]: $C_2$}
+        ] at (C2) {};
+        \node[point,
+            fill=green,
+            label = {[xshift=1mm,yshift=-6mm]: $K$}
+        ] at (K) {};
+        \node[point,
+            fill=green,
+            label= {[below right]: $L$}
+        ] at (L) {};
+        \node[point,
+            fill=green,
+            label = {[below=3mm,right]: $M$}
+        ] at (M) {};
+
+    \end{tikzpicture}
+    \]
+    Applying Pappus’ Theorem to the collinear triples $O,A_2,B_2$ and $A_1,K,A_3$ yields that
+    \[
+        M=OK\wedge A_1A_2,\quad
+        L=OA_3\wedge A_1B_2,\quad
+        C_1=A_2A_3\wedge KB_2
+    \]
+    are collinear.  
+    
+    Next, consider the collinear triples $O,A_1,B_1$ and $B_2,B_3,K$. By Pappus’ Theorem,
+    \[
+        L=OB_3\wedge A_1B_2,\quad
+        N=OK\wedge B_1B_2,\quad
+        C_2=A_1K\wedge B_1B_3
+    \]
+    are collinear.  
+    
+    Finally, applying Pappus’ Theorem to $A_1,B_2,L$ and $N,M,K$, we obtain that
+    \[
+        C_3=A_1M\wedge B_2N,\quad
+        C_2=A_1K\wedge LN,\quad
+        C_1=B_2K\wedge ML
+    \]
+    are collinear, which proves Desargues’ Theorem.
+\end{proof}
+
+\begin{cor}\label{cor:pappus-implies-field}
+    If Pappus' theorem holds in a projective plane, every ternary ring coordinatizing it is a field.
+\end{cor}
+
+\begin{proof}
+    By Remark~\ref{rem:desarguess-implies-division-ring},
+    Desargues~$\Rightarrow$~division ring. Hence, the conclusion is a direct consequence of Theorem~\ref{thm:pappus-implies-commutativity} and Theorem~\ref{thm:pappus-implies-desargues}.
+\end{proof}
+
+\section{The Fano Property}

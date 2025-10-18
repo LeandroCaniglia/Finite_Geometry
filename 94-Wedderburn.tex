@@ -1,0 +1,65 @@
+\chapter{Wedderburn's Little Theorem}
+
+\section{Preliminaries}
+
+Let $R$ be a finite division ring and
+\[
+    Z=\set{z\in R\mid z\comm x\text{ for all }x\in R}
+\]
+its \textsl{center}. Since $Z$ is a finite field and $R$ a $Z$-vector space, it follows that $|R|=q^n$ for $q=|Z|$ and some $n\in\N$. The aim of this appendix is to show that $n=1$, i.e., that $R$ is a field.
+
+Given $\omega\in R$, let $C(\omega)=\set{x\in R\mid x\comm\omega}$ be the \textsl{center of $\omega$}. Clearly $C(\omega)$ is a subring of $R$ and a $Z$-vector space. In particular $|C(\omega)|=q^{n(\omega)}$ for some $n(\omega)\in\N$.
+
+Since $C(\omega)^*$ is a subgroup of $R^*$, we deduce that $q^{n(\omega)}-1\mid q^n-1$. Therefore, (see \citep[Cyclotomic Polynomials]{LC-Galois})
+
+\textbf{Fact 1.} $n(\omega)\mid n$.
+
+For $x\in R^*$, let $\omega^x=x\omega x^{-1}$ be the conjugate of $\omega$ with respect to $x$. The \textsl{conjugacy class} of $\omega$ is
+\[
+    [\omega] = \set{\omega^x\mid x\in R^*}.
+\]
+As shown in \citep[The Fundamental Counting Principle]{LC-Groups}, we have the following
+
+\textbf{Fact 2.} $|[\omega]|=(q^n-1)/(q^{n(\omega)}-1)$.
+
+Let $\Omega$ denote the set of all conjugacy classes and $\Omega^*=\set{[\omega]\in\Omega\mid \omega\notin Z}$. Since the union of all conjugacy classes is $R^*$, we deduce
+\[
+    |R^*| = |Z^*| + \sum_{[\omega]\in\Omega^*}|[\omega]|.
+\]
+Using Fact~2 and taking into account that $\omega\in Z$ if, and only if, $n(\omega)=1$, we obtain
+
+\begin{lem}\label{lem:q-equation} With the preceding notation,
+    \[
+        q^n-1 = q-1 + \sum_{[\omega]\in\Omega^*}\frac{q^n-1}{q^{n(\omega)}-1}.
+    \]
+\end{lem}
+
+\section{Wedderburn's Theorem}
+
+\begin{thm}\label{thm:wedderburn}{\upshape[Wedderburn, 1905]}
+    Every finite division ring is a field.
+\end{thm}
+
+\begin{proof}
+    Let $\Phi_n(x)$ be the $n$th cyclotomic polynomial \citep{LC-Galois}. It is well known that $\Phi_n(x)$ is monic and has integer coefficients, i.e., $\Phi_n(x)\in\Z[x]$, and that it satisfies
+    \[
+        (x^d-1)\Phi_n(x)\mid x^n-1,
+    \]
+    whenever $d\mid n$ and $d<n$. Evaluating at $q$, we deduce
+    \[
+        (q^d-1)\Phi_n(q)\mid q^n-1,
+    \]
+    with $\Phi_n(q)\in\Z$. It follows from Lemma~\ref{lem:q-equation}, that $\Phi_n(q)\mid q-1$.
+
+    Now, $\Phi_n(q)$ is the product of linear factors of the form $q-\omega$, where $\omega$ is in the set $U^*_n$ of all primitive $n$th roots of unity. In particular, by the triangle inequality,
+    \[
+        q = |q-\omega+\omega|\le |q-\omega|+|\omega| = |q-\omega|+1.
+    \]
+    Consequently,
+    \[
+        |\Phi_n(q)| = \prod_{\omega\in U^*_n}|q-\omega|\ge (q-1),
+    \]
+    with equality attained only if all $\omega=1$, that is, only if $U_n^*=\set1$. Hence $n=1$, as desired.
+    %
+    
+\end{proof}
