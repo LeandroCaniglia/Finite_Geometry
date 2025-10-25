@@ -53,7 +53,7 @@
         \begin{align*}
             \phi[\vect x]=[A\vect x],
         \end{align*}
-        which is well-defined because $A$ is nonsingular and respects the equivalence relation of homogeneous coordinates.
+        which is well defined because $A$ is nonsingular and respects the equivalence relation of homogeneous coordinates.
         
         The corresponding map on the lines of $\PG(2,\kappa)$ is given by
         \[
@@ -361,7 +361,7 @@
     
 \end{proof}
 
-\begin{ntn}
+\begin{ntn}\label{ntn:orbits-etc}
     Let\/ $X$ be a finite set. The set of bijections of\/ $X$ is denoted by\/ $\Sym(X)$.
     
     If\/ $G$ is a subgroup of\/ $\Sym(X)$, given\/ $x\in X$, its \textsl{orbit} is\/ $\mathcal O_x=\set{g(x)\mid g\in G}$, and\/ $G_x=\set{g\in G\mid g(x)=x}$ its \textsl{stabilizer}.
@@ -455,6 +455,7 @@
 
 \begin{proof}
     This is a direct consequence of Corollary~\ref{cor:point-and-line-orbits}.
+    
 \end{proof}
 
 \section{Singer Groups and Cyclic Planes}
@@ -463,7 +464,7 @@
     Let\/ $G$ be a finite group of order\/ $v$, written additively. A subset\/ $D\subseteq G$ with\/ $k$ elements is called a\/ \textsl{$(v,k,\lambda)$-difference set} if every nonzero element of\/ $G$ can be expressed as a difference\/ $d_1 - d_2$ of two distinct elements in\/~$D$ in exactly\/~$\lambda$ ways. A difference set is called \textsl{perfect} when\/ $\lambda = 1$.
 \end{defn}
 
-%\needspace{2\baselineskip}
+\needspace{2\baselineskip}
 \begin{xmpls}\label{xmpls:difference-sets}${}$
     \begin{enumerate}[a)]
         \item {[Fano's difference set]} Consider the Fano plane [cf.~Example~\ref{xmpl:Fano}], the projective plane of order $2$, which also can be visualized as
@@ -695,7 +696,7 @@
 \end{lem}
 
 \begin{proof}
-    Let $\block b$ be a line passing through $F$. Then $A=\block a\wedge\block b$ is well-defined and belongs to $\Fix\phi$. Since $\block b=AF$, we deduce that $\block b$ is in $\Fix\phi$ too.
+    Let $\block b$ be a line passing through $F$. Then $A=\block a\wedge\block b$ is well defined and belongs to $\Fix\phi$. Since $\block b=AF$, we deduce that $\block b$ is in $\Fix\phi$ too.
 \end{proof}
 
 \begin{lem}\label{lem:P-and-phi(P)}
@@ -791,6 +792,7 @@
     Moreover, if\/ $\alpha$ is a \textsl{$(C,\block a)$-perspectivity}, then so is\/ $\alpha^{-1}$.
 \end{rem}
 
+\needspace{2\baselineskip}
 \begin{ntn}
     Let\/ $C$ be a point and\/ $\block a$ a line of a projective plane\/~$\Pi$. Then
     \begin{enumerate}[a),font=\upshape]
@@ -898,7 +900,7 @@
     $$
         \id = (\beta\gamma)^p = \beta^p\gamma^p=\beta^p.
     $$
-    Since $B$ is another center of $\beta^p$, we deduce that $\beta^p=\id$. Therefore, the order or $\beta$ is also $p$ in this case.
+    Since $B$ is another center of $\beta^p$, we deduce that $\beta^p=\id$. Therefore, the order of $\beta$ is also $p$ in this case.
 
     To see that\/ $p\mid n$, consider a line\/ $\block b$, distinct from\/ $\block a$, that passes through\/ $C$. Let\/ $X$ be a point on\/ $\block b$, with\/ $X\ne C$. Suppose\/ $\alpha^i(X)=\alpha^j(X)$ for some\/ $j>i$. Then, by Proposition~\ref{lem:fixed-not-axis-is-center},\/ $X$ is a center of\/ $\alpha^{j-i}$. Since\/ $C$ is also a center of\/ $\alpha^{j-i}$, it follows that\/ $p\mid j-i$. Therefore, the action of the cyclic group\/ $\grp\alpha$ on the set\/ $\tr(\block b)\setminus\set C$ has the property that all orbits have size\/ $p$, and thus\/ $p$ divides the cardinality of this set, which is\/ $n$.
     

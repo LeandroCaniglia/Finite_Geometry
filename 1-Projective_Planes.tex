@@ -506,7 +506,7 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
 \end{defn}
 
 \begin{rem}
-    Theorem~\ref{thm:order-is-well-defined} shows that the notion of order is well-defined. In addition, the order of $\Pi$ equals the order of $\Pi^*$.
+    Theorem~\ref{thm:order-is-well-defined} shows that the notion of order is well defined. In addition, the order of $\Pi$ equals the order of $\Pi^*$.
 
     According to \PP3 (and \PP4) the order is always at least $2$. The Fano plane has order $2$.
 \end{rem}
@@ -565,6 +565,8 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
 \begin{rem}\label{rem:order-of-galois-plane}
     The order of $\PG(2,q)$ is $q$. Indeed, there are $q^2$ points of the form $[1:x:y]$, plus $q$ of the form $[0:1:y]$, plus $[0:0:1]$.
 \end{rem}
+
+\section{Small Projective Planes}
 
 \begin{prop}\label{prop:Fano=PG(2,2)}
     The Fano plane is $\mathrm{PG}(2,2)$.
@@ -662,6 +664,178 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
     \end{align*}
     Without loss of generality we may assume that the labels we have chosen correspond to the subsets of collinear points in $\Pi$.
 \end{proof}
+
+\begin{defn} \label{defn:F-G-configurations}
+    [$F$- and $G$-configurations]
+    Let $\Pi$ be a projective plane. Recall that a \textsl{quad} is a set $Q=\set{A_1,A_2,A_3,A_4}$ of four points in general position. For $i\ne j$ let $\block a_{ij}=A_iA_j$.
+    \[
+        \begin{tikzpicture}[
+            scale=0.6,
+            font=\footnotesize,
+            point/.style={circle, fill=black, inner sep=1.2pt,
+                draw=black},
+                line/.style={thin}
+            ]
+            % Quad
+            \coordinate (A1) at (0.5,-0.1);
+            \coordinate (A2) at (2.0,0.5);
+            \coordinate (A3) at (3.0,2.3);
+            \coordinate (A4) at (-1.5,3.4);
+
+            \node[point,
+                label={[xshift=-3mm,yshift=-2mm]: $A_1$}
+            ] at (A1) {};
+            \node[point,
+                label={[xshift=0.5mm,yshift=-5.5mm]: $A_2$}
+            ] at (A2) {};
+            \node[point,
+                label={[xshift=-2mm,yshift=0mm]: $A_3$}
+            ] at (A3) {};
+            \node[point,
+                label={[xshift=3mm,yshift=-1mm]: $A_4$}
+            ] at (A4) {};
+            
+            % Line a_12 (A1-A2)
+            \draw[line,name path=a12]
+                ($(A1)!-0.21!(A2)$) -- ($(A1)!3.9!(A2)$)
+                node[right] {$\block a_{12}$};
+            
+            % Line a_13 (A1-A3)
+            \draw[name path=a13]
+                ($(A3)!-0.2!(A1)$) -- ($(A3)!3.6!(A1)$) 
+                node[below] {$\block a_{13}$};
+            
+            % Line a_14 (A1-A4)
+            \draw[line,name path=a14]
+                ($(A4)!-0.3!(A1)$) -- ($(A4)!1.7!(A1)$)
+                node[pos=0,
+                    above
+                ] {$\block a_{14}$};
+            
+            % Line a_23 (A2-A3)
+            \draw[line,name path=a23]
+                ($(A3)!-0.4!(A2)$) -- ($(A3)!2.6!(A2)$) 
+                node[pos=0,
+                    above
+                ] {$\block a_{23}$};
+            
+            % Line a_24 (A2-A4)
+            \draw[line,name path=a24]
+                ($(A4)!-0.2!(A2)$) -- ($(A4)!1.5!(A2)$)
+                node[below] {$\block a_{24}$};
+            
+            % Line a_34 (A3-A4)
+            \draw[line,name path=a34]
+                ($(A4)!-0.2!(A3)$) -- ($(A4)!2.1!(A3)$)
+                node[right] {$\block a_{34}$};
+
+            % D1
+            \path[name intersections={of=a12 and a34, by= D1}];
+            \node[point,
+                label={above:$D_1$}
+            ] at (D1) {};
+
+            % D2
+            \path[name intersections={of=a24 and a13, by= D2}];
+            \node[point,
+                label={[xshift=-4mm,yshift=-1.8mm]: $D_2$}
+            ] at (D2) {};
+
+            % D3
+            \path[name intersections={of=a14 and a23, by= D3}];
+            \node[point,label={left:$D_3$}] at (D3) {};
+
+            % Diagonal lines
+            \draw[dashed,gray,name path=D1D2]
+                (D1) -- ($(D1)!1.4!(D2)$);
+            \path[name path=D1D3]
+                (D1) -- ($(D1)!2.8!(D3)$);
+            \path[name intersections={of=D1D3 and a13,by=6}];
+            \draw[dashed,gray] (D1) -- (6);
+            \draw[dashed,gray,name path=D2D3]
+                (D3) -- ($(D3)!2.0!(D2)$);
+
+            % Additional points 1 & 2
+            \path[name intersections={of=D1D2 and a14,by=1}];
+            \node[point,
+                fill=white,
+                label={[xshift=-2.4mm,yshift=-1.5mm]: $1$}
+            ] at (1) {};
+            \path[name intersections={of=D1D2 and a23,by=2}];
+            \node[point,
+                fill=white,
+                label={[xshift=2.5mm,yshift=-0.8mm]: $2$}
+            ] at (2) {};
+
+            % Additional points 3 & 4
+            \path[name intersections={of=D2D3 and a12,by=3}];
+            \node[point,
+                fill=white,
+                label={[xshift=-1.6mm,yshift=-5mm]: $3$}
+            ] at (3) {};
+            \path[name intersections={of=D2D3 and a34,by=4}];
+            \node[point,
+                fill=white,
+                label={[xshift=-1.5mm,yshift=-0.5mm]: $4$}
+            ] at (4) {};
+
+            % Additional points 5 & 6
+            \path[name intersections={of=D1D3 and a13,by=5}];
+            \node[point,
+                fill=white,
+                label={[xshift=-0.5mm,yshift=-0.5mm]: $5$}
+            ] at (5) {};
+            \path[name intersections={of=D1D3 and a24,by=6}];
+            \node[point,
+                fill=white,
+                label={[xshift=0mm,yshift=-5mm]: $6$}
+            ] at (6) {};
+        \end{tikzpicture}
+    \]
+    The \textsl{diagonal points} of $Q$ are the intersections
+    \begin{align*}
+            D_1 &= \block a_{13}\wedge\block a_{24},
+            &D_2 &= \block a_{12}\wedge\block a_{34},
+            &D_3 &= \block a_{14}\wedge\block a_{23}.
+    \end{align*}
+    If the diagonal points are collinear we say that the configuration has the \textsl{$Fano$ property} (\textsl{$F$-property} for short). Otherwise, we say that it has the \textsl{$G$-property}. We will also refer to these as $F$- and $G$-configurations.
+
+    In an $F$-configuration the line containing the diagonal points is called the \textsl{diagonal line} of the quad. The plane $\Pi$ is said to have the \textsl{Fano property} if every quad of $\Pi$ has the $F$-property.
+    
+    In a\/ $G$-configuration, the diagonal points determine three lines whose intersections with the remaining lines yield six new points
+    \begin{align*}
+        1 &= D_1D_2\wedge\block a_{14},
+        &3 &= D_2D_3\wedge\block a_{12},
+        &5 &= D_1D_3\wedge\block a_{13},\\
+        2 &= D_1D_3\wedge\block a_{23},
+        &4 &= D_2D_3\wedge\block a_{34},
+        &6 &= D_1D_3\wedge\block a_{24}.
+    \end{align*}
+\end{defn}
+
+\begin{rem}\label{rem:F-G-configurations}
+    The definition has two immediate consequences:  
+    \begin{enumerate}[a),font=\upshape]
+        \item An $F$-configuration has $7$ lines and $7$ points. A $G$-configuration has $9$ lines and $13$ points.
+        \item Every projective plane contains at least one configuration of type $F$ or $G$, or possibly both.  
+        \item Any two configurations of the same type, either $F$ or $G$, are isomorphic.  
+    \end{enumerate}  
+    \paragraph{Order $2$.} In particular, a projective plane of order $2$ must itself be an $F$-configuration, and therefore is isomorphic to every other projective plane of the same order. This provides an alternative proof of Proposition~\ref{prop:Fano=PG(2,2)}.
+
+    \paragraph{Order $3$.} A projective plane of order $3$ cannot contain an $F$-configuration. The reason is that each of its seven lines would contribute a fourth point, and these points would be distinct from one another since the intersections of those lines already belong to the $F$-configuration. Consequently, we would obtain $7+7=14$ distinct points, which is impossible in a plane of order $3$. It follows that the plane includes a $G$-configuration. And since such a configuration has $13$ points, which equals the number of points in the plane. Hence, the plane equals the $G$-configuration. This provides an alternative proof of Theorem~\ref{thm:orde-3=PG(2,3)}.
+
+    \paragraph{Order $4$.} A projective plane of order $4$ cannot contain a $G$-configuration. To see this, suppose otherwise. The configuration has $9$ lines and $13$ points. If we count the fifth point on each of these lines, they are all distinct and we would have $13+9=22$ distinct points in a plane with $21$ points, which is impossible. Therefore, the plane has the Fano property.
+
+    \paragraph{Order $5$.} In this case the plane has $31$ points. Suppose there exists an $F$-configuration. Then each of its $7$ lines contains $3$ further points, contributing $21$ new points for a total of $28$. Hence, there remain $3$ points, say $P,Q,R$, not incident with any of the $7$ lines of the configuration. Consider now the lines
+    \[
+        \set{PA_i\mid 1\le i\le4} \cup \set{PD_j\mid 1\le j\le3}.
+    \]
+    This is impossible, since these $7$ lines are distinct yet belong to the pencil $\pl(P)$, which contains only $6$ lines. Therefore, every quad in the plane must have the $G$-property.
+
+    For further consequences of these concepts see \citep{Stanton1996}.
+\end{rem}
+
+\section{Desargues and Pappus Configurations}
 
 \begin{thm}\label{thm:desargues} {\upshape[Desargues (1639)]}
     In the projective plane $\PG(2,\kappa)$ let\/ $A_1$, $A_2$, $A_3$ and\/ $B_1$, $B_2$, $B_3$ be vertices of two triangles in such a position that the lines\/ $A_iB_i$ for $1\le i\le 3$ pass through a point\/ $O$. Denote\/ $C_k=A_iA_j\wedge B_iB_j$, where\/ $\set{i,j,k}= \set{1,2,3}$. Then the points\/ $C_1$, $C_2$, $C_3$ are collinear.
@@ -761,6 +935,7 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
     
     This relation cannot be trivial. Otherwise, $A_1=A_2=A_3$. Thus, $\vect c_1$, $\vect c_2$ and $\vect c_3$ are in the plane defined by $(\gamma_1:\gamma_2:\gamma_3)$, meaning that $C_1$, $C_2$ and $C_3$ are aligned.
 \end{proof}
+
 
 \begin{thm}\label{thm:ostrom}{\upshape\citep{Ostrom1957Trans}}
     In a finite projective plane, let\/ $\block a_1, \block a_2$ and\/ $\block a_3$ be three distinct\/ lines through a point\/ $O$. Let\/ $P$ and\/ $Q$ be any two points not on\/ $\block a_1$, $\block a_2$ or\/ $\block a_3$. Consider\/ the set of triangles with one vertex each on\/ $\block a_1$, $\block a_2$, and\/ $\block a_3$, one side passing through\/ $P$ and the other side going through\/ $Q$. At least one pair of triangles of this set satisfies Desargues's Theorem.
@@ -1060,6 +1235,8 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 \end{proof}
 \fi
 
+\section{Subplanes}
+
 \begin{defn}
     The projective plane $\Pi'=\igeo[']$ is a \textsl{projective subplane} (a \textsl{subplane} for short) of the projective plane $\Pi$, if it is an incidence subplane of~$\Pi$.
 \end{defn}
@@ -1107,7 +1284,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
         \quad
         \block x \longmapsto \block x \wedge \ell,
     \]
-    where $\blocks_s$ denotes the set of lines of $\Pi_s$ and $\tr(\ell)$ the set of points on $\ell$ [cf.~Notation~\ref{ntn:pts-bks}]. This map is well-defined and injective, since if two distinct lines $\block a,\block b \in \Pi_s$ intersected $\ell$ at the same point, then their intersection point $\block a\wedge\block b$ would lie on $\ell$ and thus belong to both $\Pi_s$ and $\ell$, contradicting the assumption that $\ell$ is disjoint from $\Pi_s$.
+    where $\blocks_s$ denotes the set of lines of $\Pi_s$ and $\tr(\ell)$ the set of points on $\ell$ [cf.~Notation~\ref{ntn:pts-bks}]. This map is well defined and injective, since if two distinct lines $\block a,\block b \in \Pi_s$ intersected $\ell$ at the same point, then their intersection point $\block a\wedge\block b$ would lie on $\ell$ and thus belong to both $\Pi_s$ and $\ell$, contradicting the assumption that $\ell$ is disjoint from $\Pi_s$.
 
     As a consequence, the number of lines in $\Pi_s$ must be less than or equal to the number of points on $\ell$, that is,
     \[
@@ -2012,7 +2189,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
             &\to\nset[0]{n-1}\setminus\set{b-1}\\
         m&\mapsto \ev{A_m}(a,b)
     \end{align}
-    is well-defined because $a\ne x$ and so $\ev{A_m}(a,b)\ne\ev{A_m}(x,b)=b-1$.
+    is well defined because $a\ne x$ and so $\ev{A_m}(a,b)\ne\ev{A_m}(x,b)=b-1$.
     
     The same reasoning used to deduce the injectivity of \eqref{map:eval-21} shows that~$\ev{}$ is injective: if $e$ is the common value of $\ev{A_r}(a,b)$ and $\ev{A_s}(a,b)$ then $(e,e)$ would be repeated twice in the set of pairs $(\ev{A_r}(i,j),\ev{A_s}(i,j))$, the second being for $(i,j)=(x,e+1)$. In consequence, $\ev{}$ is a bijection and so there is exactly one value of $m$ such that $b^m_{xy}=b^m_{ab}$, as desired.
     
@@ -2158,7 +2335,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
         \lambda\colon\nset n\times\nset n &\to \pts_\Lambda\\
         (i,j) &\mapsto \block h_i\wedge\block v_j
     \end{align*}
-    is well-defined because\/ $\block h_i\wedge\block v_j\nincidence\ell$. We claim that $\lambda$ is injective. Suppose, towards a contradiction, that\/ $\block h_i\wedge\block v_j=\block h_{i'}\wedge\block v_{j'}$, and let\/ $A$ denote the common point. Then\/ $A\incidence\block h_i,\block h_{i'}$, which forces\/ $A=X$ unless\/ $i=i'$. But\/ $A\ne X$ by construction, hence\/ $i=i'$. Similarly, $j=j'$, and injectivity is established. By cardinality,~$\lambda$ is a bijection.
+    is well defined because\/ $\block h_i\wedge\block v_j\nincidence\ell$. We claim that $\lambda$ is injective. Suppose, towards a contradiction, that\/ $\block h_i\wedge\block v_j=\block h_{i'}\wedge\block v_{j'}$, and let\/ $A$ denote the common point. Then\/ $A\incidence\block h_i,\block h_{i'}$, which forces\/ $A=X$ unless\/ $i=i'$. But\/ $A\ne X$ by construction, hence\/ $i=i'$. Similarly, $j=j'$, and injectivity is established. By cardinality,~$\lambda$ is a bijection.
     
     Fix an enumeration
     $$
@@ -2929,7 +3106,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
             f\colon\Fq[2^2]\times\Fq[2^2]&\to\pts\setminus\tr(\ell)\\
             (a,b)&\mapsto\block x_a\wedge\block y_b
         \end{align*}
-        which is well-defined because these two pencils don't intersect at $\tr(\ell)$.
+        which is well defined because these two pencils don't intersect at $\tr(\ell)$.
         
         Since $|\dom(f)|=16=|\pts\setminus\tr(\ell)|$, to see that $f$ is a bijection, it suffices to show that it is injective. Suppose that $\block x_a \wedge \block y_b = \block x_{a'} \wedge \block y_{b'}$, and let~$C$ denote this point. Then $C \in \tr(\block x_a)\cap\tr(\block x_{a'})$, which forces $a = a'$, since otherwise $\block x_a \parallel \block x_{a'}$. A similar argument shows that $b=b'$.
         
@@ -2940,7 +3117,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
                 (\block x_1\wedge\block y_{a+b})\\
             x=c&\mapsto\block x_c,
         \end{align*}
-        which is well-defined since the injectivity of $f$ implies
+        which is well defined since the injectivity of $f$ implies
         $$
             \block x_0\wedge\block y_b=f(0,b)
                 \ne f(1,a+b)=\block x_1\wedge\block y_{a+b}.
@@ -3047,86 +3224,26 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
         \needspace{3\baselineskip}
         Below we include another solution that follows a different approach.
         
-        \textbf{Construction.} \citep{cuypers} Let $\Pi$ be a projective plane of order $4$. Take four points $\set{A_1,A_2,A_3,A_4}$ in general position. Consider the lines $\block a_{ij}=A_iA_j$, for $1\le i<j\le4$.
-        $$
-            \begin{tikzpicture}[
-                scale=0.6,
-                font=\small, % Sets default font to \small for nodes and labels
-                point/.style={circle, fill=black, inner sep=1.2pt, draw=black},
-                line/.style={thin}
-                ]
-                
-                % Define coordinates for the 4 points in general position
-                % (Chosen to form a convex quadrangle for clarity)
-                \coordinate (coord_A1) at (0,0);
-                \coordinate (coord_A2) at (3.5,0.5);
-                \coordinate (coord_A3) at (4.5,2.7);
-                \coordinate (coord_A4) at (0.5,3.2);
-                
-                % Draw and label the points
-                % Node names are A1, A2, A3, A4 for easy reference
-                \node[point, label={below right:$A_1$}]  (A1) at (coord_A1) {};
-                \node[point, label={[xshift=2pt]below:$A_2$}] (A2) at (coord_A2) {};
-                \node[point, label={above left:$A_3$}] (A3) at (coord_A3) {};
-                \node[point, label={above right:$A_4$}]  (A4) at (coord_A4) {};
-                
-                % Draw the 6 lines a_ij = A_i A_j, extending them slightly
-                % You can replace $a_{ij}$ with $\block{a}_{ij}$ if your \block command is defined
-                % The 'auto' option tries to place the label conveniently, 'sloped' aligns it with the line.
-                % 'swap' can be used with 'auto' to flip the label to the other side if needed.
-                
-                % Line a_12 (A1-A2)
-                \draw[line,name path=a12] ($(A1)!-1cm!(A2)$) -- ($(A2)!-1cm!(A1)$) node[midway, auto, sloped, below] {$\block a_{12}$};
-                
-                % Line a_13 (A1-A3)
-                \draw[line,name path=a13] ($(A1)!-0.8cm!(A3)$) -- ($(A3)!-0.8cm!(A1)$) node[right, auto, sloped] {$\block a_{13}$};
-                
-                % Line a_14 (A1-A4)
-                \draw[line,name path=a14] ($(A1)!-0.8cm!(A4)$) -- ($(A4)!-0.8cm!(A1)$) node[midway, auto, sloped] {$\block a_{14}$};
-                
-                % Line a_23 (A2-A3)
-                \draw[line,name path=a23] ($(A2)!-0.8cm!(A3)$) -- ($(A3)!-0.8cm!(A2)$) node[midway, auto, sloped, swap] {$\block a_{23}$};
-                
-                % Line a_24 (A2-A4)
-                \draw[line,name path=a24] ($(A2)!-1cm!(A4)$) -- ($(A4)!-1cm!(A2)$) node[left, auto, sloped] {$\block a_{24}$};
-                
-                % Line a_34 (A3-A4)
-                \draw[line,name path=a34] ($(A3)!-1cm!(A4)$) -- ($(A4)!-1cm!(A3)$) node[midway, auto, sloped, above] {$\block a_{34}$};
-
-                % D1
-                \path[name intersections={of=a24 and a13, by= D1}];
-                \node[point, label={below:$\block D_1$}] at (D1) {};
-            \end{tikzpicture}
-        $$
-        Introduce the \textsl{diagonal} points (of which only $D_1$ is shown in the picture)
-        {\small\begin{align*}
-            D_1 &= \block a_{13}\wedge\block a_{24},
-            &D_2 &= \block a_{12}\wedge\block a_{34},
-            &D_3 &= \block a_{14}\wedge\block a_{23}.
-        \end{align*}}
-
-        \vspace{-0.3\baselineskip}
-        \needspace{2\baselineskip}
-        \textbf{Claim 1.} \textit{The three diagonal points are aligned.}
-        \begin{quote}
-            Suppose, for the sake of contradiction, that $D_3$ is not incident with $\ell=D_1D_2$. Take $X\in\ell\setminus\set{D_1,D_2}$. Then $X\notin\block a_{13}\cup\block a_{24}$. Therefore, from the six lines under consideration, $X$ could only be in $\block a_{14}$ or $\block a_{23}$, not in both. Since there are $5=4+1$ points in $\ell$, there are three possibilities for $X$. Hence, one of them is not incident with any of the six lines.
-
-            A similar argument applied to $D_1D_3$ and $D_2D_3$ shows that there are, at least, two other points in addition to the ones in the six lines, one in $D_1D_3$ and the other in $D_2D_3$. Since there are $6\times 2=12$ unnamed points in the six lines of the quadrilateral, and the named ones are $7$, we would have $12+7+3=22$ distinct points in $\Pi$, which is impossible. The claim is now clear.
-        \end{quote}
+        \textbf{Construction.} \citep{cuypers} Let $\Pi$ be a projective plane of order $4$. Take four points $\set{A_1,A_2,A_3,A_4}$ in general position. By Remark~\ref{rem:F-G-configurations}, these points form an $F$-configuration. Let $D_1$, $D_2$ and $D_3$ be the diagonal points of the configuration. We have
         
-        Let $\block d$ be the line through $D_1$, $D_2$ and $D_3$ and let $A_5$ and $A_6$ be such that $\block d=\set{D_1,D_2,D_3,A_5,A_6}$.
+        \textbf{Fact 1.} \textit{The three diagonal points are aligned.}
+        
+        Let $\block d$ be the diagonal line and let $A_5$ and $A_6$ be such that
+        \[
+            \block d=\set{D_1,D_2,D_3,A_5,A_6}.
+        \]
 
-        \textbf{Claim 2.} \textit{The points of\/ $\mathcal O=\set{A_1,\dots,A_6}$ are in general position.}
+        \textbf{Claim 2.} \textit{The points of\/ $\pl(\block d)=\set{A_1,\dots,A_6}$ are in general position.}
 
         \begin{quote}
             By construction, $A_1, \dots, A_4$ are in general position. Moreover, if any two of these points—say, $A_1$ and $A_2$—were collinear with either $A_5$ or $A_6$, then $\block d$ would coincide with $\block a_{12}$, which is not the case. Similarly, if $A_5$ and $A_6$ were collinear with, say $A_1$, then $A_1$ would lie on $\block d$, which is also impossible.
         \end{quote}
 
         \needspace{2\baselineskip}
-        \textbf{Claim 3.} \textit{Each line in\/ $\Pi$ meets $\mathcal O$ in\/ $0$ or\/ $2$ points.}
+        \textbf{Claim 3.} \textit{Each line in\/ $\Pi$ meets $\pl(\block d)$ in\/ $0$ or\/ $2$ points.}
 
         \begin{quote}
-            By Claim~1 it is enough to see that no line intersects $\mathcal O$ in exactly $1$ point (i.e., $\mathcal O$ has no tangents). Suppose otherwise. Let $\block t$ be a tangent to $\mathcal O$ at $A_i$. There are two cases: (a)~$i\in\set{1,2,3,4}$, or (b)~$i\in\set{5,6}$.
+            By Fact~1 it is enough to see that no line intersects $\pl(\block d)$ in exactly $1$ point (i.e., $\pl(\block d)$ has no tangents). Suppose otherwise. Let $\block t$ be a tangent to $\pl(\block d)$ at $A_i$. There are two cases: (a)~$i\in\set{1,2,3,4}$, or (b)~$i\in\set{5,6}$.
             
             In (a) we may assume, without loss of generality, that $A_1\in\block t$. If $\block t\wedge\block d\in\set{D_1,D_2,D_3}$, then $\block t=A_1D_j$, which is incident with another $D_k$. Hence $\block t=\block d$, which contains $A_5$ and $A_6$. Thus, $\block t\wedge\block d\notin\set{D_1,D_2,D_3}$, which implies that  $\block t$ is incident with $A_5$ or $A_6$, which is a contradiction because $A_1\in\block t$.
 
@@ -3135,20 +3252,20 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 
         \textbf{Note.} A set of $6$ points that satisfies Claims~2 and~3 is called a \textsl{hyperoval}.
 
-        \textbf{Claim 4.} \textit{$\mathcal O$ is the only hyperoval including\/ $\set{A_1,A_2,A_3,A_4}$.}
+        \textbf{Claim 4.} \textit{$\pl(\block d)$ is the only hyperoval including\/ $\set{A_1,A_2,A_3,A_4}$.}
 
         \begin{quote}
-            Suppose that $\mathcal Q=\set{A_1,A_2,A_3,A_4,B_5,B_6}$ satisfies Claims~2 and~3. 
+            Suppose that $\mathcal O=\set{A_1,A_2,A_3,A_4,B_5,B_6}$ satisfies Claims~2 and~3 stated for $\pl(\block d)$.
 
-            So far, we have established that there are $6\times 2$ unnamed points, plus $7+2$ already named. This gives the total of $21$ points in~$\Pi$, which locks the possibilities for $B_5$ and $B_6$. Firstly observe that $B_i$ cannot be one of the $12$ named points because that would mean that $\mathcal Q$ is not in general position. Since $B_i\notin\set{A_1,\dots,A_4}$, there are two options: (a)~$B_i\in\set{D_1,D_2,D_3}$, or (b)~$B_i\in\set{A_5,A_6}$. We can discard (a) because, in that case, $B_i$ would be collinear with two points of $\set{A_1,\dots,A_4}$. As a result, $B_i\in\set{A_5,A_6}$, as claimed.
+            So far, we have established that there are $6\times 2$ unnamed points, plus $7+2$ already named. This gives the total of $21$ points in~$\Pi$, which locks the possibilities for $B_5$ and $B_6$. Firstly observe that $B_i$ cannot be one of the $12$ named points because that would mean that $\mathcal O$ is not in general position. Since $B_i\notin\set{A_1,\dots,A_4}$, there are two options: (a)~$B_i\in\set{D_1,D_2,D_3}$, or (b)~$B_i\in\set{A_5,A_6}$. We can discard (a) because, in that case, $B_i$ would be collinear with two points of $\set{A_1,\dots,A_4}$. As a result, $B_i\in\set{A_5,A_6}$, as claimed.
         \end{quote}
-        There are\/ $21 - 6 = 15$\/ points in\/ $\Pi$ external to~$\mathcal O$. Let\/ $R$ be one of them. From the pencil of\/ $5$\/ lines through\/ $R$, exactly\/ $3$\/ intersect\/ $\mathcal O$, since any such line must be secant—i.e., it intersects\/ $\mathcal O$\/ in two points. These three secant lines determine a partition of $\mathcal O$ into $3$ sets of $2$ points each. The total number of partitions into $3$ sets of $2$ points is
+        There are\/ $21 - 6 = 15$\/ points in\/ $\Pi$ external to~$\pl(\block d)$. Let\/ $R$ be one of them. From the pencil of\/ $5$\/ lines through\/ $R$, exactly\/ $3$\/ intersect\/ $\pl(\block d)$, since any such line must be secant—i.e., it intersects\/ $\pl(\block d)$\/ in two points. These three secant lines determine a partition of $\pl(\block d)$ into $3$ sets of $2$ points each. The total number of partitions into $3$ sets of $2$ points is
         \begin{equation}\label{eq:15-patitions}
             \#\mathrm{partitions}=\frac{\binom62\binom42\binom22}{3!}
                 = \frac{(3\cdot5)(6)(1)}{6}
                 = 15.
         \end{equation}
-        Therefore, there is a bijective correspondence between the points external to $\mathcal O$ and said partitions.
+        Therefore, there is a bijective correspondence between the points external to $\pl(\block d)$ and said partitions.
 
         Each of these partitions can be visualized as a set of~$3$ disjoint edges in the complete graph $K_6$ of six nodes, as illustrated in the example below
         $$
@@ -3412,21 +3529,21 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
             where $\rho_1(i)=i\oplus_61$ and $\rho_2(i)=i\oplus_62$ are the rotations. As can be easily verified, no other cyclic isomorphism $\rho_t$ identifies the remaining $6$ factorizations. The claim follows.
         \end{quote}
 
-        Let $\mathcal Q$ be the set of points in $\Pi$ external to $\mathcal O$. To each $R\in\mathcal Q$, we can associate the following map
+        Let $\mathcal O$ be the set of points in $\Pi$ external to $\pl(\block d)$. To each $R\in\mathcal O$, we can associate the following map
         \begin{align*}
-            f_R\colon\mathcal O&\to\mathcal O\\
-            A_i&\mapsto RA_i\cap(\mathcal O\setminus\{A_i\})
+            f_R\colon\pl(\block d)&\to\pl(\block d)\\
+            A_i&\mapsto RA_i\cap(\pl(\block d)\setminus\{A_i\})
         \end{align*}
-        that assigns the second point of intersection between $RA_i$ and $\mathcal O$. By Claim~3, $f_R$ ---think of it as a set--- can be identified with a (unique) $1$-factor of $K_6$, namely $\set{\{A_i,f_R(A_i)\}\mid 1\le i\le 6}$.\footnote{Incidentally, $f_R\circ f_R=\id_{\mathcal O}$.}
+        that assigns the second point of intersection between $RA_i$ and $\pl(\block d)$. By Claim~3, $f_R$ ---think of it as a set--- can be identified with a (unique) $1$-factor of $K_6$, namely $\set{\{A_i,f_R(A_i)\}\mid 1\le i\le 6}$.\footnote{Incidentally, $f_R\circ f_R=\id_{\pl(\block d)}$.}
 
         Let $\Phi$ be the set of $1$-factors of $K_6$. The map
         \begin{align}\label{function:f}
-            f\colon\mathcal Q&\to\Phi\\
+            f\colon\mathcal O&\to\Phi\\
             R&\mapsto f_R
         \end{align}
-        is injective because any pair of secants in $f_R$ intersect at $R$. It is also surjective because, according to \eqref{eq:15-patitions}, $|\Phi|=15$ and $|\mathcal Q|=21-|\mathcal O|=15$.
+        is injective because any pair of secants in $f_R$ intersect at $R$. It is also surjective because, according to \eqref{eq:15-patitions}, $|\Phi|=15$ and $|\mathcal O|=21-|\pl(\block d)|=15$.
 
-        Let $\mathcal M$ be the set of lines missing $\mathcal O$. If a line meets $\mathcal O$, it does at exactly $2$ points. Therefore, there are $\binom62=15$ of them. In consequence, there are $21-15=6$ lines missing $\mathcal O$, i.e., $|\mathcal M|=6$.
+        Let $\mathcal M$ be the set of lines missing $\pl(\block d)$. If a line meets $\pl(\block d)$, it does at exactly $2$ points. Therefore, there are $\binom62=15$ of them. In consequence, there are $21-15=6$ lines missing $\pl(\block d)$, i.e., $|\mathcal M|=6$.
         
         Let $\block r\in\mathcal M$. If $R$ and $S$ are two points in $\block r$, then $f_R\cap f_S=\emptyset$. Indeed,
         \begin{align*}
@@ -3445,14 +3562,14 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
         
         The function $f_*$ is injective because the $3$ secants in each $1$-factor intersect at the same point. It is also surjective since, by Claim~7, $|\Theta|=6$ and, as we have seen, $|\mathcal M|=6$.
 
-        For the points of $\mathcal O$ we simply define
+        For the points of $\pl(\block d)$ we simply define
         \begin{align*}
-            g\colon\mathcal O&\to\op N(K_6)\\
+            g\colon\pl(\block d)&\to\op N(K_6)\\
             A_i&\mapsto i,
         \end{align*}
         where $\op N(K_6)$ stands for the nodes of $K_6$ and $i$ for the $i$th node, which is clearly bijective.
 
-        Let $\mathcal H$ be the set of lines meeting $\mathcal O$. If $\op E(K_6)$ denotes the set of edges of $K_6$, we can define
+        Let $\mathcal H$ be the set of lines meeting $\pl(\block d)$. If $\op E(K_6)$ denotes the set of edges of $K_6$, we can define
         \begin{align*}
             g_*\colon\mathcal H&\to\op E(K_6)\\
             A_iA_j &\mapsto \{i,j\},
@@ -3460,7 +3577,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
         Combining all these maps we have a bijection
         \begin{align*}
             f\cup g\times f_*\cup g_*\colon
-                \underbrace{\mathcal Q\cup\mathcal O}_{\pts}
+                \underbrace{\mathcal O\cup\pl(\block d)}_{\pts}
                 \times\underbrace{\mathcal M\cup\mathcal H}_{\blocks}
                 &\to \Phi\cup\op N(K_6)\times\Theta\cup\op E(K_6),
         \end{align*}

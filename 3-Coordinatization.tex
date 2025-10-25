@@ -840,11 +840,11 @@ Coordinates are further extended to lines. Here we will use square brackets to d
 
         For $T(x,1,0)=x$ it suffices to recall that, by definition, $(x,x)\incidence{[1,0]}$.
 
-        \item Let $P$ and $P'$ be points of the plane such that $P\colon(x,y)$ and $P'\colon(x',y')$. Since $x\ne x'$, it follows that $P\ne P'$, so the line $\block a=PP'$ is well-defined. Moreover, $Y\nincidence\block a$, for otherwise we would have $PY=P'Y$, which is impossible because $PY\colon[x]$, $P'Y\colon[x']$, and $[x]\ne[x']$. Then, by~\eqref{eq:line-coordinates}, we have $\block a\colon[m,b]$, and the conclusion follows.
+        \item Let $P$ and $P'$ be points of the plane such that $P\colon(x,y)$ and $P'\colon(x',y')$. Since $x\ne x'$, it follows that $P\ne P'$, so the line $\block a=PP'$ is well defined. Moreover, $Y\nincidence\block a$, for otherwise we would have $PY=P'Y$, which is impossible because $PY\colon[x]$, $P'Y\colon[x']$, and $[x]\ne[x']$. Then, by~\eqref{eq:line-coordinates}, we have $\block a\colon[m,b]$, and the conclusion follows.
 
         \item This is equivalent to part~b) of Lemma~\ref{lem:ternary-full-domain}.
 
-        \item Let $\block a$ and $\block a'$ be two lines such that $\block a\colon[m,b]$ and $\block a'\colon[m',b']$. Since $m\ne m'$, it follows that $\block a\ne\block a'$, so the point $P=\block a\wedge\block a'$ is well-defined. Let $P\colon(x,y)$. Then, $P\incidence\block a$ and $P\incidence\block a'$ translate into $(x,y)\incidence{[m,b]}$ and $(x,y)\incidence{[m',b']}$, as desired. %\qedhere
+        \item Let $\block a$ and $\block a'$ be two lines such that $\block a\colon[m,b]$ and $\block a'\colon[m',b']$. Since $m\ne m'$, it follows that $\block a\ne\block a'$, so the point $P=\block a\wedge\block a'$ is well defined. Let $P\colon(x,y)$. Then, $P\incidence\block a$ and $P\incidence\block a'$ translate into $(x,y)\incidence{[m,b]}$ and $(x,y)\incidence{[m',b']}$, as desired. %\qedhere
 
     \end{enumerate}
 \end{proof}
@@ -1990,7 +1990,7 @@ It is not generally true that the operations of sum and multiplication defined o
     $$
     Given a point $Q\colon(x,y)$ not lying on $PP'$, let $M = PQ \wedge XY$ and set $Q' = MP' \wedge QY$. Then $Q'$ has the form $Q'\colon(x,y')$ for some $y' \in \ter$. Hence, a $(Y,XY)$-elation must map $Q$ to $Q'$, with no alternative.
 
-    Let $d=b'\dotminus b$, which is well-defined because $(\ter,\+)$ is a group. Put $M\colon(m)$. Then, $(a,b),(x,y)\incidence{[m,b]}$ and $(a,b'),(x,y')\incidence{[m,b\+d]}$. Since $(\ter,T)$ is linear, we deduce that $y'=y\+d$. Thus, we can set
+    Let $d=b'\dotminus b$, which is well defined because $(\ter,\+)$ is a group. Put $M\colon(m)$. Then, $(a,b),(x,y)\incidence{[m,b]}$ and $(a,b'),(x,y')\incidence{[m,b\+d]}$. Since $(\ter,T)$ is linear, we deduce that $y'=y\+d$. Thus, we can set
     {\small\begin{align*}
         \alpha_{\pts}\colon\pts&\to\pts
         &\alpha_{\blocks}\colon\blocks&\to\blocks\\
@@ -2985,7 +2985,7 @@ In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, fi
         \item $\Pi$ is\/ $(Y, XY)$-, $(X, XY)$-, $(Y, OY)$- and\/ $(X, OY)$-transitive.
         \item The ternary ring\/ $(\ter,T)$ is a field.
         \item Desargues’ theorem is valid in\/ $\Pi$.
-        \item $\Pi$ is\/ $(A,\block a)$-transitive for every flag $(A,\block a)$.
+        \item $\Pi$ is\/ $(A,\block a)$-transitive for every point-line pair\/ $(A,\block a)$.
         \item Every ternary ring coordinatizing\/ $\Pi$ is a field.
     \end{enumerate}
 \end{thm}
@@ -3346,3 +3346,952 @@ In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, fi
 \end{proof}
 
 \section{The Fano Property}
+
+\begin{thm}\label{thm:elementary-abelian-2-group}
+    Let\/ $\Pi$ be a finite projective plane with the Fano property\>\footnote{See Definition~\ref{defn:F-G-configurations}.}, and let\/ $(\ter,T)$ be a ternary ring coordinatizing\/ $\Pi$. Then the additive group\/ $(\ter,\+)$ is an elementary abelian\/ $2$-group\>\footnote{A finite $p$-group is \textsl{elementary abelian} when it is abelian and every nonidentity element has order $p$ \citep{LC-Groups}.} whose order is a power of\/~$2$.
+\end{thm}
+
+\begin{proof}
+    Let $O,X,Y,E$ be the quad associated with the ternary ring $(\ter,T)$. As usual, let $Z=XY\wedge OE$.
+
+    \textbf{Step 1.} \textit{$a\+a=0$ for all\/ $a\in\ter$.}
+    
+    Fix $a\in\ter^*$. To verify this step consider the points $A=(a,a)$ and $A'=(0,a)$. 
+    
+    Let $D=AY\wedge A'Z$. Since $A'Z=[1,a]$, and $AY=[a]$, we have $D\colon(a,a\+a)$.
+    \[
+        \begin{tikzpicture}[
+            scale=1.1,
+            font=\small,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=green,
+                inner sep=1.2pt},
+                every node/.style={font=\footnotesize},
+            ]
+            \pgfmathsetmacro{\u}{1.7};
+            
+            % Points
+            \coordinate (xstart) at (0.0,0.0);
+            \coordinate (xend) at (2*\u,0.0);
+            \coordinate (ystart) at (0.0,0.0);
+            \coordinate (yend) at (0.0,1.5*\u);
+            \coordinate (E) at (\u*1.7,\u*1.1);
+            \coordinate (A') at (0,\u*0.5);
+            \coordinate (O) at (0.0,0.0);
+            
+            % Axes
+            \draw[name path=xaxis,
+                color=orange,
+                thick
+            ] (xstart) -- (xend)
+                node[right,text=black] {$[0,0]$}
+                node[point,
+                    fill=black,
+                    pos=0.99,
+                    label={[text=black,xshift=0mm,yshift=-6mm]:
+                        $X$}
+                ] (X) {};
+            \draw[name path=yaxis,
+                color=orange,
+                thick
+            ] (ystart) -- (yend)
+                node[above,text=black] {$[0]$}
+                node[point,
+                pos=0.95,
+                fill=black,
+                label={[text=black,left,yshift=-1mm]:
+                    $Y$}
+                ] (Y) {};
+            \node[point,
+                fill=black,
+                label={[xshift=-0.5mm,yshift=0mm]:
+                    $E$}
+            ] at (E) {};
+            \draw[name path=XY] (X) -- (Y);
+            
+            \draw[name path=OE] (O) -- ($(O)!1.1!(E)$)
+                node[right] {$[1,0]$};
+            \path[name intersections={of=XY and OE,by=Z}];
+
+            \draw[name path=A'Z] (A') -- ($(A')!1.4!(Z)$)
+                node[right] {$[1,a]$};
+
+            \draw[name path=A'X] (A') -- (X);
+            \path[name intersections={of=OE and A'X,by=A}];
+            \draw[name path=AY] (Y) -- ($(Y)!1.5!(A)$)
+                node[below] {$[a]$};
+            \path[name intersections={of=AY and xaxis,by=a0}];
+            \path[name intersections={of=A'Z and AY,by=D}];
+
+            \node[point,
+                label={[xshift=1mm,yshift=-0.5mm]: $D$}
+            ] at (D) {};
+            \node[point,
+                label={[xshift=-1mm,yshift=-5.5mm]:$A$}
+            ] at (A) {};
+            \node[point,
+                label={[left]:$A'$}
+            ] at (A') {};
+            \node[point,
+                fill=black,
+                label={[xshift=-2mm,yshift=-5mm]:
+                    $O$}
+            ] at (O) {};
+            \node[point,
+                fill=white,
+                label={[xshift=0.6mm,yshift=0mm]: $Z$}
+            ] at (Z) {};
+        \end{tikzpicture}
+    \]
+    By hypothesis the quad $Q=\set{A',A,Z,Y}$ forms an $F$-configuration. Then $D\colon(a,a\+a)$ is a diagonal point. The other diagonal points are $X$ and $O$. Therefore, $D\colon(a,a\+a)$ lies on the diagonal line $OX$, which implies $a\+a=0$, as claimed.
+
+    \needspace{2\baselineskip}
+    \textbf{Step 2.} \textit{$a\+b=b\+a$ for all\/ $a,b\in\ter$.}
+    
+    Fix $a,b\in\ter^*$. Introduce
+    \[
+        A\colon(a,a),\quad B\colon(b,b),
+        \quad A'=XA\wedge OY\colon(0,a),
+        \text{ and }B'=XB\wedge OY\colon(0,b).
+    \]
+    \[
+        \begin{tikzpicture}[
+            scale=1.1,
+            font=\small,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=green,
+                inner sep=1.2pt},
+                every node/.style={font=\footnotesize},
+            ]
+            \pgfmathsetmacro{\u}{1.7};
+            
+            % Points
+            \coordinate (xstart) at (0.0,0.0);
+            \coordinate (xend) at (2.5*\u,0.0);
+            \coordinate (ystart) at (0.0,0.0);
+            \coordinate (yend) at (0.0,2.5*\u);
+            \coordinate (E) at (\u*1.8,\u*1.7);
+            \coordinate (A') at (0,\u*0.40);
+            \coordinate (B') at (0,\u*1.1);
+            \coordinate (O) at (0.0,0.0);
+            
+            % Axes
+            \draw[name path=xaxis,
+                color=orange,
+                thick
+            ] (xstart) -- (xend)
+                node[right,text=black] {$[0,0]$}
+                node[point,
+                    fill=black,
+                    pos=0.99,
+                    label={[text=black,xshift=0mm,yshift=-6mm]:
+                        $X$}
+                ] (X) {};
+            \draw[name path=yaxis,
+                color=orange,
+                thick
+            ] (ystart) -- (yend)
+                node[above,text=black] {$[0]$}
+                node[point,
+                pos=0.99,
+                fill=black,
+                label={[text=black,left,yshift=-1mm]:
+                    $Y$}
+                ] (Y) {};
+            \node[point,
+                fill=black,
+                label={[xshift=-0.5mm,yshift=0mm]:
+                    $E$}
+            ] at (E) {};
+            \draw[name path=XY] (X) -- (Y);
+            
+            \draw[name path=OE] (O) -- (E);
+            \path[name intersections={of=XY and OE,by=Z}];
+
+            \draw[name path=A'Z] (A') -- ($(A')!1.4!(Z)$)
+                node[right] {$[1,a]$};
+            \draw[name path=B'Z] (B') -- ($(B')!1.4!(Z)$)
+                node[right] {$[1,b]$};
+
+            \draw[name path=A'X] (A') -- (X);
+            \path[name intersections={of=OE and A'X,by=A}];
+            \draw[name path=AY] (Y) -- ($(Y)!1.22!(A)$)
+                node[below] {$[a]$};
+            \path[name intersections={of=AY and xaxis,by=a0}];
+
+           \draw[name path=B'X] (B') -- (X);
+            \path[name intersections={of=OE and B'X,by=B}];
+            \draw[name path=BY] (Y) -- ($(Y)!1.5!(B)$)
+                node[below] {$[b]$};
+            \path[name intersections={of=A'Z and BY,by=D2}];
+            \path[name intersections={of=BY and xaxis,by=b0}];
+            \path[name intersections={of=B'Z and AY,by=D1}];
+
+            \path[name intersections={of=B'X and AY,by=ab}];
+            \path[name intersections={of=A'X and BY,by=ba}];
+
+            \node[point,
+                label={[xshift=2mm,yshift=-0.5mm]: $D_1$}
+            ] at (D1) {};
+            \node[point,
+                label={[xshift=0.9mm,yshift=0.1mm]: $D_2$}
+            ] at (D2) {};
+            \node[point,
+                label={[xshift=-1mm,yshift=-5.5mm]:$A$}
+            ] at (A) {};
+            \node[point,
+                label={[xshift=-0.5mm,yshift=-6mm]:$B$}
+            ] at (B) {};
+            \node[point,
+                label={[left]:$A'$}
+            ] at (A') {};
+            \node[point,
+                label={[left]:$B'$}
+            ] at (B') {};
+            \node[point,
+                fill=black,
+                label={[xshift=-2mm,yshift=-5mm]:
+                    $O$}
+            ] at (O) {};
+            \node[point,
+                fill=white,
+                label={[xshift=0.6mm,yshift=0mm]: $Z$}
+            ] at (Z) {};
+            \node[point,
+                fill=white,
+                label={[xshift=4mm,yshift=-2.4mm]: $(a,b)$}
+            ] at (ab) {};
+            \node[point,
+                fill=white,
+                label={[xshift=3.2mm,yshift=-1.2mm]: $(b,a)$}
+            ] at (ba) {};
+        \end{tikzpicture}
+    \]
+    Since $B'Z\colon[1,b]$ and $A'Z=[1,a]$, we have
+    \[
+        D_1=AY\wedge B'Z\colon(a,a\+b),
+        \quad D_2=BY\wedge A'Z\colon(b,b\+a).
+    \]
+    Consider the following $F$-configurations
+    \[
+        \begin{array}{l|l}
+            \text{quad}&\text{diagonal points}\\
+            \hline\rule{0mm}{4mm}
+            A,\;B,\;X,\;Y&Z,\;(a,b),\;(a,b)\\
+            D_1,\;B',\;X,\;Y&Z,\;(0,a\+b),\;(a,b)\\
+            D_2,\;A',\;X,\;Y&Z,\;(0,b\+a),\;(b,a)
+        \end{array}
+    \]
+    They show that $Z$, $(0,a\+b)$, and $(0,b\+a)$ are collinear. Hence, the line they determine meets $OY$ at $(0,a\+b)=(0,b\+a)$, proving commutativity.
+
+    \medskip
+    \textbf{Step 3.} \textit{$(a\+b)\+c=a\+(b\+c)$ for all\/ $a,b,c\in\ter^*$.}
+
+    Consider the following $F$-configurations
+    \[
+        \begin{array}{l|lc}
+            \text{quad} & \text{diagonal points} &\text{proof}\\
+            \hline\rule{0mm}{4mm}
+            (a,a\+b),\;(c,b\+c),\;X,\;Y&Z,\;(c,a\+b),\;(a,b\+c)
+                &\ref{proof:1}\\
+            (a,a\+(b\+c)),\;(0,b\+c),\;X,\;Y&Z,\;(0,a\+(b\+c)),\; (a,b\+c)
+                &\ref{proof:2}\\
+            (c,c\+(a\+b)),\;(0,a\+b),\;X,\;Y&Z,\;(0,c\+(a\+b)),\;(c,a\+b)
+                &\ref{proof:3}
+        \end{array}
+    \]
+    The proofs are direct consequences of the following equalities and the fact that last coordinate of every point on $(p,q)X$ is $q$, and the first coordinate of all points on $(p,q)Y$ is $p$.
+    \begin{enumerate}[(\arabic*)]
+        \item\label{proof:1}
+            $(a,a\+b)=[a]\wedge[1,b]$, $(c,b\+c)=(c,c\+b)=[c]\wedge[1,b]$
+
+        \item\label{proof:2}
+            $(a,a\+(b\+c))=[a]\wedge[1,b\+c]$, $(0,b\+c)=[0]\wedge[1,b\+c]$
+
+        \item\label{proof:3}
+            $(c,c\+(a\+b))=[c]\wedge[1,a\+b]$, $(0,a\+b)=[0]\wedge[1,a\+b]$
+    \end{enumerate}
+    Since the diagonal points are aligned, we deduce that $Z$, $(0,a\+(b\+c))$ and $(0,c\+(a\+b))=(0,(a\+b)\+c)$ are aligned, which implies the associativity of the sum.
+    
+    \textbf{Conclusion.} From the steps above it follows that $(\ter,\+)$ is a finite $\Fq[2]$-vector space. In particular, its dimension $r$ must satisfy $|\ter|=2^r$.
+    %
+    
+\end{proof}
+
+\begin{cor}
+    The order of any finite projective plane with Fano property is\/ $2^r$ for some positive integer\/~$r$.
+\end{cor}
+
+\proof The order of the plane equals the cardinality of $\ter$.
+
+\begin{ntn}
+    Fix a flag\/ $(P,\ell)$ in a finite projective plane of order\/ $q$. Set
+    \[
+        \pl(P)=\set{\ell,\block e_1,\dots,\block e_q}.
+    \]
+    For\/ $A\incidence\ell$ with\/ $A\ne P$, define
+    \begin{align*}
+        \pi^A_{ij}\colon \tr(\block e_i)&\to\tr(\block e_j)\\
+        X&\mapsto XA\wedge\block e_j.
+    \end{align*}
+    The map\/ $\pi^A_{ij}$ is well defined, since\/ $A\notin\pl(\block e_i)$, and it is bijective.
+\end{ntn}
+
+\begin{prop}\label{prop:pi_ij-properties}
+    For all\/ $i,j,k\in\set{1,2,\dots,q}$,
+    \begin{enumerate}[a),font=\upshape]
+        \item $(\pi^A_{ij})^{-1} = \pi^A_{ji}$,
+        \item $\pi^A_{jk}\circ\pi^A_{ij} = \pi^A_{ik}$,
+
+        \item If\/ $B\ne P$ is also a point on\/ $\ell$, then\/ $\pi^A_{ij}\circ\pi^B_{ji}$ is a permutation of\/ $\tr(\block e_i)$ that fixes only\/ $P$, and
+
+        \item Given $B$ on $\ell$, $B\ne P,A$, the set
+        \[
+            \mathcal{J}^{AB}_i = \set{\pi^B_{ji}\circ\pi^A_{ij}
+                \mid j=1,2,\dots,q},
+        \]
+        forms a regular permutation group on\/ $\tr(\block e_i)\setminus\set P$.\footnote{See Notation~\ref{ntn:orbits-etc}.}
+        \item The groups\/ $\mathcal J_i^{AB}$ of part\/ {\upshape a)} are elementary abelian\/ $2$-groups whose order is\/~$q$, with $q=2^r$ for some $r>0$.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    Since the first two parts are clear, we only need to verify parts~c), d) and~e).
+
+    \begin{enumerate}
+    \item[c)] Put $\sigma_j=\pi_{ji}^B\circ\pi_{ij}^A$. It is clear that $\sigma_j$ is a permutation of $\tr(\block e_i)$ and that it fixes $P$. Suppose that $Q$ is a fixed point of $\sigma_j$. Set $Q'=\pi_{ij}^A(Q)$. Then, $\pi_{ji}^B(Q')=Q$ is aligned with $B$ and $Q'$, i.e., $Q\incidence BQ'$. By the \rr, $Q'\incidence QB$. Since $Q'\incidence QA$ as well, $Q'=QA\wedge QB=Q$. Then $Q=\block e_i\wedge\block e_j=P$.
+    
+    \item[d)] Let $\phi=\pi^B_{ji}\circ\pi^A_{ij}$ and suppose that $\phi(X)=X$ for some $X\in\tr(\block e_i)\setminus\set P$. Then both $P$ and $X$ are fixed by $\phi$. Setting $X'=\pi^A_{ij}(X)$. By the \rr\ we obtain
+    \begin{align*}
+        X'\incidence AX\text{ and }X=\phi(X)\incidence BX'
+            &\stackrel{\text{rr}}\implies X'\incidence AX\text{ and }\; X'\incidence BX\\
+            &\implies X' = AX\wedge BX=X,
+    \end{align*}
+    which can only happen if $i=j$. Hence, $\pi^B_{ji}=\pi^A_{ij}=\id_{\block e_i}$.
+
+    To see that the group acts transitively, take $X,Y\in\tr(\block e_i)\setminus\set P$. The case $X=Y$ is straightforward, and we can rule it out. Then $X,B,Y,A$ is a quad whose diagonal points are
+    \begin{align*}
+        D_1 &= XB\wedge YA\\
+        D_2 &= XY\wedge BA=\block e_i\wedge\ell=P\\
+        D_3 &=XA\wedge BY.
+    \intertext{Let $\block e_j$ be the diagonal line. Then,}
+        \pi_{ij}^A(X) &= XA\wedge\block e_j=D_3\\
+        \pi_{ji}^B(D_3) &= D_3B\wedge\block e_i= Y,
+    \end{align*}
+    which shows that $\pi_{ji}^B\circ\pi_{ij}^A$ maps $X$ to $Y$.
+
+    \item[e)] Fix $i\in\set{1,\dots,q}$. Let
+    \[
+        \ter = \set{1,\dots,\overset{\overset i\wedge}0,\dots,q}
+    \]
+    where $i$ has been replaced with $0$. We will use $\ter$ to define ternary ring by arbitrarily fixing a point $E_0\ne P$ on $\block e_i$, and defining, for $j\ne1,i$,
+    \[
+        A_j=\block e_j\wedge E_0A\quad\text{and}\quad
+        E_j = \block e_i\wedge BA_j,
+    \]
+    as illustrated below
+    \[
+        \begin{tikzpicture}[
+            scale=1.1,
+            font=\small,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=green,
+                inner sep=1.2pt},
+                every node/.style={font=\footnotesize},
+            ]
+            \pgfmathsetmacro{\u}{1.7};
+            
+            % Points
+            \coordinate (xstart) at (0.0,0.0);
+            \coordinate (xend) at (3.7*\u,0.0);
+            \coordinate (ystart) at (0.0,0.0);
+            \coordinate (yend) at (0.0,2.4*\u);
+            \coordinate (E) at (\u*1.1,\u*1.3);
+            \coordinate (Aj) at (0,\u*0.8);
+            \coordinate (O) at (0.0,0.0);
+            
+            % Axes
+            \draw[name path=xaxis,
+                color=orange,
+                thick
+            ] (xstart) -- (xend)
+                node[right,text=black] {$[0,0]$}
+                node[point,
+                    fill=black,
+                    pos=0.7,
+                    label={[text=black,xshift=0mm,yshift=-6mm]:
+                        $B$}
+                ] (X) {};
+            \draw[name path=yaxis,
+                color=orange,
+                thick
+            ] (ystart) -- (yend)
+                node[above,text=black] {$[0]$}
+                node[point,
+                pos=0.78,
+                fill=black,
+                label={[text=black,left,yshift=-1mm]:
+                    $A$}
+                ] (Y) {};
+            \node[point,
+                fill=black,
+                label={[xshift=-0.4mm,yshift=0mm]:
+                    $E_1$}
+            ] at (E) {};
+
+            \draw[name path=XY] (X) -- (Y);
+            \draw[name path=OE] (O) -- ($(O)!1.2!(E)$)
+                node[right] {$\block e_i$};
+            \draw[name path=AjX] (Aj) -- (X);
+            \path[name intersections={of=XY and OE,by=P}];
+            \draw[name path=e_j] (Aj) -- ($(Aj)!1.7!(P)$)
+                node[right] {$\block e_j$};
+            \path[name intersections={of=AjX and OE,by=Ej}];
+            \path[name path=AE] (Y) -- ($(Y)!3.4!(E)$);
+            \path[name intersections={of=AE and xaxis,by=D1}];
+            \draw[gray] (Y) -- (D1);
+            \path[name path=BE] (X) -- ($(X)!1.8!(E)$);
+            \path[name intersections={of=BE and yaxis,by=D3}];
+            \draw[gray] (X) -- (D3);
+            \draw[dashed,name path=AEj] (Y) -- ($(Y)!1.6!(Ej)$)
+                node[below] {$[j]$};
+            
+            \node[point,
+                fill=white,
+                label={[xshift=0mm,yshift=-5.5mm]:$P$}
+            ] at (P) {};
+            \node[point,
+                fill=white,
+                label={[xshift=-3mm,yshift=-3mm]:$D_3$}
+            ] at (D3) {};
+            \node[point,
+                fill=white,
+                label={[xshift=0mm,yshift=-6mm]:$D_1$}
+            ] at (D1) {};
+            \node[point,
+                label={[xshift=-3.6mm,yshift=-4.3mm]:$E_j$}
+            ] at (Ej) {};
+            \node[point,
+                label={[left]:$A_j$}
+            ] at (Aj) {};
+            \node[point,
+                fill=black,
+                label={[yshift=-6mm,xshift=-2mm,text=black]:
+                    $E_0$}
+            ] at (O) {};
+        \end{tikzpicture}
+    \]
+    Based on the quad $E_0,B,A,E_1$, assign to the point $E_j$ the coordinates $(j,j)$, and let $(\ter,T)$ be the resulting ternary ring.
+    
+    Since $E_0E_1=\block e_i$ and $AB=\ell$, we have $P\colon(1)$, $B\colon(0)$ and $A\colon(\infty)$. 
+
+    The diagonal points associated with the $F$-configuration derived from the quad $E_0,B,E_1,A$ are
+    \begin{align*}
+        D_1 &= E_0B\wedge E_1A\colon(1,0)\\
+        D_2 &= P\colon(1)\\
+        D_3 &= E_0A\wedge BE_1=(0,1).
+    \end{align*}
+    Then $\block e_i=[1,0]$, and $\block e_j\colon[1,j]$ and $E_j=(j,j)$ for all $j\in\ter$. Therefore, using coordinates,
+    \begin{align*}
+        \pi_{ji}^B\circ\pi_{ij}^A(k,k)
+            &= \pi_{ji}^B((k,k)A\wedge\block e_j)\\
+            &= \pi_{ji}^B(k,h)
+                &&\text{; with }(k,h)\incidence{[1,j]}\\
+            &= \pi_{ji}^B(k,k\+j)\\
+            &= (k,k\+j)B\wedge[1,0]\\
+            &= (h,k\+j)
+                &&\text{; with }(h,k\+j)\incidence{[1,0]}\\
+            &= (k\+j,k\+j).
+    \end{align*}
+    It follows that the group $\mathcal J_i^{AB}$ is isomorphic to $(\ter,\+)$. The result follows because, by Theorem~\ref{thm:elementary-abelian-2-group}, this additive group is an elementary abelian $2$-group whose order is a power of $2$.
+    \end{enumerate}
+\end{proof}
+
+\begin{thm}\label{thm:elations-restrict-well}
+    The elements of\/ $\Elt(P,\ell)$ are in one-to-one correspondence with permutations of\/ $\tr(\block e_i)\setminus\set P$ that commute with every composition\/ $\pi_{j,i}^B\circ\pi_{i,j}^A$, where\/ $A$ and\/ $B$ are points on\/ $\ell$ distinct from\/ $P$.
+\end{thm}
+
+\begin{proof}
+    Consider the map
+    \begin{align*}
+        \rho_i\colon\Elt(P,\ell)&\to\Sym(\tr(\block e_i))\\
+        \alpha&\mapsto\alpha_i,
+    \end{align*}
+    where $\alpha_i$ is the restriction of $\alpha$ to the $\tr(\block e_i)$.
+    
+    To verify that $\rho_i$ is injective, suppose $\rho_i(\alpha)=\rho_i(\beta)$. Then $\tr(\block e_i)\subseteq\Fix{\alpha\circ\beta^{-1}}$. Since the only fixed points of an elation distinct from the identity are those lying on~$\ell$, it follows that $\alpha\circ\beta^{-1}=\id$, that is, $\alpha=\beta$.
+
+    To prove that $\alpha_i$ commutes with $\pi_{ji}^B\circ\pi_{ij}^C$, consider a point $R\ne P$ on $\block e_i$.  
+    Set $R'=\alpha(\pi_{ij}(R))$. Since $\alpha$ is a collineation that fixes $A$, the point $\alpha(R)$ lies on $AR'$. By the \rr\ $R'$ lies on $\alpha(R)A$. It lies on $\block e_j$ as well, because $\alpha$ is an elation with center $P$. Hence,
+    \[
+        R' = \alpha(R)A \wedge \block e_j = \pi_{ji}^A(\alpha(R)),
+    \]
+    as illustrated below.
+
+    \[
+        \begin{tikzpicture}[
+            scale=1.0,
+            font=\small,
+            point/.style={
+                draw,
+                circle,
+                color=black,
+                fill=green,
+                inner sep=1.2pt},
+                every node/.style={font=\footnotesize},
+            ]
+            \pgfmathsetmacro{\u}{1.7};
+            
+            % Points
+            \coordinate (xstart) at (0.0,0.0);
+            \coordinate (xend) at (3.7*\u,0.0);
+            \coordinate (ystart) at (0.0,0.0);
+            \coordinate (yend) at (0.0,2.4*\u);
+            \coordinate (E) at (\u*1.1,\u*1.0);
+            \coordinate (Aj) at (0,\u*0.9);
+            \coordinate (O) at (0.0,0.0);
+            
+            % Axes
+            \path[name path=xaxis,
+                color=orange,
+                thick
+            ] (xstart) -- (xend)
+                node[point,
+                    fill=black,
+                    pos=0.99,
+                    label={[text=black,xshift=0mm,yshift=-6mm]:
+                        $B$}
+                ] (X) {};
+            \path[name path=yaxis,
+                color=orange,
+                thick
+            ] (ystart) -- (yend)
+                node[point,
+                pos=0.99,
+                fill=black,
+                label={[text=black,left,yshift=-1mm]:
+                    $A$}
+                ] (Y) {};
+
+            \draw[name path=XY] (X) -- (Y);
+            \draw[name path=OE] (O) -- ($(O)!1.8!(E)$)
+                node[right] {$\block e_i$};
+            \path[name path=AjX] (Aj) -- (X);
+            \path[name intersections={of=XY and OE,by=P}];
+            \draw[name path=e_j] (Aj) -- ($(Aj)!1.5!(P)$)
+                node[right] {$\block e_j$}
+                node[pos=0.49] (R') {};
+            \path[name intersections={of=AjX and OE,by=R}];
+            \draw[gray,name path=AR] (Y) -- ($(Y)!1.3!(R)$);
+            \path[name intersections={of=AR and e_j,by=R1}];
+            \draw[gray,name path=AR'] (Y) -- ($(Y)!1.3!(R')$);
+            \path[name intersections={of=AR' and OE,by=R2}];
+            
+            
+            \node[point,
+                fill=green,
+                label={[xshift=5mm,yshift=-3.5mm]:
+                    $\alpha(R)$}
+            ] at (R2) {};
+            \node[point,
+                fill=green,
+                label={[xshift=-6mm,yshift=-2.5mm]:
+                    $\pi_{ij}^A(R)$}
+            ] at (R1) {};
+            \node[point,
+                fill=green,
+                label={[xshift=-3.7mm,yshift=-2.3mm]:
+                    $R'$}
+            ] at (R') {};
+            \node[point,
+                fill=white,
+                label={[xshift=0mm,yshift=0mm]:
+                    $P$}
+            ] at (P) {};
+            \node[point,
+                label={[xshift=-2.5mm,yshift=-2.5mm]:
+                    $R$}
+            ] at (R) {};
+        \end{tikzpicture}
+    \]
+    Hence,
+    \[
+        \alpha|_{\tr(\block e_j)}\circ\pi_{ij}^A
+        =
+        \pi_{ij}^A\circ\alpha|_{\tr(\block e_i)}.
+    \]
+    Similarly $\alpha|_{\tr(\block e_j)}\circ\pi_{ij}^B = \pi_{ij}^B\circ\alpha|_{\tr(\block e_i)}$. In consequence, $\alpha_i\comm\pi_{ji}^B\circ\pi_{ij}^A$.
+
+    It remains to be seen that if $\sigma$ is a permutation of $\tr(\block e_i)\setminus\set P$ that commutes with the elements of $\mathcal J_i^{AB}$, it can be extended to a elation in $\Elt(P,\ell)$.
+
+    Fix $C\in\tr(\ell)\setminus\set P$ and define
+    \[
+        \alpha(X) = \begin{cases}
+            X   &\text{if }X\incidence\ell,\\
+            \pi_{ij}^C\circ\sigma\circ\pi_{ji}^C(X)
+                &\text{if }X\nincidence{}\ell,\; XP=\block e_j.
+        \end{cases}
+    \]
+    As it is easy to verify, the definition of $\alpha$ implies
+    \[
+        \alpha(X)\incidence\ell\iff X\incidence\ell.\tag{$\ast$}
+    \]
+    Furthermore, if $D$ is another point on $\ell$, then
+    \begin{align*}
+        \pi_{ij}^D\circ\sigma\circ\pi_{ji}^D
+            &= \pi_{ij}^D\circ\sigma\circ\pi_{ji}^D
+                \circ\pi_{ij}^C\circ\pi_{ji}^C\\
+            &= \pi_{ij}^C\circ\pi_{ij}^C\circ\pi_{ji}^C
+                \circ\sigma\circ\pi_{ji}^C\\
+            &= \pi_{ji}^C\circ\sigma\circ\pi_{ji}^C,
+    \end{align*}
+    which proves that $\alpha$ does not depend on the particular choice of~$C$.
+    
+    To verify that $\alpha$ is a collineation, let's see that the line joining two points $X\ne Y$ is mapped to the line $\alpha(X)\alpha(Y)$. Take $Z$ on $XY$. There are three cases.
+    \begin{enumerate}[i)]
+        \item The case where $XY=\ell$ is trivial.
+
+        \item Suppose $X\nincidence\ell$ and $Y\incidence\ell$. Let $j$ be such that $XP=\block e_j$. As we saw above, we can replace $C$ with $Y$ in the definition of $\alpha$. Then
+        \begin{align*}
+            \alpha(X)\alpha(Y)
+                &= \pi_{ij}^Y(\sigma\circ\pi_{ji}^Y(X))Y\\
+                &= (\sigma\circ\pi_{ji}^Y(X))Y.
+        \end{align*}
+        Given that $X$, $Z$ and $Y$ are collinear, we deduce
+        \[
+            \pi_{ki}^Y(Z)=ZY\wedge\block e_i
+                =XY\wedge\block e_i
+                =\pi_{ji}^Y(X).
+        \]
+        Thus, if $Z$ is on $\block e_k$, 
+        \begin{align*}
+            \alpha(Z) &= \pi_{ik}^Y(\sigma\circ\pi_{ki}^Y(Z))\\
+                &{}\incidence (\sigma\circ\pi_{ki}^Y(Z))Y\\
+                &= (\sigma\circ\pi_{ji}^Y(X))Y\\
+                &= \alpha(X)\alpha(Y).
+        \end{align*}
+
+        \item In the case $X,Y\nincidence\ell$, let $D=XY\wedge\ell$.  
+        If $Z=D$, then by case~ii) applied to $X=X$, $Y=Z$, and $Z=Y$, we obtain $\alpha(Y)\incidence\alpha(X)\alpha(Z)$. Hence, by the \rr, $\alpha(Z)\incidence\alpha(X)\alpha(Y)$.
+        
+        Assume now that $Z\ne D$. By case~ii), we have
+        \begin{align*}
+            Z\incidence XY &\implies Z\incidence XD\\
+                &\implies \alpha(Z)\incidence\alpha(X)D.
+        \end{align*}
+        Similarly, $\alpha(Z)\incidence\alpha(Y)D$. Thus, either (1)~$\alpha(Z)=D$, or (2)~$\alpha(X)$, $\alpha(Y)$, and $D$ are collinear.
+        
+        Case~(1) is impossible, because by $(\ast)$ it would imply $Z\incidence\ell$.
+        
+        The conclusion follows from case~(2), since in that situation
+        \[
+            \alpha(Z)\incidence\alpha(Y)D=\alpha(X)\alpha(Y).
+        \]
+
+    \end{enumerate}
+\end{proof}
+
+\begin{lem}\label{lem:group-commutativity}{\upshape[Group Commutativity]}
+    Let $H$ and $K$ be subgroups of $G$. Then $HK$ is a subgroup if, and only if, $HK=KH$.\footnote{See \citep{LC-Groups}.}
+\end{lem}
+
+\begin{proof}
+    Since $(xy)^{-1}=yx$, inverses of $HK$ belong to $KH$. Thus, if $HK$ is a group, $HK=(HK)^{-1}=K^{-1}H^{-1}=KH$. Conversely, if $HK=KH$, then $(x_1y_1)(x_2y_2)=(x_1x)(yy_2)$, where $x\in H$, $y\in K$ and $xy=y_1x_2$.
+\end{proof}
+
+\begin{lem}\label{lem:sequential-group-commutativity}
+    Let\/ $H=\set{x_1,\dots,x_q}$ and\/ $K=\set{y_1,\dots,y_q}$ be subgroups of a group\/ $G$. If the set\/ $\set{x_i y_i\mid1\le i\le q}$ is itself a subgroup of\/ $G$, then\/ $HK=KH$, and this common product is a subgroup of\/ $G$.
+\end{lem}
+
+\begin{proof}
+    Let $x\in H$ and $y\in K$ be arbitrary elements. Then there exist indices $i_1,i_2$ such that $y=y_{i_1}$ and $x=x_{i_2}$. By hypothesis, there is an index $i_3$ satisfying
+    \[
+        (x_{i_1}y_{i_1})(x_{i_2}y_{i_2})=x_{i_3}y_{i_3}.\tag{$\ast$}
+    \]
+    Since $H$ and $K$ are subgroups, there exist indices $i_4,i_5$ such that
+    \[
+        x_{i_1}^{-1}x_{i_3}=x_{i_4}
+        \quad\text{and}\quad
+        y_{i_3}y_{i_2}^{-1}=y_{i_5},
+    \]
+    with $x_{i_4}\in H$ and $y_{i_5}\in K$. Hence,
+    \begin{align*}
+        yx
+            &= y_{i_1}x_{i_2}\\
+            &= x_{i_1}^{-1}(x_{i_3}y_{i_3})y_{i_2}^{-1}
+                &&\text{by }(\ast)\\
+            &= x_{i_1}^{-1}(x_{i_1}x_{i_4})(y_{i_5}y_{i_2})y_{i_2}^{-1}\\
+            &= x_{i_4}y_{i_5},
+    \end{align*}
+    which shows that $KH\subseteq HK$. The reverse inclusion $HK\subseteq KH$ follows by symmetry.
+\end{proof}
+
+
+
+
+\begin{lem}\label{lem:HK-cardinality}
+    Let $H$ and $K$ be finite subgroups of a group $G$. Then
+    $$
+        \abs{HK} = \abs H \abs K / \abs{H\cap K}.
+    $$
+\end{lem}
+
+\begin{proof}
+    The multiplication map
+    \begin{align*}
+        \mu\colon H\times K&\to HK\\
+        (x,y)&\mapsto xy
+    \end{align*}
+    is clearly surjective. Therefore, to prove the lemma it suffices to show that the fibers $\mu^{-1}(xy)$, for $xy\in HK$, have cardinality $|H\cap K|$. Fix $x,y$. The map
+    \begin{align*}
+        H\cap K&\to\mu^{-1}(xy)\\
+        z&\mapsto (xz^{-1},zy)
+    \end{align*}
+    is injective. Hence, $|H\cap K|\le|\mu^{-1}(xy)|$.
+
+    To verify the other inequality, take $(a,b)\in\mu^{-1}(xy)$. Then $ab=xy$ and so $a^{-1}x=by^{-1}\in H\cap K$. Hence, the map $(a,b)\mapsto a^{-1}x$ is an injection from the fiber over $xy$ into $H\cap K$.
+\end{proof}
+
+\begin{ntn}
+    If $n\in\Z$, $\spec(n)$ will denote the set of prime factors of $n$. If $\pi$ is a set of primes, $n\perp\pi$ will indicate that $\spec(n)\cap\pi=\emptyset$.% If $\hat\pi$ is another set of primes, $\hat\pi\perp\pi$ will mean that $n\perp\pi$ for all $n\in\hat\pi$.
+\end{ntn}
+
+\begin{prop}\label{prop:pi-product}
+    Let $G$ be a finite group and $H$ and $K$ subgroups such that $HK$ is a subgroup. Then $\spec\abs{HK}\subseteq\spec\abs H\cup\spec\abs K$.
+\end{prop}
+
+\begin{proof}
+    This is a direct consequence of Lemma~\ref{lem:HK-cardinality}.    
+\end{proof}
+
+\begin{cor}
+    Let $G$ be a finite group and $H_1,\dots,H_r$ subgroups satisfying $H_iH_j=H_jH_i$ for $1\le i,j\le r$. Then
+    \[
+        \spec|H_1\cdots H_k|\subseteq\bigcup_{i=1}^r\spec|H_i|.
+    \]
+\end{cor}
+
+\begin{lem}\label{lem:transitiviy-action}
+    Let\/ $p$ be a prime and\/ $G$ a group of permutations of a finite set\/ $S$. Suppose that for every\/ $s\in S$ there exists an element\/ $\omega_s\in G$ of order\/~$p$ such that\/ $\omega_s$ fixes\/ $s$ and no other point of\/ $S$. Then\/ $G$ is transitive on\/ $S$.
+\end{lem}
+
+\begin{proof}
+    Suppose, for a contradiction, that $G$ is not transitive on $S$. Therefore, there are two elements $s,t\in S$ whose orbits are different, i.e., $\mathcal O_s\ne\mathcal O_t$, hence disjoint.
+
+    The map 
+    \begin{align*}
+        \mathcal O_t&\to\mathcal O_t\\
+        g\cdot t&\mapsto\omega_s\cdot(g\cdot t)
+    \end{align*}
+    is well defined because $\omega_s\cdot(g\cdot t)=\omega_sg\cdot t\in\mathcal O_t$. The induced action of $\langle\omega_s\rangle$ on $\mathcal O_t$ fixes no point, since otherwise $\omega_sg\cdot t=g\cdot t$, which yields $\omega_sg=\omega_t\in\mathcal O_x\cap\mathcal O_t$, which is impossible. It follows that, for $g\in G$, the set
+    \[
+        \set{\omega_s^ig\cdot t\mid 0\le i<p}
+    \]
+    has size $p$. Since these are the orbits of $\mathcal O_t$ under the action of $\langle\omega_s\rangle$, and in any case the orbits are a partition of the group, we deduce that $p\mid|\mathcal O_t|$. Equivalently,
+    \[
+        |\mathcal O_t|\equiv0\pmod p.\tag{$\ast$}
+    \]
+    Now consider the action of $\langle\omega_t\rangle$ on $\mathcal O_t$. Since $\omega_t\cdot t=t$ the orbit of $t$ in $\mathcal O_t$ under this action equals $\set t$. Any other orbit, namely the one of $g\cdot t\ne t$, has the form
+    \[
+        \mathcal Q_{g\cdot t}=\set{\omega_t^ig\cdot t\mid 0<i<p}.
+    \]
+    Considering
+    \[
+        \omega_t^ig\cdot t=\omega_t^jg\cdot t
+            \implies\omega_t^{i-j}g\cdot t=g\cdot t
+            \stackrel{g\cdot t\ne t}\implies{}\noend
+    \]
+    we deduce that $|\mathcal Q_{g\cdot t}|=p$. Consequently, $p\mid|\mathcal O_t|$, i.e., $|\mathcal O_t|\equiv0\pmod p$, in contradiction with~$(\ast)$.
+    %
+    
+\end{proof}
+
+\begin{thm}\label{thm:Gleason} {\upshape[Gleason, 1956]}
+    If a finite projective plane has the Fano property, then it is a translation plane with respect to each of its lines.
+\end{thm}
+
+\begin{proof}
+    Let $\Pi$ denote the projective plane under consideration. By Theorem~\ref{thm:elementary-abelian-2-group}, $\Pi$ has order $q=2^r$. Let $(P,\ell)$ be a flag in $\Pi$. Set
+    \begin{align*}
+        \tr(\ell)\setminus\set P &= \set{A,E_1,\dots,E_{q-1}}\\
+        \pl(P)\setminus\set\ell &= \set{\block e_1,\dots,\block e_q}.
+    \end{align*}
+    Fix $1\le i\le q$. With the notation of Proposition~\ref{prop:pi_ij-properties}, for $1\le j<q$, put $H_j=\mathcal J_i^{AE_j}$ and $K_j=\mathcal J_i^{E_jA}$. Since $H_j$ is a group, its elements are the same as the elements of~$K_j$. Hence, we can use the following enumerations
+    \begin{align*}
+        H_j &= \set{\pi_{1i}^{E_j}\circ\pi_{i1}^A,\dots,
+            \pi_{qi}^{E_j}\circ\pi_{iq}^A}\\
+        H_k &= \set{\pi_{1i}^A\circ\pi_{i1}^{E_k},\dots,
+            \pi_{qi}^A\circ\pi_{iq}^{E_k}}
+    \end{align*}
+
+    \medskip
+    \textbf{Step 1.} $H_jH_k=H_kH_j$.
+
+    To verify this, by Lemma~\ref{lem:sequential-group-commutativity}, it suffices to show that the set of products
+    \[
+        \set{(\pi_{hi}^{E_j}\circ\pi_{ih}^A)\circ
+        (\pi_{hi}^A\circ\pi_{ih}^{E_k})
+        \mid1\le h\le q}
+    \]
+    forms a group. But
+    \begin{align*}
+        (\pi_{hi}^{E_j}\circ\pi_{ih}^A)\circ
+                (\pi_{hi}^A\circ\pi_{ih}^{E_k})
+            &= \pi_{hi}^{E_j}\pi_{ih}^{E_k},
+    \end{align*}
+    showing that the set of products equals the set underlying the group $\mathcal J_i^{E_kE_j}$.
+
+    \medskip
+
+    \textbf{Step 2.} \textit{$G=H_1\cdots H_{q-1}$ is a group.}
+
+    This follows from Lemma~\ref{lem:group-commutativity} by induction on the number of subgroups.
+
+    \medskip
+
+    \textbf{Step 3.} \textit{The center of\/ $G$ is nontrivial.}
+    
+    By Theorem~\ref{thm:elementary-abelian-2-group}, $H_j$ is a $2$-group. Therefore, $G$ is a $2$-group, and since $p$-groups have nontrivial center \citep{LC-Groups}, $Z(G)\ne\langle1\rangle$.
+
+    \medskip
+
+    \needspace{2\baselineskip}
+    \textbf{Step 4.} $|\Elt(P,\ell)|>1$.
+
+    By Step 3, we can pick a nontrivial element $\sigma$ in the center $Z(G)$. Given $E_j$ and $E_k$ the equality
+    \[
+        \pi_{hi}^{E_j}\circ\pi_{ih}^{E_k}
+            = (\pi_{hi}^{E_j}\circ\pi_{ih}^A)\circ
+                (\pi_{hi}^A\circ\pi_{ih}^{E_k})
+    \]
+    implies that $\sigma$ commutes with every element of $J_i^{E_kE_j}$, since the \rhs\ is an element of $H_jK_k=H_jH_k\subseteq G$. By Theorem~\ref{thm:elations-restrict-well}, $\sigma$ can be extended to a unique elation with center $P$ and axis~$\ell$.
+    
+    \medskip
+
+    \textbf{Conclusion.}
+
+    Pick another point $Q$ on $\ell$. By Step~4 none of $\Elt(P,\ell)$ and $\Elt(Q,\ell)$ is trivial. Since the order of $\Pi$ is a power of $2$, by Theorem~\ref{thm:elations-have-order-p}, we deduce that elations in both groups have order $2$.
+    
+    Consider the evaluation action
+    \begin{align*}
+        \Aut(\Pi,\ell)\times\tr(\ell)&\to\tr(\ell)\\
+        (\varphi,X) &\mapsto \varphi\cdot X=\varphi(X).
+    \end{align*}
+    By Step~4, given $T\in\tr(\ell)$ we can pick a nontrivial elation $\alpha_T\in\Elt(T,\ell)$. According to the dual of Lemma~\ref{lem:unique-axis-center}, $T$ is the unique point fixed by $\alpha_T$.
+
+    We can now use Lemma~\ref{lem:transitiviy-action} to deduce that $\Aut(\Pi,\ell)$ acts transitively on $\tr(\ell)$. Since $\ell$ was arbitrary the theorem is proven.
+    %
+    
+\end{proof}
+
+\begin{rem}
+    The theorem implies the existence of a collineation $\phi$ with axis $\ell$ such that $\phi(P)=Q$. By Proposition~\ref{prop:perspectivity-conjugation}, the conjugation map
+    \begin{align*}
+        \Elt(P,\ell)&\to\Elt(Q,\ell)\\
+        \alpha&\mapsto\phi\circ\alpha\circ\phi^{-1}
+    \end{align*}
+    is well defined. And since it is bijective we deduce that both sets have the same cardinality.
+\end{rem}
+
+\newpage
+
+\begin{thm}
+    Let\/ $\Pi$ be a finite projective plane of order\/ $q$.  
+    If\/ $\Pi$ is a translation plane with respect to every line, then\/ $\Pi\cong\PG(2,q)$.
+\end{thm}
+
+\begin{proof}
+We give an algebraic proof via coordinatization.  Fix a base quad\/ $O,X,Y,E$ and let\/ $(\ter,T)$ be the ternary ring obtained from this coordinatization.  Denote the affine part $\Pi\setminus XY$ by\/ $\ter\times\ter$ and write
+\[
+    T(x,m,k)=x\cdot m\+k,
+\]
+so that the usual operations $x\+y$, $x\cdot m$ (and, dually, $\oplus,\odot$) are defined as in the coordinatization.
+
+\medskip\noindent\textbf{Step 1: quasifield structure.}
+Because every line of\/ $\Pi$ is a translation line, the standard arguments for translation planes show that the ternary ring $(\ter,T)$ is a \emph{quasifield}: the maps
+\[
+    x\mapsto x\cdot m\quad(m\in\ter^\times)
+\]
+are permutations of\/ $\ter$, and for each fixed $m$ the equation $x\cdot m\+k=b$ has a unique solution in $(x,k)$.  Similarly, passing to the dual plane we obtain the dual quasifield operations $\oplus,\odot$ on the same underlying set\/ $\ter$.  Thus both
+\[
+    (\ter,\+,{}\cdot{})\quad\text{and}\quad(\ter,\oplus,\odot)
+\]
+are quasifields.
+
+\medskip\noindent\textbf{Step 2: abelian additive structure.}
+In a finite translation plane the translation group of any translation line is an elementary abelian $p$-group (this is standard: elation/translation groups are $p$-groups of exponent $p$).  Since every line is a translation line, the translation groups coming from different lines force the additive structure $(\ter,\+)$ to be an elementary abelian $p$-group (equivalently, a vector space over $\Fq[p]$).  The same conclusion applies dually to $(\ter,\oplus)$; hence both additive loops are elementary abelian $p$-groups of the same order $q=p^r$.
+
+\medskip\noindent\textbf{Step 3: existence of homologies and induced permutations.}
+Fix $r\in\ter^\times$.  Because every line is a translation line, one can produce a homology (a collineation with a line as axis and a point as center) with center $X$ and axis $OY$ that sends the affine point $(1,0)$ to $(r,0)$.  Call this homology $\varphi_r=(\phi_r,\psi_r)$, where $\phi_r$ acts on points and $\psi_r$ on lines.  As $\varphi_r$ fixes the lines $XY$ and $OX$, its action on the family of vertical lines $(m)$ permutes those lines; hence there is a permutation $\sigma=\sigma_r\in\Sym(\ter)$ such that
+\[
+    \psi_r[m,b]=[\sigma(m),b]\qquad(m,b\in\ter).
+\]
+Likewise, $\phi_r$ preserves each horizontal fibre $\{(x,y):y=\text{const}\}$, so there is $\nu=\nu_r\in\Sym(\ter)$ with
+\[
+    \phi_r(x,y)=(\nu(x),y).
+\]
+
+Because $\varphi_r$ is a collineation we have the incidence-preservation identity
+\[
+    (x,y)\incidence[m,b]\iff \phi_r(x,y)\incidence\psi_r[m,b].
+\]
+Specializing to lines of the form $[m,0]$ we obtain, for all $x,m\in\ter$,
+\[
+    T(x,m,0)=T(\nu(x),\sigma(m),0),
+\]
+i.e.
+\[
+    x\cdot m=\nu(x)\cdot\sigma(m). \tag{$\dag$}
+\]
+
+\medskip\noindent\textbf{Step 4: deducing multiplicative associativity.}
+Evaluate $(\dag)$ at $x=1$:
+\[
+    m = 1\cdot m = \nu(1)\cdot\sigma(m).
+\]
+Setting $m=1$ gives $1=\nu(1)\cdot\sigma(1)$, and setting $m=r$ (recall $\varphi_r(1,0)=(r,0)$) yields
+\[
+    r = \nu(1)\cdot\sigma(r).
+\]
+From these two equalities and cancellation in the multiplicative loop $(\ter^\times,\cdot)$ (cancellation holds in a quasifield), one deduces $\sigma(r)=1$ and hence $\nu(1)=r$. Returning to $(\dag)$ with $m=r$ gives
+\[
+    x\cdot r = \nu(x)\cdot\sigma(r)=\nu(x)\cdot 1=\nu(x),
+\]
+so $\nu(x)=x\cdot r$ for all $x\in\ter$. Substituting this into $(\dag)$ yields
+\[
+    x\cdot m=(x\cdot r)\cdot\sigma(m).\tag{$\ddag$}
+\]
+
+Now take $m=r\cdot y$ in $(\ddag)$ and set $x=1$:
+\[
+    r\cdot y = (1\cdot r)\cdot\sigma(r\cdot y) = r\cdot\sigma(r\cdot y),
+\]
+so by cancellation $\sigma(r\cdot y)=y$. Hence $\sigma$ is the map $t\mapsto r^{-1}t$ (and in particular is bijective), and $(\ddag)$ becomes
+\[
+    x\cdot(r\cdot y)=(x\cdot r)\cdot y
+\]
+for all $x,y,r\in\ter$. As $r$ was an arbitrary nonzero element of\/ $\ter$, this identity is exactly the associativity
+\[
+    x\cdot (r\cdot y)=(x\cdot r)\cdot y
+\]
+for all $x,y,r$, i.e. multiplication $\cdot$ is associative on\/ $\ter^\times$ and extends trivially to $0$. Thus $(\ter,\cdot)$ is associative.
+
+\medskip\noindent\textbf{Step 5: two-sided distributivity.}
+We already know $(\ter,\+,{}\cdot{})$ is a quasifield (right distributive by definition). The dual argument applied to the dual quasifield $(\ter,\oplus,\odot)$ (coming from coordinatizing the dual plane) shows that $\cdot$ is also left distributive. Concretely, translations along all lines force the left-distributive law as well: for all $a,b,c\in\ter$,
+\[
+    a\cdot(b\+c)=a\cdot b\+a\cdot c.
+\]
+Combined with right distributivity this gives full distributivity of $\cdot$ over $\+$.
+
+\medskip\noindent\textbf{Step 6: conclusion.}
+We have shown that $(\ter,\+,{}\cdot{})$ is a finite ring in which every nonzero element has a multiplicative inverse and multiplication is associative and distributive both sides. Hence $(\ter,\+,{}\cdot{})$ is a finite division ring. By Wedderburn's little theorem, any finite division ring is a field. Thus $\ter\cong\Fq[q]$, and the projective plane constructed from $(\ter,T)$ is isomorphic to\/ $\PG(2,q)$. Therefore\/ $\Pi\cong\PG(2,q)$, as claimed.
+\end{proof}
