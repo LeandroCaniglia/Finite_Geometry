@@ -270,7 +270,7 @@ Coordinates are further extended to lines. Here we will use square brackets to d
 \end{equation}
 
 \begin{rem}
-    The interpretation is clear. The line\/ $XY$ is the line at infinity. The slope\/ $m$ of a line\/ $y=mx+b$ is determined by the point where it intersects the line\/ $XY$. The\/ $Y$-intercept\/ $b$ is determined by the line's intersection with the\/ $OY$ axis. Lines with infinite slope (vertical lines) have the form\/ $x=c$ and are assigned the coordinate\/ $[c]$. Every line passing through the origin\/ $O$ has coordinates of the form\/ $[m,0]$ (for finite slopes) or\/ $[0]$ (for the line\/ $OY$ which has infinite slope).
+    The interpretation is clear once we compare with regular homogeneous equations in $\PG(2,q)$. The line\/ $XY$ is the line at infinity, which would correspond with $z=0$. The slope\/ $m$ of a line\/ $y=mx+bz$ is determined by the point where it intersects the infinite line\/ $XY$. The\/ $Y$-intercept\/ $b$ is determined by the line's intersection with the\/ $OY$ axis, associated with the equation $x=0$. Lines with infinite slope (vertical lines) have the form\/ $x=cz$ and are assigned the coordinate\/ $[c]$. Every line passing through the origin\/ $O$ has coordinates of the form\/ $[m,0]$ (for finite slopes), or\/ $[0]$ (for the line\/ $OY$ which has infinite slope).
 \end{rem}
 
 \begin{xmpl}\label{xmpl:Moulton-coordinatization} [Moulton coordinatization]
@@ -2963,7 +2963,7 @@ As a result, we have proven the following
         \[
             (x+c)\cdot r = \sigma(T(x,1,c)) = T(x,r,c\cdot r),
         \]
-        which completes the proof.
+        which completes the proof. \qedhere
     \end{description}
 \end{proof}
 
@@ -2983,10 +2983,14 @@ In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, fi
     If\/ $\Pi$ is a finite projective plane, then the following five properties are equivalent:
     \begin{enumerate}[label=\alph*), font=\upshape]
         \item $\Pi$ is\/ $(Y, XY)$-, $(X, XY)$-, $(Y, OY)$- and\/ $(X, OY)$-transitive.
-        \item The ternary ring\/ $(\ter,T)$ is a field.
+        
+        \item The structure\/ $(\ter,\+,{}\cdot{})$ induced by the ternary ring\/ $(\ter,T)$ is a field.
+        
+        \item $\Pi$ has order $p^r$ for some prime number $p$ and is isomorphic to $\PG(2,p^r)$.
+
         \item Desargues’ theorem is valid in\/ $\Pi$.
+        
         \item $\Pi$ is\/ $(A,\block a)$-transitive for every point-line pair\/ $(A,\block a)$.
-        \item Every ternary ring coordinatizing\/ $\Pi$ is a field.
     \end{enumerate}
 \end{thm}
 
@@ -3030,13 +3034,53 @@ In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, fi
         \end{center}
         It follows that $(\ter,\+,{}\cdot{})$ is a division ring. Since it is finite, the Little Wedderburn Theorem~\ref{thm:wedderburn} implies that it is a field.
 
-        \item$\Rightarrow$~c) This is Theorem~\ref{thm:desargues}.
+        \item$\Rightarrow$~c) The maps
+        \begin{align*}
+            (x,y)&\longmapsto[x:y:1]    &[m,b]&\longmapsto(m:\dotminus1:b)\\
+            (s)&\longmapsto[1:s:0]      &[a]&\longmapsto(1:0:\dotminus a)\\
+            (\infty)&\longmapsto[0:1:0] &[\infty]&\longmapsto(0:0:1)
+        \end{align*}
+        define a pair $(\phi,\psi)\colon\Pi\to\PG(2,q)$. We shall be done if we prove that it preserves incidence. By Theorem~\ref{thm:(X,OY)-transitivity}, the ternary ring\/ $(\ter,T)$ is linear. Thus,
+    
+        \vspace{-\parskip}
+        {\footnotesize
+        $$
+            \begin{aligned}
+                (x,y)\incidence{[m,b]}
+                    &\iff m\cdot x\+(\dotminus1)\cdot y\+b=0
+                    \iff[x:y:1]\incidence(m:\dotminus1:b),\\
+                (x,y)\incidence{[a]}
+                    &\iff x=a
+                    \iff[x:y:1]\incidence(1:0:\dotminus a),\\
+                (x,y)\incidence{[\infty]}
+                    &\iff\textsc{ false}
+                    \iff[x:y:1]\incidence(0:0:1),\\
+                (s)\incidence{[m,b]}
+                    &\iff s=m
+                    \iff[1:s:0]\incidence(m:\dotminus1:b),\\
+                (s)\incidence{[a]}
+                    &\iff\textsc{ false}
+                    \iff[1:s:0]\incidence(1:0:\dotminus a),\\
+                (s)\incidence{[\infty]}
+                    &\iff\textsc{ true}
+                    \iff[1:s:0]\incidence(0:0:1),\\
+                (\infty)\incidence{[m,b]}
+                    &\iff\textsc{ false}
+                    \iff[0:1:0]\incidence(m:\dotminus1:b),\\
+                (\infty)\incidence{[a]}
+                    &\iff\textsc{ true}
+                    \iff[0:1:0]\incidence(1:0:\dotminus a),\\
+                (\infty)\incidence{[\infty]}
+                    &\iff\textsc{ true}
+                    \iff[0:1:0]\incidence(0:0:1).
+            \end{aligned}
+        $$}
 
-        \item$\Rightarrow$~d) This is Baer's Theorem~\ref{thm:baer}.
+        \item$\Rightarrow$~d) This is Theorem~\ref{thm:desargues}.
 
-        \item$\Rightarrow$~e) Every base quad $O,X,Y,E$ used to coordinatize $\Pi$ will fulfill the hypothesis of part~a).
+        \item$\Rightarrow$~e) This is Baer's Theorem~\ref{thm:baer}.
 
-        \item$\Rightarrow$~a) This follows from the references given in the proof of a) $\Rightarrow$ b) above.
+        \item$\Rightarrow$~a) Trivial.        
     \end{enumerate}
 \end{proof}
 
@@ -3175,7 +3219,6 @@ In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, fi
         \end{tikzpicture}
     \]
     It follows from the definitions that $OB'\colon[b,0]$ and $OA'\colon[a,0]$. Since $U$ and $V$ are collinear with $X$, they share the same $y$-coordinate. Moreover, the first coordinate of $V$ is $a$, and that of $U$ is $b$. Hence, $V\colon(a,y)$ and $U\colon(b,y)$. Therefore, the incidences $V\incidence OB'$ and $U\incidence OA'$ translate into $(a,y)\incidence{[b,0]}$ and $(b,y)\incidence{[a,0]}$, which yield $y=a\cdot b$ and $y=b\cdot a$.
-
 \end{proof}
 
 \begin{thm}\label{thm:pappus-implies-desargues} {\upshape[Hessenberg, 1905]}
@@ -3183,12 +3226,10 @@ In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, fi
 \end{thm}
 
 \begin{proof}
-    Suppose that $O$, $A_1,A_2,A_3$, $B_1,B_2,B_3$, and $C_1,C_2,C_3$ form a Desarguesian configuration.  
-
-    Introduce the auxiliary point $K=A_1A_3\wedge B_2B_3$, as illustrated below
+    Suppose that $O$, $A_1,A_2,A_3$, $B_1,B_2,B_3$, and $C_1,C_2,C_3$ form a Desarguesian configuration. Introduce the auxiliary point $K=A_1A_3\wedge B_2B_3$, as illustrated below
     \[
     \begin{tikzpicture}[
-            scale=1.0,
+            scale=0.9,
             point/.style={
                 draw,
                 circle,
@@ -3210,7 +3251,7 @@ In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, fi
         \coordinate (B3) at ($(O)!1.45!(A3)$);
         
         % Axes
-        \draw[name path=OA1] (O) -- ($(O)!1.1!(A1)$);
+        \draw[name path=OA1] (O) -- ($(O)!1.05!(A1)$);
         \draw[name path=OA3] (O) -- ($(O)!1.4!(B3)$);
         \draw[name path=OA2] (O) -- ($(O)!1.1!(A2)$);
         
@@ -3334,6 +3375,8 @@ In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, fi
         C_1=B_2K\wedge ML
     \]
     are collinear, which proves Desargues’ Theorem.
+    %
+    
 \end{proof}
 
 \begin{cor}\label{cor:pappus-implies-field}
@@ -3343,6 +3386,8 @@ In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, fi
 \begin{proof}
     By Remark~\ref{rem:desarguess-implies-division-ring},
     Desargues~$\Rightarrow$~division ring. Hence, the conclusion is a direct consequence of Theorem~\ref{thm:pappus-implies-commutativity} and Theorem~\ref{thm:pappus-implies-desargues}.
+    %
+    
 \end{proof}
 
 \section{The Fano Property}
@@ -4120,11 +4165,13 @@ In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, fi
 \end{thm}
 
 \begin{proof}
-    Let $\Pi$ denote the projective plane under consideration. By Theorem~\ref{thm:elementary-abelian-2-group}, $\Pi$ has order $q=2^r$. Let $(P,\ell)$ be a flag in $\Pi$. Set
-    \begin{align*}
-        \tr(\ell)\setminus\set P &= \set{A,E_1,\dots,E_{q-1}}\\
-        \pl(P)\setminus\set\ell &= \set{\block e_1,\dots,\block e_q}.
-    \end{align*}
+    Let\/ $\Pi$ be the projective plane under consideration. By Theorem~\ref{thm:elementary-abelian-2-group}, its order is\/ $q=2^r$.  
+    Let\/ $(P,\ell)$ be a flag of\/ $\Pi$, and define
+    \[
+        \tr(\ell)\setminus\set P=\set{A,E_1,\dots,E_{q-1}}, 
+        \qquad
+        \pl(P)\setminus\set\ell=\set{\block e_1,\dots,\block e_q}.
+    \]
     Fix $1\le i\le q$. With the notation of Proposition~\ref{prop:pi_ij-properties}, for $1\le j<q$, put $H_j=\mathcal J_i^{AE_j}$ and $K_j=\mathcal J_i^{E_jA}$. Since $H_j$ is a group, its elements are the same as the elements of~$K_j$. Hence, we can use the following enumerations
     \begin{align*}
         H_j &= \set{\pi_{1i}^{E_j}\circ\pi_{i1}^A,\dots,
@@ -4202,96 +4249,6 @@ In what follows we will say that the ternary ring $(\ter,T)$ is a quasifield, fi
     is well defined. And since it is bijective we deduce that both sets have the same cardinality.
 \end{rem}
 
-\newpage
-
-\begin{thm}
-    Let\/ $\Pi$ be a finite projective plane of order\/ $q$.  
-    If\/ $\Pi$ is a translation plane with respect to every line, then\/ $\Pi\cong\PG(2,q)$.
-\end{thm}
-
-\begin{proof}
-We give an algebraic proof via coordinatization.  Fix a base quad\/ $O,X,Y,E$ and let\/ $(\ter,T)$ be the ternary ring obtained from this coordinatization.  Denote the affine part $\Pi\setminus XY$ by\/ $\ter\times\ter$ and write
-\[
-    T(x,m,k)=x\cdot m\+k,
-\]
-so that the usual operations $x\+y$, $x\cdot m$ (and, dually, $\oplus,\odot$) are defined as in the coordinatization.
-
-\medskip\noindent\textbf{Step 1: quasifield structure.}
-Because every line of\/ $\Pi$ is a translation line, the standard arguments for translation planes show that the ternary ring $(\ter,T)$ is a \emph{quasifield}: the maps
-\[
-    x\mapsto x\cdot m\quad(m\in\ter^\times)
-\]
-are permutations of\/ $\ter$, and for each fixed $m$ the equation $x\cdot m\+k=b$ has a unique solution in $(x,k)$.  Similarly, passing to the dual plane we obtain the dual quasifield operations $\oplus,\odot$ on the same underlying set\/ $\ter$.  Thus both
-\[
-    (\ter,\+,{}\cdot{})\quad\text{and}\quad(\ter,\oplus,\odot)
-\]
-are quasifields.
-
-\medskip\noindent\textbf{Step 2: abelian additive structure.}
-In a finite translation plane the translation group of any translation line is an elementary abelian $p$-group (this is standard: elation/translation groups are $p$-groups of exponent $p$).  Since every line is a translation line, the translation groups coming from different lines force the additive structure $(\ter,\+)$ to be an elementary abelian $p$-group (equivalently, a vector space over $\Fq[p]$).  The same conclusion applies dually to $(\ter,\oplus)$; hence both additive loops are elementary abelian $p$-groups of the same order $q=p^r$.
-
-\medskip\noindent\textbf{Step 3: existence of homologies and induced permutations.}
-Fix $r\in\ter^\times$.  Because every line is a translation line, one can produce a homology (a collineation with a line as axis and a point as center) with center $X$ and axis $OY$ that sends the affine point $(1,0)$ to $(r,0)$.  Call this homology $\varphi_r=(\phi_r,\psi_r)$, where $\phi_r$ acts on points and $\psi_r$ on lines.  As $\varphi_r$ fixes the lines $XY$ and $OX$, its action on the family of vertical lines $(m)$ permutes those lines; hence there is a permutation $\sigma=\sigma_r\in\Sym(\ter)$ such that
-\[
-    \psi_r[m,b]=[\sigma(m),b]\qquad(m,b\in\ter).
-\]
-Likewise, $\phi_r$ preserves each horizontal fibre $\{(x,y):y=\text{const}\}$, so there is $\nu=\nu_r\in\Sym(\ter)$ with
-\[
-    \phi_r(x,y)=(\nu(x),y).
-\]
-
-Because $\varphi_r$ is a collineation we have the incidence-preservation identity
-\[
-    (x,y)\incidence[m,b]\iff \phi_r(x,y)\incidence\psi_r[m,b].
-\]
-Specializing to lines of the form $[m,0]$ we obtain, for all $x,m\in\ter$,
-\[
-    T(x,m,0)=T(\nu(x),\sigma(m),0),
-\]
-i.e.
-\[
-    x\cdot m=\nu(x)\cdot\sigma(m). \tag{$\dag$}
-\]
-
-\medskip\noindent\textbf{Step 4: deducing multiplicative associativity.}
-Evaluate $(\dag)$ at $x=1$:
-\[
-    m = 1\cdot m = \nu(1)\cdot\sigma(m).
-\]
-Setting $m=1$ gives $1=\nu(1)\cdot\sigma(1)$, and setting $m=r$ (recall $\varphi_r(1,0)=(r,0)$) yields
-\[
-    r = \nu(1)\cdot\sigma(r).
-\]
-From these two equalities and cancellation in the multiplicative loop $(\ter^\times,\cdot)$ (cancellation holds in a quasifield), one deduces $\sigma(r)=1$ and hence $\nu(1)=r$. Returning to $(\dag)$ with $m=r$ gives
-\[
-    x\cdot r = \nu(x)\cdot\sigma(r)=\nu(x)\cdot 1=\nu(x),
-\]
-so $\nu(x)=x\cdot r$ for all $x\in\ter$. Substituting this into $(\dag)$ yields
-\[
-    x\cdot m=(x\cdot r)\cdot\sigma(m).\tag{$\ddag$}
-\]
-
-Now take $m=r\cdot y$ in $(\ddag)$ and set $x=1$:
-\[
-    r\cdot y = (1\cdot r)\cdot\sigma(r\cdot y) = r\cdot\sigma(r\cdot y),
-\]
-so by cancellation $\sigma(r\cdot y)=y$. Hence $\sigma$ is the map $t\mapsto r^{-1}t$ (and in particular is bijective), and $(\ddag)$ becomes
-\[
-    x\cdot(r\cdot y)=(x\cdot r)\cdot y
-\]
-for all $x,y,r\in\ter$. As $r$ was an arbitrary nonzero element of\/ $\ter$, this identity is exactly the associativity
-\[
-    x\cdot (r\cdot y)=(x\cdot r)\cdot y
-\]
-for all $x,y,r$, i.e. multiplication $\cdot$ is associative on\/ $\ter^\times$ and extends trivially to $0$. Thus $(\ter,\cdot)$ is associative.
-
-\medskip\noindent\textbf{Step 5: two-sided distributivity.}
-We already know $(\ter,\+,{}\cdot{})$ is a quasifield (right distributive by definition). The dual argument applied to the dual quasifield $(\ter,\oplus,\odot)$ (coming from coordinatizing the dual plane) shows that $\cdot$ is also left distributive. Concretely, translations along all lines force the left-distributive law as well: for all $a,b,c\in\ter$,
-\[
-    a\cdot(b\+c)=a\cdot b\+a\cdot c.
-\]
-Combined with right distributivity this gives full distributivity of $\cdot$ over $\+$.
-
-\medskip\noindent\textbf{Step 6: conclusion.}
-We have shown that $(\ter,\+,{}\cdot{})$ is a finite ring in which every nonzero element has a multiplicative inverse and multiplication is associative and distributive both sides. Hence $(\ter,\+,{}\cdot{})$ is a finite division ring. By Wedderburn's little theorem, any finite division ring is a field. Thus $\ter\cong\Fq[q]$, and the projective plane constructed from $(\ter,T)$ is isomorphic to\/ $\PG(2,q)$. Therefore\/ $\Pi\cong\PG(2,q)$, as claimed.
-\end{proof}
+\begin{cor} {\upshape[Gleason]}
+    Any finite projective plane with the Fano property is isomorphic to\/ $\PG(2,2^r)$ for some integer\/ $r\ge 1$.
+\end{cor}
