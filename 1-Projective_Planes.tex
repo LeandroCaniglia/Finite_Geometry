@@ -220,6 +220,7 @@ In this chapter we follow the exposition of \citep{kiss2019finite}.
 \makeatother
 \AddEnumerateCounter*{\apostrophes}{\@apostrophes}{6}
 
+\needspace{3\baselineskip}
 
 \begin{lem}\label{lem:alternative-projective-axiom}
     An incidence geometry\/ $\igeo$ is a projective plane if, and only if, it satisfies properties\/ \PP1 and\/ \PP2, and one of the following two conditions:
@@ -3598,7 +3599,7 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 \end{solution}
 
 
-\begin{exr} {\upshape[Kárteszi]}
+\begin{exr}\label{exr:Hall-incidence-tables} {\upshape[Kárteszi]}
     Determine the size of the incidence tables obtained in the rounds of Hall’s free extension process.
 \end{exr}
 
@@ -3607,14 +3608,14 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 \begin{solution}
     We start by being more precise about the inductive construction given in Example~\ref{xmpl:hall-plane}.
     
-    Let $\Pi_n=(\pts_n,\blocks_n,\incidence_n)$ be the incidence geometry induced by the incidence table $T_n$, as defined in Example~\ref{xmpl:hall-plane}. Since $T_n$ is a block inside $T_{n+1}$, $\Pi_n$ is an incidence subgeometry of $\Pi_{n+1}$. The first table $T1$ corresponds to an incidence geometry $\Pi_1$ that satisfies P1 and P3' (or \PP2 and P3'' if transposed). As we observed in the example, P3' (respectively, P3'') is satisfied by all subsequent geometries.
+    Let $\Pi_n=(\pts_n,\blocks_n,\incidence_n)$ be the incidence geometry induced by the incidence table $T_n$, as defined in Example~\ref{xmpl:hall-plane}. Since $T_n$ is a block inside $T_{n+1}$, $\Pi_n$ is an incidence subgeometry of $\Pi_{n+1}$. The first table $T_1$ corresponds to an incidence geometry $\Pi_1$ that satisfies \ref{P1} and \altP\ (or \PP2 and \altPp\ if transposed). As we observed in the example, \altP\ (respectively, \altPp) is satisfied by all subsequent geometries.
 
-    \textbf{Claim 1.} \textit{Every $\Pi_n$ is a partial projective plane, i.e., it satisfies axioms\/~{\upshape P1'} and\/~{\upshape P2'}.}
+    \textbf{Claim 1.} \textit{Every $\Pi_n$ satisfies axioms\/~\hallP1 and\/~\hallP2, i.e., it is a partial projective plane.}
 
     By induction on $n$. The case $n=1$ is actually a requirement to start the process. For $n>1$, suppose that $\Pi_{n-1}$ is a partial projective plane. There are three possibilities
     \begin{enumerate}[a),font=\upshape]
         \item \textit{$\Pi_n$ is a projective plane}. In this case, the process would make $\Pi_{n+1}=\Pi_n$, which is a projective plane, in particular a partial one.
-        \item \textit{$\Pi_n$ does not satisfy} \PP2. In this case, $T_{n+1}$ adds to $T_n$ new columns that correspond to the intersections of existing lines that had no point in common in $\Pi_n$. This addition preserves P1' and P2' because no lines are added.
+        \item \textit{$\Pi_n$ does not satisfy} \PP2. In this case, $T_{n+1}$ adds to $T_n$ new columns that correspond to the intersections of existing lines that had no point in common in $\Pi_n$. This addition preserves \hallP1\ and \hallP2\ because no lines are added.
         \item \textit{$\Pi_n$ does not satisfy} \PP1. Then its dual does not satisfy \PP2 and the conclusion follows from the previous possibility.
     \end{enumerate}
 
@@ -3638,11 +3639,11 @@ Consequently, we observe that $\vect x_3 = \vect x_2 - \vect x_1$. This implies 
 
     \textbf{Claim 3.} \textit{The union\/ $\Pi=\bigcup\set{\Pi_n\mid n\ge1}$ is a projective plane.}
 
-    As we mentioned above, $\Pi$ satisfies P3' or P3''. In consequence, we must show that it also satisfies \PP1 and \PP2. To see $P_1$, take two points $A$ and $B$ in $\Pi$. Let 
+    As we mentioned above, $\Pi$ satisfies \altP\ or \altPp. In consequence, we must show that it also satisfies \PP1 and \PP2. To see \PP1, take two points $A$ and $B$ in $\Pi$. Let 
     $$
-        n=\max\set{k\mid A,B\in\pts_k}.
+        n=\min\set{k\mid A,B\in\pts_k}.
     $$
-    By construction, $\Pi_n$ satisfies P1' and P2', as defined in \ref{xmpl:hall-plane}. Therefore, if~$A$ and $B$ violate P1, then $T_{n+1}$ will add one, and only one, row to $T_n$ representing a line in~$\blocks_{n+1}$, incident with $A$ and with $B$. Thus, $A$ and $B$ define a unique line in $\Pi_{n+1}$ and, \textit{a fortiori}, in $\Pi$ by virtue of~P1'. Thus, $\Pi$ satisfies \PP1. The dual construction shows that $\Pi$ also satisfies~\PP2.
+    By construction, $\Pi_n$ satisfies \hallP1 and \hallP2. Therefore, if~$A$ and $B$ violate \PP1, then $T_{n+1}$ will add one, and only one, row to $T_n$ representing a line in~$\blocks_{n+1}$, incident with $A$ and with $B$. Thus, $A$ and $B$ define a unique line in $\Pi_{n+1}$ and, \textit{a fortiori}, in $\Pi$ by virtue of~\hallP1. Thus, $\Pi$ satisfies \PP1. The dual construction shows that $\Pi$ also satisfies~\PP2.
 
     \bigskip
 
